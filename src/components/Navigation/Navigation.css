@@ -1,11 +1,16 @@
+nav{
+  display: flex;
+  margin: auto;
+}
 .navItem{
     text-decoration: none;
     font-weight: 500;
     padding: 10px 20px;
-    border: none;
- 
 };
 
 .navBar{
-
+  grid-area: "navBar";
+}
+ul{
+    list-style: none;
 }

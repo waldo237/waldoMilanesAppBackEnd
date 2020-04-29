@@ -1,54 +1,68 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import styles from './Navigation.css'
+import './Navigation.css'
 const Navigation = () => {
   return (
     <nav >
-      <ul className={'navBar'}>
+      <ul className={"navBar"}>
+        <li>
           <Link to="/">
-          <button className={"navItem"} >Waldo Milanes</button>  
-            </Link>
-     
+            <button className={"navItem"} >Waldo Milanes</button>
+          </Link>
+        </li>
+        <li>
           <Link to="/portfolio"  >
-        <button className={"navItem"}>
-            My Work
-          <ul>
-            <Link to="/node" >
-              <button className={"navItem"}>
-                  Node
-              </button>
-            </Link>
-            <Link to="/vue" >
-              <button className={"navItem"}>
-                  Vue
-              </button>
-            </Link>
-            <Link to="/react" >
-              <button className={"navItem"}>
-                  React
-              </button>
-            </Link>
-      
-          </ul>
-        </button>
-            </Link>
+            <button className={"navItem"}>
+              My Work
+            </button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/node" >
+            <button className={"navItem"}>
+              Node
+                </button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/vue" >
+            <button className={"navItem"}>
+              Vue
+                </button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/react" >
+            <button className={"navItem"}>
+              React
+                </button>
+          </Link>
+        </li>
+        <li>
           <Link to="/articles" >
             <button className={"navItem"}>
-                Articles
+              Articles
+              </button>
+          </Link>
+
+        </li>
+        <li>
+          <Link to="/contacts" >
+            <button className={"navItem"}>
+              Contacts
             </button>
           </Link>
-          <Link to="/contacts" >
-          <button className={"navItem"}>
-              Contacts
-          </button>
-          </Link>
+
+        </li>
+        <li>
           <Link to="/supporters" >
             <button className={"navItem"}>
-                Be my supporter
-            </button>
+              Be my supporter
+              </button>
           </Link>
+        </li>
       </ul>
-  </nav>
+    </nav>
   );
 }
 

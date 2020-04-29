@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,8 +13,7 @@ import Contacts from '../Contacts/Contacts.js'
 import Supporters from '../Supporters/Supporters.js'
  const App = ()=> {
   return (
-    <div>
-      <header ></header>
+    <div className={"app"}>
       <Router>
       <Navigation />
             {/* A <Switch> looks through its children <Route>s and
