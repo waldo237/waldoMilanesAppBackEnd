@@ -1,10 +1,37 @@
 .app{
-    grid-area: "nav";
+    display: grid;
+    grid-template-rows:  2fr  3fr 1fr;
     grid-template-areas:
-    "title title"
-    "nav nav"
-    "main masthead"
-    "main sidebar"
-    "footer footer";
-    background-color: gray;
+        "header"
+        "main"
+        "footer";
+        width: 100vw;
+        height: 100vh;
+}
+
+.header{
+    grid-area: "header";
+    display: grid ;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas:
+    "up"
+    "down";
+}
+
+.header ul {
+    grid-area: "down";
+
+}
+.header title {
+    grid-area: "up";
+    padding: 30px;
+    
+}
+.main{
+    grid-area: "main";
+
+}
+.footer{
+    
+    grid-area: "footer";
 }

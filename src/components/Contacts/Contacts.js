@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
+import React, {Component}  from "react"
+import './Contacts.css'
+class Articles extends Component {
 
-class Contacts extends Component {
-
-    render() {
+    render(){
         return (
-            <>
-            <div>
-                Contacts
-            </div>
-            </>)
+            <main className="main">
+                <h1>Contacts</h1>
+            </main>
+        )
     }
 }
 
-export default Contacts
+export default Articles
