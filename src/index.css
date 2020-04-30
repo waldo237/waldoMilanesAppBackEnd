@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
 
 body {
   padding: 0px;
   margin: 0px;
-  /* font-family: 'Cinzel', serif; */
+  font-family: 'Bebas Neue', serif;
 }
-.title h1{
-  font-family: 'Cinzel', serif; 
-}
+
 .primary{
   background-color:#2A324B ;
   color: white;
