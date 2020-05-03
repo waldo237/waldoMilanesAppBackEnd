@@ -1,0 +1,10 @@
+.footer div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px;
+}
+
+.social{
+    margin: 15px;
+}

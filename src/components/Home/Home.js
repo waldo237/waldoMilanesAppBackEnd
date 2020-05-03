@@ -1,11 +1,25 @@
 import React from 'react'
 import './Home.css'
-const Home = ()=>{
-    return(
+const Home = () => {
+    return (
         <>
-        <main className={'main'}>
-        <h1>Home</h1>    
-        </main>
+            <main className={'main light'}>
+                <h1>WELLCOME</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                           </p>
+            </main>
+            <article className='light'>
+               <button className='my-work-btn light'>
+                   my work
+               </button>
+            </article>
+            <aside className='secondary'>
+                <h1>education</h1>
+                <p>
+                    Lorem Ipsum is dummy.
+            </p>
+            </aside>
         </>
     )
 }

@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <div className="app light">
-        <header className="header yellow">
+        <header className="header primary shadow">
           <Title />
           <Navigation />
         </header>

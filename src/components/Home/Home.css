@@ -1,0 +1,57 @@
+.main{
+    margin: 18px;
+}
+.main p {
+    margin: 0px 10px;
+    padding: 4px;
+    font-family: 'Lato', serif; 
+}
+.main h1 {
+    margin: 10px;
+    padding: 4px;
+    font-size: 1em;
+}
+aside {
+    margin: 0;
+    padding: 10px;
+    min-height: 250px;
+    text-transform: uppercase;
+    background:linear-gradient(to bottom, rgba(251, 210, 3, 0),rgba(251, 210, 3, 0), rgba(35, 35, 61, 0.349), rgb(35, 35, 61)), url('../../static/pencils.jpg') left top  no-repeat;
+
+    background-size: cover;
+    font-size: 0.8em;
+}
+
+
+article{
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Raleway', serif; 
+    display: flex;
+}
+
+.my-work-btn {
+	box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
+	border-radius:30px;
+	border:2px solid rgb(35, 35, 61);
+	display:inline-block;
+	cursor:pointer;
+	color:rgb(35, 35, 61);
+	padding:5px 32px;
+    text-decoration:none;
+    text-transform: uppercase;
+    text-shadow:0px 1px 0px rgb(35, 35, 61);
+    margin: 20px;
+}
+.my-work-btn:hover {
+	background:linear-gradient(to bottom, rgb(35, 35, 61) 5%, rgb(35, 35, 61) 100%);
+    background-color:rgb(35, 35, 61);
+   color: white;
+   text-shadow:0px 1px 2px rgb(35, 35, 61);
+}
+.my-work-btn:active {
+	position:relative;
+	top:1px;
+}
+
+        
