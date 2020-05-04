@@ -1,15 +1,59 @@
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+.mw-img{
+    vertical-align: middle;
+    width: 70px;
+    height:75px;
+    border-radius: 50%;
+    padding: 0;
+    border-right: 2px solid rgb(35, 35, 61);
+    border-left: 3px solid rgb(35, 35, 61);
+    
+}
+.mw-img:hover{
+    transform: scale(1.3);
+}
+.img-wrapper{
+    display:flex;
+    width: 95%;
+    align-items: center;
+    border: solid 0.5px rgb(219, 215, 215);
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
+    animation: float_3353 7s linear infinite;
+    transform-origin: 50% 50%;
+   
+    
+  }
+
+.chevron-down{
+animation: tada 2s infinite linear;
+
+
+}
+.name{
+    margin: 0px 4px;
+}
+.job-title{
+    margin: 0px 4px;
+}
 .main{
     margin: 18px;
+    display: flex;
+    justify-content: center;
 }
 .main p {
     margin: 0px 10px;
     padding: 4px;
     font-family: 'Lato', serif; 
+    font-weight: 400;
+    display: none;
 }
 .main h1 {
     margin: 10px;
     padding: 4px;
     font-size: 1em;
+    font-weight: 400;
 }
 aside {
     margin: 0;
@@ -33,7 +77,7 @@ article{
 .my-work-btn {
 	box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
 	border-radius:30px;
-	border:2px solid rgb(35, 35, 61);
+	border:0.5px solid rgb(35, 35, 61);
 	display:inline-block;
 	cursor:pointer;
 	color:rgb(35, 35, 61);
@@ -54,4 +98,10 @@ article{
 	top:1px;
 }
 
-        
+
+  @keyframes float_3353 {
+    0% { transform: translateY(0) }
+    14.28571% { transform: translateY(-6px) }
+    28.57143% { transform: translateY(0) }
+    100% { transform: translateY(0) }
+  }       
