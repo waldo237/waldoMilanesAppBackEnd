@@ -38,7 +38,8 @@
   align-content: flex-start;
   position: absolute;
   right: 0px;
-  z-index: 99;
+  z-index: 100;
+  animation: slideInRight 0.1s ease-in-out;
 }
 
 .inner-nav-item{
@@ -54,8 +55,9 @@
   flex-wrap: nowrap;
   padding: 0;
   position: absolute;
-  z-index: 100;
+  z-index: 99;
   right: 170px;
+  animation: fadeInUp 0.1s ease-in-out;
   }
 
 .spacious{
