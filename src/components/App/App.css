@@ -25,18 +25,15 @@
 .header title {
     grid-area: "up";
     padding: 30px;
-    
 }
 .main{
     grid-area: "main";
-
 }
 .footer{
-    
     grid-area: "footer";
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 780px){
     .app{
         display: grid;
         grid-template-rows:  1fr  4fr 1fr;
@@ -51,7 +48,7 @@
     .header{
         grid-area: "header";
         display: grid ;
-        grid-template-rows: 1.5fr 0.4fr 0.1fr;
+        grid-template-rows: 2fr 1fr 0fr;
         grid-template-areas:
         "up"
         "mid"

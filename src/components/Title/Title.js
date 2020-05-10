@@ -7,10 +7,10 @@ const Title = ()=>{
         <article className="title">
         <div>
         <img src={img} alt='WM robot' className='mw-robot'/>
-        <h1 className='secondary--text'>W</h1>
+        <h1 className='secondary--text double-w'>W</h1>
 
         </div>
-        <h3>PROGRAMMING</h3>
+        <h3 className='programming'>PROGRAMMING</h3>
 
         </article>
         </>

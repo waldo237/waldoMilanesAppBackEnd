@@ -34,43 +34,27 @@ header h3{
   padding-top: 15px;
 }
 
-
-
-
-@media screen and (min-width: 600px){
-  
-header h1{
-  padding: 0;
-  margin: 10px 0px 0px -2px;
-  font-family: 'Fredericka the Great', serif; 
-  font-size: 2em;
-  border: 0px;
-}
-
-header h3{
-  padding: 0;
-  left: 75px;
-  bottom:30px;
-
-  font-size: 1.5em;
-}
+@media screen and (min-width: 780px){
+.title{
+  display: grid;
+  grid-template-columns:  1fr 1fr 4fr;
+} 
 .mw-robot {
-  width: 50px;
-  height: 45px;
-  padding: 5px;
-  margin-top: 5px;
-  margin-right: 10px;
-  animation: pulse 10s infinite linear;
-  animation: rotation 25s infinite linear;
+  grid-column: 1/2;
+  width: 80px;
+  height: 85px;
+} 
+.double-w{
+  grid-column: 2/3;
+  font-family: 'Fredericka the Great', serif; 
+  font-size: 3em;
 }
-.title div {
-display: flex;
-padding: 10px 10px 0px 10px;
+
+.programming{
+  grid-column: 3/-1;
+  font-size: 2em;
 }
-.header{
-background: linear-gradient( rgba(0, 0, 0, 0.808), rgba(0, 0, 0, 0.87) );
-background-position:center;
 
 
-}
+
 }

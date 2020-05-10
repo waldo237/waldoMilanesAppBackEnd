@@ -22,11 +22,10 @@ const MainCard = () => {
 
 const Home = () => {
     const [open, toggle] = useState(true);
-    const [hovered, setHovered] = useState(false);
     const transitions = useTransition(open, null, {
-        from: { opacity:0, transform: 'scaleX(0)' },
-        enter: { opacity:1, transform: 'scaleX(1)' },
-        leave: { opacity:0, transform: 'scaleX(1)' },
+        from: { opacity:0, transform: 'scaleY(0)' },
+        enter: { opacity:1, transform: 'scaleY(1)' },
+        leave: { opacity:0, transform: 'scaleY(1)' },
     })
     const transition2 = useTransition(open, null, {
         from: { opacity:0, transform: 'translate3d(0,500px,0)' },
