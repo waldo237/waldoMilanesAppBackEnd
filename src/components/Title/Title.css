@@ -1,9 +1,7 @@
 
 .mw-robot {
   width: 60px;
-
   padding-bottom: 2px;
-
 }
 header h1{
     margin: 5px;
@@ -37,22 +35,32 @@ header h3{
 @media screen and (min-width: 780px){
 .title{
   display: grid;
-  grid-template-columns:  1fr 1fr 4fr;
+  grid-template-columns:  1.6fr 1.3fr 2fr;
+  
 } 
 .mw-robot {
   grid-column: 1/2;
-  width: 80px;
-  height: 85px;
+  width: 132px;
+  height: 125px;
+  justify-content: end;
+  margin-top: 20px;
 } 
 .double-w{
   grid-column: 2/3;
-  font-family: 'Fredericka the Great', serif; 
-  font-size: 3em;
+  font-family: 'Lato', serif; 
+  font-size: 2.9em;
+  justify-self: end;
+  align-self: center;
+  font-weight: 500;
 }
 
 .programming{
   grid-column: 3/-1;
   font-size: 2em;
+  justify-self: start;
+  padding-left: 20px;
+  letter-spacing: 3.5px;
+  font-weight: 300;
 }
 
 

@@ -28,7 +28,7 @@ class Navigation extends Component {
 
   componentDidMount() {
     const activateNav = () => {
-      if (document.body.clientWidth >= 600) {
+      if (document.body.clientWidth >= 780) {
         this.setState({
           menuActivated: true
         })
@@ -38,7 +38,7 @@ class Navigation extends Component {
     window.addEventListener('resize', activateNav);
 
     document.addEventListener("click", (evt) => {
-      if (document.body.clientWidth <= 600) {
+      if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
         const innerNav = document.getElementById("with-children");
         let targetElement = evt.target;
