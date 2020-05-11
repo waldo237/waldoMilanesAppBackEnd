@@ -27,6 +27,21 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
+// make nav sticky
+    window.onscroll = ()=> makeStick();
+    
+    const nav = document.getElementById("navbar");
+    const sticky = nav.offsetTop + nav.offsetHeight;
+    const makeStick = ()=> {
+      if (window.pageYOffset > sticky) {
+        nav.classList.add("sticky");
+        nav.classList.remove("stuck");
+      } else {
+        nav.classList.remove("sticky");
+        nav.classList.add("stuck");
+      }
+    }
+
     const activateNav = () => {
       if (document.body.clientWidth >= 780) {
         this.setState({
@@ -36,7 +51,6 @@ class Navigation extends Component {
     };
     activateNav();
     window.addEventListener('resize', activateNav);
-
     document.addEventListener("click", (evt) => {
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
@@ -60,8 +74,8 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <nav>
-        <div className='mid ' id='nav'>
+      <nav  id='navbar'>
+        <div className='mid primary' id='nav'>
           <button className='fab-btn' onClick={() => {
             this.setState({
               menuActivated: !this.state.menuActivated
@@ -81,9 +95,7 @@ class Navigation extends Component {
       </nav>
     );
   }
-  openInnerNav(){
-    this.setState({innerNavActivated: true})
-  }
+ 
   listNavItems(item) {
     if (item.children) {
       return <div className='btn nav-item-with-children' >

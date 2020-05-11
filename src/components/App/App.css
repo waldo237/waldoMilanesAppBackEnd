@@ -21,6 +21,7 @@
 
 .header ul {
     grid-area: "down";
+    
 }
 .header title {
     grid-area: "up";
@@ -48,11 +49,11 @@
     .header{
         grid-area: "header";
         display: grid ;
-        grid-template-rows: 2.5fr 1fr 0fr;
+        grid-template-rows: 1fr 0.4fr ;
         grid-template-areas:
         "up"
         "mid"
-        "down";
+       
     }
     
     .header ul {

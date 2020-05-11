@@ -52,8 +52,15 @@ header h3{
   justify-self: end;
   align-self: center;
   font-weight: 500;
+  animation: glow 10s infinite ease-in-out;
+  
 }
 
+@keyframes glow {
+  to {
+      text-shadow: 0 0 8px rgb(251, 211, 3) ;
+  }
+}
 .programming{
   grid-column: 3/-1;
   font-size: 2em;

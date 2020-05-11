@@ -22,7 +22,7 @@ const App = () => {
   return (
     <Router>
       <div className="app light">
-        <header className="header primary shadow">
+        <header className="header primary shadow" id='header'>
           {transitions.map(({ item, props, key }) =>
             <animated.div key={key} style={props}>
               <Title />

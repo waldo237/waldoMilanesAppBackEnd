@@ -27,6 +27,23 @@
 	top:1px;
 }
 
+.sticky {
+  position: fixed;
+  position: -webkit-sticky;
+  top: 0;
+  width: 100%;
+  z-index: 101;
+  animation: slideInRight 0.2s ease-in-out;
+  grid-area: "header";
+}
+.sticky .navItems{
+  position: absolute;
+  top: 20px;
+}
+.stuck {
+
+  animation: slideInLeft 0.2s ease-in-out;
+}
 
 
 .navItems{
@@ -34,10 +51,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-content: flex-start;
   position: absolute;
-  right: 0px;
+  right: -20px;
   z-index: 100;
   animation: slideInRight 0.1s ease-in-out;
 }
@@ -81,19 +96,33 @@ width: 100%;
   grid-area: 'mid';
   display: flex;
   justify-content: flex-end;
-  margin: 0px 8px;
-
+  padding: 10px 0px;
 }
 .mid button {
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
   color: white;
-  padding: 5px 15px;
+  padding: 0px 25px;
   position: relative;
-  bottom: -8px;
+  bottom: -5px;
 }
   
   @media screen and (min-width: 780px){
+ 
+    .sticky .navItems{
+      position: absolute;
+      top: -20px;
+      width: 100%;
+    }
+    .sticky .mid{
+      box-shadow: 0px 10px 14px -7px rgba(0, 0, 0, 0.726) ;
+      padding: 22px;
+    }
+    .stuck {
+
+      animation: fadeIn 0.9s ease-in-out;
+    }
+    
 .navItems{
       list-style: none;
       display: flex;
@@ -101,13 +130,18 @@ width: 100%;
       flex-wrap: wrap;
       justify-content: flex-end;
       align-content: flex-start;
-      /* position: absolute; */
-      /* top: 0.5fr; */
+      position: absolute;
+      top: 165px;
+      
   }
 
 .spacious{
   padding:15px 32px;
 } 
+
+.inner-nav-item{
+  display: none;
+}
 .nav-item-with-children span{
   margin:15px 32px;
 } 
@@ -117,14 +151,8 @@ width: 100%;
   flex-direction: column; 
   flex-wrap: nowrap;
 }
-.block{
- display: inline-block;
- width: 100%;
-}
-.mid{
-  display: none;
-}
-.inner-nav-item{
+.nav-item-with-children:active>.inner-nav-item, 
+.nav-item-with-children:hover>.inner-nav-item{
   display: flex;
   -webkit-flex-direction: column; 
   flex-direction: column; 
@@ -134,4 +162,14 @@ width: 100%;
   right: 0;
   top: 0;
 }
+.block{
+ display: inline-block;
+ width: 100%;
+}
+
+.mid button {
+  display: none;
+  
+}
+
 }
