@@ -33,16 +33,16 @@
   top: 0;
   width: 100%;
   z-index: 101;
-  animation: slideInRight 0.2s ease-in-out;
+  animation: slideInRight 0.1s ease-in-out;
   grid-area: "header";
 }
+
 .sticky .navItems{
   position: absolute;
   top: 20px;
 }
 .stuck {
-
-  animation: slideInLeft 0.2s ease-in-out;
+  animation: slideInLeft 0.1s ease-in-out;
 }
 
 

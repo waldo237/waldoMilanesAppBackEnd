@@ -1,19 +1,21 @@
 
 .mw-robot {
-  width: 60px;
+  width: 65px;
   padding-bottom: 2px;
 }
-header h1{
+.double-w{
     margin: 5px;
     font-family: 'Lato', serif; 
-    font-size: 1.9em;
+    font-size: 2em;
+    animation: glow 6s infinite ease-in-out;
+    font-weight: 500;
 }
 
-header h3{
+.programming{
     padding: 0;
     margin: 5px;
     font-size: 1.2em;
-    letter-spacing: 3px;
+    letter-spacing: 3.2px;
     font-weight: 400;
 }
 .title div {
@@ -52,15 +54,11 @@ header h3{
   justify-self: end;
   align-self: center;
   font-weight: 500;
-  animation: glow 10s infinite ease-in-out;
+
   
 }
 
-@keyframes glow {
-  to {
-      text-shadow: 0 0 8px rgb(251, 211, 3) ;
-  }
-}
+
 .programming{
   grid-column: 3/-1;
   font-size: 2em;
@@ -70,6 +68,9 @@ header h3{
   font-weight: 300;
 }
 
-
-
+}
+@keyframes glow {
+  to {
+      text-shadow: 0 0 8px rgb(251, 211, 3) ;
+  }
 }

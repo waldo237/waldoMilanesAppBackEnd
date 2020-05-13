@@ -1,79 +1,53 @@
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
-.img-wrapper{
-    display: grid;
-    grid-template-columns:  1fr  4fr .5fr;
-    grid-template-areas:
-    "avatar" "credentials" "icons";
-    width: 95%;
-    align-items: center;
-    border: solid 0.5px rgb(219, 215, 215);
-    padding: 6px;
-    border-radius: 5px;
+
+  .img-wrapper {
+    background: linear-gradient(
+        rgba(35, 35, 61, 0.26),
+        rgba(35, 35, 61, 0.425)
+      ),url('../../static/waldo.jpg') ; 
+    background-size: 500px;
+    background-position: cover;
+    background-attachment: fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-color: transparent;
+    font-size: 8vw;
+    font-weight: bolder;
+    width: 80%;
+    height:450px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;   
+    padding: 30px;
+}
+.img{
+    background:   linear-gradient(
+        rgba(35, 35, 61, 0.486),
+        rgba(35, 35, 61, 0.87)
+      ),url('../../static/waldo.jpg') no-repeat; 
+    background-size: 500px;
+    background-attachment: fixed;
+    background-position: cover;
+    width:  486px;
+    height: 250px;
+    background-color: transparent;
+    align-self: flex-start;
+    left: var(--moveLeft);
+    
+}
+.img:hover{
+
     box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
-    /* animation: float_3353 7s linear infinite; */
-    transform-origin: 50% 50%;
-    cursor:pointer;
-  }
-  .img-wrapper:active{
-      position:relative;
-      /* animation: slideOutLeft 1s ease-in-out !important; */
-    }
-    .img-wrapper:end{
-        position:relative;
-        /* animation: slideOutLeft 1s ease-in-out !important; */
-      }
-   
-.img-wrapper:active :last-child{
-	position:relative;
-    /* animation: none !important; */
-    transform: rotate(-90deg);
-    transform-origin: 20% 40%;
+    
+}
+.job-title, .name{
+    margin:0px;
+    padding:0px;
 }
 
-
-  .mw-img{
-    vertical-align: middle;
-    width: 70px;
-    height:75px;
-    border-radius: 50%;
-    padding: 0;
-    border-right: 2px solid rgb(35, 35, 61);
-    border-left: 3px solid rgb(35, 35, 61);
-    grid-area: avatar;
-}
-
-
-.credentials{
-    grid-area: credentials;
-}
-.chevron-down{
-    grid-area: icons;
-/* animation: tada 2s infinite linear; */
-
-}
-.name{
-    margin: 0px 4px;
-}
-.job-title{
-    margin: 0px 4px;
-}
-.main{
-    margin: 18px;
-
-}
-.main p {
-    margin: 0px 10px;
-    padding: 4px;
-    font-family: 'Lato', serif; 
-    font-weight: 400;
-   
-}
-.main h1 {
-    margin: 10px;
-    padding: 4px;
-    font-size: 1em;
-    font-weight: 400;
-}
 aside {
     margin: 0;
     padding: 10px;
