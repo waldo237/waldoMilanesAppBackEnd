@@ -1,11 +1,20 @@
-@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 
+main{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: .2fr 4fr .2fr;
+    grid-template-rows: 0.2fr .5fr 1fr; 
+    gap: 20px 5px;
+}
   .img-wrapper {
+    grid-column: 2/3 ;
+    grid-row: 2/3 ;
     background: linear-gradient(
-        rgba(35, 35, 61, 0.26),
-        rgba(35, 35, 61, 0.425)
+        rgba(35, 35, 61, 0.486),
+        rgba(35, 35, 61, 0.76)
       ),url('../../static/waldo.jpg') ; 
-    background-size: 510px;
+    background-size: 535px;
     background-position: cover;
     background-attachment: fixed;
     -webkit-background-clip: text;
@@ -14,33 +23,39 @@
     background-color: transparent;
     font-size: 8vw;
     font-weight: bolder;
-    width: 80%;
-    height:450px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;   
     padding: 30px;
+   
 }
 .wm-img{
+    grid-column: 2/3 ;
+    grid-row: 1/2 ;
     background:   linear-gradient(
         rgba(35, 35, 61, 0.486),
         rgba(35, 35, 61, 0.87)
       ),url('../../static/waldo.jpg') no-repeat; 
-    background-size: 510px;
+    background-size: 515px;
     background-attachment: fixed;
     background-position: cover;
-    width:  486px;
-    height: 250px;
+    min-width: 350px;
+    max-width: 450px;
+    height: 210px;
     background-color: transparent;
     align-self: flex-start;
     animation: slideInRight 0.2s backwards;
+    
 }
 .img-scrolled{
-
     transform: translateX(37vw);
     animation: slideSlow 0.2s ease-in;
+}
+.img-out{
+   opacity: 0;
 }
 .wm-img:hover{
     box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
@@ -50,14 +65,24 @@
     padding:0px;
 }
 #description{
+    grid-column: 2/3 ;
+    grid-row: 3/-1 ;
     min-height: 300px;
-    padding: 10px 5%;
-    margin: 0px 2.5%;
+    width: 80%;
+    padding: 20px 5%;
+    margin: 10px 3%;
     font-size: 1.7em;
     line-height: 1.3;
     text-align: justify;
     display: flex;
     align-content: center;
+}
+.description-out{
+    animation: slideOutRight .5s ease-in-out;
+    display: none;
+}
+.description-in{
+    animation: backInUp    1s ease-in;
 }
 aside {
     margin: 0;
@@ -100,6 +125,57 @@ article{
 .my-work-btn:active {
 	position:relative;
 	top:1px;
+}
+
+
+.btn-two {
+	color: #FFF;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	position: relative;	
+}
+.btn-two span {
+	z-index: 2;	
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;	
+}
+.btn-two::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	border: 1px solid rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
+}
+.btn-two::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	border: 1px solid rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
+}
+.btn-two:hover::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background-color: rgba(255,255,255,0);
+}
+.btn-two:hover::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background-color: rgba(255,255,255,0);
 }
 
 @keyframes slideSlow {
