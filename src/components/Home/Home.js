@@ -17,6 +17,8 @@ const Home = () => {
 
     return (
         <>
+         {transition2.map(({ item, key, props }) =>
+                    <animated.div style={props} key={key}>
             <main className='main light'>
                 <MainCard  toggle={toggle} open={open}/>
                 <div id='description'>
@@ -26,16 +28,25 @@ const Home = () => {
                 }
                 </div>
             </main>
+            </animated.div>
+                )}
+                <svg width="0" height="0">
+  <defs>
+    <clipPath id="my-shape">
+    <path fill="#0099ff" fill-opacity="1" d="M0,64L80,80C160,96,320,128,480,122.7C640,117,800,75,960,53.3C1120,32,1280,32,1360,32L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>  
+       </clipPath>
+  </defs>
+</svg>
             <article className='primary' id='my-work'>
                 {transition2.map(({ item, key, props }) =>
                     <animated.div style={props} key={key}>
-                        <button className='my-work-btn light'>
+                        <button className='my-work-btn'>
                             my work
                         </button>
                     </animated.div>
                 )}
             </article>
-            <aside className='secondary' id='education'>
+            <aside className='' id='education'>
                 {transition2.map(({ item, key, props }) =>
                     <animated.div style={props} key={key}>
                         <h1>education</h1>

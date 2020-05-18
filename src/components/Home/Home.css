@@ -21,7 +21,7 @@ main{
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-color: transparent;
-    font-size: 8vw;
+    font-size: 7vw;
     font-weight: bolder;
     height: 200px;
     display: flex;
@@ -39,7 +39,7 @@ main{
         rgba(35, 35, 61, 0.486),
         rgba(35, 35, 61, 0.87)
       ),url('../../static/waldo.jpg') no-repeat; 
-    background-size: 515px;
+    background-size: 520px;
     background-attachment: fixed;
     background-position: cover;
     min-width: 350px;
@@ -87,40 +87,60 @@ main{
 aside {
     margin: 0;
     padding: 10px;
-    min-height: 250px;
+    min-height: 350px;
     text-transform: uppercase;
-    background:linear-gradient(to bottom, rgba(251, 210, 3, 0),rgba(251, 210, 3, 0), rgba(35, 35, 61, 0.349), rgb(35, 35, 61)), url('../../static/pencils.jpg') left top  no-repeat;
-
-    background-size: cover;
+    background:linear-gradient(to bottom, rgba(245, 188, 2, 0),rgba(251, 210, 3, 0.075), rgba(35, 35, 61, 0.349), rgb(35, 35, 61)), url('../../static/pencils.jpg') no-repeat  right ;
+    background-color: rgb(245, 188, 3); 
+    background-size: contain;
     font-size: 0.8em;
 }
 
 
-article{
+#my-work{
+    background:   linear-gradient(
+        rgba(35, 35, 61, 0.418),
+        rgba(35, 35, 61, 0.801)
+      ),url('../../static/code.jpg') no-repeat;
+      background-size: cover; 
+    display: flex;
+    align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    font-family: 'Raleway', serif; 
-    display: flex;
+    width: 100%;
+    min-height: 300px;
+    -webkit-clip-path: url(#my-shape);
+    clip-path:url(#my-shape);
+}
+#my-work:hover{
+    background:   linear-gradient(
+        rgba(35, 35, 61, 0.418),
+        rgba(35, 35, 61, 0.801)
+      ),url('../../static/code.jpg')  right top no-repeat;
+      background-size: cover; 
+     
 }
 
 .my-work-btn {
 	box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
 	border-radius:30px;
-	border:0.5px solid rgb(35, 35, 61);
+    border:1px solid #FBF7F4;
+    background: rgba(35, 35, 61, 0.164);
 	display:inline-block;
 	cursor:pointer;
-	color:rgb(35, 35, 61);
-	padding:5px 32px;
-    text-decoration:none;
+	color:#FBF7F4;
+    padding:12px 84px;
+    font-size: 1em;
+    font-weight: 600;
     text-transform: uppercase;
     text-shadow:0px 1px 0px rgb(35, 35, 61);
     margin: 20px;
+    
 }
 .my-work-btn:hover {
 	background:linear-gradient(to bottom, rgb(35, 35, 61) 5%, rgb(35, 35, 61) 100%);
     background-color:rgb(35, 35, 61);
    color: white;
-   text-shadow:0px 1px 2px rgb(35, 35, 61);
+   /* text-shadow:0px 1px 2px rgb(35, 35, 61); */
 }
 .my-work-btn:active {
 	position:relative;
@@ -128,55 +148,8 @@ article{
 }
 
 
-.btn-two {
-	color: #FFF;
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
-	position: relative;	
-}
-.btn-two span {
-	z-index: 2;	
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;	
-}
-.btn-two::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
-	border: 1px solid rgba(255,255,255,0.2);
-	background-color: rgba(255,255,255,0.1);
-}
-.btn-two::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
-	border: 1px solid rgba(255,255,255,0.2);
-	background-color: rgba(255,255,255,0.1);
-}
-.btn-two:hover::before {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  background-color: rgba(255,255,255,0);
-}
-.btn-two:hover::after {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  background-color: rgba(255,255,255,0);
-}
+
+
 
 @keyframes slideSlow {
     0% { transform: translateX(0) }
