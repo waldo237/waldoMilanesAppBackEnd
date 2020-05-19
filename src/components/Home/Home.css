@@ -173,7 +173,7 @@ aside {
 }
 .aside-img{
     grid-column: 2/3;
-    background:url('../../static/pencils.jpg') no-repeat right;
+    background:url('../../static/pencils.jpg') no-repeat ;
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
