@@ -7,7 +7,7 @@
     margin: 5px;
     font-family: 'Lato', serif; 
     font-size: 2em;
-    animation: glow 6s infinite ease-in-out;
+    animation: glow 4s infinite alternate;
     font-weight: 500;
 }
 

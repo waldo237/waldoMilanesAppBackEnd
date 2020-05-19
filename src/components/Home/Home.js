@@ -17,29 +17,32 @@ const Home = () => {
 
     return (
         <>
-         {transition2.map(({ item, key, props }) =>
-                    <animated.div style={props} key={key}>
-            <main className='main light'>
-                <MainCard  toggle={toggle} open={open}/>
-                <div id='description'>
-                {open
-                    ?<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                    : null
-                }
-                </div>
-            </main>
-            </animated.div>
-                )}
-                <svg width="0" height="0">
-  <defs>
-    <clipPath id="my-shape">
-    <path fill="#0099ff" fill-opacity="1" d="M0,64L80,80C160,96,320,128,480,122.7C640,117,800,75,960,53.3C1120,32,1280,32,1360,32L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>  
-       </clipPath>
-  </defs>
-</svg>
-            <article className='primary' id='my-work'>
+            {transition2.map(({ item, key, props }) =>
+                <animated.div style={props} key={key}>
+                    <main className='main light'>
+                        <MainCard toggle={toggle} open={open} />
+                        <div id='description'>
+                            {open
+                                ?   <div id='synthesis'>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.  </p> 
+                                        <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p> 
+                                        
+                                    </div>
+                                : null
+                            }
+                        </div>
+                    </main>
+                </animated.div>
+            )}
+            <svg width="0" height="0">
+                <defs>
+                    <clipPath id="my-shape" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)">
+                    <path fill="#0099ff"  d="M0,32L48,48C96,64,192,96,288,101.3C384,107,480,85,576,69.3C672,53,768,43,864,37.3C960,32,1056,32,1152,42.7C1248,53,1344,75,1392,85.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>                                                    </clipPath>
+                </defs>
+            </svg>
+            <article className='light'>
                 {transition2.map(({ item, key, props }) =>
-                    <animated.div style={props} key={key}>
+                    <animated.div id='my-work' style={props} key={key}>
                         <button className='my-work-btn'>
                             my work
                         </button>
@@ -48,49 +51,66 @@ const Home = () => {
             </article>
             <aside className='' id='education'>
                 {transition2.map(({ item, key, props }) =>
-                    <animated.div style={props} key={key}>
+                    <animated.div id='credentials' style={props} key={key}>
                         <h1>education</h1>
-                        <p>
-                            Lorem Ipsum is dummy.
-                </p>
+  <p>Doggo ipsum long bois lotsa pats blep. What a nice floof ruff super chub very good spot, the neighborhood pupper lotsa pats. Borkdrive shibe shoober what a nice floof, borking doggo.</p>
+  <p>Shoober shooberino adorable doggo many pats, heckin good boys many pats pupper wrinkler, corgo maximum borkdrive. A frighten puggo wow very biscit.</p>
+  <p>Big ol h*ck adorable doggo vvv smol borking doggo with a long snoot for pats big ol, he made many woofs doing me a frighten puggo wow very biscit, ruff fat boi ruff long doggo. </p>
+  <p>Long bois mlem I am bekom fat wrinkler puggo maximum borkdrive big ol pupper I am bekom fat, fluffer vvv adorable doggo lotsa pats snoot. I am bekom fat ur givin me a spook length boy wow very biscit very good spot.</p>
+  <p>Doggo ipsum long bois lotsa pats blep. What a nice floof ruff super chub very good spot, the neighborhood pupper lotsa pats. Borkdrive shibe shoober what a nice floof, borking doggo.</p>
                     </animated.div>
                 )}
+                <div className='aside-img'></div>
             </aside>
         </>
     )
 }
 
-const MainCard = ({toggle, open}) => {
+const MainCard = ({ toggle, open }) => {
     useEffect(() => {
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
-        const education = document.querySelector(".my-work-btn");
+        const work = document.querySelector(".my-work-btn");
+        const myWork = document.querySelector("#my-work");
+        const education = document.querySelector("#education");
         const options = { rootMargin: "-250px 0px 0px 0px" };
-        const options2 = { 
-        rootMargin: '110px',
-        threshold: 1.0 }; 
-
+        const options2 = {
+            rootMargin: '325px',
+            threshold: 1.0
+        };
         const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => {
             entries.forEach(entry => (entry.isIntersecting && document.body.clientWidth >= 900)
                 ? wmImg.classList.add("img-scrolled")
                 : wmImg.classList.remove("img-scrolled"));
         }, options);
-        descriptionObserver.observe(description);
+        
+        const myWorkObserver = new IntersectionObserver((entries, myWorkObserver) => {
+            entries.forEach(entry => (entry.isIntersecting)
+            ? myWork.classList.add("my-work-scrolled")
+            : myWork.classList.remove("my-work-scrolled"));
+        }, options);
 
-        const educationObserver = new IntersectionObserver((entries, educationObserver) => {
+        const educObserver = new IntersectionObserver((entries, educObserver) => {
+            entries.forEach(entry => (entry.isIntersecting)
+            ? education.classList.add("edu-scrolled")
+            : education.classList.remove("edu-scrolled"));
+        }, options);
+        
+        const workObserver = new IntersectionObserver((entries, workObserver) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     wmImg.classList.add("img-out");
-                  if(!open)  toggle({open:true})
+                    if (!open) toggle({ open: true })
                     description.classList.add("description-in");
-                   
                 } else {
                     wmImg.classList.remove("img-out");
-                    // description.classList.remove("description-in");
                 }
-            } );
+            });
         }, options2);
-        educationObserver.observe(education);
+        descriptionObserver.observe(description);
+        myWorkObserver.observe(myWork);
+        workObserver.observe(work);
+        educObserver.observe(education);
     });
 
     return <>

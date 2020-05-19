@@ -1,11 +1,11 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 
 main{
-    margin-top: 10px;
+    margin-top: 15px;
     display: grid;
     grid-template-columns: .2fr 4fr .2fr;
     grid-template-rows: 0.2fr .5fr 1fr; 
-    gap: 20px 5px;
+    gap: 10px 5px;
 }
   .img-wrapper {
     grid-column: 2/3 ;
@@ -13,23 +13,20 @@ main{
     background: linear-gradient(
         rgba(35, 35, 61, 0.486),
         rgba(35, 35, 61, 0.76)
-      ),url('../../static/waldo.jpg') ; 
-    background-size: 535px;
-    background-position: cover;
+      ),url('../../static/waldo.jpg'); 
+    background-size: 520px;
     background-attachment: fixed;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-color: transparent;
     font-size: 7vw;
-    font-weight: bolder;
-    height: 200px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;   
-    padding: 30px;
+    
    
 }
 .wm-img{
@@ -48,17 +45,38 @@ main{
     background-color: transparent;
     align-self: flex-start;
     animation: slideInRight 0.2s backwards;
-    
+    box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
 }
 .img-scrolled{
-    transform: translateX(37vw);
+    transform: translateX(40vw);
     animation: slideSlow 0.2s ease-in;
 }
 .img-out{
    opacity: 0;
 }
 .wm-img:hover{
-    box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
+    background:   linear-gradient(
+        rgba(35, 35, 61, 0.747),
+        rgba(35, 35, 61, 0.89)
+      ),url('../../static/waldo.jpg') no-repeat; 
+    background-size: 390px;
+    background-attachment: fixed;
+    background-position: left center;
+    min-width: 350px;
+    max-width: 450px;
+    
+}
+.wm-img:hover::after{
+    content: 'Preparation, cooperation, leadership, consistancy, and dedication are exceptional keys to success.';
+    color: rgb(251, 211, 3);
+    font-family: Raleway, sans-serif;
+    animation: fadeIn .8s ease-in-out;
+    position: relative;
+    top: 70%;
+    left: 5%;
+    width: 90%;
+    display: block;
+
 }
 .job-title, .name{
     margin:0px;
@@ -68,14 +86,20 @@ main{
     grid-column: 2/3 ;
     grid-row: 3/-1 ;
     min-height: 300px;
-    width: 80%;
-    padding: 20px 5%;
-    margin: 10px 3%;
-    font-size: 1.7em;
+    font-size: 1em;
     line-height: 1.3;
     text-align: justify;
     display: flex;
     align-content: center;
+    justify-content: center;
+}
+#synthesis{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:6%;
+    justify-content: center;
+    margin: 1px 35px;
+   
 }
 .description-out{
     animation: slideOutRight .5s ease-in-out;
@@ -84,18 +108,6 @@ main{
 .description-in{
     animation: backInUp    1s ease-in;
 }
-aside {
-    margin: 0;
-    padding: 10px;
-    min-height: 350px;
-    text-transform: uppercase;
-    background:linear-gradient(to bottom, rgba(245, 188, 2, 0),rgba(251, 210, 3, 0.075), rgba(35, 35, 61, 0.349), rgb(35, 35, 61)), url('../../static/pencils.jpg') no-repeat  right ;
-    background-color: rgb(245, 188, 3); 
-    background-size: contain;
-    font-size: 0.8em;
-}
-
-
 #my-work{
     background:   linear-gradient(
         rgba(35, 35, 61, 0.418),
@@ -106,19 +118,16 @@ aside {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    width: 100%;
+    width: 100vw;
     min-height: 300px;
     -webkit-clip-path: url(#my-shape);
     clip-path:url(#my-shape);
 }
-#my-work:hover{
-    background:   linear-gradient(
-        rgba(35, 35, 61, 0.418),
-        rgba(35, 35, 61, 0.801)
-      ),url('../../static/code.jpg')  right top no-repeat;
-      background-size: cover; 
-     
+
+.my-work-scrolled{
+    animation: fadeIn 1s ease-in-out ;
 }
+
 
 .my-work-btn {
 	box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
@@ -128,9 +137,9 @@ aside {
 	display:inline-block;
 	cursor:pointer;
 	color:#FBF7F4;
-    padding:12px 84px;
+    padding:10px 84px;
     font-size: 1em;
-    font-weight: 600;
+    
     text-transform: uppercase;
     text-shadow:0px 1px 0px rgb(35, 35, 61);
     margin: 20px;
@@ -140,14 +149,103 @@ aside {
 	background:linear-gradient(to bottom, rgb(35, 35, 61) 5%, rgb(35, 35, 61) 100%);
     background-color:rgb(35, 35, 61);
    color: white;
-   /* text-shadow:0px 1px 2px rgb(35, 35, 61); */
+   transform: scale(1.1);
+  
 }
 .my-work-btn:active {
 	position:relative;
 	top:1px;
 }
+aside {
+    margin: 0;
+    background:linear-gradient(to bottom, rgba(245, 188, 2, 0),rgba(251, 210, 3, 0),rgba(251, 210, 3, 0.014), rgba(35, 35, 61, 0.521), rgb(35, 35, 61));
+    font-size: 0.8em;    
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+}
+#credentials{
+    grid-column: 1/2;
+    background-color: rgb(245, 188, 3);
+    z-index: -1;
+    gap: 0px;
+    padding: 20px 50px 50px 50px;
+}
+.aside-img{
+    grid-column: 2/3;
+    background:url('../../static/pencils.jpg') no-repeat right;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    width:  100%;
+    z-index: -1;
+}
 
 
+.edu-scrolled{
+    animation: pulse .8s  ease-in-out ;
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+
+
+
+#credentials p {
+  font-size: 1em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, rgb(35, 35, 61) 0%, #FBF7F4 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: black;
+  
+}
+#credentials p::before {
+    content: counter(section);
+    position: absolute;
+    border-radius: 50%;
+    padding: 10px;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: rgb(35, 35, 61);
+    text-align: center;
+    line-height: 1.25em;
+    color: white;
+    font-size: 1em;
+  
+}
+
+#credentials p:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+}
+#credentials p:nth-child(odd)::before {
+    left: 100%; 
+    margin-left: -20px;
+}
+
+
+#credentials p:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+#credentials p:nth-child(even)::before {
+    right: 100%; 
+    margin-right: -20px;
+}
+
+#credentials p:first-child {
+  border-top: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+}
+#credentials p:last-child {
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+}
 
 
 

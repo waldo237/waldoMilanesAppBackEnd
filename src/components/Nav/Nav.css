@@ -33,7 +33,7 @@
   top: 0;
   width: 100%;
   z-index: 101;
-  animation: slideInRight 0.1s ease-in-out;
+  animation: slideInDown 0.4s ease-in-out;
   grid-area: "header";
 }
 
@@ -42,7 +42,7 @@
   top: 20px;
 }
 .stuck {
-  animation: slideInLeft 0.1s ease-in-out;
+  animation: slideInUp 0.3s ease-in-out;
 }
 
 
