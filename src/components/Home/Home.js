@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
-import { useTransition, useSpring, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 
 const Home = () => {
     const [open, toggle] = useState(false);
-    const transitions = useTransition(null, null, {
-        from: { opacity: 0, transform: 'scaleY(0)' },
-        enter: { opacity: 1, transform: 'scaleY(1)' },
-        leave: { opacity: 0, transform: 'scaleY(1)' },
-    })
     const transition2 = useTransition(null, null, {
         from: { opacity: 0, transform: 'translate3d(0,500px,0)' },
         enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
@@ -17,8 +12,8 @@ const Home = () => {
 
     return (
         <>
-            {transition2.map(({ item, key, props }) =>
-                <animated.div style={props} key={key}>
+            {/* {transition2.map(({ item, key, props }) =>
+                <animated.div style={props} key={key}> */}
                     <main className='main light'>
                         <MainCard toggle={toggle} open={open} />
                         <div id='description'>
@@ -26,14 +21,13 @@ const Home = () => {
                                 ?   <div id='synthesis'>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.  </p> 
                                         <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p> 
-                                        
                                     </div>
                                 : null
                             }
                         </div>
                     </main>
-                </animated.div>
-            )}
+                {/* </animated.div>
+            )} */}
             <svg width="0" height="0">
                 <defs>
                     <clipPath id="my-shape" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)">

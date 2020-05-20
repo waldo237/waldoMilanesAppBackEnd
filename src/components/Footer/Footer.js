@@ -10,7 +10,10 @@ const Footer = () => {
       <FontAwesomeIcon className='fa-2x social' icon={faFacebookSquare} /> 
       <FontAwesomeIcon className='fa-2x social' icon={faInstagram} /> 
           </div> 
- 
+          <div className='footer-credits'> <span>&#9400; 2019-{ new Date().getFullYear() } &nbsp; </span> <span> | W PROGRAMMING | </span> <span>&nbsp;waldomilanes.com </span></div>
+    <div>developed by Waldo Milanes<span
+                class="mb-3"
+              >&reg;</span></div>
     </footer>)
 }
 

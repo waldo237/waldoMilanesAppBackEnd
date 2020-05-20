@@ -1,12 +1,12 @@
 
 .mw-robot {
-  width: 65px;
+  width: 70px;
   padding-bottom: 2px;
 }
 .double-w{
     margin: 5px;
     font-family: 'Lato', serif; 
-    font-size: 2em;
+    font-size: 2.3em;
     animation: glow 4s infinite alternate;
     font-weight: 500;
 }

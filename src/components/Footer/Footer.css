@@ -2,9 +2,16 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-content: center;
     margin: 15px;
 }
 
 .social{
     margin: 15px;
+}
+
+.footer-credits{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
