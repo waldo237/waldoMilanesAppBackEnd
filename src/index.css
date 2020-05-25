@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 body {
   padding: 0px;
   margin: 0px;
@@ -35,5 +35,13 @@ body {
 }
 
 .shadow{
-  box-shadow: 0px 10px 14px -7px rgba(0, 0, 0, 0.726) ;
+  box-shadow: 0px 10px 14px -7px rgba(0, 0, 0, 0.568) ;
+}
+
+.title-font{
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.bold{
+  font-weight: 700;
 }

@@ -8,6 +8,7 @@ import Portfolio from '../components/Portfolio/Portfolio.js'
 import Articles from '../components/Articles/Articles.js'
 import Contacts from '../components/Contacts/Contacts.js'
 import Supporters from '../components/Supporters/Supporters.js'
+import Node from '../components/Node/Node.js'
 
 const Routes = () => {
     return ( 
@@ -17,6 +18,7 @@ const Routes = () => {
                 <Route path='/articles' component={Articles} />
                 <Route path='/contacts' component={Contacts} />
                 <Route path='/supporters' component={Supporters} />
+                <Route path='/node' component={Node} />
             </Switch>
     )
 }

@@ -78,6 +78,7 @@ main{
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;   
+    animation: slideInUp .8s ease-in-out;
 }
 
 .job-title, .name{
@@ -121,7 +122,7 @@ main{
     min-height: 300px;
     -webkit-clip-path: url(#my-shape);
     clip-path:url(#my-shape);
-    box-shadow: 4px 10px 14px -5px rgb(35, 35, 61);
+    box-shadow: 4px 10px 14px -10px rgba(35, 35, 61, 0.726);
 
 }
 
@@ -131,7 +132,7 @@ main{
 
 
 .my-work-btn {
-	box-shadow: 4px 10px 14px -7px rgb(35, 35, 61);
+	box-shadow: 4px 10px 14px -10px rgb(35, 35, 61);
 	border-radius:30px;
     border:1px solid #FBF7F4;
     background: rgba(35, 35, 61, 0.164);
@@ -140,7 +141,6 @@ main{
 	color:#FBF7F4;
     padding:10px 84px;
     font-size: 1em;
-    
     text-transform: uppercase;
     text-shadow:0px 1px 0px rgb(35, 35, 61);
     margin: 20px;
@@ -159,29 +159,27 @@ main{
 }
 aside {
     margin: 0;
-    background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055), rgba(35, 35, 61, 0.082), rgba(35, 35, 61, 0.247), rgb(35, 35, 61));
     font-size: 0.8em;    
     width: 100vw;
-
-}
-#credentials{
-    grid-column: 1/2;
-    background-color: rgb(245, 188, 3);
-    z-index: -1;
-    gap: 0px;
-    padding: 20px 50px 150px 50px;
 }
 .aside-img{
- display: none;
+    display: none;
 }
 
 
 .edu-scrolled{
     animation: pulse .8s  ease-in-out ;
 }
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
 
+#credentials{
+    grid-column: 1/2;
+    z-index: -1;
+    gap: 0px;
+    padding: 20px 50px 150px 50px;
+    background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055), rgba(35, 35, 61, 0.082), rgba(35, 35, 61, 0.247), rgb(35, 35, 61));
+    background-color: rgb(245, 188, 3);
 
+}
 
 #credentials p {
   font-size: 1em;
@@ -255,14 +253,11 @@ aside {
         background-position: left center;
         min-width: 350px;
         max-width: 450px;
-        
     }
 
     .img-wrapper {
         font-size: 7vw;
-    }
-    #description{
-        min-height: 300px;
+        
     }
     #synthesis{
         display: grid;
@@ -270,8 +265,20 @@ aside {
         gap:6%;
         justify-content: center;
         margin: 1px 35px;
-       
+        
     }
+    #description{
+        min-height: 300px;
+    }
+ 
+#credentials{
+    grid-column: 1/2;
+    z-index: -1;
+    gap: 0px;
+    padding: 20px 50px 150px 50px;
+    background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055));
+    background-color: rgb(245, 188, 3);
+}
     aside {
         margin: 0;
         background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055), rgba(35, 35, 61, 0.082), rgba(35, 35, 61, 0.247), rgb(35, 35, 61));
