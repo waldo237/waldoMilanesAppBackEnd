@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Node.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFile } from '@fortawesome/free-solid-svg-icons'
+import { faFile, faFolder, faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 const collection = [
     {
         id: 'project-id-1',
         title: 'EIP-SERVER-API',
+        url: '',
         date: Date('2019-04-17T03:24:00'),
         description: 'This is an API server created with node and express. It handles user registration and user profiles for a web application',
         screenshots: 'https://d2ijz6o5xay1xq.cloudfront.net/account_1944/postman-screen_c19b98186c029cbac20ae221fb1f3392_800.png',
@@ -79,10 +80,19 @@ const collection = [
         );`}
 
             </pre>
+        }, {
+            name: 'routes', type: 'dir', id: 'file-id-2', content:
+                [{
+                    name: 'internalFile', type: 'file', id: 'file-id-3', parentId: 'file-id-2'
+                }]
         }]
     }
 ];
 const Node = () => {
+    const toggleClasses = (parentId)=>{
+    const internalFiles = document.querySelector('.internal-files');
+   if(internalFiles.classList.contains(parentId)) internalFiles.classList.toggle('folder-opened')
+   }
     return (<>
         <main className='node-main light main'>
             <h1 className='main-title primary--text title-font'>My Node Projects</h1>
@@ -91,20 +101,34 @@ const Node = () => {
                 return (<article className='project-container light' key={project.id}>
                     <h1 className='project-title primary--text title-font'>Title: {project.title}</h1>
                     <p><span className='primary--text bold'>Description:</span> {project.description}</p>
-                <a target='_blank' href={project.screenshots}>      
-                    <picture >
-                        <source media="(min-width:650px)" srcSet={project.screenshots} />
-                        <source media="(min-width:465px)" srcSet={project.screenshots} />
-                <img className='project-screenshot' src={project.screenshots} alt={`${project.title}-view`} />
-                    </picture>
-                </a>  
+                    <a target='_blank' href={project.screenshots}>
+                        <picture >
+                            <source media="(min-width:650px)" srcSet={project.screenshots} />
+                            <source media="(min-width:465px)" srcSet={project.screenshots} />
+                            <img className='project-screenshot' src={project.screenshots} alt={`${project.title}-view`} />
+                        </picture>
+                    </a>
                     <div className='file-container'>
                         <span className='bold'>Files</span>
-                        {project.code.map(file => <Link to={`/node/file/${project.id}`} key={file.id}>
-                            <button className='btn  file-button'>
-                                {file.name} <FontAwesomeIcon icon={faFile} />
-                            </button>
-                        </Link>)}
+                        {project.code.map(file => (file.type === 'file')
+                            ? <Link to={`/node/file/${file.id}`} key={file.id}>
+                                <button className='file-button'> <FontAwesomeIcon icon={faFile} className='primary--text'/>  {file.name}</button>
+                            </Link>
+                            : <div key={file.id}>
+                                <button onClick={() => toggleClasses(file.id)} className='file-button'>
+                                <FontAwesomeIcon icon={faChevronRight} className='primary--text'/> <FontAwesomeIcon icon={faFolder} className='secondary--text'/>  {file.name}
+                                </button>
+                                {file.content.map(childFile => <Link
+                                //a dinamic class working and being selected
+                                    className={`${file.id} internal-files`}
+                                    to={`/node/file/${childFile.id}`}
+                                    key={childFile.id}>
+                                    <button className='file-button '> <FontAwesomeIcon icon={faFile} className='primary--text'/>  {childFile.name}
+                                    </button>
+                                </Link>)
+                                }
+                            </div>
+                        )}
                     </div>
                 </article>)
             })}

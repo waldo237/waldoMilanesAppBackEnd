@@ -39,21 +39,36 @@
 }
 .file-container{
     border-radius: 8px;
-    margin: 10px;
-    display: grid;
-    grid-template-rows: 1fr 2fr;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
 }
 .file-container span{
-    grid-row: 1/2;
     padding: 5px;
-  
 }
 .file-button{
-    grid-row: 2/3;
     width: 70%;
-    padding: 5px 10px !important;
-    margin: 5px 0px;
-    border-radius: 15px !important;
+    margin: 0px;
+    padding: 2px 1px !important;
     font-size: .8em !important;
+    background-color: transparent;
+    text-align: start;
+    border: 0px;
+    cursor:pointer;
+}
+.file-button:hover{
+    background-color: lightgray ;
+}
+.file-button:active {
+	position:relative;
+	top:1px;
+}
+
+.folder-opened{
+    display: none;
+    
+}
+
+.internal-files{
+    padding-left: 10px;
 }
