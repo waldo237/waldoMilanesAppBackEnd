@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Node.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFile, faFolder, faChevronRight} from '@fortawesome/free-solid-svg-icons'
+import { faFile, faFolder, faChevronDown} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 const collection = [
     {
@@ -91,7 +91,9 @@ const collection = [
 const Node = () => {
     const toggleClasses = (parentId)=>{
     const internalFiles = document.querySelector('.internal-files');
+    const iconToTurn = document.querySelector('.icon-to-turn');
    if(internalFiles.classList.contains(parentId)) internalFiles.classList.toggle('folder-opened')
+   if(iconToTurn.classList.contains(parentId)) iconToTurn.classList.toggle('turn-downwards')
    }
     return (<>
         <main className='node-main light main'>
@@ -101,7 +103,7 @@ const Node = () => {
                 return (<article className='project-container light' key={project.id}>
                     <h1 className='project-title primary--text title-font'>Title: {project.title}</h1>
                     <p><span className='primary--text bold'>Description:</span> {project.description}</p>
-                    <a target='_blank' href={project.screenshots}>
+                    <a target='_blank' href={project.screenshots} className='screenshot-container'>
                         <picture >
                             <source media="(min-width:650px)" srcSet={project.screenshots} />
                             <source media="(min-width:465px)" srcSet={project.screenshots} />
@@ -116,10 +118,9 @@ const Node = () => {
                             </Link>
                             : <div key={file.id}>
                                 <button onClick={() => toggleClasses(file.id)} className='file-button'>
-                                <FontAwesomeIcon icon={faChevronRight} className='primary--text'/> <FontAwesomeIcon icon={faFolder} className='secondary--text'/>  {file.name}
+                                <FontAwesomeIcon icon={faChevronDown} className={`${file.id} primary--text icon-to-turn`}/> <FontAwesomeIcon icon={faFolder} className='secondary--text'/>  {file.name}
                                 </button>
                                 {file.content.map(childFile => <Link
-                                //a dinamic class working and being selected
                                     className={`${file.id} internal-files`}
                                     to={`/node/file/${childFile.id}`}
                                     key={childFile.id}>

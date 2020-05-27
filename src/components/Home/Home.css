@@ -22,7 +22,8 @@ main{
     height: 250px;
     align-self: flex-start;
     animation: slideInRight 0.2s backwards;
-  
+    transition-delay: .1s;
+    transition-duration: .2s;
     -moz-box-shadow:    inset 0 0 10px #000000b4;
     -webkit-box-shadow: inset 0 0 10px #000000b4;
     box-shadow:         inset 0 0 10px #000000b4;
@@ -128,6 +129,8 @@ main{
 
 .my-work-scrolled{
     animation: fadeIn 1s ease-in-out ;
+    transition-delay: .1s;
+    transition-duration: .2s;
 }
 
 
@@ -139,12 +142,13 @@ main{
 	display:inline-block;
 	cursor:pointer;
 	color:#FBF7F4;
-    padding:10px 84px;
-    font-size: 1em;
+    padding:8px 70px;
+    font-size: 0.7em;
     text-transform: uppercase;
     text-shadow:0px 1px 0px rgb(35, 35, 61);
     margin: 20px;
-    
+    transition-delay: .1s;
+    transition-duration: .2s;
 }
 .my-work-btn:hover {
 	background:linear-gradient(to bottom, rgb(35, 35, 61) 5%, rgb(35, 35, 61) 100%);
@@ -161,6 +165,9 @@ aside {
     margin: 0;
     font-size: 0.8em;    
     width: 100vw;
+    transition-delay: .1s;
+    transition-duration: .2s;
+    
 }
 .aside-img{
     display: none;
@@ -168,7 +175,8 @@ aside {
 
 
 .edu-scrolled{
-    animation: pulse .8s  ease-in-out ;
+    animation: float .4s  ease-in-out ;
+    
 }
 
 #credentials{
@@ -270,6 +278,10 @@ aside {
     #description{
         min-height: 300px;
     }
+    .my-work-btn{
+        padding:10px 85px;
+        font-size: 1em;
+    }
  
 #credentials{
     grid-column: 1/2;
@@ -310,9 +322,9 @@ aside {
     100% { transform: translateX(500px) }
 }
 
-  @keyframes float_3353 {
-    0% { transform: translateY(0) }
-    14.28571% { transform: translateY(-6px) }
-    28.57143% { transform: translateY(0) }
-    100% { transform: translateY(0) }
+  @keyframes float {
+    0% { transform: translate(100px) }
+    14.28571% { transform: translate(50px) }
+    28.57143% { transform: translate(25px) }
+    100% { transform: translate(0) }
   }       
