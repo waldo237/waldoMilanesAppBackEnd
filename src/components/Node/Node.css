@@ -36,7 +36,7 @@
 .project-screenshot{
     width: 80%;
     border-radius: 8px;
-    margin: 10px;
+    margin: 10px; 
     transition: all;
     transition-delay: .1s;
     transition-duration: .3s;
