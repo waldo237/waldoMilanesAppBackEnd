@@ -165,8 +165,8 @@ aside {
     margin: 0;
     font-size: 0.8em;    
     width: 100vw;
-    transition-delay: .1s;
-    transition-duration: .2s;
+    transition-delay: .3s;
+    transition-duration: .4s;
     
 }
 .aside-img{

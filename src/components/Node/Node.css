@@ -14,11 +14,12 @@
     font-size: 2em;
    
 }
-.project-container{
-    grid-row: 2/3;
+.all-projects{
     grid-column: 2/3;
+}
+.project-container{
     max-width: 70vw;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     justify-self: center;
     border: 3px solid;
     border-image: linear-gradient(to right, rgb(35, 35, 61) 0%, #FBF7F4 100%);
@@ -36,19 +37,18 @@
     width: 80%;
     border-radius: 8px;
     margin: 10px;
+    transition: all;
     transition-delay: .1s;
-    transition-duration: .2s;
+    transition-duration: .3s;
 }
 .project-screenshot:hover{
-    transform:  translate3d(-2px,-12px,-90px);
-    transition-delay: .1s;
-    transition-duration: .2s;
+    transform:  translate3d(2px,-12px,-90px);
  }
  
 .screenshot-container:active,
 .screenshot-container:focus,
 .screenshot-container:hover {
-    filter: brightness(0.6);
+    filter: brightness(0.8);
     
 
 }
@@ -73,7 +73,8 @@
     text-align: start;
     border: 0px;
     cursor:pointer;
-    animation: slideInDown .1s alternate;
+    animation: fadeInDown .1s alternate;
+    transition: all 0.5s ease-out;
     
 }
 .file-button:hover{
@@ -85,9 +86,12 @@
     background-color:grey;
 }
 
-.folder-opened{
-    
+.folder-closed{
     display: none;
+}
+.folder-opened{
+    display: unset;
+
 }
 
 .internal-files{
@@ -96,5 +100,5 @@
 }
 /* this turn an icon downwards */
 .turn-downwards{
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 }

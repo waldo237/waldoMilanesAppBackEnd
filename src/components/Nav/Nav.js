@@ -27,12 +27,9 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
-// make nav sticky
-    window.onscroll = ()=> makeStick();
-    
     const nav = document.getElementById("navbar");
     const sticky = nav.offsetTop + nav.offsetHeight;
-    const makeStick = ()=> {
+    const makeStick = () => { // make nav sticky
       if (window.pageYOffset > sticky) {
         nav.classList.add("sticky");
         nav.classList.remove("stuck");
@@ -41,17 +38,21 @@ class Navigation extends Component {
         nav.classList.add("stuck");
       }
     }
+    window.onscroll = () => makeStick();
 
-    const activateNav = () => {
+
+    const activateNav = () => { //turn widescreen menu on and off.
       if (document.body.clientWidth >= 780) {
-        this.setState({
-          menuActivated: true
-        })
+        this.setState({ menuActivated: true })
+      } else {
+        this.setState({ menuActivated: false })
       }
     };
     activateNav();
     window.addEventListener('resize', activateNav);
-    document.addEventListener("click", (evt) => {
+
+
+    document.addEventListener("click", (evt) => { //make the nav colapse if click away.
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
         const innerNav = document.getElementById("with-children");
@@ -74,12 +75,12 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <nav  id='navbar'>
+      <nav id='navbar'>
         <div className='mid primary' id='nav'>
           <button className='fab-btn' onClick={() => {
             this.setState({
               menuActivated: !this.state.menuActivated
-            })
+            });
           }}>
             {this.state.menuActivated
               ? <FontAwesomeIcon className='fa-lg' icon={faTimes} />
@@ -89,13 +90,14 @@ class Navigation extends Component {
         {
           this.state.menuActivated
             ? <ul className='navItems' id="navItems">
-              {this.state.navItems.map((navItem) => <li key={navItem.title}>{this.listNavItems(navItem)}</li>)}</ul>
+              {this.state.navItems.map((navItem) => <li key={navItem.title}>{this.listNavItems(navItem)}</li>)}
+            </ul>
             : null
         }
       </nav>
     );
   }
- 
+
   listNavItems(item) {
     if (item.children) {
       return <div className='btn nav-item-with-children' >
