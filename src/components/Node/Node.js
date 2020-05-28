@@ -77,7 +77,7 @@ const Node = () => {
 
     }
     return (<>
-        <main className='node-main light main'>
+        <main className='node-main light main animate__animated animate__fadeInUp'>
             <h1 className='main-title primary--text title-font'>My Node Projects</h1>
 
             {collection.map((project) => {

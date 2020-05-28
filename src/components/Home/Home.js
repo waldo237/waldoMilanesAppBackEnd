@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { useTransition, animated } from 'react-spring'
+import {Link} from 'react-router-dom'
 
 const Home = () => {
     const [open, toggle] = useState(false);
@@ -33,9 +34,12 @@ const Home = () => {
             <article className='light'>
                 {transition2.map(({ item, key, props }) =>
                     <animated.div id='my-work' style={props} key={key}>
-                        <button className='my-work-btn'>
+                        <Link to='/portfolio'>
+                        <button className='my-work-btn' >
                             my work
                         </button>
+                        </Link>
+                  
                     </animated.div>
                 )}
             </article>
