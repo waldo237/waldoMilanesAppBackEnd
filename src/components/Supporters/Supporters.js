@@ -3,25 +3,24 @@ import './Supporters.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGoogle, faFacebook, faFacebookF} from '@fortawesome/free-brands-svg-icons'
 const Supporters = () => {
-
     return (
         <>
-            <main className='main animate__animated animate__fadeInUp light'>
+            <div className='supporter-main animate__animated animate__fadeInUp light'>
                 <section className='supporter-title title-font primary--text '>
                     <h1>Supporters</h1>
                     <p>If you like what I do, you can become a supporter to be able so access all my content.</p>
                 </section>
 
-                <div class="warpper">
-                    <input class="radio" id="one" name="group" type="radio" checked />
-                    <input class="radio" id="two" name="group" type="radio" />
-                    <div class="tabs">
-                        <label class="tab" id="one-tab" for="one">Sign In</label>
-                        <label class="tab" id="two-tab" for="two">Sign Up</label>
+                <div className="warpper">
+                    <input className="radio" id="two" name="group" type="radio" checked readOnly/>
+                    <input className="radio" id="one" name="group" type="radio" checked  readOnly/>
+                    <div className="tabs">
+                        <label className="tab" id="two-tab" htmlFor="two" >Sign Up</label>
+                        <label className="tab" id="one-tab" htmlFor="one" >Sign In</label>
 
                     </div>
-                    <div class="panels">
-                        <div class="panel" id="one-panel">
+                    <div className="panels">
+                        <div className="panel" id="one-panel">
                             <article className='supporter-login-card '>
                                 <form className='sign-form'>
                                     
@@ -55,7 +54,7 @@ const Supporters = () => {
                                 </form>
                             </article>
                         </div>
-                        <div class="panel" id="two-panel">
+                        <div className="panel" id="two-panel">
                             <article className='supporter-login-card '>
                                 <form className='sign-form'>
                                     <h3>Sign Up</h3>
@@ -91,7 +90,7 @@ const Supporters = () => {
                 </div>
 
 
-            </main>
+            </div>
         </>
     )
 }

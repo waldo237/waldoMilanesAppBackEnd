@@ -1,32 +1,44 @@
 
 
 
-import { render } from 'react-dom'
-import React, { useState, useCallback } from 'react'
-import { useTransition, animated } from 'react-spring'
+import React from 'react'
 import './Articles.css'
+import { Link } from 'react-router-dom'
 
-const pages = [
-  ({ style }) => <animated.div style={{ ...style, background: 'lightpink' }}>Articles</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightblue' }}>B</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightgreen' }}>C</animated.div>,
+const articles = [
+{id:'articleID', photo: 'https://images.unsplash.com/photo-1528372444006-1bfc81acab02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', date: new Date('05/25/2020'), title:'How I got into Programming', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
 ]
 
-function Articles() {
-  const [index, set] = useState(0)
-  const onClick = useCallback(() => set(state => (state + 1) % 3), [])
-  const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
-  })
+const Articles =()=> {
+
   return (
-    <div className="simple-trans-main" onClick={onClick}>
-      {transitions.map(({ item, props, key }) => {
-        const Page = pages[item]
-        return <Page key={key} style={props} />
-      })}
-    </div>
+    <>
+     <main className='main'>
+       <div className='articles-title'>
+       <h1 className='primary--text title-font'>Articles</h1> 
+       </div>  
+        {articles.map((item)=> <article key={item.id} className='article-container'>
+          <div>
+            <picture >
+                <source media="(min-width:650px)" srcSet={item.photo} />
+                <source media="(min-width:465px)" srcSet={item.photo} />
+                <img className='article-img' src={item.photo} alt={`${item.title}-view`} />
+            </picture>
+          </div>
+          <div>
+          <h1 className='primary--text'>{item.title} </h1>
+          <small>{item.date.toLocaleString('eng-US',{dateStyle:'full'})} </small>
+          <p className='article-body'> {item.body} </p>
+          <small className='read-more-wrapper'>
+              <Link to={`articles/${item.id}`} className='primary--text'>Read more</Link>
+          </small>
+
+          </div>
+        </article> 
+        )}
+         
+     </main>
+    </>
   )
 }
 export default Articles

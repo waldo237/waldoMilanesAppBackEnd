@@ -1,11 +1,15 @@
+.supporter-main{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
 .supporter-title{
-    grid-column: 2/3;
     display: flex;
     align-items: center;
-    justify-self: center;
-    justify-items: center;
     font-size: 1.5em;
-    margin: 40px 20px;
+    margin: 40px 40px;
     min-width: 70vw;
 }
 .supporter-title p{
@@ -24,10 +28,11 @@
   flex-direction: column;
   align-items: center;
   font-size: .9em;
+  width: 100%;
 }
 .tab{
   cursor: pointer;
-  padding:5px 60px;
+  padding:10px 60px;
   margin:0px 10px;
   background:rgb(35, 35, 61);
   display:inline-block;
