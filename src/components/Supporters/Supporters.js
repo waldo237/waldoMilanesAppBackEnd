@@ -14,9 +14,9 @@ const Supporters = () => {
                 <div className="warpper">
                     <input className="radio" id="two" name="group" type="radio" checked readOnly/>
                     <input className="radio" id="one" name="group" type="radio" checked  readOnly/>
-                    <div className="tabs">
-                        <label className="tab" id="two-tab" htmlFor="two" >Sign Up</label>
-                        <label className="tab" id="one-tab" htmlFor="one" >Sign In</label>
+                    <div className="tabs ">
+                        <label className="tab shadow" id="two-tab" htmlFor="two" >Sign Up</label>
+                        <label className="tab shadow" id="one-tab" htmlFor="one" >Sign In</label>
 
                     </div>
                     <div className="panels">

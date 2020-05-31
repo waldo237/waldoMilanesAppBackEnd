@@ -108,9 +108,14 @@ const MainCard = ({ toggle, open }) => {
     });
 
     return <>
-        <div className='wm-img'></div>
+        <div className='wm-img shadow'></div>
         <div className='img-wrapper'>
-            <h4 className='name'>Waldo Milanes</h4>
+            <div className='name-wrapper'>
+                <h4 className='name'>A pragmatic,</h4>
+                <h4 className='name'> passionate,</h4>
+                <h4 className='name'> and thoughtful</h4>
+            </div>
+            
             <small className='job-title'>Full-stack developer</small>
         </div>
     </>

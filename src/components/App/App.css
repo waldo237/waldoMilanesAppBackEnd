@@ -35,7 +35,8 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 50px;
   }
   .main-title{
     grid-row: 1/2;
@@ -45,19 +46,6 @@
     letter-spacing: .8px;
     margin: 40px 40px;
 
-}
-
-.hoverable-card{
-    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-    transition-delay: .1s;
-    transition-duration: .3s;
-}
-
-.hoverable-card:active,
-.hoverable-card:focus,
-.hoverable-card:hover{
-    transform:  translate3d(2px,-15px,-90px);
-    filter: brightness(50%);
 }
 
 .footer{
