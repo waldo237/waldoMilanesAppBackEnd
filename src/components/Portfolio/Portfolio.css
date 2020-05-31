@@ -12,9 +12,6 @@
     grid-column: 2/3;
     padding: 10px 15px;
     width: 50vw;
-    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-    transition-delay: .1s;
-    transition-duration: .3s;
 }
 
 .technology-img{
@@ -23,14 +20,7 @@
 
 }
 
-.technology-container:active,
-.technology-container:focus,
-.technology-container:hover{
-    transform:  translate3d(2px,-15px,-90px);
-    filter: brightness(50%);
-    border-radius: 20px;
 
-}
 .technoly-title::after {
     background: none repeat scroll 0 0 transparent;
     bottom: 0;

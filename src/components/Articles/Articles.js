@@ -13,11 +13,11 @@ const Articles =()=> {
 
   return (
     <>
-     <main className='main'>
-       <div className='articles-title'>
+     <div className='page-main animate__animated animate__fadeInUp light'>
+       <div className='main-title'>
        <h1 className='primary--text title-font'>Articles</h1> 
        </div>  
-        {articles.map((item)=> <article key={item.id} className='article-container'>
+        {articles.map((item)=> <article key={item.id} className='hoverable-card article-container'>
           <div>
             <picture >
                 <source media="(min-width:650px)" srcSet={item.photo} />
@@ -37,7 +37,7 @@ const Articles =()=> {
         </article> 
         )}
          
-     </main>
+     </div>
     </>
   )
 }

@@ -5,7 +5,7 @@ import {faGoogle, faFacebook, faFacebookF} from '@fortawesome/free-brands-svg-ic
 const Supporters = () => {
     return (
         <>
-            <div className='supporter-main animate__animated animate__fadeInUp light'>
+            <div className='page-main animate__animated animate__fadeInUp light'>
                 <section className='supporter-title title-font primary--text '>
                     <h1>Supporters</h1>
                     <p>If you like what I do, you can become a supporter to be able so access all my content.</p>

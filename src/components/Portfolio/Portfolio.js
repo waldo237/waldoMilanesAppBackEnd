@@ -14,7 +14,7 @@ const Portfolio = () => {
                 <header className='porfolio-title title-font primary--text '>
                     <h1>My Work</h1>
                 </header>
-                {projects.map((project) => <article key={project.url}  className='technology-container project-container'>
+                {projects.map((project) => <article key={project.url}  className='hoverable-card technology-container project-container'>
                          <Link to={project.url} className='link'>
                                 <picture >
                                     <source media="(min-width:650px)" srcSet={project.photo} />
