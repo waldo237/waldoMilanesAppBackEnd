@@ -64,6 +64,10 @@ const MainCard = ({ toggle, open }) => {
     useEffect(() => {
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
+        const job = document.querySelector(".job-title");
+        const name1 = document.querySelector("#name-1");
+        const name2 = document.querySelector("#name-2");
+        const name3 = document.querySelector("#name-3");
         const work = document.querySelector(".my-work-btn");
         const myWork = document.querySelector("#my-work");
         const education = document.querySelector("#education");
@@ -72,11 +76,28 @@ const MainCard = ({ toggle, open }) => {
             rootMargin: '325px',
             threshold: 1.0
         };
-        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => {
-            entries.forEach(entry => (entry.isIntersecting && document.body.clientWidth >= 900)
-                ? wmImg.classList.add("img-scrolled")
-                : wmImg.classList.remove("img-scrolled"));
-        }, options);
+        const jobObserver = new IntersectionObserver((entries, jobObserver) =>  entries.forEach(entry => {
+                if (entry.isIntersecting && document.body.clientWidth >= 900) {
+                    wmImg.classList.add("img-scrolled-1");
+                    name2.classList.add('move-top');
+                    name1.classList.add('move-center-down');
+                } else {
+                    wmImg.classList.remove("img-scrolled-1");
+                    name2.classList.remove('move-top');
+                    name1.classList.remove('move-center-down');
+                }
+            }));
+        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => entries.forEach(entry => {
+            if (entry.isIntersecting && document.body.clientWidth >= 900) {
+                wmImg.classList.remove("img-scrolled-1");
+                wmImg.classList.add("img-scrolled-2");
+                name3.classList.add('move-center');
+            } else {
+                wmImg.classList.remove("img-scrolled-1");
+                wmImg.classList.remove("img-scrolled-2");
+                name3.classList.remove('move-center');
+            }
+        }));
 
         const myWorkObserver = new IntersectionObserver((entries, myWorkObserver) => {
             entries.forEach(entry => (entry.isIntersecting)
@@ -101,6 +122,7 @@ const MainCard = ({ toggle, open }) => {
                 }
             });
         }, options2);
+        jobObserver.observe(job);
         descriptionObserver.observe(description);
         myWorkObserver.observe(myWork);
         workObserver.observe(work);
@@ -111,12 +133,12 @@ const MainCard = ({ toggle, open }) => {
         <div className='wm-img shadow'></div>
         <div className='img-wrapper'>
             <div className='name-wrapper'>
-                <h4 className='name'>A pragmatic,</h4>
-                <h4 className='name'> passionate,</h4>
-                <h4 className='name'> and thoughtful</h4>
+                <h4 className='name' id='name-1'>A pragmatic,</h4>
+                <h4 className='name' id='name-2'> dedicated,</h4>
+                <h4 className='name' id='name-3'> and thoughtful</h4>
             </div>
             
-            <small className='job-title'>Full-stack developer</small>
+           <div className='title-wrapper'><small className='job-title'>Full-stack developer</small></div> 
         </div>
     </>
 }
