@@ -64,54 +64,18 @@ const MainCard = ({ toggle, open }) => {
     useEffect(() => {
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
-        const job = document.querySelector(".job-title");
-        const name1 = document.querySelector("#name-1");
-        const name2 = document.querySelector("#name-2");
-        const name3 = document.querySelector("#name-3");
-        const work = document.querySelector(".my-work-btn");
-        const myWork = document.querySelector("#my-work");
         const education = document.querySelector("#education");
-        const options = { rootMargin: "-250px 0px 0px 0px" };
-        const options2 = {
-            rootMargin: '325px',
-            threshold: 1.0
-        };
-        const jobObserver = new IntersectionObserver((entries, jobObserver) =>  entries.forEach(entry => {
-                if (entry.isIntersecting && document.body.clientWidth >= 900) {
-                    wmImg.classList.add("img-scrolled-1");
-                    name2.classList.add('move-top');
-                    name1.classList.add('move-center-down');
-                } else {
-                    wmImg.classList.remove("img-scrolled-1");
-                    name2.classList.remove('move-top');
-                    name1.classList.remove('move-center-down');
-                }
-            }));
-        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => entries.forEach(entry => {
+
+        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => 
+        entries.forEach(entry => {
             if (entry.isIntersecting && document.body.clientWidth >= 900) {
-                wmImg.classList.remove("img-scrolled-1");
-                wmImg.classList.add("img-scrolled-2");
-                name3.classList.add('move-center');
+                wmImg.classList.add("img-scrolled-1");
             } else {
                 wmImg.classList.remove("img-scrolled-1");
-                wmImg.classList.remove("img-scrolled-2");
-                name3.classList.remove('move-center');
             }
         }));
 
-        const myWorkObserver = new IntersectionObserver((entries, myWorkObserver) => {
-            entries.forEach(entry => (entry.isIntersecting)
-                ? myWork.classList.add("my-work-scrolled")
-                : myWork.classList.remove("my-work-scrolled"));
-        }, options);
-
-        const educObserver = new IntersectionObserver((entries, educObserver) => {
-            entries.forEach(entry => (entry.isIntersecting)
-                ? education.classList.add("edu-scrolled")
-                : education.classList.remove("edu-scrolled"));
-        }, options);
-
-        const workObserver = new IntersectionObserver((entries, workObserver) => {
+        const myWorkObserver = new IntersectionObserver((entries, workObserver) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     wmImg.classList.add("img-out");
@@ -121,24 +85,25 @@ const MainCard = ({ toggle, open }) => {
                     wmImg.classList.remove("img-out");
                 }
             });
-        }, options2);
-        jobObserver.observe(job);
+        }, {rootMargin: '-155px'});
+        const educObserver = new IntersectionObserver((entries, educObserver) => {
+            entries.forEach(entry => (entry.isIntersecting)
+                ? education.classList.add("edu-scrolled")
+                : education.classList.remove("edu-scrolled"));
+        });
         descriptionObserver.observe(description);
-        myWorkObserver.observe(myWork);
-        workObserver.observe(work);
+        myWorkObserver.observe(description);
         educObserver.observe(education);
     });
 
     return <>
         <div className='wm-img shadow'></div>
         <div className='img-wrapper'>
-            <div className='name-wrapper'>
-                <h4 className='name' id='name-1'>A pragmatic,</h4>
-                <h4 className='name' id='name-2'> dedicated,</h4>
-                <h4 className='name' id='name-3'> and thoughtful</h4>
-            </div>
-            
-           <div className='title-wrapper'><small className='job-title'>Full-stack developer</small></div> 
+                <div className='title-wrapper'>
+                 <h4 className='name' id='name-1'>A pragmatic  and dedicated</h4>
+                    <small className='job-title'>Full-stack developer</small>
+                    
+                    </div> 
         </div>
     </>
 }
