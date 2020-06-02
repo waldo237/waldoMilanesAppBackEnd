@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
 
 class Navigation extends Component {
@@ -100,8 +100,8 @@ class Navigation extends Component {
 
   listNavItems(item) {
     if (item.children) {
-      return <div className='btn nav-item-with-children' >
-        <span id='with-children'>{item.title}</span>
+      return  <div className='btn nav-item-with-children' >
+        <span id='with-children'>{item.title} <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} /></span>
         <ul className='inner-nav-item'>
           {item.children.map(child => {
             return <Link to={child.link} key={child.title}>

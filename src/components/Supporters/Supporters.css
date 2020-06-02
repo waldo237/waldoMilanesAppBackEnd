@@ -28,7 +28,7 @@
   cursor: pointer;
   padding:10px 60px;
   margin:0px 10px;
-  background:rgb(35, 35, 61);
+  background:var(--primary-color);
   display:inline-block;
   color:#FBF7F4;
   border-radius:5px 5px 0px 0px;
@@ -68,8 +68,8 @@
 #two:checked ~ .tabs #two-tab,
 #three:checked ~ .tabs #three-tab{
   background:#FBF7F4;
-  color:rgb(35, 35, 61);
-  border-top: 3px solid rgb(251, 211, 3);
+  color:var(--primary-color);
+  border-top: 3px solid var(--secondary-color);
 }
 
 .submit-btn {
@@ -154,7 +154,7 @@ grid-template-rows: repeat(3, 1fr);
     font-family: inherit;
     width: 100%;
     border: 0;
-    border-bottom: 2px solid rgb(35, 35, 61);;
+    border-bottom: 2px solid var(--primary-color);
     outline: 0;
     padding:1px 0;
     background: transparent;
@@ -177,7 +177,7 @@ grid-template-rows: repeat(3, 1fr);
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: rgb(251, 211, 3);
+    color: var(--secondary-color);
   }
   
   .form-control:focus ~ .label {
@@ -186,12 +186,12 @@ grid-template-rows: repeat(3, 1fr);
       display: block;
       transition: 0.2s;
       font-size: 1rem;
-      color:rgb(251, 211, 3);
+      color:var(--secondary-color);
       font-weight:700;    
     }
     .form-control:focus{    
     padding-bottom: 8px;  
-    border-bottom: solid 2px rgb(251, 211, 3);
+    border-bottom: solid 2px var(--secondary-color);
   }
   /* reset input */
   .form-control:required,   .form-control:invalid { box-shadow:none; }

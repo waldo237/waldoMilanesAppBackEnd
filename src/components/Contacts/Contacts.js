@@ -9,8 +9,11 @@ const Articles =() => {
                 <section>
                     <div className='hoverable-card card-container'>
                         <form className='sign-form'>
-                        <h3 className='primary--text title-font .main-title'>Email</h3>
-                    <h5 className='secondary--text'>Please complete the fields to shoot me an email</h5>
+                            <div classNam='contact-card-titles'>
+                                <h3 className='primary--text title-font .main-title'>Email</h3>
+                                  <h5 className='secondary--text'>Please complete the fields to shoot me an email</h5>
+                            </div>
+               
                                     <div className="form-group">
                                         <label className='input'>Name</label>
                                         <input type="text" className="form-control" placeholder="Name" />

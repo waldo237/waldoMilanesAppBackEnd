@@ -48,7 +48,7 @@ main{
 }
 .wm-img:hover::after{
     content: 'Preparation, cooperation, leadership, consistancy, and dedication are exceptional keys to success.';
-    color: rgb(251, 211, 3);
+    color: var(--secondary-color);
     letter-spacing: 1.5px;
     font-size: 0.8em;
     font-weight: 200;
@@ -133,7 +133,7 @@ main{
 
 
 .my-work-btn {
-	box-shadow: 4px 10px 14px -10px rgb(35, 35, 61);
+	box-shadow: 4px 10px 14px -10px var(--primary-color);
 	border-radius:30px;
     border:1px solid #FBF7F4;
     background: rgba(35, 35, 61, 0.164);
@@ -143,14 +143,14 @@ main{
     padding:8px 70px;
     font-size: 0.7em;
     text-transform: uppercase;
-    text-shadow:0px 1px 0px rgb(35, 35, 61);
+    text-shadow:0px 1px 0px var(--primary-color);
     margin: 20px;
     transition-delay: .1s;
     transition-duration: .2s;
 }
 .my-work-btn:hover {
-	background:linear-gradient(to bottom, rgb(35, 35, 61) 5%, rgb(35, 35, 61) 100%);
-    background-color:rgb(35, 35, 61);
+	background:linear-gradient(to bottom, var(--primary-color)) 5%, var(--primary-color) 100%);
+    background-color:var(--primary-color);
    color: white;
    transform: scale(1.1);
 }
@@ -204,7 +204,7 @@ aside {
     padding: 10px;
     height: 1.25em;
     width: 1.25em;
-    background-color: rgb(35, 35, 61);
+    background-color: var(--primary-color);
     text-align: center;
     line-height: 1.25em;
     color: white;

@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+  --primary-color: rgb(35, 35, 61);
+  --secondary-color: rgb(251, 211, 3);
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -10,18 +16,18 @@ body {
 
 
 .primary{
-  background-color:rgb(35, 35, 61) ;
+  background-color: var(--primary-color);
   color: white;
 
 }
 .secondary{
-  background-color: rgb(251, 211, 3) ;
+  background-color: var(--secondary-color);
 }
 .secondary--text{
-  color: rgb(251, 211, 3) ;
+  color: var(--secondary-color);
 }
 .primary--text{
-  color: rgb(35, 35, 61);
+  color: var(--primary-color);
 }
 
 .light{
