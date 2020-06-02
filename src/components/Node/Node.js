@@ -2,6 +2,8 @@ import React from 'react';
 import './Node.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile, faFolder, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import {faNodeJs} from '@fortawesome/free-brands-svg-icons'
+
 import { Link } from 'react-router-dom';
 const collection = [
     {
@@ -78,8 +80,11 @@ const Node = () => {
     }
     return (<>
         <main className='node-main light main animate__animated animate__fadeInUp'>
-            <h1 className='main-title primary--text title-font'>My Node Projects</h1>
-
+           
+            <div className='contact-title main-title'>
+                <FontAwesomeIcon className='fa-2x primary--text  contact-icon' icon={faNodeJs} /> 
+                <h1 className='main-title primary--text title-font'>My Node Projects</h1>
+            </div>
             {collection.map((project) => {
                 return (
                     <article className='all-projects' key={project.id}>

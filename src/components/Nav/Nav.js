@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
+import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg-icons';
 
 class Navigation extends Component {
   constructor() {
@@ -13,10 +14,10 @@ class Navigation extends Component {
         { title: 'Waldo Milanes', link: '/' },
         {
           title: 'My Work', link: '/portfolio', children: [
-            { title: 'Node', link: '/node' },
-            { title: 'Java', link: '/java' },
-            { title: 'Vue', link: '/vue' },
-            { title: 'React', link: '/React' },
+            { title: 'Node', link: '/node', icon:faNodeJs },
+            { title: 'Java', link: '/java' , icon: faJava},
+            { title: 'Vue', link: '/vue', icon:faVuejs },
+            { title: 'React', link: '/React', icon: faReact },
           ]
         },
         { title: 'Articles', link: '/articles' },
@@ -106,7 +107,7 @@ class Navigation extends Component {
           {item.children.map(child => {
             return <Link to={child.link} key={child.title}>
               <button className='btn spacious block'>
-                {child.title}
+              <FontAwesomeIcon className='fa-lg   contact-icon' icon={child.icon} />    {child.title}
               </button>
             </Link>
           })}

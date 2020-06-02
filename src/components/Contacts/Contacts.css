@@ -1,5 +1,18 @@
+.contact-title{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.contact-title h1{
+    margin-left: 10px;
+}
+
 .contact-card-titles {
  margin:0px;
  padding:0px;
 
+}
+
+.contact-icon{
+    
 }

@@ -45,7 +45,7 @@
     text-transform: uppercase;
     letter-spacing: .8px;
     margin: 40px 40px;
-
+    
 }
 .card-container{
     grid-column: 2/3;

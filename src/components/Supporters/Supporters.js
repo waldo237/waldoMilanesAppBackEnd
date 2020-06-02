@@ -1,7 +1,7 @@
 import React from 'react'
 import './Supporters.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faGoogle, faFacebook, faFacebookF} from '@fortawesome/free-brands-svg-icons'
+import {faGoogle, faFacebookF} from '@fortawesome/free-brands-svg-icons'
 const Supporters = () => {
     return (
         <>
