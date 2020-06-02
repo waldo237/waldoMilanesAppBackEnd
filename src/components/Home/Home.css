@@ -23,11 +23,11 @@ main{
     align-self: flex-start;
     animation: slideInRight 0.2s ease-in-out;
     transition-delay: .1s;
-    transition-duration: .1s;
+    transition-duration: .3s;
 }
 .img-scrolled-1{
     transform: translateX(48vw);
-    animation: slideSlow .1s  ease-in-out;
+    animation: slideSlow .4s  ease-in-out;
 }
 
 .img-out{
@@ -72,7 +72,7 @@ main{
     background-clip: text;
     background-color: transparent;
     font-size: 10vw;
-    animation: slideInUp .8s ease-in-out;
+    animation: slideInUp .7s ease-in-out;
    
 }
 
@@ -126,7 +126,7 @@ main{
 }
 
 .my-work-scrolled{
-    animation: fadeIn .5s cubic-bezier(0.215, 0.610, 0.355, 1) ;
+    animation: fadeIn .5s reverse ;
     transition-delay: .1s;
     transition-duration: .2s;
 }
@@ -258,7 +258,7 @@ aside {
     }
 
     .img-wrapper {
-        font-size: 5vw;
+        font-size: 6vw;
         justify-items: center;
     }
     .title-wrapper{
@@ -312,13 +312,12 @@ aside {
 }
 
 @keyframes slideSlow {
-    0% { transform: translateX(0) }
-    15% { transform: translateX(50px) }
-    30% { transform: translateX(100px) }
-    50% { transform: translateX(150px) }
-    80% { transform: translateX(200px) }
-    90% { transform: translateX(250px) }
-    100% { transform: translateX(300px) }
+    0% {
+        -ms-transform:  translate(206px,-19px)  ;
+      }
+      100% {
+        -ms-transform:  translate(206px,-19px)  ;
+      }
 }
 
 

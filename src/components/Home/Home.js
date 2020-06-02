@@ -73,7 +73,7 @@ const MainCard = ({ toggle, open }) => {
             } else {
                 wmImg.classList.remove("img-scrolled-1");
             }
-        }));
+        }), (document.body.clientWidth < 1500) ?{rootMargin: '0px'}: {rootMargin: '-150px'});
 
         const myWorkObserver = new IntersectionObserver((entries, workObserver) => {
             entries.forEach(entry => {
@@ -85,7 +85,8 @@ const MainCard = ({ toggle, open }) => {
                     wmImg.classList.remove("img-out");
                 }
             });
-        }, {rootMargin: '-155px'});
+        }, (document.body.clientWidth < 1500) ?{rootMargin: '-150px'}: {rootMargin: '-250px'});
+        
         const educObserver = new IntersectionObserver((entries, educObserver) => {
             entries.forEach(entry => (entry.isIntersecting)
                 ? education.classList.add("edu-scrolled")

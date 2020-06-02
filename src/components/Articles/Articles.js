@@ -15,9 +15,9 @@ const Articles =()=> {
     <>
      <div className='page-main animate__animated animate__fadeInUp light'>
        <div className='main-title'>
-       <h1 className='primary--text title-font'>Articles</h1> 
+       <h1 className='primary--text title-font'>Articles I have written</h1> 
        </div>  
-        {articles.map((item)=> <article key={item.id} className='hoverable-card article-container'>
+        {articles.map((item)=> <article key={item.id} className='hoverable-card card-container article-card'>
           <div>
             <picture >
                 <source media="(min-width:650px)" srcSet={item.photo} />
