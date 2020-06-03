@@ -215,7 +215,7 @@ grid-template-rows: repeat(3, 1fr);
   }
   input[type="checkbox"]:checked + label:before {
     background: var(--primary-color);
-    border: 2px solid var(--secondary-color);
+    border: 2px solid var(--secondary-color); 
     color: var(--secondary-color);
     content: "\2713";
     text-align: center;
