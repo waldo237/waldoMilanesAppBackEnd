@@ -196,3 +196,36 @@ grid-template-rows: repeat(3, 1fr);
   /* reset input */
   .form-control:required,   .form-control:invalid { box-shadow:none; }
   
+
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
+  label {
+    cursor: pointer;
+  }
+  input[type="checkbox"] + label:before {
+    border: 2px solid var(--primary-color);
+    content: "\00a0";
+    display: inline-block;
+    margin: 0 .25em 0 0;
+    padding: 0;
+    vertical-align: top;
+    width: 14px;
+    border-radius: 3px;
+  }
+  input[type="checkbox"]:checked + label:before {
+    background: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    content: "\2713";
+    text-align: center;
+    width: 16px;
+    border-radius: 3px;
+  }
+  input[type="checkbox"]:checked + label:after {
+    font-weight: bold;
+  }
+  
+  input[type="checkbox"]:focus + label::before {
+      outline: var(--secondary-color) auto 5px;
+  }

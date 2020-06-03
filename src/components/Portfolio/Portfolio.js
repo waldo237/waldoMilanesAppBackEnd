@@ -1,12 +1,14 @@
 import React from 'react'
 import './Portfolio.css'
 import { Link } from 'react-router-dom'
+import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Portfolio = () => {
     const projects = [
-        { url: '/node', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png', title: 'My projects done with NodeJs', description: 'A collection of projects I have created using NodeJs. They reflect my experience working with this technology.' },
-        { url: '/java', photo: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png', title: 'My projects done with Java', description: 'A collection of projects I have created using Java. They reflect my experience working with this technology.' },
-        { url: '/vue', photo: 'https://miro.medium.com/max/800/1*wqYF-8Dmh7LhtLkKfERc3Q.png ', title: 'My projects done with VueJS', description: 'A collection of projects I have created using VueJS. They reflect my experience working with this technology.', },
-        { url: '/react', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png', title: 'My projects done with ReactJS', description: 'A collection of projects I have created using ReactJS. They reflect my experience working with this technology.', },
+        { url: '/node', icon: faNodeJs, title: 'My projects done with NodeJs', description: 'A collection of projects I have created using NodeJs. They reflect my experience working with this technology.' },
+        { url: '/java', icon: faJava, title: 'My projects done with Java', description: 'A collection of projects I have created using Java. They reflect my experience working with this technology.' },
+        { url: '/vue',icon: faVuejs, title: 'My projects done with VueJS', description: 'A collection of projects I have created using VueJS. They reflect my experience working with this technology.', },
+        { url: '/react', icon: faReact, title: 'My projects done with ReactJS', description: 'A collection of projects I have created using ReactJS. They reflect my experience working with this technology.', },
     ]
     return (
         <>
@@ -16,11 +18,7 @@ const Portfolio = () => {
                 </header>
                 {projects.map((project) => <article key={project.url}  className='hoverable-card technology-container project-container'>
                          <Link to={project.url} className='link'>
-                                <picture >
-                                    <source media="(min-width:650px)" srcSet={project.photo} />
-                                    <source media="(min-width:465px)" srcSet={project.photo} />
-                                    <img className='technology-img' src={project.photo} alt={`${project.title}-view`} />
-                                </picture>
+                         <FontAwesomeIcon className='fa-5x primary--text  contact-icon' icon={project.icon} /> 
                               <h1 className='title-font primary--text technoly-title'>{project.title}</h1>
                             </Link>
                               <p> {project.description} </p>

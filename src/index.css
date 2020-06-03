@@ -6,6 +6,7 @@
 :root {
   --primary-color: rgb(35, 35, 61);
   --secondary-color: rgb(251, 211, 3);
+  --light: #FBF7F4;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
 }
 
 .light{
-  background-color: #FBF7F4;
+  background-color: var(--light)
 
 }
 

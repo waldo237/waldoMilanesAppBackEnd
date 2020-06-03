@@ -78,8 +78,8 @@ const MainCard = ({ toggle, open }) => {
         const myWorkObserver = new IntersectionObserver((entries, workObserver) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    wmImg.classList.add("img-out");
                     if (!open) toggle({ open: true })
+                    wmImg.classList.add("img-out");
                     description.classList.add("description-in");
                 } else {
                     wmImg.classList.remove("img-out");
@@ -101,7 +101,7 @@ const MainCard = ({ toggle, open }) => {
         <div className='wm-img shadow'></div>
         <div className='img-wrapper'>
                 <div className='title-wrapper'>
-                 <h4 className='name' id='name-1'>A pragmatic  and dedicated</h4>
+                 <h4 className='name' id='name-1'>A pragmatic &amp; dedicated</h4>
                     <small className='job-title'>Full-stack developer</small>
                     
                     </div> 
