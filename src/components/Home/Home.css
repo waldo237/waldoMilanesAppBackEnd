@@ -207,7 +207,6 @@ aside {
     line-height: 1.25em;
     color: white;
     font-size: 1em;
-  
 }
 
 #credentials p:nth-child(odd) {
@@ -279,33 +278,14 @@ aside {
         padding:10px 85px;
         font-size: .8em;
     }
- 
-#credentials{
-    grid-column: 1/2;
-    z-index: -1;
-    gap: 0px;
-    padding: 20px 50px 150px 50px;
-    background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055));
-    background-color: rgb(245, 188, 3);
-}
-    aside {
-        margin: 0;
-        background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055), rgba(35, 35, 61, 0.082), rgba(35, 35, 61, 0.247), rgb(35, 35, 61));
-        font-size: 0.8em;    
-        width: 80vw;
-      
-    }
 
-    /* .aside-img{
-        display: block;
-        grid-column: 2/3;
-        background:url('../../static/pencils.jpg') no-repeat ;
-        background-attachment: fixed;
-        background-size: cover;
-        height: 100%;
-        width:  100%;
+    #credentials{
+        grid-column: 1/2;
         z-index: -1;
-    } */
+        gap: 0px;
+        padding: 40px 200px 150px  200px;
+    
+    }
 }
 
 @keyframes slideSlow {
