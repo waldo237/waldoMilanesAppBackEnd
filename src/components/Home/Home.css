@@ -24,6 +24,7 @@ main{
     align-self: flex-start;
     transition-delay: .1s;
     transition-duration: .3s;
+    animation: fadeIn .3s  ease-in-out;
 }
 .img-scrolled-1{
     transform: translateX(48vw);
@@ -66,7 +67,7 @@ main{
     background:  url('../../static/waldo.jpg') ; 
     background-size: 500px;
     background-attachment: fixed;
-    filter: brightness(0.5);
+    filter: brightness(0.4);
     background-position: cover;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -92,7 +93,7 @@ main{
     grid-column: 2/3 ;
     grid-row: 3/-1 ;
     font-size: 1em;
-    line-height: 1.3;
+    line-height: 1.8;
     text-align: justify;
     display: flex;
     align-content: center;
@@ -181,7 +182,7 @@ aside {
 
 }
 
-#credentials p {
+#credentials div {
   font-size: 1em;
   line-height: 1.75em;
   border-top: 3px solid;
@@ -195,7 +196,7 @@ aside {
   color: black;
   
 }
-#credentials p::before {
+#credentials div::before {
     content: counter(section);
     position: absolute;
     border-radius: 50%;
@@ -209,31 +210,31 @@ aside {
     font-size: 1em;
 }
 
-#credentials p:nth-child(odd) {
+#credentials div:nth-child(odd) {
   border-right: 3px solid;
   padding-left: 0;
 }
-#credentials p:nth-child(odd)::before {
+#credentials div:nth-child(odd)::before {
     left: 100%; 
     margin-left: -20px;
 }
 
 
-#credentials p:nth-child(even) {
+#credentials div:nth-child(even) {
   border-left: 3px solid;
   padding-right: 0;
 }
-#credentials p:nth-child(even)::before {
+#credentials div:nth-child(even)::before {
     right: 100%; 
     margin-right: -20px;
 }
 
-#credentials p:first-child {
+#credentials div:first-child {
   border-top: 0;
   border-top-right-radius:0;
   border-top-left-radius:0;
 }
-#credentials p:last-child {
+#credentials div:last-child {
   border-bottom-right-radius:0;
   border-bottom-left-radius:0;
 }
@@ -285,6 +286,10 @@ aside {
         gap: 0px;
         padding: 40px 200px 150px  200px;
     
+    }
+    #credentials div {
+    
+        font-size: 1.2em;
     }
 }
 

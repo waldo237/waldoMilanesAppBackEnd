@@ -18,8 +18,8 @@ const Home = () => {
                 <div id='description'>
                     {open
                         ? <div id='synthesis' className='description-in'>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.  </p>
-                            <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                            <p>Hi, my name is Waldo Milanes. I am an enthusiastic and skilled programmer with substantial technical expertise in designing and developing web applications. I know how to efficiently create elegant and user-friendly interfaces, setup back-end databases that serve different business needs, and connect these two ends in a way that is secured and optimized. </p>
+                            <p> Working as a manager in the educational field for several years has given me the experience to help small teams foster cooperation and motivation to deliver accurate results. I excel at communicating my ideas respectfully and negotiating differences with my colleagues. </p>
                         </div>
                         : null
                     }
@@ -45,8 +45,8 @@ const Home = () => {
             <aside id='education'>
                 {transition2.map(({ item, key, props }) =>
                     <animated.div id='credentials' style={props} key={key}>
-                        <h1>Education</h1>
-                        <p>Doggo ipsum long bois lotsa pats blep. What a nice floof ruff super chub very good spot, the neighborhood pupper lotsa pats. Borkdrive shibe shoober what a nice floof, borking doggo.</p>
+                        <h1 className='title-font primary--text '>Education</h1>
+                       <div> <p> <span>2008-2011 Modern Languages</span> Doggo ipsum long bois lotsa pats blep. What a nice floof ruff super chub very good spot, the neighborhood pupper lotsa pats. Borkdrive shibe shoober what a nice floof, borking doggo.</p></div> 
                         <p>Shoober shooberino adorable doggo many pats, heckin good boys many pats pupper wrinkler, corgo maximum borkdrive. A frighten puggo wow very biscit.</p>
                         <p>Big ol h*ck adorable doggo vvv smol borking doggo with a long snoot for pats big ol, he made many woofs doing me a frighten puggo wow very biscit, ruff fat boi ruff long doggo. </p>
                         <p>Long bois mlem I am bekom fat wrinkler puggo maximum borkdrive big ol pupper I am bekom fat, fluffer vvv adorable doggo lotsa pats snoot. I am bekom fat ur givin me a spook length boy wow very biscit very good spot.</p>
@@ -107,8 +107,8 @@ const MainCard = ({ toggle, open }) => {
             <div className='wm-img shadow'></div>
         <div className='home-banner'>
             <div className='title-wrapper'>
-                <h4 className='name' id='name-1'>A pragmatic &amp; dedicated</h4>
-                <small className='job-title'>Full-stack developer</small>
+                <h4 className='name' id='name-1'>A Pragmatic &amp; Dedicated</h4>
+                <small className='job-title'>Web Developer</small>
 
             </div>
         </div>

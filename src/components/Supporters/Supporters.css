@@ -158,7 +158,7 @@ grid-template-rows: repeat(3, 1fr);
     outline: 0;
     padding:1px 0;
     background: transparent;
-    transition: border-color 0.2s;
+    transition:  0.3s;
     margin-bottom:18px;
   }
   .form-control::placeholder {

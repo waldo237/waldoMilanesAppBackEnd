@@ -15,7 +15,7 @@ const Articles = () => {
             <section>
                 <div className=' card-container'>
                     <form className='sign-form'>
-                        <div classNam='contact-card-titles'>
+                        <div className='contact-card-titles'>
                             <h3 className='primary--text title-font'>Email</h3>
                             <h5 className='secondary--text'>Please complete the fields to shoot me an email</h5>
                         </div>
@@ -36,6 +36,7 @@ const Articles = () => {
                     </form>
                 </div>
             </section>
+            
         </main>
     )
 

@@ -20,7 +20,7 @@
   box-shadow: 0px 8px 14px -7px var(--secondary-color);
   text-shadow:0px 1px 2px var(--primary-color);
   animation: fadeIn .2s normal;
-  transition: .2s;
+  transition: .3s;
 }
 .btn:active {
 	position:relative;
