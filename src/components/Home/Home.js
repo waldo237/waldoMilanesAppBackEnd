@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { useTransition, animated } from 'react-spring'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     const [open, toggle] = useState(false);
@@ -17,7 +17,7 @@ const Home = () => {
                 <MainCard toggle={toggle} open={open} />
                 <div id='description'>
                     {open
-                        ? <div id='synthesis'>
+                        ? <div id='synthesis' className='description-in'>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.  </p>
                             <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
                         </div>
@@ -35,15 +35,14 @@ const Home = () => {
                 {transition2.map(({ item, key, props }) =>
                     <animated.div id='my-work' style={props} key={key}>
                         <Link to='/portfolio'>
-                        <button className='my-work-btn' >
-                            my work
+                            <button className='my-work-btn' >
+                                my work
                         </button>
                         </Link>
-                  
                     </animated.div>
                 )}
             </article>
-            <aside className='' id='education'>
+            <aside id='education'>
                 {transition2.map(({ item, key, props }) =>
                     <animated.div id='credentials' style={props} key={key}>
                         <h1>Education</h1>
@@ -64,47 +63,54 @@ const MainCard = ({ toggle, open }) => {
     useEffect(() => {
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
+        const myWork = document.querySelector("#my-work");
         const education = document.querySelector("#education");
 
-        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) => 
-        entries.forEach(entry => {
-            if (entry.isIntersecting && document.body.clientWidth >= 900) {
-                wmImg.classList.add("img-scrolled-1");
-            } else {
-                wmImg.classList.remove("img-scrolled-1");
-            }
-        }), (document.body.clientWidth < 1500) ?{rootMargin: '0px'}: {rootMargin: '-150px'});
-
-        const myWorkObserver = new IntersectionObserver((entries, workObserver) => {
+        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) =>
             entries.forEach(entry => {
+                if (entry.isIntersecting && document.body.clientWidth >= 900) {
+                    wmImg.classList.add("img-scrolled-1");
+                } else {
+                    wmImg.classList.remove("img-scrolled-1");
+                }
+            }), (document.body.clientWidth < 1500) ? { rootMargin: '0px' } : { rootMargin: '-150px' });
+
+        const descriptionObserver2 = new IntersectionObserver((entries, workObserver) => {
+            entries.forEach(entry => {
+                if(entry.intersectionRatio>0 && !open) toggle({ open: true })
                 if (entry.isIntersecting) {
-                    if (!open) toggle({ open: true })
                     wmImg.classList.add("img-out");
-                    description.classList.add("description-in");
                 } else {
                     wmImg.classList.remove("img-out");
                 }
             });
-        }, (document.body.clientWidth < 1500) ?{rootMargin: '-150px'}: {rootMargin: '-250px'});
-        
+        }, (document.body.clientWidth < 1500) ? { rootMargin: '-150px' } : { rootMargin: '-250px' });
+
+        const myWorkObserver = new IntersectionObserver((entries, myWorkObserver) => {
+            entries.forEach(entry => (entry.isIntersecting)
+                ? myWork.classList.add("my-work-scrolled")
+                : myWork.classList.remove("my-work-scrolled"));
+        });
+       
         const educObserver = new IntersectionObserver((entries, educObserver) => {
             entries.forEach(entry => (entry.isIntersecting)
                 ? education.classList.add("edu-scrolled")
                 : education.classList.remove("edu-scrolled"));
         });
         descriptionObserver.observe(description);
-        myWorkObserver.observe(description);
+        descriptionObserver2.observe(description);
+        myWorkObserver.observe(myWork)
         educObserver.observe(education);
     });
 
     return <>
-        <div className='wm-img shadow'></div>
-        <div className='img-wrapper'>
-                <div className='title-wrapper'>
-                 <h4 className='name' id='name-1'>A pragmatic &amp; dedicated</h4>
-                    <small className='job-title'>Full-stack developer</small>
-                    
-                    </div> 
+            <div className='wm-img shadow'></div>
+        <div className='home-banner'>
+            <div className='title-wrapper'>
+                <h4 className='name' id='name-1'>A pragmatic &amp; dedicated</h4>
+                <small className='job-title'>Full-stack developer</small>
+
+            </div>
         </div>
     </>
 }

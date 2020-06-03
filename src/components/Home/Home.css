@@ -7,6 +7,7 @@ main{
     grid-template-rows: 0.2fr .5fr .5fr; 
     gap: 6px 5px;
 }
+
 .wm-img{
     grid-column: 2/3 ;
     grid-row: 1/2 ;
@@ -21,7 +22,6 @@ main{
     max-width: 95%;
     height: 250px;
     align-self: flex-start;
-    animation: slideInRight 0.2s ease-in-out;
     transition-delay: .1s;
     transition-duration: .3s;
 }
@@ -59,21 +59,22 @@ main{
     width: 90%;
     display: block;
 }
-  .img-wrapper {
+
+  .home-banner {
     grid-column: 2/3 ;
     grid-row: 2/3 ;
     background:  url('../../static/waldo.jpg') ; 
     background-size: 500px;
     background-attachment: fixed;
-    filter: brightness(0.6);
+    filter: brightness(0.5);
     background-position: cover;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text; 
     background-color: transparent;
     font-size: 10vw;
-    animation: slideInUp .7s ease-in-out;
-   
+    animation: slideInUp 1.3s ease-in-out;
+   transition: 1s .1s;
 }
 
 
@@ -105,7 +106,7 @@ main{
 }
 
 .description-in{
-    animation: backInUp    1s ease-in;
+    animation: backInUp    1.5s alternate;
 }
 #my-work{
     background:   linear-gradient(
@@ -126,15 +127,14 @@ main{
 }
 
 .my-work-scrolled{
-    animation: fadeIn .5s reverse ;
-    transition-delay: .1s;
-    transition-duration: .2s;
+    animation: fadeIn 2s normal ;
+    transition-duration: 2s;
 }
 
 
 .my-work-btn {
 	box-shadow: 4px 10px 14px -10px var(--primary-color);
-	border-radius:30px;
+	border-radius:5px;
     border:1px solid #FBF7F4;
     background: rgba(35, 35, 61, 0.164);
 	display:inline-block;
@@ -146,10 +146,9 @@ main{
     text-shadow:0px 1px 0px var(--primary-color);
     margin: 20px;
     transition-delay: .1s;
-    transition-duration: .2s;
+    transition-duration: .6s;
 }
 .my-work-btn:hover {
-	background:linear-gradient(to bottom, var(--primary-color)) 5%, var(--primary-color) 100%);
     background-color:var(--primary-color);
    color: white;
    transform: scale(1.1);
@@ -162,15 +161,14 @@ aside {
     margin: 0;
     font-size: 0.8em;    
     width: 100vw;
-    transition-delay: .4s;
-    transition-duration: .4s;
+    transition-duration: .8s;
 }
 .aside-img{
     display: none;
 }
 
 .edu-scrolled{
-    animation: float .4s  ease-in-out ;
+    animation: my-work 1.3s  ease-in-out ;
 }
 
 #credentials{
@@ -257,7 +255,7 @@ aside {
         max-width: 450px;
     }
 
-    .img-wrapper {
+    .home-banner {
         font-size: 6vw;
         justify-items: center;
     }
@@ -279,7 +277,7 @@ aside {
     }
     .my-work-btn{
         padding:10px 85px;
-        font-size: 1em;
+        font-size: .8em;
     }
  
 #credentials{
@@ -294,12 +292,11 @@ aside {
         margin: 0;
         background:linear-gradient(to bottom, rgba(245, 188, 2, 0), rgba(35, 35, 61, 0.055), rgba(35, 35, 61, 0.082), rgba(35, 35, 61, 0.247), rgb(35, 35, 61));
         font-size: 0.8em;    
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 2fr 1.5fr;
+        width: 80vw;
+      
     }
 
-    .aside-img{
+    /* .aside-img{
         display: block;
         grid-column: 2/3;
         background:url('../../static/pencils.jpg') no-repeat ;
@@ -308,7 +305,7 @@ aside {
         height: 100%;
         width:  100%;
         z-index: -1;
-    }
+    } */
 }
 
 @keyframes slideSlow {
@@ -321,9 +318,18 @@ aside {
 }
 
 
-  @keyframes float {
-    0% { transform: translate(100px) }
-    14.28571% { transform: translate(50px) }
-    28.57143% { transform: translate(25px) }
-    100% { transform: translate(0) }
-  }       
+    @keyframes my-work {
+    0% {
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    z-index: -3;
+    visibility: visible;
+    opacity: 0.5;
+    }
+    100% {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+    z-index: -3;
+    opacity:1;
+    }
+}
