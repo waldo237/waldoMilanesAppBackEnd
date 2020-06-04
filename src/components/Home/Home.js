@@ -4,14 +4,57 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
     const [open, toggle] = useState(false);
-    const educationPoints =[{
-      id: '2331',
-      career: 'BA in Modern Languages',
-       duration: new Date(2011, 11,  15).getFullYear(),
-      university: 'Santiago University of Technology (UTESA)',
-      place: 'Dominican Republic',
-      description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
-    }];
+    const educationPoints = [
+        {
+            id: '2331',
+            career: 'Bachelors of Arts in Modern Languages',
+            duration: new Date(2011, 11, 15).getFullYear(),
+            university: 'Santiago University of Technology (UTESA)',
+            place: 'Dominican Republic',
+            description: 'Gained ability to communicate clearly in a foreign language, both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.'
+        },
+        {
+            id: '2332',
+            career: 'Computer Programming',
+            duration: new Date(2017, 11, 15).getFullYear(),
+            university: 'Technological Institute of the Americas (ITLA)',
+            place: 'Dominican Republic',
+            description: 'Gained general knowledge of software development to solve, creatively and innovatively, challenging computer programming problems; awareness of object-oriented software development; the foundations of networking; management of Relational Databases, widely knowing the concepts of data modeling and design taken from the specific requirements.'
+        },
+        {
+            id: '2335',
+            career: 'Database Design and SQL',
+            duration: new Date(2018, 11, 15).getFullYear(),
+            university: 'Technological Institute of the Americas (ITLA)',
+            place: 'Dominican Republic',
+            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+        },
+        {
+            id: '2336',
+            career: 'Intermediate Java Programming',
+            duration: new Date(2018, 11, 15).getFullYear(),
+            university: 'Technological Institute of the Americas (ITLA)',
+            place: 'Dominican Republic',
+            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+        },
+        {
+            id: '2337',
+            career: 'Effective Assessment Practices Certification',
+            duration: new Date(2019, 11, 15).getFullYear(),
+            university: 'University of Oregon',
+            place: 'Eugene, Oregon, USA',
+            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+        },
+        {
+            id: '2334',
+            career: 'Master of Arts in Applied Linguistics',
+            duration: new Date(2020, 11, 15).getFullYear(),
+            university: 'Autonomous University of Santo Domingo (UASD)',
+            place: 'Dominican Republic',
+            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+        },
+        
+    ];
 
     return (
         <>
@@ -34,24 +77,24 @@ const Home = () => {
                 </defs>
             </svg>
             <article className='light'>
-     
-                    <div id='my-work'>
-                        <Link to='/portfolio'>
-                            <button className='my-work-btn' >
-                                my work
+
+                <div id='my-work'>
+                    <Link to='/portfolio'>
+                        <button className='my-work-btn' >
+                            my work
                         </button>
-                        </Link>
-                    </div>
+                    </Link>
+                </div>
             </article>
             <aside id='education'>
                 <div id='credentials'>
                     <h1 className='title-font primary--text title-2'>Education</h1>
                     {educationPoints.map((item) =>
-                    <div key={item.id} className='certificate'> 
-                        <h2>{item.career}</h2>
-                        <h4>{item.duration}</h4>
-                        <h4>{item.university}</h4>
-                        <p> {item.description} </p>
+                        <div key={item.id} className='certificate'>
+                            <h2>{item.career}</h2>
+                            <h4>{item.university}</h4>
+                            <h5>{item.duration}— {item.place}</h5>
+                            <p> {item.description} </p>
                         </div>
                     )}
                 </div>
