@@ -32,7 +32,7 @@ const Articles =()=> {
           <small>{item.date.toLocaleString('eng-US',{dateStyle:'full'})} </small>
           <p className='article-body'> {item.body} </p>
           <small className='read-more-wrapper'>
-              <Link to={`articles/${item.id}`} className='primary--text'>Read more</Link>
+              <Link to={`articles/${item.id}`} className='primary--text hover-underline-yellow'>Read more</Link>
           </small>
 
           </div>
