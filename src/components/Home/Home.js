@@ -14,7 +14,7 @@ const Home = () => {
             description: 'Gained ability to communicate clearly in a foreign language, both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.'
         },
         {
-            id: '2332',
+            id: '2332',  
             career: 'Computer Programming',
             duration: new Date(2017, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
