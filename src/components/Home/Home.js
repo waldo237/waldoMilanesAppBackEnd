@@ -19,7 +19,7 @@ const Home = () => {
             duration: new Date(2017, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
             place: 'Dominican Republic',
-            description: 'Gained general knowledge of software development to solve, creatively and innovatively, challenging computer programming problems; awareness of object-oriented software development; the foundations of networking; management of Relational Databases, widely knowing the concepts of data modeling and design taken from the specific requirements.'
+            description: 'The fundamentals of programming, algorithms and data structures, software testing, and debugging; a solid foundation of object-oriented software development; the essentials of networking; design and management of Relational Databases; project requirements gathering and prototyping.'
         },
         {
             id: '2335',
@@ -35,7 +35,7 @@ const Home = () => {
             duration: new Date(2018, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
             place: 'Dominican Republic',
-            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+            description: 'Basic concepts, logic and syntax of the Java programming language, event-driven programming, sequential and associative data structures, classic data structures, sorting and searching, exception handling, database programming with JDBC, networking programming, GUI development using Swing, multithreading, Java Applets, web applications (Servlets), advanced I/O classes, regular expressions, Java graphics, introduction to Spring using Spring Boot.'
         },
         {
             id: '2337',
