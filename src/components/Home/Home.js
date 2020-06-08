@@ -11,7 +11,7 @@ const Home = () => {
             duration: new Date(2011, 11, 15).getFullYear(),
             university: 'Santiago University of Technology (UTESA)',
             place: 'Dominican Republic',
-            description: 'Gained ability to communicate clearly in a foreign language, both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.'
+            description: 'The ability to communicate clearly in two foreign languages (English and French), both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.'
         },
         {
             id: '2332',  
@@ -19,7 +19,7 @@ const Home = () => {
             duration: new Date(2017, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
             place: 'Dominican Republic',
-            description: 'The fundamentals of programming, algorithms and data structures, software testing, and debugging; a solid foundation of object-oriented software development; the essentials of networking; design and management of Relational Databases; project requirements gathering and prototyping.'
+            description: 'The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.'
         },
         {
             id: '2335',
@@ -27,7 +27,7 @@ const Home = () => {
             duration: new Date(2018, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
             place: 'Dominican Republic',
-            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+            description: 'The foundation of database programming: planning a database, relational databases, records, data types, adding validation rules, normalization and denormalization, referential integrity, ACID transactions, SQL queries, CRUD operations, sorting results, and joining tables.'
         },
         {
             id: '2336',
@@ -43,7 +43,7 @@ const Home = () => {
             duration: new Date(2019, 11, 15).getFullYear(),
             university: 'University of Oregon',
             place: 'Eugene, Oregon, USA',
-            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+            description: 'effective testing and assessment offers up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.'
         },
         {
             id: '2334',
@@ -51,7 +51,7 @@ const Home = () => {
             duration: new Date(2020, 11, 15).getFullYear(),
             university: 'Autonomous University of Santo Domingo (UASD)',
             place: 'Dominican Republic',
-            description: 'My first major was in languages. I learned how to properly speak French and English as well as the best practices to teach these languages'
+            description: 'knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.'
         },
         
     ];
