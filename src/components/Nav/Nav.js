@@ -21,7 +21,7 @@ class Navigation extends Component {
           ]
         },
         { title: 'Articles', link: '/articles' },
-        { title: 'Contacts', link: '/contacts' },
+        { title: 'Contact me', link: '/contacts' },
         { title: 'Be my supporter', link: '/supporters' },
       ]
     };

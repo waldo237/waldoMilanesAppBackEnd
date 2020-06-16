@@ -54,6 +54,23 @@ const Home = () => {
             description: 'The global object, Importing the core modules, creating custom events with the EventEmitter, reading; writing; and removing files, working with file streams, creating child processes with the exec and spawn functions, managing third-party packages with npm, REST APIs, Node.js frameworks, creating a basic Express.js application, managing data to MongoDB with Mongoose, error handling and debugging, consulting OWASP resources and handling security threats, adding two-factor and read-only tokens, encrypting user data and session management, adding HTTPS protocol to an application, using cookie attributes, continuous deployment systems.'
         },
         {
+            id: '2336',
+            career: 'Become a Vue Developer',
+            duration: new Date(2019, 11, 15).getFullYear(),
+            university: 'LinkedIn Learning',
+            place: 'Online',
+            description: 'Basics of Vue.js, working with templates, binding classes with objects and arrays, creating transitions and animations, building routes and creating route links, loading modules, importing and looping through data, using props; methods; and events, Vue Router, and Vuex.'
+        },
+        {
+            id: '2336',
+            career: 'Become a MERN Stack JavaScript Developer',
+            duration: new Date(2020, 11, 15).getFullYear(),
+            university: 'LinkedIn Learning',
+            place: 'Online',
+            description: 'React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.'
+        },
+
+        {
             id: '2337',
             career: 'Effective Assessment Practices Certification',
             duration: new Date(2019, 11, 15).getFullYear(),
