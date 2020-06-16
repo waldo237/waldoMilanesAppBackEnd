@@ -3,9 +3,9 @@ const { login, register, loginRequired } = require ('../controllers/userControll
 
 const routes = (app) => {
     // registration route
-    app.route('/auth/register')
-        .post(register);
-
+    app.route('/auth/register').post(register);
+    // login route
+    app.route('/auth/login').post(login);
 }
 
 module.exports = routes; 

@@ -5,6 +5,9 @@ const { UserSchema } = require( '../models/userModel');
 
 const User = mongoose.model('User', UserSchema);
 
+/**
+ * @function loginRequired(), middleware that confirms that req.user exists, otherwise sends a response message with 'Unauthorized user!'.
+ */
 exports.loginRequired = (req, res, next) => {
     if (req.user) {
         next();
@@ -12,17 +15,13 @@ exports.loginRequired = (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized user!' });
     }
 }
+
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @returns a token
- * @function register(), if the user already exists on the database, the client will be sent a token
- * to use it on the header everytime he sents a request to signal that the client is logged in.
- * 
+ * @returns boolean
+ * @function register(), if the email already exist in the database, the client will be sent a notification:boolean
+ * to ask the user to use a different email address.
  */
 exports.register = async (req, res) => {
-    
     try {
         // define boolean if already exists.
         let alreadyExists =  await User.findOne({ email: req.body.email }, (err, user) => {
@@ -50,8 +49,11 @@ exports.register = async (req, res) => {
         console.log(error)
     }
 }
-
-exports.loginFunc = (req, res) => {
+/**
+ * @returns JWT Token
+ * @function register(), confirm that the user data is valid and send a token if it does.
+ */
+exports.login = (req, res) => {
     try {
         User.findOne({ email: req.body.email }, (err, user) => {
             if (err) throw err;
