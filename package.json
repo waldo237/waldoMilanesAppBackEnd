@@ -4,6 +4,7 @@
   "description": "API Server for Waldo milanes",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./index.js",
     "test": "test"
   },
   "repository": {
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/waldo237/waldoMilanesAppBackEnd#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -30,5 +32,9 @@
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
   }
 }
