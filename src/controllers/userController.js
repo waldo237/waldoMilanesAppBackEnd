@@ -17,8 +17,8 @@ exports.loginRequired = (req, res, next) => {
  * @param {*} req 
  * @param {*} res 
  * @returns a token
- * @function register(), if the user already exists on the database, he will be sent a token
- * to use it on the header everytime he sents a request to signal that he is logged in.
+ * @function register(), if the user already exists on the database, the client will be sent a token
+ * to use it on the header everytime he sents a request to signal that the client is logged in.
  * 
  */
 exports.register = async (req, res) => {
@@ -27,24 +27,23 @@ exports.register = async (req, res) => {
         // define boolean if already exists.
         let alreadyExists =  await User.findOne({ email: req.body.email }, (err, user) => {
             if (err) throw err;
-            if (!user) return null
+            if (user) return true
         });
     
-        // if the user already exists you will call loginFunc
+        // if the user already exists, send an object to the client for it to reroute to the correct function
         if (alreadyExists) {
-            // console.log("loggedin", alreadyExists)
-            return loginFunc(req, res);
+            console.log("loggedin", 'alreadyExists')
+            return res.json({alreadyExists: true});
         } else {
-            console.log("registered")
             const newUser = new User(req.body);
             newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
-            //   chain reacction
+            //Save user to DB and send a jwt
             await newUser.save((err, user) => {
-                if (err) {
+                if (err) {  //handle errors
                     console.log(err.message)
                     return res.status(400).send({ message: 'There was an issue with your request.' });
                 }
-                return res.json({ token: jwt.sign({ email: user.email, name: user.name, _id: user.id }, process.env.APP_KEY) });
+                return res.json({ token: jwt.sign({ email: user.email,  _id: user.id }, process.env.APP_KEY)});
             })
         } 
     } catch (error) {
@@ -52,7 +51,7 @@ exports.register = async (req, res) => {
     }
 }
 
-const loginFunc = (req, res) => {
+exports.loginFunc = (req, res) => {
     try {
         User.findOne({ email: req.body.email }, (err, user) => {
             if (err) throw err;
@@ -62,7 +61,7 @@ const loginFunc = (req, res) => {
                 if (!user.comparePassword(req.body.password, user.hashPassword)) {
                     res.status(401).json({ message: 'Authentication failed. Wrong password' });
                 } else {
-                    return res.json({ token: jwt.sign({ email: user.email, name: user.name, _id: user.id }, process.env.APP_KEY) });
+                    return res.json({ token: jwt.sign({ email: user.email, _id: user.id }, process.env.APP_KEY) });
                 }
             }else{
                 res.status(401).json({ message: 'Authentication failed. Wrong password' });

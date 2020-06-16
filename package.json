@@ -1,14 +1,14 @@
 {
-  "name": "waldomilanesapp",
+  "name": "waldoMilanesAppBackEnd",
   "version": "1.0.0",
-  "description": "Server for Waldo milanes",
+  "description": "API Server for Waldo milanes",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waldo237/waldoMilanesApp.git"
+    "url": "git+https://github.com/waldo237/waldoMilanesAppBackEnd.git"
   },
   "keywords": [
     "my",
@@ -19,9 +19,9 @@
   "author": "Waldo Milanes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waldo237/waldoMilanesApp/issues"
+    "url": "https://github.com/waldo237/waldoMilanesAppBackEnd/issues"
   },
-  "homepage": "https://github.com/waldo237/waldoMilanesApp#readme",
+  "homepage": "https://github.com/waldo237/waldoMilanesAppBackEnd#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
