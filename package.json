@@ -1,0 +1,34 @@
+{
+  "name": "waldomilanesapp",
+  "version": "1.0.0",
+  "description": "Server for Waldo milanes",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waldo237/waldoMilanesApp.git"
+  },
+  "keywords": [
+    "my",
+    "personal",
+    "blog",
+    "portfolio"
+  ],
+  "author": "Waldo Milanes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/waldo237/waldoMilanesApp/issues"
+  },
+  "homepage": "https://github.com/waldo237/waldoMilanesApp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.10"
+  }
+}
