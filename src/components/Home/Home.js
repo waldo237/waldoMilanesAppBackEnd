@@ -19,7 +19,15 @@ const Home = () => {
             duration: new Date(2017, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
             place: 'Dominican Republic',
-            description: 'The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.'
+            description: 'The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; design patterns, the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.'
+        },
+        {
+            id: '2336',
+            career: 'Intermediate Java Programming',
+            duration: new Date(2018, 11, 15).getFullYear(),
+            university: 'Technological Institute of the Americas (ITLA)',
+            place: 'Dominican Republic',
+            description: 'Basic concepts, logic and syntax of the Java programming language, event-driven programming, sequential and associative data structures, classic data structures, sorting and searching, exception handling, database programming with JDBC, networking programming, GUI development using Swing, multithreading, Java Applets, web applications (Servlets), advanced I/O classes, regular expressions, Java graphics, introduction to Spring using Spring Boot.'
         },
         {
             id: '2335',
@@ -31,11 +39,19 @@ const Home = () => {
         },
         {
             id: '2336',
-            career: 'Intermediate Java Programming',
+            career: 'Become a web developer & JavaScript',
             duration: new Date(2018, 11, 15).getFullYear(),
-            university: 'Technological Institute of the Americas (ITLA)',
-            place: 'Dominican Republic',
-            description: 'Basic concepts, logic and syntax of the Java programming language, event-driven programming, sequential and associative data structures, classic data structures, sorting and searching, exception handling, database programming with JDBC, networking programming, GUI development using Swing, multithreading, Java Applets, web applications (Servlets), advanced I/O classes, regular expressions, Java graphics, introduction to Spring using Spring Boot.'
+            university: 'LinkedIn Learning',
+            place: 'Online',
+            description: 'The basics of HTML, CSS fundamental concepts; CSS box model, Flexbox and Grid. JavaScript core principles like variables, data types, conditionals, loops, and DOM scripting; higher-order functions, IIFE functions, scopes, and closure; partial application and recursion; prototypes and classes; callbacks and promises, JS module system. Version control software; the use of Git.'
+        },
+        {
+            id: '2336',
+            career: 'Become a NodeJs Developer',
+            duration: new Date(2019, 11, 15).getFullYear(),
+            university: 'LinkedIn Learning',
+            place: 'Online',
+            description: 'The global object, Importing the core modules, creating custom events with the EventEmitter, reading; writing; and removing files, working with file streams, creating child processes with the exec and spawn functions, managing third-party packages with npm, REST APIs, Node.js frameworks, creating a basic Express.js application, managing data to MongoDB with Mongoose, error handling and debugging, consulting OWASP resources and handling security threats, adding two-factor and read-only tokens, encrypting user data and session management, adding HTTPS protocol to an application, using cookie attributes, continuous deployment systems.'
         },
         {
             id: '2337',
@@ -43,7 +59,7 @@ const Home = () => {
             duration: new Date(2019, 11, 15).getFullYear(),
             university: 'University of Oregon',
             place: 'Eugene, Oregon, USA',
-            description: 'effective testing and assessment offers up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.'
+            description: 'Up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.'
         },
         {
             id: '2334',
@@ -51,7 +67,7 @@ const Home = () => {
             duration: new Date(2020, 11, 15).getFullYear(),
             university: 'Autonomous University of Santo Domingo (UASD)',
             place: 'Dominican Republic',
-            description: 'knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.'
+            description: 'Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.'
         },
         
     ];

@@ -15,8 +15,8 @@ const Supporters = () => {
                     <input className="radio" id="two" name="group" type="radio" checked readOnly/>
                     <input className="radio" id="one" name="group" type="radio" checked  readOnly/>
                     <div className="tabs ">
-                        <label className="tab shadow hover-underline-yellow" id="two-tab" htmlFor="two" >Sign Up</label>
-                        <label className="tab shadow hover-underline-yellow" id="one-tab" htmlFor="one" >Sign In</label>
+                        <label className="tab  neom hover-underline-yellow" id="two-tab" htmlFor="two" >Sign Up</label>
+                        <label className="tab neom hover-underline-yellow" id="one-tab" htmlFor="one" >Sign In</label>
 
                     </div>
                     <div className="panels">

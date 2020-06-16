@@ -109,7 +109,7 @@ main{
 }
 
 .description-in{
-    animation: backInUp    1.5s alternate;
+    animation: backInUp    1s alternate;
 }
 #my-work{
     background:   linear-gradient(
