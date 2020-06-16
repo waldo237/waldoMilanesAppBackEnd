@@ -1,5 +1,5 @@
 
-const { login, register, loginRequired } = require ('../controllers/userController');
+const { login, register} = require ('../controllers/userController');
 
 const routes = (app) => {
     // registration route

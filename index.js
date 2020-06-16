@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonwebtoken = require('jsonwebtoken');
-const routes = require('./src/routes/registrationRoutes');
+const registrationRoutes = require('./src/routes/registrationRoutes');
+const projectRoutes = require('./src/routes/projectRoutes');
+const articleRoutes = require('./src/routes/articleRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express();
@@ -49,7 +51,9 @@ app.use((req, res, next) => {
 });
 
 // handle http routes
-routes(app);
+registrationRoutes(app);
+projectRoutes(app);
+articleRoutes(app);
 
 
 app.get('/', (req, res) =>

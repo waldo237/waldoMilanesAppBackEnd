@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 exports.articleSchema = new Schema({
     title:{
+        type: String,
         required: true,
         minlength: 5,
         maxlength: 200,

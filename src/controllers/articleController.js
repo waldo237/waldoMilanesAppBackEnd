@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+const {articleSchema} = require('../models/articleModel');
+const Article = mongoose.model('Article', articleSchema);
 
 /**
  * @function getAllArticles fetch all the articles in the database
@@ -17,7 +20,18 @@ exports.getArticle = async (req, res) => {
  * @function postArticle allow the admin to post new articles
  */
 exports.postArticle = async (req, res) => {
-    //TODO
+   const newArticle = Article(req.body);
+   try {
+    await newArticle.save((err, article)=>{
+        if(err){
+         return res.status(400).send({ message: `There was when saving the article: ${err}` });
+        }
+        return res.json(article);
+    })
+   } catch (error) {
+       res.send('caught error')
+   }
+  
 }
 
 /**
