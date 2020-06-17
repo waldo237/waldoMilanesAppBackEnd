@@ -1,19 +1,24 @@
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const RateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const jsonwebtoken = require('jsonwebtoken');
 const registrationRoutes = require('./src/routes/registrationRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
 const articleRoutes = require('./src/routes/articleRoutes');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const app = express();
+const {createWriteStream} = require('fs')
+const {join} = require('path');
 const PORT = process.env.PORT || 3001;
 
 
 // environment variables configuration
 dotenv.config();
-
+app.disable('x-powered-by');  
 // mongoose connection
 try {
     mongoose.Promise = global.Promise;
@@ -28,8 +33,23 @@ try {
 }
 
 /**
- * Middleware
+ * Middlewares
  */
+
+// throttle if exceeds 300 calls 
+const limiter = new RateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 300,
+    delayMs: 0
+});
+// log only 4xx and 5xx responses to console
+app.use(morgan('combined', {
+    skip: function (req, res) { return res.statusCode < 400 },
+    stream: createWriteStream(join(__dirname, 'access.log'), { flags: 'a' }),
+  }));
+
+// helmet setup
+app.use(helmet());
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -54,7 +74,6 @@ app.use((req, res, next) => {
 registrationRoutes(app);
 projectRoutes(app);
 articleRoutes(app);
-
 
 app.get('/', (req, res) =>
     res.send(`waldoMilanesAppBackEnd futureDocumentation.html`)

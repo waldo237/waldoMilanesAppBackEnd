@@ -5,12 +5,12 @@ const Article = mongoose.model('Article', articleSchema);
 /**
  * @function getAllArticles fetch all the articles in the database
  */
-exports.getAllArticles = async (req, res) => {
+exports.getAllArticles = (req, res) => {
     try {
         Article.find({}, (err, articles) => {
             if (err) res.status(500).send('An  error occured while fetching the data');
-            if (articles.length <= 0) res.status(500).send('An  error occured while fetching the data');
-            res.json(articles);
+            if (articles.length <= 0) return res.status(500).send('An  error occured while fetching the data');
+            return res.json(articles);
         })
     } catch (error) {
         console.log(error)
@@ -20,50 +20,64 @@ exports.getAllArticles = async (req, res) => {
 /**
  * @function getArticle the article specified in the id
  */
-exports.getArticle = async (req, res) => {
+exports.getArticle = (req, res) => {
     try {
         const id = mongoose.Types.ObjectId(req.params.id);
-        await Article.findOne({ _id: id}, (err, article) => {
+        Article.findOne({ _id: id }, (err, article) => {
             if (err) throw err;
             if (!article) {
                 return res.status(500).send('The article you are looking for was not found!')
             } else {
-                res.json(article);
+                return res.json(article);
             };
-
         })
-    }catch (error) {
+    } catch (error) {
         res.status(500).send('An  error occured while fetching the data');
-   
     }
 }
 
 /**
  * @function postArticle allow the admin to post new articles
  */
-exports.postArticle = async (req, res) => {
-    const newArticle = Article(req.body);
+exports.postArticle = (req, res) => {
     try {
-        await newArticle.save((err, article) => {
+        const newArticle = Article(req.body);
+        newArticle.save((err, article) => {
             if (err) res.status(400).send({ message: `There was when saving the article: ${err.message}` });
             return res.json(article);
         })
     } catch (error) {
-        res.send('caught error')
+        res.status(500).send(`caught error: ${error}`)
     }
-
 }
 
 /**
  * @function updateArticle allow the admin to update an existing article
  */
-exports.updateArticle = async (req, res) => {
-    //TODO
+exports.updateArticle = (req, res) => {
+    try {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        Article.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, contact) => {
+            if (err) res.send(err.message);
+            return (contact.nModified) ? res.json('The article was modified correctly.') : res.status(404).send('The update did not take effect.');
+        })
+    } catch (error) {
+        res.status(500).send(`caught error: ${error}`)
+    }
 }
 
 /**
  * @function deleteArticle allow the admin to delete an existing article
  */
 exports.deleteArticle = async (req, res) => {
-    //TODO
+    try {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        Article.deleteOne({ _id: id }, (err, query) => {
+            if (err) throw err;
+            (query.n) ? res.send(`${query.n} was deleted.`) : res.status(404).send('An error occured while trying to delete item.');
+        })
+
+    } catch (error) {
+        res.status(500).send(`caught error: ${error}`)
+    }
 }
