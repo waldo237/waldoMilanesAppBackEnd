@@ -8,7 +8,16 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import { Link } from 'react-router-dom';
 
 const Node = () => {
-    const [modal, showModal] = useState(false);
+    const showModal = (value)=>{
+        console.log(value)
+            const internalFiles = document.querySelectorAll('.modal');
+            internalFiles.forEach(file => {
+                if (file.classList.contains(value)) {
+                    file.classList.toggle('modal-closed');
+                    file.classList.toggle('modal-opened');
+                }
+            })
+    }
     const [collection, setData] = useState(null);
     useEffect(() => {
         fetch(`http://localhost:3001/projects`)
@@ -19,16 +28,21 @@ const Node = () => {
     // prism
     const CodeModal = (props) => {
         const exampleCode = `${props.code}`.trim();
-        return (<Highlight className='modal'{...defaultProps} theme={theme} code={exampleCode} language="javascript">
+        return (<Highlight {...defaultProps} theme={theme} code={exampleCode} language="javascript">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre className={className} style={style}>
-                    {tokens.map((line, i) => (
-                        <div {...getLineProps({ line, key: i })}>
-                            {line.map((token, key) => (
-                                <span {...getTokenProps({ token, key })} />
-                            ))}
-                        </div>
-                    ))}
+                <pre className={`${className} modal modal-closed ${props.fileId}`} style={style}>
+                    <span className="close" onClick={() => showModal(props.fileId)}>&times;</span>
+                    <code>
+                        {tokens.map((line, i) => (
+                            <div {...getLineProps({ line, key: i })}>
+                                <code>
+                                    {line.map((token, key) => (
+                                        <span {...getTokenProps({ token, key })} />
+                                    ))}
+                                </code>
+                            </div>
+                        ))}
+                    </code>
                 </pre>
             )}
         </Highlight>
@@ -69,34 +83,35 @@ const Node = () => {
                                     <img className='project-screenshot' src={project.screenshot} alt={`${project.title}-view`} />
                                 </picture>
                             </a>
+
                             <div className='file-container'>
                                 <span className='bold'>Files</span>
                                 {project.code.map(file => (file.type === 'file')
-                                    ? <div onClick={() => showModal(true)} key={file.id}>
-                                        <button className='file-button'> <FontAwesomeIcon icon={faFile} className='primary--text' />  {file.name}</button>
-
-                                        {(modal) ? <CodeModal code={file.content} /> : null}
+                                    ? <div  key={file.id} className='file'>
+                                        <button onClick={() => showModal(file.id)} className='file-button'> <FontAwesomeIcon icon={faFile} className='primary--text' />  {file.name}</button>
+                                      
+                                            <CodeModal code={file.content} fileId={file.id}/>
+                                         
                                     </div>
                                     : <div key={file.id}>
                                         <button onClick={() => toggleClasses(file.id)} className='file-button'>
                                             <FontAwesomeIcon icon={faChevronRight} className={`${file.id} primary--text icon-to-turn`} /> <FontAwesomeIcon icon={faFolder} className='secondary--text' />  {file.name}
                                         </button>
-                                        {file.content.map(childFile => <Link
-                                            className={`${childFile.parentId} internal-files folder-closed`}
-                                            to={`/node/file/${childFile.id}`}
+                                        {file.content.map(childFile => <div
+                                            className={`${childFile.parentId} file internal-files folder-closed`}
+                                           
                                             key={childFile.id}>
-                                            <button className='file-button '> <FontAwesomeIcon icon={faFile} className='primary--text' />  {childFile.name}
+                                            <button onClick={() => showModal(childFile.id)} className='file-button '> <FontAwesomeIcon icon={faFile} className='primary--text' />  {childFile.name}
                                             </button>
-                                        </Link>)
+                                            <CodeModal code={childFile.content} fileId={childFile.id}/>
+                                        </div>)
                                         }
                                     </div>
                                 )}
                             </div>
                         </div>
-
                     </article>)
             }) : null}
-
         </main>
     </>)
 }

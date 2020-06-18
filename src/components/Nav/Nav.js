@@ -51,8 +51,6 @@ class Navigation extends Component {
     };
     activateNav();
     window.addEventListener('resize', activateNav);
-
-
     document.addEventListener("click", (evt) => { //make the nav colapse if click away.
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
