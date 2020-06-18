@@ -22,7 +22,7 @@ const Home = () => {
             description: 'The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; design patterns, the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.'
         },
         {
-            id: '2336',
+            id: '232336',
             career: 'Intermediate Java Programming',
             duration: new Date(2018, 11, 15).getFullYear(),
             university: 'Technological Institute of the Americas (ITLA)',
@@ -38,7 +38,7 @@ const Home = () => {
             description: 'The foundation of database programming: planning a database, relational databases, records, data types, adding validation rules, normalization and denormalization, referential integrity, ACID transactions, SQL queries, CRUD operations, sorting results, and joining tables.'
         },
         {
-            id: '2336',
+            id: '2332326',
             career: 'Become a web developer & JavaScript',
             duration: new Date(2018, 11, 15).getFullYear(),
             university: 'LinkedIn Learning',
@@ -46,7 +46,7 @@ const Home = () => {
             description: 'The basics of HTML, CSS fundamental concepts; CSS box model, Flexbox and Grid. JavaScript core principles like variables, data types, conditionals, loops, and DOM scripting; higher-order functions, IIFE functions, scopes, and closure; partial application and recursion; prototypes and classes; callbacks and promises, JS module system. Version control software; the use of Git.'
         },
         {
-            id: '2336',
+            id: '2323236',
             career: 'Become a NodeJs Developer',
             duration: new Date(2019, 11, 15).getFullYear(),
             university: 'LinkedIn Learning',
@@ -54,7 +54,7 @@ const Home = () => {
             description: 'The global object, Importing the core modules, creating custom events with the EventEmitter, reading; writing; and removing files, working with file streams, creating child processes with the exec and spawn functions, managing third-party packages with npm, REST APIs, Node.js frameworks, creating a basic Express.js application, managing data to MongoDB with Mongoose, error handling and debugging, consulting OWASP resources and handling security threats, adding two-factor and read-only tokens, encrypting user data and session management, adding HTTPS protocol to an application, using cookie attributes, continuous deployment systems.'
         },
         {
-            id: '2336',
+            id: '2345545',
             career: 'Become a Vue Developer',
             duration: new Date(2019, 11, 15).getFullYear(),
             university: 'LinkedIn Learning',
@@ -62,7 +62,7 @@ const Home = () => {
             description: 'Basics of Vue.js, working with templates, binding classes with objects and arrays, creating transitions and animations, building routes and creating route links, loading modules, importing and looping through data, using props; methods; and events, Vue Router, and Vuex.'
         },
         {
-            id: '2336',
+            id: '235656536',
             career: 'Become a MERN Stack JavaScript Developer',
             duration: new Date(2020, 11, 15).getFullYear(),
             university: 'LinkedIn Learning',
