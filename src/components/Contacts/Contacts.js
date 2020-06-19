@@ -8,7 +8,7 @@ const Articles = () => {
     return (
         <main className="page-main animate__animated animate__fadeInUp light">
             <div className='contact-title main-title'>
-                <FontAwesomeIcon className='fa-2x primary--text  contact-icon' icon={faAddressCard} /> 
+                <FontAwesomeIcon className='fa-2x primary--text  ' icon={faAddressCard} /> 
                 <h1 className='primary--text title-font'>Let's get in contact</h1>
             </div>
 

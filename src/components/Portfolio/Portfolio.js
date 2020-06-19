@@ -18,7 +18,7 @@ const Portfolio = () => {
                 </header>
                 {projects.map((project) => <article key={project.url}  className='hoverable-card technology-container project-container'>
                          <Link to={project.url} className='link'>
-                         <FontAwesomeIcon className='fa-5x primary--text  contact-icon' icon={project.icon} /> 
+                         <FontAwesomeIcon className='fa-5x primary--text  ' icon={project.icon} /> 
                               <h1 className='title-font primary--text technoly-title'>{project.title}</h1>
                             </Link>
                               <p> {project.description} </p>

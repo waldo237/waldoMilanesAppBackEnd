@@ -105,7 +105,7 @@ class Navigation extends Component {
           {item.children.map(child => {
             return <Link to={child.link} key={child.title}>
               <button className='btn spacious block'>
-              <FontAwesomeIcon className='fa-lg   contact-icon' icon={child.icon} />    {child.title}
+              <FontAwesomeIcon className='fa-lg   ' icon={child.icon} />    {child.title}
               </button>
             </Link>
           })}

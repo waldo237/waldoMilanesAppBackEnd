@@ -127,6 +127,15 @@
     animation: zoomIn .5s ease-in-out;
 }
   
+.float-right{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+}
+.float-right h3{
+    margin: 8px;
+}
   /* The Close Button */
   .close {
       margin: 0px 10px;

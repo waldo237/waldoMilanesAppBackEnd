@@ -20,7 +20,7 @@ const Articles =()=> {
     <>
      <div className='page-main animate__animated animate__fadeInUp light'>
        <div className='main-title contact-title'>
-       <FontAwesomeIcon className='fa-2x primary--text  contact-icon' icon={faFeatherAlt} />   <h1 className='primary--text title-font'>Articles I have written</h1> 
+       <FontAwesomeIcon className='fa-2x primary--text  ' icon={faFeatherAlt} />   <h1 className='primary--text title-font'>Articles I have written</h1> 
        </div>  
         {articles.map((item)=> <article key={item.id} className='hoverable-card card-container article-card'>
           <div>
