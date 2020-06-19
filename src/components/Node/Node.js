@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Node.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFile, faFolder, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faFile, faFolder, faChevronRight, faCode } from '@fortawesome/free-solid-svg-icons'
 import { faNodeJs, faJs, faCss3, faHtml5, faJava } from '@fortawesome/free-brands-svg-icons'
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
@@ -21,7 +21,7 @@ const Node = () => {
                 break;
             case 'vue': icon = <FontAwesomeIcon className='fa-2x ' icon={faHtml5} />
                 break;
-            default:
+            default:  icon = <FontAwesomeIcon className='fa-2x ' icon={faCode} /> 
                 break;
         }
         return icon;
@@ -45,13 +45,13 @@ const Node = () => {
             .catch(console.error);
     }, []);
     // prism
-    const CodeModal = (props) => {
-        const exampleCode = `${props.code}`.trim();
+    const CodeModal = ({code='There is no code in this file.', fileId, name}) => {
+        const exampleCode = `${code}`.trim();
         return (<Highlight {...defaultProps} theme={theme} code={exampleCode} language="javascript">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre className={`${className} modal modal-closed ${props.fileId}`} style={style}>
-                    <span className="close" onClick={() => showModal(props.fileId)}>&times;</span>
-                 <div className='float-right'><IconizeFile name={props.name}/> <h3>{props.name}</h3></div>  
+                <pre className={`${className} modal modal-closed ${fileId}`} style={style}>
+                    <span className="close" onClick={() => showModal(fileId)}>&times;</span>
+                 <div className='float-right'><IconizeFile name={name}/> <h3>{name}</h3></div>  
                     <code>
                         {tokens.map((line, i) => (
                             <div {...getLineProps({ line, key: i })}>
