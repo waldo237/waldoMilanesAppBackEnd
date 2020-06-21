@@ -45,7 +45,7 @@ const Node = () => {
             .catch(console.error);
     }, []);
     // prism
-    const CodeModal = ({code='There is no code in this file.', fileId, name}) => {
+    const CodeModal = ({code='There is no code inside this file.', fileId, name}) => {
         const exampleCode = `${code}`.trim();
         return (<Highlight {...defaultProps} theme={theme} code={exampleCode} language="javascript">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
