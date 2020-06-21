@@ -5,7 +5,7 @@ const { getAllProjects, getProject, postProject, updateProject, deleteProject } 
 const routes = (app) => {
     // registration route
     app.route('/projects')
-    .get(loginRequired, getAllProjects)
+    .get( getAllProjects)
     .post(loginRequired, postProject);
    
     app.route('/project/:id')
