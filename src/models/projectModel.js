@@ -2,6 +2,21 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const fileSchema = Schema({
+    name:{
+        type: String,
+        required: true,
+    },
+    type: {
+        type: String,
+        required: true,
+        validate: /^(dir|file)$/
+    },
+    content: Schema.Types.Mixed
+})
+
+
+
 exports.ProjectSchema = new Schema({
     title:{
         type: String,
@@ -29,10 +44,7 @@ exports.ProjectSchema = new Schema({
         maxlength: 200,
         required: true,
     },
-    code:{
-        type: Array,
-        required: true
-    },
+    code:[fileSchema ],
     date: {
         type: Date,
         default: Date.now 
