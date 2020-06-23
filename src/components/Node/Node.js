@@ -7,7 +7,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
 const Node = () => {
-    const IconizeFile = ({name}) => {
+    const IconizeFile = ({ name }) => {
         const fileNameExtension = name.split('.')[1];
         let icon = null;
         switch (fileNameExtension) {
@@ -21,14 +21,13 @@ const Node = () => {
                 break;
             case 'vue': icon = <FontAwesomeIcon className='fa-2x ' icon={faHtml5} />
                 break;
-            default:  icon = <FontAwesomeIcon className='fa-2x ' icon={faCode} /> 
+            default: icon = <FontAwesomeIcon className='fa-2x ' icon={faCode} />
                 break;
         }
         return icon;
     }
 
     const showModal = (value) => {
-        console.log(value)
         const internalFiles = document.querySelectorAll('.modal');
         internalFiles.forEach(file => {
             if (file.classList.contains(value)) {
@@ -45,13 +44,13 @@ const Node = () => {
             .catch(console.error);
     }, []);
     // prism
-    const CodeModal = ({code='There is no code inside this file.', fileId, name}) => {
+    const CodeModal = ({ code = 'There is no code inside this file.', fileId, name }) => {
         const exampleCode = `${code}`.trim();
         return (<Highlight {...defaultProps} theme={theme} code={exampleCode} language="javascript">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre className={`${className} modal modal-closed ${fileId}`} style={style}>
                     <span className="close" onClick={() => showModal(fileId)}>&times;</span>
-                 <div className='float-right'><IconizeFile name={name}/> <h3>{name}</h3></div>  
+                    <div className='float-right'><IconizeFile name={name} /> <h3>{name}</h3></div>
                     <code>
                         {tokens.map((line, i) => (
                             <div {...getLineProps({ line, key: i })}>
@@ -93,7 +92,7 @@ const Node = () => {
                     <article className='all-projects' key={project._id}>
                         <div className='project-container light' >
                             <h1 className='project-title primary--text title-font'>Title: {project.title}</h1>
-                            <p><span className='primary--text bold'>Created on:</span> {new Date (project.date).toLocaleString('eng-US', { dateStyle: 'long' })}</p>
+                            <p><span className='primary--text bold'>Created on:</span> {new Date(project.date).toLocaleString('eng-US', { dateStyle: 'long' })}</p>
                             <p><span className='primary--text bold'>URL:</span> <a target='_blank' href={project.url}>{project.url}</a></p>
                             <p><span className='primary--text bold'>Description:</span> {project.description}</p>
                             <a target='_blank' href={project.screenshot} className='screenshot-container'>
@@ -104,27 +103,36 @@ const Node = () => {
                                 </picture>
                             </a>
 
+
                             <div className='file-container'>
                                 <span className='bold'>Files</span>
-                                {project.code.map(file => (file.type === 'file')
-                                    ? <div key={file.id} className='file'>
-                                        <button onClick={() => showModal(file.id)} className='file-button'> <FontAwesomeIcon icon={faFile} className='primary--text' />  {file.name}</button>
-                                        <CodeModal code={file.content} fileId={file.id} name={file.name} />
-                                    </div>
-                                    : <div key={file.id}>
-                                        <button onClick={() => toggleClasses(file.id)} className='file-button'>
-                                            <FontAwesomeIcon icon={faChevronRight} className={`${file.id} primary--text icon-to-turn`} /> <FontAwesomeIcon icon={faFolder} className='secondary--text' />  {file.name}
-                                        </button>
-                                        {file.content.map(childFile => <div
-                                            className={`${childFile.parentId} file internal-files folder-closed`}
-                                            key={childFile.id}>
-                                            <button onClick={() => showModal(childFile.id)} className='file-button '> <FontAwesomeIcon icon={faFile} className='primary--text' />  {childFile.name}
+                                {
+                                    <>
+                                        <div key={project.code.file._id} className='file'>
+                                            <button
+                                                onClick={() => showModal(project.code.file._id)}
+                                                className='file-button'
+                                            >
+                                                <FontAwesomeIcon icon={faFile} className='primary--text' /> {project.code.file.name}
                                             </button>
-                                            <CodeModal code={childFile.content} fileId={childFile.id} name={childFile.name} />
-                                        </div>)
-                                        }
-                                    </div>
-                                )}
+                                            <CodeModal code={project.code.file.content} fileId={project.code.file._id} name={project.code.file.name} />
+                                        </div>
+                                        {project.code.dir.map((folder) => <div key={folder._id}>
+                                            <button onClick={() => toggleClasses(folder._id)} className='file-button'>
+                                                <FontAwesomeIcon icon={faChevronRight} className={`${folder._id} primary--text icon-to-turn`} /> <FontAwesomeIcon icon={faFolder} className='secondary--text' />  {folder.name}
+                                            </button>
+                                            {folder.content.map(childFile => <div
+                                                className={`${folder._id} file internal-files folder-closed`}
+                                                key={childFile._id}>
+                                                <button onClick={() => showModal(childFile._id)} className='file-button '> <FontAwesomeIcon icon={faFile} className='primary--text' />  {childFile.name}
+                                                </button>
+                                                <CodeModal code={childFile.content} fileId={childFile._id} name={childFile.name} />
+                                            </div>)
+                                            }
+                                        </div>
+                                        )}
+                                    </>
+                                }
                             </div>
                         </div>
                     </article>)
