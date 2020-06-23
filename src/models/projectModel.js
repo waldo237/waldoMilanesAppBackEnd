@@ -12,9 +12,21 @@ const fileSchema = Schema({
         required: true,
         validate: /^(dir|file)$/
     },
-    content: Schema.Types.Mixed
+    content: String
 })
 
+const dirSchema = Schema({
+    name:{
+        type: String,
+        required: true,
+    },
+    type: {
+        type: String,
+        required: true,
+        validate: /^(dir|file)$/
+    },
+    content: [fileSchema]
+})
 
 
 exports.ProjectSchema = new Schema({
@@ -44,7 +56,9 @@ exports.ProjectSchema = new Schema({
         maxlength: 200,
         required: true,
     },
-    code:[fileSchema ],
+    code:{file:fileSchema,
+        dir:dirSchema 
+    },
     date: {
         type: Date,
         default: Date.now 
