@@ -57,7 +57,7 @@ exports.ProjectSchema = new Schema({
         required: true,
     },
     code:{file:fileSchema,
-        dir:dirSchema 
+        dir:[dirSchema] 
     },
     date: {
         type: Date,

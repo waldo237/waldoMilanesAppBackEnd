@@ -19,5 +19,11 @@ exports.articleSchema = new Schema({
     date: {
         type: Date,
         default: Date.now 
-     }
+     },
+     photo: {
+        type: String,
+        minlength: 5,
+        maxlength: 200,
+        required: true,
+    },
 })

@@ -5,7 +5,7 @@ const { getAllArticles, getArticle, postArticle, updateArticle, deleteArticle } 
 const routes = (app) => {
     // registration route
     app.route('/articles')
-    .get(loginRequired, getAllArticles)
+    .get( getAllArticles)
     .post(loginRequired, postArticle);
    
     app.route('/article/:id')
