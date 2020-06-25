@@ -12,3 +12,13 @@
  padding:0px;
 }
 
+.small-icon{
+    margin: 0px 5px ;
+}
+.contact-info-card{
+    height: 100%;
+    
+}
+.contact-info p{
+    padding: 10px;
+}
