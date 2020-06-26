@@ -3,7 +3,7 @@
 	box-shadow: 0px 10px 14px -10px rgba(35, 35, 61, 0.473) ;
 	background:linear-gradient(to bottom, rgb(35, 35, 61)  5%, rgb(35, 35, 61)  100%);
 	background-color:rgba(42, 50, 75, 0.719);
-  border: 1px;
+  border: .2px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -20,16 +20,26 @@
   background-color:var(--secondary-color) 5%;
   box-shadow: 0px 8px 14px -7px var(--secondary-color);
   text-shadow:0px 1px 2px var(--primary-color);
-  animation: fadeIn .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation: pulse .1s cubic-bezier(0.645, 0.045, 0.355, 1);
  
 }
 .btn:active {
 	position:relative;
 	top:1px;
 }
+.active:after{ 
+  background: none repeat scroll 0 0 transparent;
+  content: "";
+  display: block;
+  height: 1.5px;
+  position: relative;
+  background: var(--secondary-color);
+  transition: width 0.4s ease 0s, left 0.4s ease 0s;
+  width: 100%; 
+  left: 0; 
+}
 
 .fab-btn{
-  border-radius: 50px;
   margin-right: 30px;
   position: relative;
 }

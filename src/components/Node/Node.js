@@ -93,9 +93,9 @@ const Node = () => {
                         <div className='project-container light' >
                             <h1 className='project-title primary--text title-font'>Title: {project.title}</h1>
                             <p><span className='primary--text bold'>Created on:</span> {new Date(project.date).toLocaleString('eng-US', { dateStyle: 'long' })}</p>
-                            <p><span className='primary--text bold'>URL:</span> <a target='_blank' href={project.url}>{project.url}</a></p>
+                            <p><span className='primary--text bold'>URL:</span> <a target='_blank' href={project.url} rel="noopener noreferrer">{project.url}</a></p>
                             <p><span className='primary--text bold'>Description:</span> {project.description}</p>
-                            <a target='_blank' href={project.screenshot} className='screenshot-container'>
+                            <a target='_blank' href={project.screenshot} className='screenshot-container' rel="noopener noreferrer">
                                 <picture >
                                     <source media="(min-width:650px)" srcSet={project.screenshot} />
                                     <source media="(min-width:465px)" srcSet={project.screenshot} />

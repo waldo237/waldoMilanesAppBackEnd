@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
@@ -7,6 +7,7 @@ import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg
 
 class Navigation extends Component {
   constructor() {
+ 
     super()
     this.state = {
       menuActivated: false,
@@ -76,11 +77,7 @@ class Navigation extends Component {
     return (
       <nav id='navbar'>
         <div className='mid primary' id='nav'>
-          <button className='fab-btn' onClick={() => {
-            this.setState({
-              menuActivated: !this.state.menuActivated
-            });
-          }}>
+          <button className='fab-btn' onClick={() => { this.setState({menuActivated: !this.state.menuActivated});}}>
             {this.state.menuActivated
               ? <FontAwesomeIcon className='fa-lg' icon={faTimes} />
               : <FontAwesomeIcon className='fa-lg' icon={faBars} />}
@@ -103,20 +100,20 @@ class Navigation extends Component {
         <span id='with-children'>{item.title} <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} /></span>
         <ul className='inner-nav-item'>
           {item.children.map(child => {
-            return <Link to={child.link} key={child.title}>
+            return <NavLink activeClassName="active" exact={true} to={child.link} key={child.title}>
               <button className='btn spacious block'>
               <FontAwesomeIcon className='fa-lg   ' icon={child.icon} />    {child.title}
               </button>
-            </Link>
+            </NavLink>
           })}
         </ul>
       </div>
     } else {
-      return <Link to={item.link} >
+      return <NavLink activeClassName="active" exact={true} to={item.link} >
         <button className='btn spacious'>
           {item.title}
         </button>
-      </Link>
+      </NavLink>
     }
   }
 
