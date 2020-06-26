@@ -3,9 +3,7 @@ import './Home.css'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-    useEffect(()=>{
-            window.scrollTo(0, 0);
-    }, []);
+   
     const [open, toggle] = useState(false);
     const educationPoints = [
         {
@@ -142,6 +140,7 @@ const Home = () => {
 
 const MainCard = ({ toggle, open }) => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
         const myWork = document.querySelector("#my-work");
@@ -182,7 +181,7 @@ const MainCard = ({ toggle, open }) => {
         descriptionObserver2.observe(description);
         myWorkObserver.observe(myWork)
         educObserver.observe(education);
-    }, []);
+    }, [toggle, open]);
 
     return <>
         <div className='wm-img shadow'></div>

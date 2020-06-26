@@ -88,19 +88,6 @@
   top: 30px;
   z-index: 100;
   height: 100vh;
-/*  
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-items: flex-start; */
-  
-  /* width: 40%; */
-
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap; */
-  /* right: -10px; */
- 
   animation: slideInRight 0.1s ease-in-out;
 }
 .drop-icon{
@@ -127,11 +114,12 @@
   -webkit-flex-direction: column; 
   flex-direction: column; 
   flex-wrap: nowrap;
-  padding: 0;
-  position: absolute;
+  margin: 0px 0px 0px 2px;
+
+  position: relative;
   z-index: 99;
-  right: 170px;
-  animation: fadeInUp 0.1s ease-in-out;
+  /* right: 170px; */
+  animation: zoomInLeft 0.1s ease-in-out;
   }
 
 .spacious{
@@ -209,6 +197,7 @@ width: 100%;
 
 .inner-nav-item{
   display: none;
+  position: absolute;
 }
 .span-with-children{
   margin:14px 32px;
@@ -237,7 +226,6 @@ width: 100%;
 
 .mid button {
   display: none;
-  
 }
 
 }

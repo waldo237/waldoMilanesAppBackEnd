@@ -3,8 +3,8 @@ import './Articles.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
- 
-  
+
+
 const Articles = () => {
 
   const [articles, setData] = useState([]);
@@ -13,7 +13,7 @@ const Articles = () => {
       .then(res => res.json())
       .then(setData)
       .catch(console.error)
-  },[]);
+  }, []);
 
   return (
     <>

@@ -15,10 +15,10 @@ class Navigation extends Component {
         { title: 'Waldo Milanes', link: '/' },
         {
           title: 'My Work', link: '/portfolio', children: [
-            { title: 'Node', link: '/node', icon: faNodeJs },
-            { title: 'Java', link: '/java', icon: faJava },
-            { title: 'Vue', link: '/vue', icon: faVuejs },
-            { title: 'React', link: '/React', icon: faReact },
+            { title: 'Node', link: '/project/node', icon: faNodeJs },
+            { title: 'Java', link: '/project/java', icon: faJava },
+            { title: 'Vue', link: '/project/vue', icon: faVuejs },
+            { title: 'React', link: '/project/react', icon: faReact },
           ]
         },
         { title: 'Articles', link: '/articles' },
@@ -26,9 +26,9 @@ class Navigation extends Component {
         { title: 'Be my supporter', link: '/supporters' },
         {
           title: '', link: '/React', icon: faLanguage, children: [
-            { title: 'español', link: '/node', },
-            { title: 'English', link: '/node', },
-            { title: 'français', link: '/node', },
+            { title: 'español', link: '/', },
+            { title: 'English', link: '/', },
+            { title: 'français', link: '/', },
           ]
         },
       ]

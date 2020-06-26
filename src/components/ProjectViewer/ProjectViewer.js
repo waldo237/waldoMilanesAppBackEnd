@@ -1,12 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import './Node.css'
+import './ProjectViewer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile, faFolder, faChevronRight, faCode } from '@fortawesome/free-solid-svg-icons'
-import { faNodeJs, faJs, faCss3, faHtml5, faJava } from '@fortawesome/free-brands-svg-icons'
+import { faNodeJs, faJs, faCss3, faHtml5, faJava, faVuejs } from '@fortawesome/free-brands-svg-icons'
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
-const Node = () => {
+const ProjectViewer = ({ match }) => {
+
+    const technologySwicher = (match) => {
+        let tempTechnology = null;
+        switch (match.url) {
+            case '/project/node': tempTechnology = { title: 'NodeJs', extension: 'node' }
+                break;
+            case '/project/java': tempTechnology = { title: 'Java', extension: 'java' }
+                break;
+            case '/project/vue': tempTechnology = { title: 'VueJs', extension: 'vue' }
+                break;
+            case '/project/react': tempTechnology = { title: 'ReactJs', extension: 'react' }
+                break;
+            default:
+                break;
+        }
+        return tempTechnology;
+    }
+
+    
+    const [collection, setData] = useState(null);
+    const technology = technologySwicher(match);
+    useEffect(() => {
+        fetch(`http://localhost:3001/projects/${technology.extension}`)
+            .then(res => res.json())
+            .then(setData)
+            .catch(console.error);
+    }, [technology]);
+
     const IconizeFile = ({ name }) => {
         const fileNameExtension = name.split('.')[1];
         let icon = null;
@@ -19,7 +47,9 @@ const Node = () => {
                 break;
             case 'html': icon = <FontAwesomeIcon className='fa-2x ' icon={faHtml5} />
                 break;
-            case 'vue': icon = <FontAwesomeIcon className='fa-2x ' icon={faHtml5} />
+            case 'vue': icon = <FontAwesomeIcon className='fa-2x ' icon={faVuejs} />
+                break;
+            case 'node': icon = <FontAwesomeIcon className='fa-2x ' icon={faNodeJs} />
                 break;
             default: icon = <FontAwesomeIcon className='fa-2x ' icon={faCode} />
                 break;
@@ -36,13 +66,7 @@ const Node = () => {
             }
         })
     }
-    const [collection, setData] = useState(null);
-    useEffect(() => {
-        fetch(`http://localhost:3001/projects`)
-            .then(res => res.json())
-            .then(setData)
-            .catch(console.error);
-    }, []);
+
     // prism
     const CodeModal = ({ code = 'There is no code inside this file.', fileId, name }) => {
         const exampleCode = `${code}`.trim();
@@ -84,8 +108,8 @@ const Node = () => {
     return (<>
         <main className='node-main light main animate__animated animate__fadeInUp'>
             <div className='contact-title main-title'>
-                <FontAwesomeIcon className='fa-2x primary--text  ' icon={faNodeJs} />
-                <h1 className='main-title primary--text title-font'>My Node Projects</h1>
+                <IconizeFile name={technology.extension} />
+                <h1 className='main-title primary--text title-font'>My {technology.title} Projects</h1>
             </div>
             {(collection) ? collection.map((project) => {
                 return (
@@ -141,4 +165,4 @@ const Node = () => {
     </>)
 }
 
-export default Node
+export default ProjectViewer

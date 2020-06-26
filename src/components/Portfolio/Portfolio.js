@@ -5,10 +5,10 @@ import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Portfolio = () => {
     const projects = [
-        { url: '/node', icon: faNodeJs, title: 'My projects done with NodeJs', description: 'A collection of projects I have created using NodeJs. They reflect my experience working with this technology.' },
-        { url: '/java', icon: faJava, title: 'My projects done with Java', description: 'A collection of projects I have created using Java. They reflect my experience working with this technology.' },
-        { url: '/vue',icon: faVuejs, title: 'My projects done with VueJS', description: 'A collection of projects I have created using VueJS. They reflect my experience working with this technology.', },
-        { url: '/react', icon: faReact, title: 'My projects done with ReactJS', description: 'A collection of projects I have created using ReactJS. They reflect my experience working with this technology.', },
+        { url: '/project/node', icon: faNodeJs, title: 'My projects done with NodeJs', description: 'A collection of projects I have created using NodeJs. They reflect my experience working with this technology.' },
+        { url: '/project/java', icon: faJava, title: 'My projects done with Java', description: 'A collection of projects I have created using Java. They reflect my experience working with this technology.' },
+        { url: '/project/vue',icon: faVuejs, title: 'My projects done with VueJS', description: 'A collection of projects I have created using VueJS. They reflect my experience working with this technology.', },
+        { url: '/project/react', icon: faReact, title: 'My projects done with ReactJS', description: 'A collection of projects I have created using ReactJS. They reflect my experience working with this technology.', },
     ]
     return (
         <>

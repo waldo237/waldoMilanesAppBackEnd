@@ -8,7 +8,7 @@ import Portfolio from '../components/Portfolio/Portfolio.js'
 import Articles from '../components/Articles/Articles.js'
 import Contacts from '../components/Contacts/Contacts.js'
 import Supporters from '../components/Supporters/Supporters.js'
-import Node from '../components/Node/Node.js'
+import ProjectViewer from '../components/ProjectViewer/ProjectViewer.js'
 import NotFound from '../components/NotFound/NotFound.js'
 
 const Routes = () => {
@@ -19,7 +19,7 @@ const Routes = () => {
                 <Route path='/articles' component={Articles} />
                 <Route path='/contacts' component={Contacts} />
                 <Route path='/supporters' component={Supporters} />
-                <Route path='/node' component={Node} />
+                <Route path='/project/:language' component={ProjectViewer} />
                 <Route path="*" component={NotFound} />
             </Switch>
     )
