@@ -182,7 +182,7 @@ const MainCard = ({ toggle, open }) => {
         descriptionObserver2.observe(description);
         myWorkObserver.observe(myWork)
         educObserver.observe(education);
-    });
+    }, []);
 
     return <>
         <div className='wm-img shadow'></div>

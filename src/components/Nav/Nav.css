@@ -42,9 +42,17 @@
 .fab-btn{
   margin-right: 30px;
   position: relative;
+  grid-column: 2/3;
+  background-color: rgba(0, 0, 0, 0);
+  border: rgba(0, 0, 0, 0);
+  color: var(--light);
+  font-size: 1em;
+  font-weight: lighter;
+  cursor: pointer;
 }
 .sticky .fab-btn{
-  margin-right: 10px;
+
+  margin: 10px 10px 10px 0px ;
 }
 
 .sticky {
@@ -135,22 +143,10 @@ width: 100%;
 }
 .mid{
   grid-area: 'mid';
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 0px;
+  float: right;
+
 }
-.mid button {
-  background-color: rgba(0, 0, 0, 0);
-  border: rgba(0, 0, 0, 0);
-  color: var(--light);
-  padding: 0px 25px;
-  position: relative;
-  bottom: -5px;
-  left: 20px;
-  font-size: 1em;
-  font-weight: lighter;
-  cursor: pointer;
-}
+
   
   @media screen and (min-width: 780px){
  
@@ -158,10 +154,12 @@ width: 100%;
       position: absolute;
       top: -.8px;
       width: 100%;
+      
     }
     .sticky .mid{
       box-shadow: 0px 10px 14px -10px rgba(0, 0, 0, 0.632) ;
       padding: 22px;
+      
     }
     .stuck {
 

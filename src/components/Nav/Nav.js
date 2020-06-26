@@ -80,7 +80,7 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <nav id='navbar'>
+      <nav id='navbar' className='primary'>
         <div className='mid primary' id='nav'>
           <button className='fab-btn' onClick={() => { this.setState({menuActivated: !this.state.menuActivated});}}>
             {this.state.menuActivated
