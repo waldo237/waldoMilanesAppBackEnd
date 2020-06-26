@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {  NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes, faCaretDown, faLanguage } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
-import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg-icons';
+import { faNodeJs, faJava, faVuejs, faReact,  } from '@fortawesome/free-brands-svg-icons';
 
 class Navigation extends Component {
   constructor() {
@@ -24,6 +24,11 @@ class Navigation extends Component {
         { title: 'Articles', link: '/articles' },
         { title: 'Contact me', link: '/contacts' },
         { title: 'Be my supporter', link: '/supporters' },
+        { title: '', link: '/React', icon: faLanguage, children:[
+          { title: 'español', link: '/node',  },
+          { title: 'English', link: '/node',  },
+          { title: 'français', link: '/node', },
+        ] },
       ]
     };
   }
@@ -96,13 +101,18 @@ class Navigation extends Component {
 
   listNavItems(item) {
     if (item.children) {
-      return  <div className='btn nav-item-with-children' >
-        <span id='with-children'>{item.title} <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} /></span>
+      return  <div   className={`btn ${(!item.icon)?'nav-item-with-children': 'translator'}`}>
+        <span className='span-with-children'>{item.title} 
+          {(item.icon)
+          ? <FontAwesomeIcon className='fa-lg'  icon={item.icon} />
+          :  <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} /> }
+         
+          </span>
         <ul className='inner-nav-item'>
           {item.children.map(child => {
             return <NavLink activeClassName="active" exact={true} to={child.link} key={child.title}>
-              <button className='btn spacious block'>
-              <FontAwesomeIcon className='fa-lg   ' icon={child.icon} />    {child.title}
+              <button className='btn spacious block '>
+              {(!item.icon) ?<FontAwesomeIcon className='fa-lg '  icon={child.icon} />: null }   {child.title}
               </button>
             </NavLink>
           })}
@@ -111,7 +121,7 @@ class Navigation extends Component {
     } else {
       return <NavLink activeClassName="active" exact={true} to={item.link} >
         <button className='btn spacious'>
-          {item.title}
+          {item.title} 
         </button>
       </NavLink>
     }

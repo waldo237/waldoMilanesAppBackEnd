@@ -3,6 +3,9 @@ import './Home.css'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
+    useEffect(()=>{
+            window.scrollTo(0, 0);
+    }, []);
     const [open, toggle] = useState(false);
     const educationPoints = [
         {

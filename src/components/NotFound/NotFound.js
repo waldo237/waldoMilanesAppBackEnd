@@ -9,7 +9,7 @@ const NotFound = () => {
 
   return (
     <main className="page-main animate__animated animate__fadeInUp light">
-      <div className='contact-title main-title'>
+      <div className='contact-title main-title rubberband'>
         <h1 className='primary--text title-font'>oops </h1>
         <FontAwesomeIcon className='fa-4x primary--text  small-icon' icon={faExclamation} />
         <h1 className='primary--text title-font'>404 </h1>

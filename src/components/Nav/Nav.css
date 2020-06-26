@@ -19,7 +19,7 @@
 	background:linear-gradient(to bottom, var(--secondary-color) 5%, var(--secondary-color) 100%);
   background-color:var(--secondary-color) 5%;
   box-shadow: 0px 8px 14px -7px var(--secondary-color);
-  text-shadow:0px 1px 2px var(--primary-color);
+  text-shadow: var(--text-shadow);
   animation: pulse .1s cubic-bezier(0.645, 0.045, 0.355, 1);
  
 }
@@ -79,8 +79,9 @@
 }
 .drop-icon{
   padding: 0px;
-  margin: 0px 5px 0px
+  margin: 0px 5px 0px;
 }
+
 .nav-item-with-children:hover> span >.drop-icon,
 .nav-item-with-children:active> span >.drop-icon{
   transform: rotate(90deg);
@@ -89,9 +90,13 @@
   display: none;
 }
 .nav-item-with-children:active>.inner-nav-item, 
-.nav-item-with-children:hover>.inner-nav-item{
+.nav-item-with-children:hover>.inner-nav-item,
+.translator:active>.inner-nav-item, 
+.translator:hover>.inner-nav-item{
   display: flex;
 }
+
+
 .inner-nav-item{
   -webkit-flex-direction: column; 
   flex-direction: column; 
@@ -104,13 +109,21 @@
   }
 
 .spacious{
-padding:15px 32px;
+padding:15px 25px;
 width: 100%;
 } 
-.nav-item-with-children span{
-margin:15px 32px;
+.translator{
+ width: 100%;
+margin: 0px;
+justify-items: center;
+align-items: center;
+font-size: .8em;
+}
+.span-with-children{
+margin:15px 25px;
 } 
-.nav-item-with-children{
+
+.nav-item-with-children, .translator{
 display: flex;
 -webkit-flex-direction: column; 
 flex-direction: column; 
@@ -129,12 +142,14 @@ width: 100%;
 .mid button {
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
-  color: white;
+  color: var(--light);
   padding: 0px 25px;
   position: relative;
   bottom: -5px;
   left: 20px;
-
+  font-size: 1em;
+  font-weight: lighter;
+  cursor: pointer;
 }
   
   @media screen and (min-width: 780px){
@@ -172,17 +187,17 @@ width: 100%;
 .inner-nav-item{
   display: none;
 }
-.nav-item-with-children span{
+.span-with-children{
   margin:14px 32px;
 } 
-.nav-item-with-children{
+.nav-item-with-children, .translator{
   display: flex;
   -webkit-flex-direction: column; 
   flex-direction: column; 
   flex-wrap: nowrap;
 }
-.nav-item-with-children:active>.inner-nav-item, 
-.nav-item-with-children:hover>.inner-nav-item{
+.nav-item-with-children:active>.inner-nav-item, .translator:active>.inner-nav-item, 
+.nav-item-with-children:hover>.inner-nav-item, .translator:hover>.inner-nav-item{
   display: flex;
   -webkit-flex-direction: column; 
   flex-direction: column; 

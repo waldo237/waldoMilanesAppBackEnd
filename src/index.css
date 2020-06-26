@@ -7,6 +7,7 @@
   --primary-color: rgb(35, 35, 61);
   --secondary-color: rgb(251, 211, 3);
   --light: #FBF7F4;
+  --text-shadow: 0px 1px 2px var(--primary-color);
 }
 
 body {
