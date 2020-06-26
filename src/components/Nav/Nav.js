@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import {  NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes, faCaretDown, faLanguage } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
-import { faNodeJs, faJava, faVuejs, faReact,  } from '@fortawesome/free-brands-svg-icons';
+import { faNodeJs, faJava, faVuejs, faReact, } from '@fortawesome/free-brands-svg-icons';
 
 class Navigation extends Component {
   constructor() {
- 
+
     super()
     this.state = {
       menuActivated: false,
@@ -15,20 +15,22 @@ class Navigation extends Component {
         { title: 'Waldo Milanes', link: '/' },
         {
           title: 'My Work', link: '/portfolio', children: [
-            { title: 'Node', link: '/node', icon:faNodeJs },
-            { title: 'Java', link: '/java' , icon: faJava},
-            { title: 'Vue', link: '/vue', icon:faVuejs },
+            { title: 'Node', link: '/node', icon: faNodeJs },
+            { title: 'Java', link: '/java', icon: faJava },
+            { title: 'Vue', link: '/vue', icon: faVuejs },
             { title: 'React', link: '/React', icon: faReact },
           ]
         },
         { title: 'Articles', link: '/articles' },
         { title: 'Contact me', link: '/contacts' },
         { title: 'Be my supporter', link: '/supporters' },
-        { title: '', link: '/React', icon: faLanguage, children:[
-          { title: 'español', link: '/node',  },
-          { title: 'English', link: '/node',  },
-          { title: 'français', link: '/node', },
-        ] },
+        {
+          title: '', link: '/React', icon: faLanguage, children: [
+            { title: 'español', link: '/node', },
+            { title: 'English', link: '/node', },
+            { title: 'français', link: '/node', },
+          ]
+        },
       ]
     };
   }
@@ -82,7 +84,7 @@ class Navigation extends Component {
     return (
       <nav id='navbar' className='primary'>
         <div className='mid primary' id='nav'>
-          <button className='fab-btn' onClick={() => { this.setState({menuActivated: !this.state.menuActivated});}}>
+          <button className='fab-btn' onClick={() => { this.setState({ menuActivated: !this.state.menuActivated }); }}>
             {this.state.menuActivated
               ? <FontAwesomeIcon className='fa-lg' icon={faTimes} />
               : <FontAwesomeIcon className='fa-lg' icon={faBars} />}
@@ -90,9 +92,13 @@ class Navigation extends Component {
         </div>
         {
           this.state.menuActivated
-            ? <ul className='navItems' id="navItems">
-              {this.state.navItems.map((navItem) => <li key={navItem.title}>{this.listNavItems(navItem)}</li>)}
-            </ul>
+            ? <div className='navItems-outer-wrapper'>
+              <div className='navItems-container primary'> <ul className='navItems' id="navItems">
+                {this.state.navItems.map((navItem) => <li key={navItem.title}>{this.listNavItems(navItem)}</li>)}
+              </ul>
+              </div>
+            </div>
+
             : null
         }
       </nav>
@@ -101,18 +107,18 @@ class Navigation extends Component {
 
   listNavItems(item) {
     if (item.children) {
-      return  <div   className={`btn ${(!item.icon)?'nav-item-with-children': 'translator'}`}>
-        <span className='span-with-children'>{item.title} 
+      return <div className={`btn ${(!item.icon) ? 'nav-item-with-children' : 'translator'}`}>
+        <span className='span-with-children'>{item.title}
           {(item.icon)
-          ? <FontAwesomeIcon className='fa-lg'  icon={item.icon} />
-          :  <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} /> }
-         
-          </span>
+            ? <FontAwesomeIcon className='fa-lg' icon={item.icon} />
+            : <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} />}
+
+        </span>
         <ul className='inner-nav-item'>
           {item.children.map(child => {
             return <NavLink activeClassName="active" exact={true} to={child.link} key={child.title}>
               <button className='btn spacious block '>
-              {(!item.icon) ?<FontAwesomeIcon className='fa-lg '  icon={child.icon} />: null }   {child.title}
+                {(!item.icon) ? <FontAwesomeIcon className='fa-lg ' icon={child.icon} /> : null}   {child.title}
               </button>
             </NavLink>
           })}
@@ -121,7 +127,7 @@ class Navigation extends Component {
     } else {
       return <NavLink activeClassName="active" exact={true} to={item.link} >
         <button className='btn spacious'>
-          {item.title} 
+          {item.title}
         </button>
       </NavLink>
     }
