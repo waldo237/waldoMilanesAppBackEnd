@@ -140,7 +140,7 @@ const Home = () => {
 
 const MainCard = ({ toggle, open }) => {
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
         const myWork = document.querySelector("#my-work");
