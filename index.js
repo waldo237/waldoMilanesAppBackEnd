@@ -11,6 +11,7 @@ const jsonwebtoken = require('jsonwebtoken');
 const registrationRoutes = require('./src/routes/registrationRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
 const articleRoutes = require('./src/routes/articleRoutes');
+const emailRoutes = require('./src/routes/emailRoutes');
 const {createWriteStream} = require('fs')
 const {join} = require('path');
 const PORT = process.env.PORT || 3001;
@@ -74,10 +75,11 @@ app.use((req, res, next) => {
 registrationRoutes(app);
 projectRoutes(app);
 articleRoutes(app);
-
+emailRoutes(app);
 app.get('/', (req, res) =>
     res.send(`waldoMilanesAppBackEnd futureDocumentation.html`)
 );
+
 
 app.listen(PORT, () =>
     console.log(`your server is running on port ${PORT}`)

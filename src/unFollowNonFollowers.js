@@ -20,12 +20,12 @@ var WORDS =
 var UNFOLLOW_FOLLOWERS = false; //If set to true, it will also remove followers (unless they are skipped).
 var MS_PER_CYCLE = 10; //Milliseconds per cycle (each call to 'performUnfollow').
 var MAXIMUM_UNFOLLOW_ACTIONS_PER_CYCLE = null; //Maximum of unfollow actions to perform, per cycle (each call to 'performUnfollow'). Set to 'null' to have no limit.
-var MAXIMUM_UNFOLLOW_ACTIONS_TOTAL = null; //Maximum of unfollow actions to perform, in total (among all calls to 'performUnfollow'). Set to 'null' to have no limit.
+var MAXIMUM_UNFOLLOW_ACTIONS_TOTAL = 100; //Maximum of unfollow actions to perform, in total (among all calls to 'performUnfollow'). Set to 'null' to have no limit.
 var SKIP_USERS = //Users that we do not want to unfollow (even if they are not following you back):
 [
 	//Place the user names that you want to skip here (they will not be unfollowed):
 	"user_name_to_skip_example_1",
-	"user_name_to_skip_example_2",
+	"user_name_to_skip_example_2", 
 	"user_name_to_skip_example_3"
 ];
 SKIP_USERS.forEach(function(value, index) { SKIP_USERS[index] = value.toLowerCase(); }); //Transforms all the user names to lower case as it will be case insensitive.
@@ -154,3 +154,11 @@ var scrollAndUnfollow = function()
 	else { console.log("Total desired of unfollow actions performed!"); }
 };
 scrollAndUnfollow();
+
+
+// function recursion (i){
+// 	if(i < 10){
+// 		console.log('recursion', i);
+// 		recursion(i+1)
+// 	}
+// }

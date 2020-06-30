@@ -7,7 +7,9 @@ const routes = (app) => {
     app.route('/projects')
     .get( getAllProjects)
     .post(loginRequired, postProject);
-   
+    app.route('/projects/:tecnology')
+    .get( getAllProjects)
+    .post(loginRequired, postProject);
     app.route('/project/:id')
         .get(loginRequired, getProject)
         .put(loginRequired, updateProject)
