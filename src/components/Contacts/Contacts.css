@@ -11,7 +11,7 @@
 
 .contact-container{
     display: grid;
-    grid-template-rows: 0fr 1.6fr 2fr .1fr;
+    grid-template-rows: 0fr 1fr 2fr .1fr;
     justify-content: start;
     align-items: stretch;
 }

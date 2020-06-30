@@ -5,9 +5,11 @@ import { faAddressCard, faPhone, faEnvelope, faMapMarker } from '@fortawesome/fr
 import contactValidator from './contactValidator'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
+import Loading from '../Loading/Loading'
 const Contacts = () => {
-  const [user, setUser] = useState({})
+  const [user] = useState({})
   const [response, setResponse] = useState(null)
+  const [requestStarted, setRequest] = useState(false)
   const [displayableErrors, setErrors] = useState([])
 
   const inputHandler = (event) => {
@@ -19,9 +21,11 @@ const Contacts = () => {
 
   }
   const postEmail = (e) => {
+   
     e.preventDefault();
-
     if (contactValidator(user).valid) {
+      setRequest(true);
+     
      const sanitizedData = contactValidator(user).sanitized;
      
       fetch('http://localhost:3001/email', { 
@@ -33,9 +37,11 @@ const Contacts = () => {
       })
         .then(res => res.json())
         .then(setResponse)
+        // .then(setRequest(false))
         .catch(console.error)
     }else{
       setErrors(contactValidator(user).errors);
+      
     }
   }
   return (
@@ -64,7 +70,7 @@ const Contacts = () => {
 
 
           <form className='sign-form' onSubmit={postEmail}>
-           {(response)? <ResponseAlert response={response}/>: null} 
+           {(response)? <ResponseAlert response={response}/>: <div>{(requestStarted)? <Loading message={'your email'}/>: null} </div> } 
             <ErrorCard errors={displayableErrors} />
             <div >
               <h2 className='primary--text'>Email me</h2>
