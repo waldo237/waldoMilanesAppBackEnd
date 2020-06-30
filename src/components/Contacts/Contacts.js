@@ -23,7 +23,14 @@ const Contacts = () => {
 
     if (contactValidator(user).valid) {
      const sanitizedData = contactValidator(user).sanitized;
-      fetch('http://localhost:3001/email', { method: 'POST', body: JSON.stringify(sanitizedData)})
+     
+      fetch('http://localhost:3001/email', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }, 
+        body: JSON.stringify(sanitizedData)
+      })
         .then(res => res.json())
         .then(setResponse)
         .catch(console.error)
