@@ -43,6 +43,7 @@ const limiter = new RateLimit({
     max: 300,
     delayMs: 0
 });
+app.use(limiter)
 // log only 4xx and 5xx responses to console
 app.use(morgan('combined', {
     skip: function (req, res) { return res.statusCode < 400 },

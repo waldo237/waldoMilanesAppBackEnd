@@ -1,31 +1,15 @@
+const {emailController} = require('../controllers/emailController')
+const rateLimit = require("express-rate-limit");
 
-const nodemailer = require('nodemailer');
+const sentEmailsLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 3, // start blocking after 5 requests
+  message:
+    {successful: false, message: "Too many emails sent from this IP, please try again after an hour."}
+});
 
 const routes = (app) => {
-    app.post('/email', (req, res) => {
-
-        let mailOptions = {
-            from: req.body.email,
-            to: process.env.EMAILTO, 
-            subject: `Message from ${req.body.name} sent from waldomilanes.com`,
-            text: req.body.message
-        };
-
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL || 'abc@gmail.com',
-                pass: process.env.PASSWORD || '1234'
-            }
-        });
-        
-        transporter.sendMail(mailOptions, (err, data) => {
-            if (err) {
-              return  res.json({ successful: false, message: 'An Error has occured while sending the email' })
-            }
-           return  res.json({ successful: true, message: 'Your Message was successfully sent' })
-        });
-    })
+    app.post('/email',sentEmailsLimiter, emailController)
 }
 
 module.exports = routes;
