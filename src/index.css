@@ -8,7 +8,7 @@
   --secondary-color: rgb(251, 211, 3);
   --light: #FBF7F4;
   --text-shadow: 0px 1px 2px var(--primary-color);
-  
+  --break-point: 780px
 }
 
 body {

@@ -187,7 +187,11 @@ const MainCard = ({ toggle, open }) => {
         <div className='wm-img shadow'></div>
         <div className='home-banner'>
             <div className='title-wrapper'>
-                <h4 className='name' id='name-1'>A Pragmatic &amp; Dedicated</h4>
+               <div className='qualities'>
+               <h4  >A Pragmatic </h4>
+               <h4 >&nbsp;&amp;&nbsp;</h4>
+               <h4>Dedicated</h4>
+              </div> 
                 <small className='job-title'>Web Developer</small>
 
             </div>

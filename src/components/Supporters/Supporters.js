@@ -1,8 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Supporters.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGoogle, faFacebookF} from '@fortawesome/free-brands-svg-icons'
+import supporterValidator from './supporterValidator'
+import ErrorCard from '../ErrorCard/ErrorCard'
+import ResponseAlert from '../ResponseAlert/ResponseAlert'
+import Loading from '../Loading/Loading'
 const Supporters = () => {
+    const [user] = useState({})
+  const [response, setResponse] = useState(null)
+  const [requestStarted, setRequest] = useState(false)
+  const [displayableErrors, setErrors] = useState([])
+  const inputHandler = (event) => {
+    let name = event.target.name
+    user[name] = event.target.value
+    setErrors(supporterValidator(user)
+      .errors
+      .filter(e => e.type == name))
+
+  }
+
+  const postRegistration = (e) => {
+    e.preventDefault();
+    if (supporterValidator(user).valid) {
+      setRequest(true);
+     const sanitizedData = supporterValidator(user).sanitized;
+      fetch('http://localhost:3001/email', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }, 
+        body: JSON.stringify(sanitizedData)
+      })
+        .then(res => res.json())
+        .then(setResponse)
+        .catch(console.error)
+    }else{
+      setErrors(supporterValidator(user).errors);
+      
+    }
+  }
+  
     return (
         <>
             <div className='page-main animate__animated animate__fadeInUp light'>

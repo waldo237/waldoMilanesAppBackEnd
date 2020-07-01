@@ -1,24 +1,24 @@
 
-.btn {
+.btn, .nav-item-with-children {
 	box-shadow: 0px 10px 14px -10px rgba(35, 35, 61, 0.473) ;
 	background:linear-gradient(to bottom, rgb(35, 35, 61)  5%, rgb(35, 35, 61)  100%);
 	background-color:rgba(42, 50, 75, 0.719);
   border: .2px;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:var(--light);
 	font-family:Arial;
 	font-size:12px;
 	font-weight:bold;
   text-decoration:none;
   text-transform: uppercase;
   text-shadow:0px 2px 19px rgb(35, 35, 61)  5%;
-  transition: .2s;
+ 
 }
 .btn:hover, .btn:active {
 	background:linear-gradient(to bottom, var(--secondary-color) 5%, var(--secondary-color) 100%);
   background-color:var(--secondary-color) 5%;
-  box-shadow: 0px 8px 14px -7px var(--secondary-color);
+  box-shadow: 0px 8px 10px -7px var(--secondary-color);
   text-shadow: var(--text-shadow);
   animation: pulse .1s cubic-bezier(0.645, 0.045, 0.355, 1);
  
@@ -40,7 +40,7 @@
 }
 
 .fab-btn{
-  margin-right: 30px;
+  margin-right: 10px;
   position: relative;
   grid-column: 2/3;
   background-color: rgba(0, 0, 0, 0);
@@ -84,6 +84,7 @@
 }
 .navItems-container{
   position: absolute;
+  float: left;
   right: 0px;
   top: 30px;
   z-index: 100;
@@ -95,17 +96,17 @@
   margin: 0px 5px 0px;
 }
 
-.nav-item-with-children:hover> span >.drop-icon,
-.nav-item-with-children:active> span >.drop-icon{
+.nav-item-with-children:hover> span >.rotate,
+.nav-item-with-children:active> span >.rotate{
   transform: rotate(90deg);
 }
 .inner-nav-item{
   display: none;
 }
-.nav-item-with-children:active>.inner-nav-item, 
-.nav-item-with-children:hover>.inner-nav-item,
-.translator:active>.inner-nav-item, 
-.translator:hover>.inner-nav-item{
+.nav-item-with-children:active>.closable, 
+.nav-item-with-children:hover>.closable,
+.translator:active>.closable, 
+.translator:hover>.closable{
   display: flex;
 }
 
@@ -114,38 +115,37 @@
   -webkit-flex-direction: column; 
   flex-direction: column; 
   flex-wrap: nowrap;
-  margin: 0px 0px 0px 2px;
-
+  justify-items: flex-start;
+  margin: 0px;
   position: relative;
-  z-index: 99;
-  /* right: 170px; */
-  animation: zoomInLeft 0.1s ease-in-out;
-  }
+  right: 10px;
+  animation: fadeIn 0.1s ease-in-out;
+}
 
 .spacious{
-padding:15px 25px;
-width: 100%;
+  padding:15px 32px;
+  width: 100%;
 } 
 .translator{
- width: 100%;
-margin: 0px;
-justify-items: center;
-align-items: center;
-font-size: .8em;
+  width: 100%;
+  margin: 0px;
+  justify-items: center;
+  align-items: center;
+  font-size: .8em;
 }
 .span-with-children{
-margin:15px 25px;
+  margin:15px 32px;
 } 
 
 .nav-item-with-children, .translator{
-display: flex;
--webkit-flex-direction: column; 
-flex-direction: column; 
-flex-wrap: nowrap;
+  display: flex;
+  -webkit-flex-direction: column; 
+  flex-direction: column; 
+  flex-wrap: nowrap;
 }
 .block{
-display: inline-block;
-width: 100%;
+  display: inline-block;
+  width: 100%;
 }
 .mid{
   grid-area: 'mid';
@@ -154,7 +154,7 @@ width: 100%;
 
   
   @media screen and (min-width: 780px){
- 
+
     .navItems{
       list-style: none;
       display: flex;
@@ -192,21 +192,27 @@ width: 100%;
     }
   
 .spacious{
-  padding:15px 32px;
+  padding:15px 28px;
 } 
 
 .inner-nav-item{
   display: none;
   position: absolute;
+  z-index: 99;
+  width: 100%;
 }
 .span-with-children{
-  margin:14px 32px;
+  margin:14px 28px;
 } 
 .nav-item-with-children, .translator{
   display: flex;
   -webkit-flex-direction: column; 
   flex-direction: column; 
   flex-wrap: nowrap;
+}
+.nav-item-with-children:hover> span >.drop-icon,
+.nav-item-with-children:active> span >.drop-icon{
+  transform: rotate(90deg);
 }
 .nav-item-with-children:active>.inner-nav-item, .translator:active>.inner-nav-item, 
 .nav-item-with-children:hover>.inner-nav-item, .translator:hover>.inner-nav-item{

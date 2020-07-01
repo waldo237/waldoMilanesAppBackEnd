@@ -4,8 +4,8 @@ main{
     margin-top: 15px;
     display: grid;
     grid-template-columns: .2fr 4fr .2fr;
-    grid-template-rows: 0.2fr .5fr .5fr; 
-    gap: 6px 5px;
+    grid-template-rows: 0.2fr .3fr .5fr; 
+    gap: 20px 5px;
 }
 
 .wm-img{
@@ -76,7 +76,7 @@ main{
     font-size: 10vw;
     word-spacing: 5px;
     animation: slideInUp 1.3s ease-in-out;
-   transition: 1s .1s;
+    transition: 1s .1s;
 }
 
 
@@ -85,10 +85,15 @@ main{
     justify-content: center;
     flex-direction: column;
 }
-.job-title, .name{
+.qualities{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+.job-title{
     margin:0px;
     align-self: center;
-
 }
 #description{
     grid-column: 2/3 ;
@@ -102,9 +107,8 @@ main{
     justify-content: center;
 }
 #synthesis{
-
     justify-content: center;
-    margin: 0px 0px;
+    margin: 0px 15px;
   
 }
 
@@ -121,7 +125,7 @@ main{
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    width: 100vw;
+    width: 100%;
     min-height: 300px;
     -webkit-clip-path: url(#my-shape);
     clip-path:url(#my-shape);
@@ -163,7 +167,7 @@ main{
 aside {
     margin: 0;
     font-size: 0.8em;    
-    width: 100vw;
+    width: 100%;
     transition-duration: .8s;
 }
 .aside-img{
@@ -246,6 +250,11 @@ aside {
  padding: 0px;
 }
 @media screen and (min-width: 780px){
+    main{
+        grid-template-rows: 0.2fr .5fr .5fr; 
+        gap: 6px 5px;
+    }
+    
     .wm-img{
         background-size: 520px;
         min-width: 350px;
@@ -269,6 +278,13 @@ aside {
         display: flex;
         justify-content: center;
         padding: 20px;
+    }
+    .qualities{
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        align-items: center;
+        justify-items: center;
     }
     #synthesis{
         display: grid;

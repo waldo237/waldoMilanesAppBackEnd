@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes, faCaretDown, faLanguage } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes, faLanguage, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './Nav.css'
 import { faNodeJs, faJava, faVuejs, faReact, } from '@fortawesome/free-brands-svg-icons';
 
@@ -10,9 +10,9 @@ class Navigation extends Component {
 
     super()
     this.state = {
-      menuActivated: false,
+      showSideMenu: false,
       navItems: [
-        { title: 'Waldo Milanes', link: '/' },
+        { title: 'Home', link: '/' },
         {
           title: 'My Work', link: '/portfolio', children: [
             { title: 'Node', link: '/project/node', icon: faNodeJs },
@@ -26,19 +26,26 @@ class Navigation extends Component {
         { title: 'Be my supporter', link: '/supporters' },
         {
           title: '', link: '/React', icon: faLanguage, children: [
-            { title: 'español', link: '/', },
             { title: 'English', link: '/', },
+            { title: 'español', link: '/', },
             { title: 'français', link: '/', },
           ]
         },
-      ]
+      ],
+          //turn icon .rotate and .closable
+   openInnerList: ()=>{
+      const icon = document.querySelector('.drop-icon');
+      const innerItems = document.querySelector('.inner-nav-item');
+       icon.classList.toggle('rotate');
+       innerItems.classList.toggle('closable')
+     }
     };
   }
 
   componentDidMount() {
     const nav = document.getElementById("navbar");
     const sticky = nav.offsetTop + nav.offsetHeight;
-    const makeStick = () => { // make nav sticky
+    const makeNavSticky = () => { 
       if (window.pageYOffset > sticky) {
         nav.classList.add("sticky");
         nav.classList.remove("stuck");
@@ -47,32 +54,33 @@ class Navigation extends Component {
         nav.classList.add("stuck");
       }
     }
-    window.onscroll = () => makeStick();
+    window.onscroll = () => makeNavSticky();
 
 
-    const activateNav = () => { //turn widescreen menu on and off.
+    const activateSideNav = () => {
       if (document.body.clientWidth >= 780) {
-        this.setState({ menuActivated: true })
+        this.setState({ showSideMenu: true })
       } else {
-        this.setState({ menuActivated: false })
+        this.setState({ showSideMenu: false })
       }
     };
-    activateNav();
-    window.addEventListener('resize', activateNav);
-    document.addEventListener("click", (evt) => { //make the nav colapse if click away.
+    activateSideNav();
+    window.addEventListener('resize', activateSideNav);
+
+    //make the nav colapse if click away.
+    document.addEventListener("click", (evt) => { 
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
-        const innerNav = document.getElementById("with-children");
+        const innerNav = document.querySelector(".span-with-children");
+        const translator = document.querySelector(".translator");
         let targetElement = evt.target;
         do {
-          if (targetElement === navItems || targetElement === innerNav) {
+          if (targetElement === navItems || targetElement === innerNav || targetElement === translator) {
             return;
           }
           targetElement = targetElement.parentNode;
         } while (targetElement);
-        this.setState({
-          menuActivated: false
-        })
+        this.setState({ showSideMenu: false })
       }
     });
   }
@@ -84,14 +92,14 @@ class Navigation extends Component {
     return (
       <nav id='navbar' className='primary'>
         <div className='mid primary' id='nav'>
-          <button className='fab-btn' onClick={() => { this.setState({ menuActivated: !this.state.menuActivated }); }}>
-            {this.state.menuActivated
+          <button className='fab-btn' onClick={() => { this.setState({ showSideMenu: !this.state.showSideMenu }); }}>
+            {this.state.showSideMenu
               ? <FontAwesomeIcon className='fa-lg' icon={faTimes} />
               : <FontAwesomeIcon className='fa-lg' icon={faBars} />}
           </button>
         </div>
         {
-          this.state.menuActivated
+          this.state.showSideMenu
             ? <div className='navItems-outer-wrapper'>
               <div className='navItems-container primary'> <ul className='navItems' id="navItems">
                 {this.state.navItems.map((navItem) => <li key={navItem.title}>{this.listNavItems(navItem)}</li>)}
@@ -107,22 +115,32 @@ class Navigation extends Component {
 
   listNavItems(item) {
     if (item.children) {
-      return <div className={`btn ${(!item.icon) ? 'nav-item-with-children' : 'translator'}`}>
-        <span className='span-with-children'>{item.title}
+      return <div id='with-children' className={` ${(!item.icon) ? 'nav-item-with-children' : 'translator'}`}>
+        <span className='span-with-children' onClick={this.state.openInnerList}>
+        {item.title}
           {(item.icon)
-            ? <FontAwesomeIcon className='fa-lg' icon={item.icon} />
-            : <FontAwesomeIcon className='fa-lg drop-icon' icon={faCaretDown} />}
-
+            ? <div>
+              <select id="selectbox" data-selected="" className='translator btn'>
+                {item.children.map((child, i) => <option className='primary' key={i} value={child.title}>{child.title}</option>)
+                }
+              </select>
+            </div>
+            : <FontAwesomeIcon className=' drop-icon' icon={faChevronDown} />}
+         
         </span>
-        <ul className='inner-nav-item'>
-          {item.children.map(child => {
-            return <NavLink activeClassName="active" exact={true} to={child.link} key={child.title}>
-              <button className='btn spacious block '>
-                {(!item.icon) ? <FontAwesomeIcon className='fa-lg ' icon={child.icon} /> : null}   {child.title}
-              </button>
-            </NavLink>
-          })}
-        </ul>
+        {(!item.icon)
+          ? <ul className='inner-nav-item'>
+            {item.children.map(child => {
+              return <NavLink activeClassName="active" exact={true} to={child.link} key={child.title}>
+                <button className='btn spacious block '>
+                  {(!item.icon) ? <FontAwesomeIcon className='fa-lg' icon={child.icon} /> : null}   {child.title}
+                </button>
+              </NavLink>
+            })}
+          </ul>
+          : null
+        }
+
       </div>
     } else {
       return <NavLink activeClassName="active" exact={true} to={item.link} >
