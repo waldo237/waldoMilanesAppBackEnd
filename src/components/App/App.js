@@ -6,7 +6,7 @@ import Navigation from '../Nav/Nav.js'
 import Routes from '../../Routes/Routes.js'
 import Footer from '../Footer/Footer.js'
 import { useTransition, useSpring, animated } from 'react-spring'
-
+import ScrollToTop from './ScrollToTop'
 const App = () => {
   const transitions = useTransition([1], item => item.key, {
     from: { transform: 'translate3d(0,-500px,0)' },
@@ -21,6 +21,7 @@ const App = () => {
   
   return (
     <Router>
+  	<ScrollToTop />
       <div className="app light">
         <header className="header primary shadow" id='header'>
           {transitions.map(({ item, props, key }) =>

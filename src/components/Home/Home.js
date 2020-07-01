@@ -3,7 +3,6 @@ import './Home.css'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-   
     const [open, toggle] = useState(false);
     const educationPoints = [
         {
@@ -139,9 +138,9 @@ const Home = () => {
 }
 
 const MainCard = ({ toggle, open }) => {
+
     useEffect(() => {
         document.title="Waldo Milanes' professional profile";
-        // window.scrollTo(0, 0);
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");
         const myWork = document.querySelector("#my-work");
