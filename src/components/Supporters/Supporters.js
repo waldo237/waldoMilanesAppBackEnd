@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Supporters.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGoogle, faFacebookF} from '@fortawesome/free-brands-svg-icons'
@@ -19,7 +19,9 @@ const Supporters = () => {
       .filter(e => e.type == name))
 
   }
-
+useEffect(()=>{
+    document.title='Become my supporter'
+}, [])
   const postRegistration = (e) => {
     e.preventDefault();
     if (supporterValidator(user).valid) {

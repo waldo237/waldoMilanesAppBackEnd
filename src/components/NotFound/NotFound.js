@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './NotFound.css'
 import img from '../../static/banner.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,9 @@ import { faExclamation } from '@fortawesome/free-solid-svg-icons'
 
 
 const NotFound = () => {
-
+useEffect(()=>{
+  document.title='This page was not found';
+}, [])
   return (
     <main className="page-main animate__animated animate__fadeInUp light">
       <div className='contact-title main-title rubberband'>

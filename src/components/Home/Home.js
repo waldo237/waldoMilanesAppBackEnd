@@ -140,6 +140,7 @@ const Home = () => {
 
 const MainCard = ({ toggle, open }) => {
     useEffect(() => {
+        document.title="Waldo Milanes' professional profile";
         // window.scrollTo(0, 0);
         const wmImg = document.querySelector(".wm-img");
         const description = document.querySelector("#description");

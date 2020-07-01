@@ -14,9 +14,9 @@ import NotFound from '../components/NotFound/NotFound.js'
 const Routes = () => {
     return ( 
             <Switch>
-                <Route path='/' component={Home} exact />
+                <Route path='/' component={Home} exact  />
                 <Route path='/Portfolio' component={Portfolio} />
-                <Route path='/articles' component={Articles} />
+                <Route path='/articles' component={Articles}  />
                 <Route path='/contacts' component={Contacts} />
                 <Route path='/supporters' component={Supporters} />
                 <Route path='/project/:language' component={ProjectViewer} />

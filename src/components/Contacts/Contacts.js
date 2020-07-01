@@ -12,13 +12,16 @@ const Contacts = () => {
   const [requestStarted, setRequest] = useState(false)
   const [displayableErrors, setErrors] = useState([])
 
+
+  useEffect(()=>{
+    document.title='Get in touch with me'
+  },[])
   const inputHandler = (event) => {
     let name = event.target.name
     user[name] = event.target.value
     setErrors(contactValidator(user)
       .errors
       .filter(e => e.type == name))
-
   }
   const postEmail = (e) => {
    

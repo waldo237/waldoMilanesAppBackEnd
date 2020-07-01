@@ -9,6 +9,7 @@ const Articles = () => {
 
   const [articles, setData] = useState([]);
   useEffect(() => {
+    document.title='Articles I have written';
     fetch('http://localhost:3001/articles')
       .then(res => res.json())
       .then(setData)

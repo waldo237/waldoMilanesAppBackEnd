@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Portfolio.css'
 import { Link } from 'react-router-dom'
 import { faNodeJs, faJava, faVuejs, faReact } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Portfolio = () => {
+    useEffect(()=>{
+        document.title='Projects'
+    },[])
     const projects = [
         { url: '/project/node', icon: faNodeJs, title: 'My projects done with NodeJs', description: 'A collection of projects I have created using NodeJs. They reflect my experience working with this technology.' },
         { url: '/project/java', icon: faJava, title: 'My projects done with Java', description: 'A collection of projects I have created using Java. They reflect my experience working with this technology.' },
