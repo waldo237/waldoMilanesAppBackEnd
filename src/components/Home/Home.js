@@ -87,53 +87,65 @@ const Home = () => {
             description: 'Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.'
         },
         
-    ];
+    ]; 
 
     return (
-        <>
-            <main className='main light'>
-                <MainCard toggle={toggle} open={open} />
-                <div id='description'>
-                    {open
-                        ? <div id='synthesis' className='description-in'>
+      <>
+        <main className='main light'>
+          <MainCard toggle={toggle} open={open} />
+          <div id='description'>
+            {open
+                        ? (
+                          <div id='synthesis' className='description-in'>
                             <p>Hi, my name is Waldo Milanes. I am an enthusiastic and skilled professional with substantial technical expertise in designing and developing web applications. I know how to efficiently create elegant and user-friendly interfaces, setup back-end databases that serve different business needs, and connect these two ends in a way that is secured and optimized. </p>
                             <p> Working as a manager in the educational field for several years has given me the experience to help small teams foster cooperation and motivation to deliver accurate results. I excel at communicating my ideas respectfully and negotiating differences with my colleagues. </p>
-                        </div>
-                        : null
-                    }
-                </div>
-            </main>
-            <svg width="0" height="0">
-                <defs>
-                    <clipPath id="my-shape" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)">
-                        <path fill="#0099ff" d="M0,32L48,48C96,64,192,96,288,101.3C384,107,480,85,576,69.3C672,53,768,43,864,37.3C960,32,1056,32,1152,42.7C1248,53,1344,75,1392,85.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>                                                    </clipPath>
-                </defs>
-            </svg>
-            <article className='light'>
+                          </div>
+)
+                        : null}
+          </div>
+        </main>
+        <svg width="0" height="0">
+          <defs>
+            <clipPath id="my-shape" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)">
+              <path fill="#0099ff" d="M0,32L48,48C96,64,192,96,288,101.3C384,107,480,85,576,69.3C672,53,768,43,864,37.3C960,32,1056,32,1152,42.7C1248,53,1344,75,1392,85.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />                                                    
+            </clipPath>
+          </defs>
+        </svg>
+        <article className='light'>
 
-                <div id='my-work'>
-                    <Link to='/portfolio'>
-                        <button className='my-work-btn' >
-                            my work
-                        </button>
-                    </Link>
-                </div>
-            </article>
-            <aside id='education'>
-                <div id='credentials'>
-                    <h1 className='title-font primary--text title-2'>Education</h1>
-                    {educationPoints.map((item) =>
-                        <div key={item.id} className='certificate'>
-                            <h2>{item.career}</h2>
-                            <h4>{item.university}</h4>
-                            <h5>{item.duration}— {item.place}</h5>
-                            <p> {item.description} </p>
-                        </div>
+          <div id='my-work'>
+            <Link to='/portfolio'>
+              <button type='button' className='my-work-btn'>
+                my work
+              </button>
+            </Link>
+          </div>
+        </article>
+        <aside id='education'>
+          <div id='credentials'>
+            <h1 className='title-font primary--text title-2'>Education</h1>
+            {educationPoints.map((item) => (
+              <div key={item.id} className='certificate'>
+                <h2>{item.career}</h2>
+                <h4>{item.university}</h4>
+                <h5>
+                  {item.duration}
+                  — 
+                  {' '}
+                  {item.place}
+                </h5>
+                <p> 
+                  {' '}
+                  {item.description}
+                  {' '}
+                </p>
+              </div>
+                      )
                     )}
-                </div>
-                <div className='aside-img'></div>
-            </aside>
-        </>
+          </div>
+          <div className='aside-img' />
+        </aside>
+      </>
     )
 }
 
@@ -146,7 +158,7 @@ const MainCard = ({ toggle, open }) => {
         const myWork = document.querySelector("#my-work");
         const education = document.querySelector("#education");
 
-        const descriptionObserver = new IntersectionObserver((entries, descriptionObserver) =>
+        const descriptionObserver = new IntersectionObserver((entries) =>
             entries.forEach(entry => {
                 if (entry.isIntersecting && document.body.clientWidth >= 900) {
                     wmImg.classList.add("img-scrolled-1");
@@ -155,7 +167,7 @@ const MainCard = ({ toggle, open }) => {
                 }
             }), (document.body.clientWidth < 1500) ? { rootMargin: '0px' } : { rootMargin: '-150px' });
 
-        const descriptionObserver2 = new IntersectionObserver((entries, workObserver) => {
+        const descriptionObserver2 = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.intersectionRatio > 0 && !open) toggle({ open: true })
                 if (entry.isIntersecting) {
@@ -166,13 +178,13 @@ const MainCard = ({ toggle, open }) => {
             });
         }, (document.body.clientWidth < 1500) ? { rootMargin: '-150px' } : { rootMargin: '-250px' });
 
-        const myWorkObserver = new IntersectionObserver((entries, myWorkObserver) => {
+        const myWorkObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => (entry.isIntersecting)
                 ? myWork.classList.add("my-work-scrolled")
                 : myWork.classList.remove("my-work-scrolled"));
         });
 
-        const educObserver = new IntersectionObserver((entries, educObserver) => {
+        const educObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => (entry.isIntersecting)
                 ? education.classList.add("edu-scrolled")
                 : education.classList.remove("edu-scrolled"));
@@ -183,20 +195,22 @@ const MainCard = ({ toggle, open }) => {
         educObserver.observe(education);
     }, [toggle, open]);
 
-    return <>
-        <div className='wm-img shadow'></div>
+    return (
+      <>
+        <div className='wm-img shadow' />
         <div className='home-banner'>
-            <div className='title-wrapper'>
-               <div className='qualities'>
-               <h4  >A Pragmatic </h4>
-               <h4 >&nbsp;&amp;&nbsp;</h4>
-               <h4>Dedicated</h4>
-              </div> 
-                <small className='job-title'>Web Developer</small>
+          <div className='title-wrapper'>
+            <div className='qualities'>
+              <h4>A Pragmatic </h4>
+              <h4>&nbsp;&amp;&nbsp;</h4>
+              <h4>Dedicated</h4>
+            </div> 
+            <small className='job-title'>Web Developer</small>
 
-            </div>
+          </div>
         </div>
-    </>
+      </>
+)
 }
 
 

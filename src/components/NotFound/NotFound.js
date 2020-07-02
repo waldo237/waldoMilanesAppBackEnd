@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 import './NotFound.css'
-import img from '../../static/banner.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamation } from '@fortawesome/free-solid-svg-icons'
-
+import img from '../../static/banner.png'
+ 
 
 const NotFound = () => {
 useEffect(()=>{
@@ -20,7 +20,7 @@ useEffect(()=>{
       <section>
 
         <div className='card-container card-404 shadow primary'>
-        <img src={img} alt='WM robot' className='mw-robot'/>
+          <img src={img} alt='WM robot' className='mw-robot' />
 
           <h6 className='double-w secondary--text'> Page Not Found</h6>
         </div>

@@ -2,8 +2,7 @@
 .btn, .nav-item-with-children {
 	box-shadow: 0px 10px 14px -10px rgba(35, 35, 61, 0.473) ;
 	background:linear-gradient(to bottom, rgb(35, 35, 61)  5%, rgb(35, 35, 61)  100%);
-	background-color:rgba(42, 50, 75, 0.719);
-  border: .2px;
+  border: 0px;
 	display:inline-block;
 	cursor:pointer;
 	color:var(--light);
@@ -12,7 +11,6 @@
 	font-weight:bold;
   text-decoration:none;
   text-transform: uppercase;
-  text-shadow:0px 2px 19px rgb(35, 35, 61)  5%;
  
 }
 .btn:hover, .btn:active {
@@ -151,8 +149,14 @@
   grid-area: 'mid';
   float: right;
 }
+.display-none{
+  display: none;
+}
+.small-w-programming-img{
+  width:30px;
+  margin: 5px 25px 5px ;
 
-  
+}  
   @media screen and (min-width: 780px){
 
     .navItems{
