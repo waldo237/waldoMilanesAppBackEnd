@@ -1,38 +1,38 @@
-.porfolio-title{
+.porfolio-title {
   grid-column: 2/3;
   justify-self: center;
   transition: ease-in-out;
-  letter-spacing: .8px;
+  letter-spacing: 0.8px;
   margin-bottom: 20px;
 }
-.link{
-    text-decoration: none;
+.link {
+  text-decoration: none;
 }
-.technology-container{
-    grid-column: 2/3;
-    padding: 10px 15px;
-    width: 50vw;
+.technology-container {
+  grid-column: 2/3;
+  padding: 10px 15px;
+  width: 50vw;
 }
 
-.technology-img{
-    max-width: 150px;
-    max-height: 150px;
+.technology-img {
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .technoly-title::after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 15%;
-    position: relative;
-    background: rgb(245, 188, 3);
-    filter: brightness(180%);
-    transition: width 0.4s ease 0s, left 0.4s ease 0s;
-    width:  0%;
-  }
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 15%;
+  position: relative;
+  background: rgb(245, 188, 3);
+  filter: brightness(180%);
+  transition: width 0.4s ease 0s, left 0.4s ease 0s;
+  width: 0%;
+}
 .technoly-title:hover::after {
-    width: 100%; 
-    left: 0; 
-  }
+  width: 100%;
+  left: 0;
+}

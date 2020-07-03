@@ -1,79 +1,74 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
   --primary-color: rgb(35, 35, 61);
   --secondary-color: rgb(251, 211, 3);
-  --light: #FBF7F4;
+  --light: #fbf7f4;
   --text-shadow: 0px 1px 2px var(--primary-color);
-  --break-point: 780px
+  --break-point: 780px;
 }
 
 body {
   padding: 0px;
   margin: 0px;
-  font-family: 'Raleway', serif;
+  font-family: "Raleway", serif;
 }
 
-
-.primary{
+.primary {
   background-color: var(--primary-color);
   color: white;
-
 }
-.secondary{
+.secondary {
   background-color: var(--secondary-color);
 }
-.secondary--text{
+.secondary--text {
   color: var(--secondary-color);
 }
-.primary--text{
+.primary--text {
   color: var(--primary-color);
 }
 
-.light{
-  background-color: var(--light)
-
+.light {
+  background-color: var(--light);
 }
 
-.fab-btn{
+.fab-btn {
   border-radius: 30px;
-
 }
 
-.neom{
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+.neom {
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
     -12px -12px 24px 0 rgba(243, 243, 243, 0.637);
 }
-.shadow{
-
-  -webkit-box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
-  -moz-box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
-  box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
+.shadow {
+  -webkit-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+  -moz-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+  box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
 }
 
-.title-font{
-  font-family: 'Bebas Neue', sans-serif;
+.title-font {
+  font-family: "Bebas Neue", sans-serif;
 }
 
-.bold{
+.bold {
   font-weight: 700;
 }
 
-.hoverable-card{
+.hoverable-card {
   transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-  transition-delay: .1s;
-  transition-duration: .3s;
+  transition-delay: 0.1s;
+  transition-duration: 0.3s;
 }
 
 .hoverable-card:active,
 .hoverable-card:focus,
-.hoverable-card:hover{
-  transform:  translate3d(2px,-15px,-90px);
+.hoverable-card:hover {
+  transform: translate3d(2px, -15px, -90px);
   filter: brightness(50%);
-  -webkit-box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
-  -moz-box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
-  box-shadow: -1px 2px 8px -1px rgba(0,0,0,0.62);
+  -webkit-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+  -moz-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+  box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
 }

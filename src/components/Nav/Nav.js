@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
   faBars,
   faTimes,
   faLanguage,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Nav.css"; 
+import "./Nav.css";
 import {
   faNodeJs,
   faJava,
   faVuejs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
-import bannerImg from '../../static/banner.png'
+import bannerImg from "../../static/banner.png";
 
 class Navigation extends Component {
   constructor() {
@@ -65,11 +65,11 @@ class Navigation extends Component {
       if (window.pageYOffset > navOriginalPositioin) {
         nav.classList.add("sticky");
         nav.classList.remove("stuck");
-        wProgrammingImg.classList.remove('display-none');
+        wProgrammingImg.classList.remove("display-none");
       } else {
         nav.classList.remove("sticky");
         nav.classList.add("stuck");
-        wProgrammingImg.classList.add('display-none');
+        wProgrammingImg.classList.add("display-none");
       }
     };
     window.onscroll = () => makeNavSticky();
@@ -111,17 +111,14 @@ class Navigation extends Component {
     document.removeEventListener("resize");
   }
 
-
-
   listNavItems(item) {
-   const {openInnerList} = this.state;
+    const { openInnerList } = this.state;
     if (item.children) {
       return (
         <div
           id="with-children"
           className={` ${!item.icon ? "nav-item-with-children" : "translator"}`}
         >
-          
           <span
             className="span-with-children"
             onClick={openInnerList}
@@ -136,7 +133,11 @@ class Navigation extends Component {
                   className="translator btn"
                 >
                   {item.children.map((child) => (
-                    <option className="primary" key={child.title} value={child.title}>
+                    <option
+                      className="primary"
+                      key={child.title}
+                      value={child.title}
+                    >
                       {child.title}
                     </option>
                   ))}
@@ -155,11 +156,10 @@ class Navigation extends Component {
                   to={child.link}
                   key={child.title}
                 >
-                  <button type='button' className="btn spacious block ">
+                  <button type="button" className="btn spacious block ">
                     {!item.icon ? (
                       <FontAwesomeIcon className="fa-lg" icon={child.icon} />
-                    ) : null}
-                    {" "}
+                    ) : null}{" "}
                     {child.title}
                   </button>
                 </NavLink>
@@ -171,20 +171,26 @@ class Navigation extends Component {
     }
     return (
       <NavLink activeClassName="active" exact to={item.link}>
-        <button type='button' className="btn spacious">{item.title}</button>
+        <button type="button" className="btn spacious">
+          {item.title}
+        </button>
       </NavLink>
     );
   }
 
   render() {
-    const {showSideMenu, navItems}= this.state;
+    const { showSideMenu, navItems } = this.state;
     return (
       <nav id="navbar" className="primary">
-        <img src={bannerImg} alt='W Programming icon' className='small-w-programming-img display-none' />
+        <img
+          src={bannerImg}
+          alt="W Programming icon"
+          className="small-w-programming-img display-none"
+        />
         <div className="mid primary" id="nav">
           <button
             className="fab-btn"
-            type='button'
+            type="button"
             onClick={() => {
               this.setState({ showSideMenu: !showSideMenu });
             }}

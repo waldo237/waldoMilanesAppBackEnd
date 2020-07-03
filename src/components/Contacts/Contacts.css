@@ -1,72 +1,67 @@
-.contact-title{
-    display: flex;
-    align-items: center;
-    justify-items: center;
+.contact-title {
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
 
 .contact-card-titles {
-    margin:0px;
-    padding:0px;
+  margin: 0px;
+  padding: 0px;
 }
 
-.contact-container{
+.contact-container {
+  display: grid;
+  grid-template-rows: 0fr 1fr 2fr 0.1fr;
+  justify-content: start;
+  align-items: stretch;
+}
+.contact-info-card h6 {
+  margin: 15px 10px;
+  font-weight: 100 !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.contact-container form {
+  grid-row: 3/4;
+}
+.small-icon {
+  margin: 0px 5px;
+}
+.contact-info-card {
+  padding: 10px;
+  grid-row: 2/3;
+}
+
+.anchor {
+  text-decoration: none;
+  color: var(--light);
+}
+.contact-info p {
+  padding: 10px;
+}
+
+@media screen and (min-width: 780px) {
+  .contact-container {
     display: grid;
-    grid-template-rows: 0fr 1fr 2fr .1fr;
+    grid-template-columns: 0fr 1.6fr 2fr 0.1fr;
+    grid-template-rows: 1fr;
     justify-content: start;
     align-items: stretch;
-}
-.contact-info-card h6{
-
+  }
+  .contact-info-card h6 {
     margin: 15px 10px;
     font-weight: 100 !important;
     font-family: Arial, Helvetica, sans-serif;
-}
-.contact-container form{
-    grid-row: 3/4;
-}
-.small-icon{
-    margin: 0px 5px ;
-}
-.contact-info-card{
-    padding: 10px;
+  }
+  .contact-container form {
+    grid-column: 3/4;
     grid-row: 2/3;
-}
-
-.anchor{
-    text-decoration: none;
-    color: var(--light);
-}
-.contact-info p{
+  }
+  .small-icon {
+    margin: 0px 5px;
+  }
+  .contact-info-card {
     padding: 10px;
-}
-
-@media screen and (min-width: 780px){
-    .contact-container{
-        display: grid;
-        grid-template-columns: 0fr 1.6fr 2fr .1fr;
-        grid-template-rows: 1fr;
-        justify-content: start;
-        align-items: stretch;
-    }
-    .contact-info-card h6{
-    
-        margin: 15px 10px;
-        font-weight: 100 !important;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    .contact-container form{
-        grid-column: 3/4;
-        grid-row: 2/3;
-        
-    }
-    .small-icon{
-        margin: 0px 5px ;
-    }
-    .contact-info-card{
-        padding: 10px;
-        grid-column: 2/3;
-        grid-row: 2/3;
-    }
-
-    
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
 }

@@ -1,9 +1,8 @@
 .card-404 {
-    padding: 15px 30px;
-    display: flex;
-    flex-direction: column;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
 }
-.rubberband{
-    animation: rubberBand 4s .2s infinite linear;
-   
+.rubberband {
+  animation: rubberBand 4s 0.2s infinite linear;
 }
