@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import "./Supporters.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -109,20 +110,23 @@ const Supporters = () => {
                   </div>
 
                   <div className="form-group">
-                    <label className="input">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                    />
+                    <label className="input" htmlFor="supporter-sign-in-email">Email address   
+                      <input
+                        id="supporter-sign-in-email"
+                        type="email"
+                        className="form-control"
+                        placeholder="Enter email"
+                      />
+                    </label>
+                  
                   </div>
 
                   <div className="form-group">
-                    <label className="input" htmlFor="password">
+                    <label className="input" htmlFor="supporter-sign-in-password">
                       Password
                       <input
                         name="password"
-                        id="password"
+                        id="supporter-sign-in-password"
                         type="password"
                         className="form-control"
                         placeholder="Enter password"
@@ -133,15 +137,16 @@ const Supporters = () => {
 
                   <div className="form-group">
                     <div className="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        className="custom-control-input"
-                        id="customCheck"
-                      />
+                   
                       <label
                         className="custom-control-label"
                         htmlFor="customCheck"
                       >
+                        <input
+                          id="customCheck"
+                          type="checkbox"
+                          className="custom-control-input"
+                        />
                         Remember me
                       </label>
                     </div>
@@ -151,7 +156,7 @@ const Supporters = () => {
                     Submit
                   </button>
                   <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
+                    Forgot <a href="/">password?</a>
                   </p>
                 </form>
               </article>
@@ -162,46 +167,62 @@ const Supporters = () => {
                   <h3>Sign Up</h3>
 
                   <div className="form-group">
-                    <label className="input">First name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="First name"
-                    />
+                    <label className="input" htmlFor="supporter-sign-up-first-name">
+                      First name
+                      <input
+                        id="supporter-sign-up-first-name"
+                        type="text"
+                        className="form-control"
+                        placeholder="First name"
+                      />
+                    </label>
+                    
                   </div>
 
                   <div className="form-group">
-                    <label className="input">Last name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Last name"
-                    />
+                    <label className="input" htmlFor="supporter-sign-up-last-name">
+                      Last name
+                      <input
+                        id="supporter-sign-up-last-name"
+                        type="text"
+                        className="form-control"
+                        placeholder="Last name"
+                      />
+                    </label>
+                 
                   </div>
 
                   <div className="form-group">
-                    <label className="input">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                    />
+                    <label className="input" htmlFor="supporter-sign-up-email">
+                      Email address
+                      <input
+                        id="supporter-sign-up-email"
+                        type="email"
+                        className="form-control"
+                        placeholder="Enter email"
+                      />
+                    </label>
+                  
                   </div>
 
                   <div className="form-group">
-                    <label className="input">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter password"
-                    />
+                    <label className="input" htmlFor="supporter-sign-up-password">
+                      Password
+                      <input
+                        id="supporter-sign-up-password"
+                        type="password"
+                        className="form-control"
+                        placeholder="Enter password"
+                      />
+                    </label>
+                  
                   </div>
 
                   <button type="submit" className="submit-btn primary">
                     Sign Up
                   </button>
                   <p className="forgot-password text-right">
-                    Already registered <a href="#">sign in?</a>
+                    Already registered <a href="/">sign in?</a>
                   </p>
                 </form>
               </article>
