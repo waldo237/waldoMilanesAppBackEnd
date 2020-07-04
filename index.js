@@ -41,7 +41,7 @@ try {
 const limiter = new RateLimit({
     windowMs: 15 * 60 * 1000,
     max: 300,
-    delayMs: 0
+    delayMs: 0  
 });
 app.use(limiter)
 // log only 4xx and 5xx responses to console
