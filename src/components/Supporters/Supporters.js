@@ -1,3 +1,20 @@
+
+
+/* TODO    
+  MAKE TWO OBJECTS TO BE TRANSPORTERS, ONE FOR LOGIN AND 1 FOR REGISTER 
+  REFACTOR TO ATOMIC UNITS
+  INSERT THE EVENT HANDLERS
+   WITHIN INPUT HANDLER FIND THE ID OF THE EVENT, USE IT TO IDENTIFY THE TYPE OF OBJECT IT WILL CREATE
+  MAKE THE O-AUTH AUTHENTICATION.
+*/
+
+
+
+
+
+
+
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import "./Supporters.css";
@@ -43,6 +60,10 @@ const Supporters = () => {
       setErrors(supporterValidator(user).errors);
     }
   };
+  const logIn = ()=>{
+    //TODO
+  }
+
 
   return (
     <>
@@ -93,6 +114,14 @@ const Supporters = () => {
               <article className="supporter-login-card ">
                 <form className="sign-form">
                   <div className="o-auth-btns">
+                    {response ? (
+                      <ResponseAlert response={response} />
+                      ) : (
+                        <div>
+                          {requestStarted ? <Loading message="your email" /> : null}{" "}
+                        </div>
+                      )}
+                    <ErrorCard errors={displayableErrors} />
                     <button type="submit" className="google-btn">
                       {" "}
                       <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign

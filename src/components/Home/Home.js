@@ -246,6 +246,7 @@ const MainCard = ({ toggle, open }) => {
 };
 MainCard.propTypes = {
   toggle: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  open: PropTypes.any.isRequired,
 };
 export default Home;

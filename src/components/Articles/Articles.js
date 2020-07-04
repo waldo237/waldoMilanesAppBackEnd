@@ -1,3 +1,8 @@
+
+/* TODO
+    PLANT THE INCOMING ARTICLES IN THE LOCALSTORAGE OR USE SERVICE WORKER
+*/
+
 import React, { useState, useEffect } from "react";
 import "./Articles.css";
 import { Link } from "react-router-dom";
