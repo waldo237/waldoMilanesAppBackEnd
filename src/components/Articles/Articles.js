@@ -16,7 +16,7 @@ const Articles = () => {
     fetch("http://localhost:3001/articles")
       .then((res) => res.json())
       .then(setData)
-      .catch(console.error);
+      .catch(console.error);    
   }, []);
 
   return (
