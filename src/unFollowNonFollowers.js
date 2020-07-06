@@ -18,9 +18,9 @@ var WORDS =
 	//NOTE: if needed, add your language here...
 }
 var UNFOLLOW_FOLLOWERS = false; //If set to true, it will also remove followers (unless they are skipped).
-var MS_PER_CYCLE = 10; //Milliseconds per cycle (each call to 'performUnfollow').
+var MS_PER_CYCLE = 5; //Milliseconds per cycle (each call to 'performUnfollow').
 var MAXIMUM_UNFOLLOW_ACTIONS_PER_CYCLE = null; //Maximum of unfollow actions to perform, per cycle (each call to 'performUnfollow'). Set to 'null' to have no limit.
-var MAXIMUM_UNFOLLOW_ACTIONS_TOTAL = 100; //Maximum of unfollow actions to perform, in total (among all calls to 'performUnfollow'). Set to 'null' to have no limit.
+var MAXIMUM_UNFOLLOW_ACTIONS_TOTAL = 20; //Maximum of unfollow actions to perform, in total (among all calls to 'performUnfollow'). Set to 'null' to have no limit.
 var SKIP_USERS = //Users that we do not want to unfollow (even if they are not following you back):
 [
 	//Place the user names that you want to skip here (they will not be unfollowed):
@@ -48,7 +48,7 @@ var performUnfollow = function(followsYouText, followingButtonText, confirmation
 	//Looks through all the containers of each user:
 	var totalLimitReached = false;
 	var localLimitReached = false;
-	var userContainers = document.querySelectorAll('[data-testid=UserCell]');
+	var userContainers = document.querySelectorAll('[data-testid=UserCell]');   
 	Array.prototype.filter.call
 	(
 		userContainers,
