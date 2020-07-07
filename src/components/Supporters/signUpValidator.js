@@ -2,32 +2,32 @@
 import isEmail from "validator/es/lib/isEmail";
 import escape from "validator/es/lib/escape";
 
-const supporterValidator = (user) => {
+const signUpValidator = (user) => {
   const res = {
     valid: true,
     errors: [],
   };
 
-  if (!user.name) {
+  if (!user.firstName) {
     res.errors.push({
-      type: "name",
+      type: "firstName",
       message: "Please do not forget include your first name.",
     });
     res.valid = false;
-  } else if (user.name.length > 20) {
+  } else if (user.firstName.length > 20) {
     res.errors.push({
-      type: "name",
+      type: "firstName",
       message: "The first name shouldn't be longer than 20 characters.",
     });
     res.valid = false;
   }
-  if (!user.name) {
+  if (!user.lastName) {
     res.errors.push({
       type: "name",
       message: "Please do not forget include your last name.",
     });
     res.valid = false;
-  } else if (user.name.length > 20) {
+  } else if (user.lastName > 20) {
     res.errors.push({
       type: "name",
       message: "The last name shouldn't be longer than 20 characters.",
@@ -88,13 +88,15 @@ const supporterValidator = (user) => {
   }
   if (res.valid) {
     res.sanitized = {
-      name: escape(user.name.trim()),
-      email: escape(user.email.trim()),
-      message: escape(user.message.trim()),
+      firstName: escape(user.firstName.trim()),
+      lastName: escape(user.lastName.trim()),
+      email: user.email.trim(),
+      password: user.password.trim(),
+      
     };
   }
 
   return res;
 };
 
-export default supporterValidator;
+export default signUpValidator;
