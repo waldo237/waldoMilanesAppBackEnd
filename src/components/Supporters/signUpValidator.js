@@ -23,13 +23,13 @@ const signUpValidator = (user) => {
   }
   if (!user.lastName) {
     res.errors.push({
-      type: "name",
+      type: "lastName",
       message: "Please do not forget include your last name.",
     });
     res.valid = false;
   } else if (user.lastName > 20) {
     res.errors.push({
-      type: "name",
+      type: "lastName",
       message: "The last name shouldn't be longer than 20 characters.",
     });
     res.valid = false;
@@ -51,7 +51,7 @@ const signUpValidator = (user) => {
 
   if (!user.password) {
     res.errors.push({
-      type: "message",
+      type: "password",
       message: "Please do not forget to include your password.",
     });
     res.valid = false;
@@ -66,20 +66,21 @@ const signUpValidator = (user) => {
       res.passwordStrength = count;
       if (count <= 2) {
         res.errors.push({
-          type: "message",
+          type: "password",
           message: "The password is not strong enough",
-          recommendation: [
-            "At least one digit",
-            "At least one lowercase character",
-            "At least one uppercase character",
-            "At least one special character",
-          ],
+         
         });
+        res.suggestions = [
+          "At least one digit",
+          "At least one lowercase character",
+          "At least one uppercase character",
+          "At least one special character",
+        ];
         res.valid = false;
       }
     } else {
       res.errors.push({
-        type: "message",
+        type: "password",
         message:
           "Your password should be at least 8 characters in length, but no more than 32",
       });

@@ -33,7 +33,7 @@ const Contacts = () => {
 
       const sanitizedData = contactValidator(user).sanitized;
 
-      fetch("http://localhost:3001/email", {
+      fetch(`${process.env.REACT_APP_SERVER_URL}/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -116,7 +116,7 @@ const Contacts = () => {
               <ResponseAlert response={response} />
             ) : (
               <div>
-                {requestStarted ? <Loading message="your email" /> : null}{" "}
+                {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
               </div>
             )}
             <ErrorCard errors={displayableErrors} />

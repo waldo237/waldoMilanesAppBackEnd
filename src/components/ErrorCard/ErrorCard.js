@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ErrorCard = ({ errors }) => {
+const ErrorCard = ({ errors, suggestions }) => {
   const mystyle = {
     color: "rgb(96, 0, 0)",
     backgroundColor: "pink",
@@ -25,10 +25,13 @@ const ErrorCard = ({ errors }) => {
               {errors.map((error) => (
                 <li key={error.message}>
                   <FontAwesomeIcon style={mystyle} icon={faExclamationCircle} />{" "}
-                  {error.message}
+                  {error.message} 
+                  
                 </li>
               ))}
+              {(suggestions.length)? <ol className="animate__animated animate__fadeInUp">{suggestions.map((sug)=> <li key={sug}>{sug}</li>)}</ol>  :null}
             </ul>
+            
           </div>
         </div>
       ) : null}
@@ -38,8 +41,11 @@ const ErrorCard = ({ errors }) => {
 ErrorCard.propTypes={
   // eslint-disable-next-line react/forbid-prop-types
   errors: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
+  suggestions: PropTypes.array,
 }
 ErrorCard.defaultProps ={
-  errors: []
+  errors: [],
+  suggestions: []
 }
 export default ErrorCard;

@@ -4,6 +4,7 @@ import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signUpValidator from './signUpValidator'
+import PasswordInput from './PasswordInput'
 
 const SignUpForm = () =>{ 
     const [user] = useState({});
@@ -23,7 +24,6 @@ const SignUpForm = () =>{
   
 
     const signUp = (e)=>{
-      console.log(user)
         e.preventDefault();
         if (signUpValidator(user).valid) {
           setRequest(true);
@@ -38,6 +38,7 @@ const SignUpForm = () =>{
             .then((res) => res.json())
             .then(setResponse)
             .catch(console.error);
+            // setErrors([]) // empty displayble arrays
         } else {
           setErrors(signUpValidator(user).errors);
         }
@@ -47,9 +48,9 @@ const SignUpForm = () =>{
       <form className="sign-form" onSubmit={signUp}>
         <h3>Sign Up</h3>
         {response 
-          ? (<ResponseAlert response={response} />) 
-          : (<div>{requestStarted ? <Loading message=" your authentication" /> : null}{" "} </div>)}
-        <ErrorCard errors={displayableErrors} />
+          ? (  <ResponseAlert response={response} />) 
+          : (<div>{requestStarted ? <Loading message="Processing your registration" /> : null}{" "} </div>)}
+        <ErrorCard errors={displayableErrors} suggestions={signUpValidator(user).suggestions} />
         <div className="form-group">
           <label className="input" htmlFor="supporter-sign-up-first-name">
             First name
@@ -95,21 +96,7 @@ const SignUpForm = () =>{
         
         </div>
 
-        <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-up-password">
-            Password
-            <input
-              id="supporter-sign-up-password"
-              name="password"
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={inputHandler}
-            />
-          </label>
-        
-        </div>
-
+        <PasswordInput inputHandler={inputHandler} strength={signUpValidator(user).passwordStrength} />
         <button type="submit" className="submit-btn primary">
           Sign Up
         </button>

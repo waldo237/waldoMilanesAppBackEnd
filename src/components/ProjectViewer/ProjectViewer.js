@@ -37,7 +37,7 @@ const ProjectViewer = ({ match }) => {
   const technology = technologySwicher();
   useEffect(() => {
     document.title = "Work that I have done";
-    fetch(`http://localhost:3001/projects/${technology.extension}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/projects/${technology.extension}`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);

@@ -6,6 +6,7 @@ import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './signInValidator'
+import PasswordInput from './PasswordInput'
 
 const SignInForm = () =>{ 
     const [user] = useState({});
@@ -50,8 +51,8 @@ const SignInForm = () =>{
         <div className="o-auth-btns">
           {response 
           ? (<ResponseAlert response={response} />) 
-          : (<div>{requestStarted ? <Loading message=" your authentication" /> : null}{" "} </div>)}
-          <ErrorCard errors={displayableErrors} />
+          : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
+          <ErrorCard errors={displayableErrors}  />
           <button type="submit" className="google-btn">
             {" "}
             <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
@@ -82,19 +83,7 @@ const SignInForm = () =>{
 
         </div>
 
-        <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-in-password">
-            Password
-            <input
-              name="password"
-              id="supporter-sign-in-password"
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={inputHandler}
-            />
-          </label>
-        </div>
+        <PasswordInput inputHandler={inputHandler} strength={-1} />
 
         <div className="form-group">
           <div className="custom-control custom-checkbox">

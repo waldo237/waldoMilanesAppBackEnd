@@ -57,9 +57,9 @@ const ResponseAlert = ({ response }) => {
 };
 ResponseAlert.propTypes ={
   // eslint-disable-next-line react/forbid-prop-types
-  response: PropTypes.array,
+  response: PropTypes.object,
 }
 ResponseAlert.defaultProps = {
-  response:[]
+  response:{}
 }
 export default ResponseAlert;

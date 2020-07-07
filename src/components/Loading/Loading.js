@@ -26,7 +26,7 @@ const Loading = ({ message }) => {
         <FontAwesomeIcon className="fa-spin fa-2x primary--text" icon={faCog} />
         <h1 className="primary--text" style={dotsStyle}>
           {" "}
-          processing
+          
           {message}
           ...{" "}
         </h1>

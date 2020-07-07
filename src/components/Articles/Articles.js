@@ -13,7 +13,7 @@ const Articles = () => {
   const [articles, setData] = useState([]);
   useEffect(() => {
     document.title = "Articles I have written";
-    fetch("http://localhost:3001/articles")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/articles`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);    
