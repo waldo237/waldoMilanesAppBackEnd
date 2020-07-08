@@ -12,7 +12,7 @@ exports.loginRequired = (req, res, next) => {
     if (req.user) {
         next();
     } else {
-        return res.status(401).json({ message: 'Unauthorized user!' });
+        return res.status(401).json({successful: false, message: 'Unauthorized user!' });
     }
 }
 
@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
         // if the user already exists, send an object to the client for it to reroute to the correct function
         if (alreadyExists) {
             console.log("loggedin", 'alreadyExists')
-            return res.json({alreadyExists: true});
+            return res.json({ successful: false, message: 'Email already taken.' })
         } else {
             const newUser = new User(req.body);
             newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
@@ -40,9 +40,9 @@ exports.register = async (req, res) => {
             await newUser.save((err, user) => {
                 if (err) {  //handle errors
                     console.log(err.message)
-                    return res.status(400).send({ message: 'There was an issue with your request.' });
+                    return res.status(400).send({successful: false, message: 'There was an issue with your request. Please try again.' });
                 }
-                return res.json({ token: jwt.sign({ email: user.email,  _id: user.id }, process.env.APP_KEY)});
+                return res.json({successful: true,  message: 'You have successfully logged in.', token: jwt.sign({ email: user.email,  _id: user.id }, process.env.APP_KEY)});
             })
         } 
     } catch (error) {
@@ -58,15 +58,15 @@ exports.login = (req, res) => {
         User.findOne({ email: req.body.email }, (err, user) => {
             if (err) throw err;
             if (!user) {
-                res.status(401).json({ message: 'Authentication failed. No user found' });
+                res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
             } else if (user && req.body.password) {
                 if (!user.comparePassword(req.body.password, user.hashPassword)) {
-                    res.status(401).json({ message: 'Authentication failed. Wrong password' });
+                    res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
                 } else {
-                    return res.json({ token: jwt.sign({ email: user.email, _id: user.id }, process.env.APP_KEY) });
+                    return res.json({successful: true,  message: 'You have successfully logged in.', token: jwt.sign({ email: user.email, _id: user.id }, process.env.APP_KEY) });
                 }
             }else{
-                res.status(401).json({ message: 'Authentication failed. Wrong password' });
+                res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
             }
         });
 

@@ -38,12 +38,13 @@ try {
  */
 
 // throttle if exceeds 300 calls 
-const limiter = new RateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 300,
-    delayMs: 0  
-});
-app.use(limiter)
+// const limiter = new RateLimit({
+//     windowMs: 60 * 60 * 1000,
+//     max: 300,
+//     // delayMs: 0  
+// });
+// app.use(limiter)
+
 // log only 4xx and 5xx responses to console
 app.use(morgan('combined', {
     skip: function (req, res) { return res.statusCode < 400 },
