@@ -10,8 +10,8 @@ import {
   faVuejs,
 } from "@fortawesome/free-brands-svg-icons";
 
-const IconizeFile = ({ name }) => {
-  const fileNameExtension = name.split(".")[1];
+const IconizeFile = ({ name, usingExtension }) => {
+  const fileNameExtension =(usingExtension)? name:name.split(".")[1];
   let icon = null;
   switch (fileNameExtension) {
     case "js":

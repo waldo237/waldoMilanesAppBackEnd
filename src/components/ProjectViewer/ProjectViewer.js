@@ -16,7 +16,7 @@ const ProjectViewer = ({ match }) => {
     let tempTechnology = null;
     switch (match.url) {
       case "/project/node":
-        tempTechnology = { title: "NodeJs", extension: "node" };
+        tempTechnology = { title: "NodeJs", extension: "node"};
         break;
       case "/project/java":
         tempTechnology = { title: "Java", extension: "java" };
@@ -72,9 +72,10 @@ const ProjectViewer = ({ match }) => {
     <>
       <main className="node-main light main animate__animated animate__fadeInUp">
         <div className="contact-title main-title">
-          <IconizeFile name={technology.extension} />
+          <IconizeFile name={technology.extension} usingExtension />
           <h1 className="main-title primary--text title-font">
             My
+            {" "}
             {technology.title} Projects
           </h1>
         </div>
@@ -187,6 +188,7 @@ const ProjectViewer = ({ match }) => {
                                 {childFile.name}
                               </button>
                               <CodeModal
+                                showModal={showModal}
                                 code={childFile.content}
                                 fileId={childFile._id}
                                 name={childFile.name}
@@ -209,4 +211,5 @@ ProjectViewer.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   match: Proptypes.object.isRequired,
 }
+
 export default ProjectViewer;

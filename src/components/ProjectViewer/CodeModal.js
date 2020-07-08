@@ -56,11 +56,12 @@ CodeModal.propTypes = {
   code: PropTypes.string,
   name: PropTypes.string,
   fileId: PropTypes.string,
-  showModal: PropTypes.func.isRequired
+  showModal: PropTypes.func,
 }
 CodeModal.defaultProps={
   code: 'There is no code inside this file.',
   name: 'No filename',
-  fileId: ''
+  fileId: '',
+  showModal: ()=>{}
 }
 export default CodeModal;
