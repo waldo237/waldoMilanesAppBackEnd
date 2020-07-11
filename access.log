@@ -166,3 +166,4 @@
 ::1 - - [07/Jul/2020:15:21:10 +0000] "POST /auth/register HTTP/1.1" 429 105 "http://localhost:3000/supporters" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
 ::1 - - [07/Jul/2020:15:22:02 +0000] "POST /auth/register HTTP/1.1" 429 105 "http://localhost:3000/supporters" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
 ::1 - - [07/Jul/2020:19:51:53 +0000] "POST /auth/register HTTP/1.1" 429 105 "http://localhost:3000/supporters" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [08/Jul/2020:17:47:43 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3001/articles" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"

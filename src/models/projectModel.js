@@ -11,7 +11,7 @@ const fileSchema = Schema({
         type: String,
         required: true,
         validate: /^(dir|file)$/
-    },
+    }, 
     content: String
 })
 
