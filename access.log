@@ -167,3 +167,8 @@
 ::1 - - [07/Jul/2020:15:22:02 +0000] "POST /auth/register HTTP/1.1" 429 105 "http://localhost:3000/supporters" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
 ::1 - - [07/Jul/2020:19:51:53 +0000] "POST /auth/register HTTP/1.1" 429 105 "http://localhost:3000/supporters" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
 ::1 - - [08/Jul/2020:17:47:43 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3001/articles" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [13/Jul/2020:02:16:47 +0000] "PUT /project HTTP/1.1" 404 146 "-" "PostmanRuntime/7.26.1"
+::1 - - [13/Jul/2020:02:18:24 +0000] "PUT /project/5ef250496ebc9d73907f9578 HTTP/1.1" 401 51 "-" "PostmanRuntime/7.26.1"
+::1 - - [13/Jul/2020:02:21:40 +0000] "POST /auth/ HTTP/1.1" 404 145 "-" "PostmanRuntime/7.26.1"
+::1 - - [13/Jul/2020:02:22:43 +0000] "PUT /project/5ef250496ebc9d73907f9578 HTTP/1.1" 401 51 "-" "PostmanRuntime/7.26.1"
+::1 - - [13/Jul/2020:02:24:12 +0000] "PUT /project/5ef250496ebc9d73907f9578 HTTP/1.1" 401 51 "-" "PostmanRuntime/7.26.1"

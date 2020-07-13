@@ -37,9 +37,16 @@ exports.ProjectSchema = new Schema({
         maxlength: 100,
         required: true,
     },
+    technology:{
+        type: String,
+        trim: true,
+       enum:['node','java', 'vue', 'react'],
+        required: true,
+    },
     description:{
         type: String,
         trim: true,
+
         minlength: 5,
         maxlength: 500,
         required: true,

@@ -57,9 +57,10 @@ exports.postArticle = (req, res) => {
 exports.updateArticle = (req, res) => {
     try {
         const id = mongoose.Types.ObjectId(req.params.id);
-        Article.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, contact) => {
+        Article.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, article) => {
             if (err) res.send(err.message);
-            return (contact.nModified) ? res.json('The article was modified correctly.') : res.status(404).send('The update did not take effect.');
+          
+            return (article.nModified) ? res.json('The article was modified correctly.') : res.status(404).send('The update did not take effect.');
         })
     } catch (error) {
         res.status(500).send(`caught error: ${error}`)

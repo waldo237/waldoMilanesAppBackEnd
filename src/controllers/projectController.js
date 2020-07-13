@@ -16,6 +16,21 @@ exports.getAllProjects = (req, res) => {
         console.log(error)
     }
 }
+/**
+ * @function getProjectsByTechnology fetch all the projects in the database
+ */
+exports.getProjectsByTechnology = (req, res) => {
+    console.log(req.params.technology)
+    try {
+        Project.find({technology: req.params.technology}, (err, projects) => {
+            if (err) res.status(500).send('An  error occured while fetching the data');
+            if (projects.length <= 0) return res.status(500).send('An  error occured while fetching the data');
+            return res.json(projects);
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 /**
  * @function getProject the project specified in the id
@@ -57,9 +72,10 @@ exports.postProject = (req, res) => {
 exports.updateProject = (req, res) => {
     try {
         const id = mongoose.Types.ObjectId(req.params.id);
-        Project.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, contact) => {
+        Project.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, project) => {
             if (err) res.send(err.message);
-            return (contact.nModified) ? res.json('The project was modified correctly.') : res.status(404).send('The update did not take effect.');
+            console.log(project)
+            return (project.nModified) ? res.json('The project was modified correctly.') : res.status(404).send('The update did not take effect.');
         })
     } catch (error) {
         res.status(500).send(`caught error: ${error}`)
