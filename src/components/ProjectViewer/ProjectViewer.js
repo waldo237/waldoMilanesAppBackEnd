@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import IconizeFile from "./IconizeFile";
 import CodeModal from "./CodeModal";
+import Loading from "../Loading/Loading";
 
 
 const ProjectViewer = ({ match }) => {
@@ -35,17 +36,15 @@ const ProjectViewer = ({ match }) => {
 
   const [collection, setData] = useState(null);
   const technology = technologySwicher();
+  
   useEffect(() => {
     document.title = `Work I have done with ${technology.title}`;
-    const abortController = new AbortController();
-
-    fetch(`${process.env.REACT_APP_SERVER_URL}/projects/${technology.extension}`, {signal: abortController.signal})
+    fetch(`${process.env.REACT_APP_SERVER_URL}/projects/${technology.extension}`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);
-      return ()=> abortController.abort();
   
-  }, [technology]);
+  }, [match.url]);
 
   const showModal = (value) => {
     const internalFiles = document.querySelectorAll(".modal");
@@ -84,7 +83,7 @@ const ProjectViewer = ({ match }) => {
             {technology.title} Projects
           </h1>
         </div>
-        {collection
+        {collection && collection.length
           ? collection.map((project) => (
               // eslint-disable-next-line react/jsx-indent
               <article className="all-projects" key={project._id}>
@@ -207,7 +206,13 @@ const ProjectViewer = ({ match }) => {
                 </div>
               </article>
             ))
-          : null}
+          : ( 
+            <article className="all-projects">
+              <Loading message={`Getting ${technology.title} projects!
+              If it's taking too long, you should probably come back later`}
+              />
+            </article>
+)}
       </main>
     </>
   );
