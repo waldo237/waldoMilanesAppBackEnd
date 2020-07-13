@@ -25,6 +25,7 @@ const SignUpForm = () =>{
 
     const signUp = (e)=>{
         e.preventDefault();
+        setRequest(false);
         if (signUpValidator(user).valid) {
           setRequest(true);
           const sanitizedData = signUpValidator(user).sanitized;
