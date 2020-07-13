@@ -31,7 +31,7 @@ const dirSchema = Schema({
 
 exports.ProjectSchema = new Schema({
     title:{
-        type: String,
+        type: String, 
         trim: true,
         minlength: 5,
         maxlength: 100,
