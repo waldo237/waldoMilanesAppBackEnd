@@ -20,11 +20,10 @@ exports.getAllProjects = (req, res) => {
  * @function getProjectsByTechnology fetch all the projects in the database
  */
 exports.getProjectsByTechnology = (req, res) => {
-    console.log(req.params.technology)
     try {
         Project.find({technology: req.params.technology}, (err, projects) => {
             if (err) res.status(500).send('An  error occured while fetching the data');
-            if (projects.length <= 0) return res.status(500).send('An  error occured while fetching the data');
+            if (!projects) return res.status(500).send('An  error occured while fetching the data');
             return res.json(projects);
         })
     } catch (error) {
