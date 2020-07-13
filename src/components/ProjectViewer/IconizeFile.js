@@ -8,6 +8,7 @@ import {
   faHtml5,
   faJava,
   faVuejs,
+  faReact,
 } from "@fortawesome/free-brands-svg-icons";
 
 const IconizeFile = ({ name, usingExtension }) => {
@@ -31,6 +32,9 @@ const IconizeFile = ({ name, usingExtension }) => {
       break;
     case "node":
       icon = <FontAwesomeIcon className="fa-2x " icon={faNodeJs} />;
+      break;
+    case "react":
+      icon = <FontAwesomeIcon className="fa-2x " icon={faReact} />;
       break;
     default:
       icon = <FontAwesomeIcon className="fa-2x " icon={faCode} />;

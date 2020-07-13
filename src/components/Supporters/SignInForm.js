@@ -40,7 +40,9 @@ const SignInForm = () =>{
           })
             .then((res) => res.json())
             .then(setResponse)
+            .then(console.log(response))
             .catch(console.error);
+            
         } else {
           setErrors(signInValidator(user).errors);
         }

@@ -36,11 +36,15 @@ const ProjectViewer = ({ match }) => {
   const [collection, setData] = useState(null);
   const technology = technologySwicher();
   useEffect(() => {
-    document.title = "Work that I have done";
-    fetch(`${process.env.REACT_APP_SERVER_URL}/projects/${technology.extension}`)
+    document.title = `Work I have done with ${technology.title}`;
+    const abortController = new AbortController();
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/projects/${technology.extension}`, {signal: abortController.signal})
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);
+      return ()=> abortController.abort();
+  
   }, [technology]);
 
   const showModal = (value) => {
@@ -72,8 +76,9 @@ const ProjectViewer = ({ match }) => {
     <>
       <main className="node-main light main animate__animated animate__fadeInUp">
         <div className="contact-title main-title">
-          <IconizeFile name={technology.extension} usingExtension />
           <h1 className="main-title primary--text title-font">
+            <IconizeFile name={technology.extension} usingExtension />
+            {" "}
             My
             {" "}
             {technology.title} Projects
