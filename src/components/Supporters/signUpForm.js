@@ -22,7 +22,7 @@ const SignUpForm = () =>{
       document.title = "Become my supporter";
     }, []);
   
-
+ 
     const signUp = (e)=>{
         e.preventDefault();
         setRequest(false);
