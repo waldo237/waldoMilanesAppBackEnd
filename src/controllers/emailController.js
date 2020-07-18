@@ -23,7 +23,7 @@ exports.emailController = (req, res) => {
                 pass: process.env.PASSWORD || '1234'
             }
         });
-
+  
         transporter.sendMail(mailOptions, (err, data) => {
             if (err) {
                 return res.json({ successful: false, message: 'An Error has occured while sending the email' })

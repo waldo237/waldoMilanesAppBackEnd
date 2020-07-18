@@ -15,7 +15,7 @@ exports.loginRequired = (req, res, next) => {
         return res.status(401).json({successful: false, message: 'Unauthorized user!' });
     }
 }
-
+  
 /**
  * @returns boolean
  * @function register(), if the email already exist in the database, the client will be sent a notification:boolean
