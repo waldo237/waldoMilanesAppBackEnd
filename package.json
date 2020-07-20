@@ -7,7 +7,7 @@
     "start": "node ./index.js",
     "nodemon": "nodemon ./index.js",
     "test": "test",
-    "keroku": "git push waldomilanes  master"
+    "heroku": "git push heroku  master"
   },
   "repository": {
     "type": "git",

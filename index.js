@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const cors = require('cors');
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -18,7 +18,6 @@ const PORT = process.env.PORT || 3001;
 
 
 // environment variables configuration
-dotenv.config();
 app.disable('x-powered-by');  
 // mongoose connection
 try {
