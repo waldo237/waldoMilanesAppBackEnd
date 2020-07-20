@@ -11,7 +11,7 @@ import contactValidator from "./contactValidator";
 import ErrorCard from "../ErrorCard/ErrorCard";
 import ResponseAlert from "../ResponseAlert/ResponseAlert";
 import Loading from "../Loading/Loading";
-
+import env_url from '../../env_url';
 const Contacts = () => {
   const [user] = useState({});
   const [response, setResponse] = useState(null);
@@ -33,7 +33,7 @@ const Contacts = () => {
 
       const sanitizedData = contactValidator(user).sanitized;
 
-      fetch(`${process.env.REACT_APP_SERVER_URL}/email`, {
+      fetch(`${env_url}/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",

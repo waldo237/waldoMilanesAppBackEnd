@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './signInValidator'
 import PasswordInput from './PasswordInput'
-
+import env_url from '../../env_url';
 const SignInForm = () =>{ 
     const [user] = useState({});
     const [response, setResponse] = useState(null);
@@ -26,12 +26,12 @@ const SignInForm = () =>{
   
 
     const logIn = (e)=>{
-      console.log(process.env.REACT_APP_SERVER_URL)
+      console.log(env_url)
         e.preventDefault();
         if (signInValidator(user).valid) {
           setRequest(true);
           const sanitizedData = signInValidator(user).sanitized;
-          fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
+          fetch(`${env_url}/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",

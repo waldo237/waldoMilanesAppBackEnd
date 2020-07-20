@@ -5,7 +5,7 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signUpValidator from './signUpValidator'
 import PasswordInput from './PasswordInput'
-
+import env_url from '../../env_url';
 const SignUpForm = () =>{ 
     const [user] = useState({});
     const [response, setResponse] = useState(null);
@@ -29,7 +29,7 @@ const SignUpForm = () =>{
         if (signUpValidator(user).valid) {
           setRequest(true);
           const sanitizedData = signUpValidator(user).sanitized;
-          fetch(`${process.env.REACT_APP_SERVER_URL}/auth/register`, {
+          fetch(`${env_url}/auth/register`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",
