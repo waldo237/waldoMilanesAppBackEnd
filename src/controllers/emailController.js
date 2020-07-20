@@ -37,7 +37,7 @@ exports.emailController = (req, res) => {
 }
 
 
-
+  
 const messageValidator = (user) => {
     let responseObject = {
         valid: true,

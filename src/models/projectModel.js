@@ -36,7 +36,7 @@ exports.ProjectSchema = new Schema({
         minlength: 5,
         maxlength: 100,
         required: true,
-    },
+    }, 
     technology:{
         type: String,
         trim: true,
