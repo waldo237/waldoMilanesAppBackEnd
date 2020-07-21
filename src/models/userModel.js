@@ -29,6 +29,7 @@ exports.UserSchema = new Schema({
         type: String,
         required: true
     },
+    isVerified: { type: Boolean, default: false },
     created_date: {
        type: Date,
        default: Date.now 
@@ -38,3 +39,13 @@ exports.UserSchema = new Schema({
 exports.UserSchema.methods.comparePassword = (password, hashPassword) => {
     return bcrypt.compareSync(password, hashPassword);
 };
+exports.TokenSchema = new Schema({
+    token:{
+        type: String,
+        trim: true
+    },
+    userId:{
+        type: mongoose.Types.ObjectId,
+        trim: true,
+    }
+})

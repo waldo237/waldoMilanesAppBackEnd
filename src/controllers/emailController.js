@@ -9,14 +9,14 @@ exports.emailController = (req, res) => {
             return res.status(400).send({ successful: false, message: messageValidator(req.body).errors.map((err) => err.message).join(", ") })
         }
 
-        let mailOptions = {
+        const mailOptions = {
             from: req.body.email,
             to: process.env.EMAILTO,
             subject: `Message from ${req.body.name}, sent from waldomilanes.com`,
             text: req.body.message
         };
 
-        let transporter = nodemailer.createTransport({
+        const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 user: process.env.EMAIL || 'abc@gmail.com',
