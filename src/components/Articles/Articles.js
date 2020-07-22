@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 
 /* TODO
     PLANT THE INCOMING ARTICLES IN THE LOCALSTORAGE OR USE SERVICE WORKER
@@ -9,6 +10,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import env_url from '../../env_url';
+
 const Articles = () => {
 
   const [articles, setData] = useState([]);
