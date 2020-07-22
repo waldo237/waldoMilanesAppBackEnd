@@ -26,7 +26,6 @@ const SignInForm = () =>{
   
 
     const logIn = (e)=>{
-      console.log(env_url)
         e.preventDefault();
         if (signInValidator(user).valid) {
           setRequest(true);
@@ -51,7 +50,7 @@ const SignInForm = () =>{
       <form className="sign-form" onSubmit={logIn}>
         <div className="o-auth-btns">
           {response 
-          ? (<ResponseAlert response={response} />) 
+          ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />) 
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
           <ErrorCard errors={displayableErrors}  />
           <button type="submit" className="google-btn">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import {
   faExclamationCircle,
@@ -7,7 +7,22 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-const ResponseAlert = ({ response }) => {
+
+const ResponseAlert = ({ response, setResponse, email }) => {
+
+  const action = (e) => {
+    e.preventDefault();
+    fetch(response.link.href, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({email:email }),
+    })
+      .then((res) => res.json())
+      .then(setResponse)
+      .catch(console.error);
+  }
   const successStyle = {
     color: "darkGreen",
     backgroundColor: "lightGreen",
@@ -33,6 +48,8 @@ const ResponseAlert = ({ response }) => {
                   icon={faExclamationCircle}
                 />{" "}
                 {response.message}
+                {(response.link)
+                  ? <button type="button" className="btn" onClick={action}>{response.link.label}</button> : null}
               </li>
             </ul>
           </div>
@@ -51,15 +68,19 @@ const ResponseAlert = ({ response }) => {
             </ul>
           </div>
         </div>
-      )}
+        )}
     </>
   );
 };
-ResponseAlert.propTypes ={
+ResponseAlert.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   response: PropTypes.object,
+  email: PropTypes.string,
+  setResponse: PropTypes.func.isRequired
+  
 }
 ResponseAlert.defaultProps = {
-  response:{}
+  response: {},
+  email:''
 }
 export default ResponseAlert;
