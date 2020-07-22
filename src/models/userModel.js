@@ -47,5 +47,10 @@ exports.TokenSchema = new Schema({
     userId:{
         type: mongoose.Types.ObjectId,
         trim: true,
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now, 
+        index: { expireAfterSeconds: 600 }
+     }
 })

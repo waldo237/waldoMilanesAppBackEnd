@@ -24,7 +24,8 @@ try {
     mongoose.Promise = global.Promise;
     mongoose.connect(process.env.DB_URL, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     })
         .then(() => console.log(`connected to DataBase successfully! at ${Date(Date.now().toString())}`))
         .catch(err => console.log(`Could not connect to DataBase: ${err}`));
