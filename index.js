@@ -58,6 +58,10 @@ app.use(bodyParser.json());
 // cors setup
 app.use(cors({ origin: '*' }));
 
+// set pug views
+app.set('view engine', 'pug')
+
+
 // JWT setup
 app.use((req, res, next) => {
     if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
@@ -78,7 +82,7 @@ projectRoutes(app);
 articleRoutes(app);
 emailRoutes(app);
 app.get('/', (req, res) =>
-    res.send(`waldoMilanesAppBackEnd futureDocumentation.html`)
+    res.render('index', { title: 'waldoMilanesAppBackEnd', type: 'API\'s for waldomilanes.com' })
 );
 
 

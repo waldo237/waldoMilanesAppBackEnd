@@ -1,5 +1,5 @@
 
-const { login, register} = require ('../controllers/userController');
+const { login, register, emailConfirmation} = require ('../controllers/userController');
 const rateLimit = require("express-rate-limit");
 
 const accountscreatedLimiter = rateLimit({
@@ -14,6 +14,8 @@ const routes = (app) => {
     app.route('/auth/register').post(accountscreatedLimiter, register);
     // login route
     app.route('/auth/login').post(login);
+    //Token Confirmation
+    app.route('/auth/confirmation/:email/:id/:token').get(emailConfirmation);
 }
 
 module.exports = routes; 

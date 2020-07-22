@@ -1,0 +1,44 @@
+
+html
+  head
+    title= title
+    link(rel="icon" href="https://waldomilanes.com/static/media/banner.4d5315b8.png")
+    style
+      include css/App.css
+      include css/index.css
+      include css/Title.css
+      include css/Footer.css
+      
+  body
+    div(class='app light')
+      header(class="header primary shadow" id="header")
+        article(class="title")
+          div
+            img(src='https://waldomilanes.com/static/media/banner.4d5315b8.png' alt="WM robot" class="mw-robot")
+          h1(class="secondary--text double-w") W
+          h3(class="programming") PROGRAMMING
+          
+        
+        div(class="page-main animate__animated animate__fadeInUp light")
+          div(class="main-title contact-title")
+          article(class="card-container article-card" style=`background-color:${(successful)?'lightgreen':'pink'} ; display:flex; flex-direction:column; padding:10px`)
+            h1(class='primary--text title-font')= type
+            div
+              p(class='primary--text title-font')= message
+          if(link)
+            a(href=link)
+              button(type="button"  class="btn submit-btn primary" style="padding:15px 28px" href=link) Please sign in
+        footer(class='primary footer')
+          div
+            i(class="fa-2x social  fab fa-twitter")
+            i(class="fa-2x social  fab fa-linkedin")
+            i(class="fa-2x social  fab fa-facebook-square")
+            i(class="fa-2x social  fab fa-instagram")
+          div(class='footer-credits')
+            span &#9400; 2019- 2020 &nbsp;
+            span | W PROGRAMMING | 
+            span &nbsp;waldomilanes.com
+          div developed by Waldo Milanes 
+            span &reg;
+script(src="https://kit.fontawesome.com/e89dd9bdb2.js" crossorigin="anonymous")
+
