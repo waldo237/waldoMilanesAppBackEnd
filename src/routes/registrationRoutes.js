@@ -16,7 +16,7 @@ const routes = (app) => {
     app.route('/auth/login').post(login);
     //Token Confirmation
     app.route('/auth/confirmation/:email/:id/:token').get(emailConfirmation);
-    app.route('/auth/resend-vefication-token').post(accountscreatedLimiter, resendVerificationToken);
+    app.route('/auth/resend-vefication-token/:ssr').post(accountscreatedLimiter, resendVerificationToken);
 }
 
 module.exports = routes; 

@@ -28,6 +28,10 @@ html
           if(link)
             a(href=link)
               button(type="button"  class="btn submit-btn primary" style="padding:15px 28px" href=link) Please sign in
+          if(resend)
+            form(id="resend-token" action="/auth/resend-vefication-token/true" method="post")
+                input(hidden name='email', value=`${user.email}` type='text')
+                button(type="submit"  class="btn submit-btn primary" style="padding:15px 28px") Send token again
         footer(class='primary footer')
           div
             i(class="fa-2x social  fab fa-twitter")

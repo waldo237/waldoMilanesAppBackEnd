@@ -21,9 +21,9 @@ exports.loginRequired = (req, res, next) => {
 };
 
 /**
- * @returns message notification that an email has been sent.
  * @function register(), if the email already exist in the database, the client will be sent a notification:boolean
  * to ask the user to use a different email address.
+ * @returns message notification that an email has been sent.
  */
 exports.register = async (req, res) => {
   try {
@@ -64,8 +64,10 @@ exports.resendVerificationToken = async (req, res) => {
   try {
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) throw err;
-      if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
-      if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified. Please log in.' });
+      if (!user) return res.status(400).send({ successful:false, message: 'We were unable to find a user with that email.' });
+      if (user.isVerified) return (req.params.ssr=='false') 
+              ?res.status(400).send({ successful: true, message: 'This account has already been verified. Please log in.' })
+              :res.status(400).render('index', { successful: true, message: 'This account has already been verified. Please log in.' })
      
       sendVerificationTokenToEmail(req,res, user)
 
@@ -78,7 +80,6 @@ exports.resendVerificationToken = async (req, res) => {
 
 
 /**
- * @returns JWT Token
  * @function login(), confirm that the user data is valid and send a token if it does.
  */
 exports.login = (req, res) => {
@@ -103,7 +104,7 @@ exports.login = (req, res) => {
               type: "not-verified",
               successful: false,
               message: "Your account has not been verified. Please check your inbox or",
-              link: {label:'Send another email', href:`http://${req.headers.host}/auth/resend-vefication-token/`}
+              link: {label:'Send another email', href:`http://${req.headers.host}/auth/resend-vefication-token/false`}
             });
 
           return res.json({
@@ -129,7 +130,7 @@ exports.login = (req, res) => {
 
 /**
  * @returns render with instructions
- * @function emailConfirmation(), Handle verification token once user is redirected after clicking link from their inbox.
+ * @function emailConfirmation, Handle verification token once user is redirected after clicking link from their inbox.
  */
 exports.emailConfirmation = (req, res, next) => {
   // Check for validation errors    
@@ -137,8 +138,20 @@ exports.emailConfirmation = (req, res, next) => {
   if (errors.length) return res.status(400).render('index', { successful: false, type: 'not-verified', message: errors })
 
   // Find a matching token
-  Token.findOne({ token: req.params.token }, function (err, token) {
-    if (!token) return res.status(400).render('index', { successful: false, type: 'not-verified', message: 'We were unable to find a valid token. Your token might have expired.' });
+  Token.findOne({ token: req.params.token },  (err, token) => {
+    if (!token) {
+     return User.findOne({email: req.params.email }, (err, user) => {
+       if(user){ //check that the user is valid and offer to resend token
+        return res.status(401).render('index', { successful: false, type: 'expired-token',
+        resend: true,
+        user,
+        message: 'We were unable to find a valid token. Your token might have expired.' }); 
+       }else{
+        return res.status(401).render('index', { successful: false, type: 'expired-token',
+        message: 'We were unable to find a valid token. Your token might have expired.' });
+       } 
+      });
+    }
 
     // If we found a token, find a matching user
     User.findOne({ _id: req.params.id, email: req.params.email }, function (err, user) {
@@ -190,14 +203,14 @@ const sendVerificationTokenToEmail = (req, res, user)=>{
     };
     transporter.sendMail(mailOptions, function (err) {
       if (err) {
-        return res
-          .status(500)
-          .send({ successful: false, message: err.message });
+        return (req.params.ssr=='false') 
+        ?res.status(500).send({ successful: false,  message: err.message })
+        :res.status(500).render('index', { successful: false, message: err.message })
+   
       }
-      return res.status(200).send({
-        successful: true,
-        message: `A verification email has been sent to ${user.email}.`,
-      });
+      return (req.params.ssr=='false') 
+      ?res.status(200).send({ successful: true,  message: `A verification email has been sent to ${user.email}.`, })
+      :res.status(200).render('index', { successful: true, message: `A verification email has been sent to ${user.email}.`});
     });
   });
 }
