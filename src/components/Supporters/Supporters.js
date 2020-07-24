@@ -24,8 +24,8 @@ const Supporters = () => {
         <section className="supporter-title title-font primary--text ">
           <h1>Supporters</h1>
           <p>
-            If you like what I do, you can become a supporter to be able so
-            access all my content.
+            If you like what I do, you can register to
+            access all my content and receive notifications when I publish new material.
           </p>
         </section>
 

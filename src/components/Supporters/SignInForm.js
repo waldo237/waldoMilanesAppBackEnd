@@ -8,107 +8,125 @@ import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './signInValidator'
 import PasswordInput from './PasswordInput'
 import env_url from '../../env_url';
-const SignInForm = () =>{ 
-    const [user] = useState({});
-    const [response, setResponse] = useState(null);
-    const [requestStarted, setRequest] = useState(false);
-    const [displayableErrors, setErrors] = useState([]);
-  
-    const inputHandler = (event) => {
-      const { name } = event.target;
-      user[name] = event.target.value;
-      setErrors(signInValidator(user).errors.filter((e) => e.type === name));
-    };
-  
-    useEffect(() => {
-      document.title = "Become my supporter";
-    }, []);
-  
+import { auth, gProvider, fProvider } from './Auth0';
 
-    const logIn = (e)=>{
-        e.preventDefault();
-        if (signInValidator(user).valid) {
-          setRequest(true);
-          const sanitizedData = signInValidator(user).sanitized;
-          fetch(`${env_url}/auth/login`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json;charset=utf-8",
-            },
-            body: JSON.stringify(sanitizedData),
-          })
-            .then((res) => res.json())
-            .then(setResponse)
-            .catch(console.error);
-            
-        } else {
-          setErrors(signInValidator(user).errors);
-        }
+const SignInForm = () => {
+  const [user] = useState({});
+  const [response, setResponse] = useState(null);
+  const [requestStarted, setRequest] = useState(false);
+  const [displayableErrors, setErrors] = useState([]);
+
+  const inputHandler = (event) => {
+    const { name } = event.target;
+    user[name] = event.target.value;
+    setErrors(signInValidator(user).errors.filter((e) => e.type === name));
+  };
+
+  useEffect(() => {
+    document.title = "Become my supporter";
+  }, []);
+
+  // sign with google
+  const signWithGoogleOrFB = (whichService) => {
+    const provider = (whichService === 'fb') ? fProvider : gProvider;
+    auth().signInWithPopup(provider)
+      .then(function (result) {
+        // TODO HANDLE THIS
+        // This gives you a Google Access Token.
+        const token = result.credential.accessToken;
+        // The signed-in user info.
+        const { user } = result;
+        console.log(result)
+      })
+      .catch(err => console.log(err.message));
+  };
+
+
+  const logIn = (e) => {
+    e.preventDefault();
+    if (signInValidator(user).valid) {
+      setRequest(true);
+      const sanitizedData = signInValidator(user).sanitized;
+      fetch(`${env_url}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(sanitizedData),
+      })
+        .then((res) => res.json())
+        .then(setResponse)
+        .catch(console.error);
+
+    } else {
+      setErrors(signInValidator(user).errors);
     }
-  
-    return ( 
-      <form className="sign-form" onSubmit={logIn}>
-        <div className="o-auth-btns">
-          {response 
-          ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />) 
+  }
+
+  return (
+    <form className="sign-form" onSubmit={logIn}>
+      <div className="o-auth-btns">
+        {response
+          ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
-          <ErrorCard errors={displayableErrors}  />
-          <button type="submit" className="google-btn">
-            {" "}
-            <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
-            with google
-          </button>
-          <button type="submit" className="facebook-btn">
-            {" "}
-            <FontAwesomeIcon
-              className="fa-lg"
-              icon={faFacebookF}
-            />{" "}
-            sign with facebook{" "}
-          </button>
-          <h4 className="or">Or</h4>
-        </div>
-
-        <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-in-email">Email address   
-            <input
-              id="supporter-sign-in-email"
-              name="email"
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-              onChange={inputHandler}
-            />
-          </label>
-
-        </div>
-
-        <PasswordInput inputHandler={inputHandler} strength={-1} />
-
-        <div className="form-group">
-          <div className="custom-control custom-checkbox">
- 
-            <input
-              id="customCheck"
-              type="checkbox"
-              className="custom-control-input"
-            />
-            <label
-              className="custom-control-label"
-              htmlFor="customCheck"
-            >
-              Remember me
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" className="submit-btn primary">
-          Submit
+        <ErrorCard errors={displayableErrors} />
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google') }}>
+          {" "}
+          <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
+          with google
         </button>
-        <p className="forgot-password text-right">
-          Forgot <a href="/">password?</a>
-        </p>
-      </form>
-)}
+        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb') }}>
+          {" "}
+          <FontAwesomeIcon
+            className="fa-lg"
+            icon={faFacebookF}
+          />{" "}
+          sign with facebook{" "}
+        </button>
+        <h4 className="or">Or</h4>
+      </div>
+
+      <div className="form-group">
+        <label className="input" htmlFor="supporter-sign-in-email">Email address
+          <input
+            id="supporter-sign-in-email"
+            name="email"
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+            onChange={inputHandler}
+          />
+        </label>
+
+      </div>
+
+      <PasswordInput inputHandler={inputHandler} strength={-1} />
+
+      <div className="form-group">
+        <div className="custom-control custom-checkbox">
+
+          <input
+            id="customCheck"
+            type="checkbox"
+            className="custom-control-input"
+          />
+          <label
+            className="custom-control-label"
+            htmlFor="customCheck"
+          >
+            Remember me
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" className="submit-btn primary">
+        Submit
+      </button>
+      <p className="forgot-password text-right">
+        Forgot <a href="/">password?</a>
+      </p>
+    </form>
+  )
+}
 
 export default SignInForm
