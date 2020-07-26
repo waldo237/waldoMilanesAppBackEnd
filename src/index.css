@@ -30,6 +30,9 @@ body {
 .primary--text {
   color: var(--primary-color);
 }
+.light--text {
+  color: var(--light);
+}
 
 .light {
   background-color: var(--light);

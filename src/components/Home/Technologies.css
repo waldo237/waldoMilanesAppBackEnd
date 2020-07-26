@@ -1,0 +1,13 @@
+.technology-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.technology-card{
+    padding: 5px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}

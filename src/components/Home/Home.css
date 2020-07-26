@@ -9,7 +9,7 @@ main {
 .wm-img {
   grid-column: 2/3;
   grid-row: 1/2;
-  background: linear-gradient(rgba(35, 35, 61, 0.486), rgba(35, 35, 61, 0.87)),
+  background: var(--light)
     url("../../static/waldo.jpg") no-repeat center;
   background-size: 390px;
   background-position: cover;
@@ -31,20 +31,12 @@ main {
 .img-out {
   opacity: 0;
 }
-/* .wm-img:hover {
-  background: linear-gradient(rgba(35, 35, 61, 0.651), rgba(35, 35, 61, 0.966)),
-    url("../../static/waldo.jpg") no-repeat center;
-  background-size: 390px;
-  background-attachment: fixed;
-  background-position: cover;
-  min-width: 300px;
-  max-width: 95%;
-  align-self: flex-start;
-} */
+
 .wm-img::after {
   content: "Preparation, cooperation, leadership, consistancy, and dedication are exceptional keys to success.";
   color: var(--secondary-color);
-  background: linear-gradient(rgba(35, 35, 61, 0.651), rgba(35, 35, 61, 0.966));
+  background: rgba(0, 0, 0, 0.774);
+  border-radius: 2px;
   letter-spacing: 1.5px;
   font-size: 0.8em;
   font-weight: 200;
@@ -114,25 +106,19 @@ main {
 .description-in {
   animation: backInUp 1s alternate;
 }
+
 #my-work {
-  background: linear-gradient(rgba(35, 35, 61, 0.418), rgba(35, 35, 61, 0.801)),
-    url("../../static/code.jpg") no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
+  background:  linear-gradient(#64b9ee, #0083B0,#224488 90.71%);
+  -webkit-clip-path: url(#my-shape2);
+  clip-path: url(#my-shape2);
   width: 100%;
-  min-height: 300px;
-  -webkit-clip-path: url(#my-shape);
-  clip-path: url(#my-shape);
-  box-shadow: 4px 10px 14px -10px rgba(35, 35, 61, 0.726);
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.my-work-scrolled {
-  animation: fadeIn 2s normal;
-  transition-duration: 2s;
-}
 
 .my-work-btn {
   box-shadow: 4px 10px 14px -10px var(--primary-color);
@@ -164,9 +150,6 @@ aside {
   font-size: 0.8em;
   width: 100%;
   transition-duration: 0.8s;
-}
-.aside-img {
-  display: none;
 }
 
 .edu-scrolled {
