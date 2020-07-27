@@ -230,15 +230,26 @@ const Home = () => {
       </article>
       <aside id="education">
         <div id="credentials">
-          <h1 className="title-font primary--text title-2">Education</h1>
+          <div className="education-title">
+            <h1 className="title-font primary--text title-2 ">Education</h1>
+
+          </div>
           {educationPoints.map((item) => (
-            <div key={item.id} className="certificate">
-              <h2>{item.career}</h2>
-              <h4>{item.university}</h4>
-              <h5>
-                {item.duration}— {item.place}
-              </h5>
-              <p> {item.description} </p>
+            <div key={item.id} className="certificate  ">
+              <div className='date-place '> 
+                <h5> 
+                  {item.duration}
+                </h5>
+                <h5>
+                  {item.place}
+                </h5>
+              </div>
+              <div className="institution-description shadow ">
+                <h2>{item.career}</h2>
+                <h4>{item.university}</h4>
+                <p> {item.description} </p>
+              </div>
+             
             </div>
           ))}
         </div>

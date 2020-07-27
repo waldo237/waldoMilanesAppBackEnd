@@ -2,12 +2,34 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .technology-card{
-    padding: 5px 40px;
+    padding: 5px 25px;
+    margin: 5px 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-content: center;
+    font-size: .8em;
+}
+.tech-icon{
+    font-size: 2.5em;
+    margin: 5px;
+}
+@media screen and (min-width: 780px) {
+    .technology-wrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .technology-card{
+        padding: 5px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        font-size: 1em;
+    }
 }

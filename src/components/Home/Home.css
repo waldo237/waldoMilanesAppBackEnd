@@ -146,86 +146,81 @@ main {
   top: 1px;
 }
 aside {
-  margin: 0;
-  font-size: 0.8em;
-  width: 100%;
   transition-duration: 0.8s;
+  padding: 0px;
 }
 
 .edu-scrolled {
   animation: my-work 1.3s ease-in-out;
 }
-
-#credentials {
+/* #credentials {
+  font-size: 1.1em;
+  line-height: 1.5em;
   grid-column: 1/2;
   z-index: -1;
-  gap: 0px;
-  padding: 20px 50px 150px 50px;
-  background: linear-gradient(
-    to bottom,
-    rgba(245, 188, 2, 0),
-    rgba(35, 35, 61, 0.055),
-    rgba(35, 35, 61, 0.082),
-    rgba(35, 35, 61, 0.247),
-    rgb(35, 35, 61)
-  );
-  background-color: rgba(251, 210, 3, 0.39);
+  padding: 40px 100px 150px 200px;
+} */
+#credentials {
+  grid-column: 1/2;
+  line-height: 1.5em;
+  z-index: -1;
+  font-size: 0.8em;
+  background-color: var(--light-brown);
+  padding: 0px 41px 150x 10px;
+  position: relative;
 }
-
-#credentials div {
-  font-size: 1em;
-  line-height: 1.75em;
-  border-top: 3px solid;
-  border-image: linear-gradient(to right, rgb(35, 35, 61) 0%, #fbf7f4 100%);
+.education-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+.certificate {
+  border-left: 3px solid;
+  border-image: linear-gradient(to right, var(--brown) 0%, var(--light-blue) 100%);
   border-image-slice: 1;
-  border-width: 3px;
-  margin: 0;
-  padding: 40px;
   counter-increment: section;
   position: relative;
-  color: black;
-  font-family: Lato, sans-serif;
+  color: var(--primary-color);
+  left: 50%;
+  width: 50%;
+  
 }
-#credentials div::before {
+.certificate::before {
   content: counter(section);
   position: absolute;
+  left:-12px;
+  top: 35px;
   border-radius: 50%;
-  padding: 10px;
+  padding: 5px;
   height: 1.25em;
   width: 1.25em;
-  background-color: var(--primary-color);
+  background-color: var(--brown);
   text-align: center;
   line-height: 1.25em;
   color: white;
-  font-size: 1em;
+  font-size: .8em;
 }
 
-#credentials div:nth-child(odd) {
-  border-right: 3px solid;
-  padding-left: 0;
+.date-place{
+  position: relative;
+  right: 180px;
+  max-width: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-items: flex-end;
+  flex-direction: column;
+  padding: 30px 0px;
+  
 }
-#credentials div:nth-child(odd)::before {
-  left: 100%;
-  margin-left: -20px;
-}
+.institution-description{
+  position: relative;
+  background-color: #fbf7f48a;
+  border-radius: 10px;
+  padding: 30px 5px;
+  right: 95%;
+  width: 90vw;
 
-#credentials div:nth-child(even) {
-  border-left: 3px solid;
-  padding-right: 0;
-}
-#credentials div:nth-child(even)::before {
-  right: 100%;
-  margin-right: -20px;
-}
-
-#credentials div:first-child {
-  border-top: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-#credentials div:last-child {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
 }
 .certificate h2,
 h4,
@@ -287,14 +282,58 @@ p {
   }
 
   #credentials {
+    font-size: 1.1em;
+    line-height: 1.5em;
     grid-column: 1/2;
     z-index: -1;
-    gap: 0px;
-    padding: 40px 200px 150px 200px;
+    padding: 40px 100px 150px 200px;
   }
-  #credentials div {
-    font-size: 1.2em;
+  .education-title{
+    display: flex;
+    flex-direction: row;
+    
   }
+  .certificate::before {
+    content: counter(section);
+    position: absolute;
+    left:-16px;
+    top: 10px;
+    border-radius: 50%;
+    padding: 5px;
+   
+  }
+  .certificate {
+    left: 0;
+    width: 100%;
+    padding: 2px 5px;
+    
+  }
+.date-place{
+  position: relative;
+  right: 180px;
+  top: -10px;
+  max-width: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-items: flex-end;
+  flex-direction: column;
+  margin: 6px 0px;
+  padding: 0px;
+}
+.institution-description{
+  font-size: 0.8em;
+  padding: 15px;
+  border-radius: 10px;
+  margin-left: 10px;
+  right: 0%;
+  width: 100%;
+}
+.certificate 
+h4,
+p {
+  margin: 2px 0px;
+  padding: 0px;
+}
 }
 
 @keyframes slideSlow {

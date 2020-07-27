@@ -50,7 +50,7 @@ const Technologies = () => {
             <Link to={project.url} className="link">
               <div className="technology-card">
                 <FontAwesomeIcon
-                  className="fa-5x primary--text"
+                  className="fa-5x light--text tech-icon"
                   icon={project.icon}
                 />
                 <h1 className=" light--text ">
