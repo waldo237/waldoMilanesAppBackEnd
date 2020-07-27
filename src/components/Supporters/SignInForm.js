@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './signInValidator'
 import PasswordInput from './PasswordInput'
-import env_url from '../../env_url';
+import envURL from '../../envURL';
 import { auth, gProvider, fProvider } from './Auth0';
 
 const SignInForm = () => {
@@ -33,9 +33,9 @@ const SignInForm = () => {
       .then(function (result) {
         // TODO HANDLE THIS
         // This gives you a Google Access Token.
-        const token = result.credential.accessToken;
+        // const token = result.credential.accessToken;
         // The signed-in user info.
-        const { user } = result;
+        // const { user } = result;
         console.log(result)
       })
       .catch(err => console.log(err.message));
@@ -47,7 +47,7 @@ const SignInForm = () => {
     if (signInValidator(user).valid) {
       setRequest(true);
       const sanitizedData = signInValidator(user).sanitized;
-      fetch(`${env_url}/auth/login`, {
+      fetch(`${envURL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -100,7 +100,7 @@ const SignInForm = () => {
 
       </div>
 
-      <PasswordInput inputHandler={inputHandler} strength={-1} />
+      <PasswordInput id='sign-in' inputHandler={inputHandler} strength={-1} />
 
       <div className="form-group">
         <div className="custom-control custom-checkbox">

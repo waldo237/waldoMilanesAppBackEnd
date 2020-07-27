@@ -9,11 +9,7 @@
 .social {
   margin: 15px;
 }
-.footer-credits {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+
 .social-link{
  color: var(--light);
 }

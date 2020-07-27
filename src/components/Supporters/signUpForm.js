@@ -5,7 +5,7 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signUpValidator from './signUpValidator'
 import PasswordInput from './PasswordInput'
-import env_url from '../../env_url';
+import envURL from '../../envURL';
 const SignUpForm = () =>{ 
     const [user] = useState({});
     const [response, setResponse] = useState(null);
@@ -29,7 +29,7 @@ const SignUpForm = () =>{
         if (signUpValidator(user).valid) {
           setRequest(true);
           const sanitizedData = signUpValidator(user).sanitized;
-          fetch(`${env_url}/auth/register`, {
+          fetch(`${envURL}/auth/register`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",
@@ -97,7 +97,7 @@ const SignUpForm = () =>{
         
         </div>
 
-        <PasswordInput inputHandler={inputHandler} strength={signUpValidator(user).passwordStrength} />
+        <PasswordInput id='sign-up' inputHandler={inputHandler} strength={signUpValidator(user).passwordStrength} />
         <button type="submit" className="submit-btn primary">
           Sign Up
         </button>

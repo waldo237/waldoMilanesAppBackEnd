@@ -9,14 +9,14 @@ import "./Articles.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
-import env_url from '../../env_url';
+import envURL from '../../envURL';
 
 const Articles = () => {
 
   const [articles, setData] = useState([]);
   useEffect(() => {
     document.title = "Articles I have written";
-    fetch(`${env_url}/articles`)
+    fetch(`${envURL}/articles`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);    

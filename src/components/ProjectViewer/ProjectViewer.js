@@ -10,7 +10,7 @@ import {
 import IconizeFile from "./IconizeFile";
 import CodeModal from "./CodeModal";
 import Loading from "../Loading/Loading";
-import env_url from '../../env_url';
+import envURL from '../../envURL';
 
 const ProjectViewer = ({ match }) => {
   const technologySwicher = () => {
@@ -39,7 +39,7 @@ const ProjectViewer = ({ match }) => {
   
   useEffect(() => {
     document.title = `Work I have done with ${technology.title}`;
-    fetch(`${env_url}/projects/${technology.extension}`)
+    fetch(`${envURL}/projects/${technology.extension}`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);

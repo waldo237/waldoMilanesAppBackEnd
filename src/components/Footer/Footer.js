@@ -46,7 +46,7 @@ const Footer = () => (
         <FontAwesomeIcon className="fa-2x social" icon={faInstagram} />
       </a>
     </div>
-    <div className="footer-credits">
+    <div className="footer-credits flex-row-wrap">
       {" "}
       <span>
         &#9400; 2019-

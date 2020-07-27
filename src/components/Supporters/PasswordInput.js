@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash, faBatteryQuarter, faBatteryHalf, faBatteryThreeQuarters, faBatteryFull, faBatteryEmpty, faDotCircle, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash, faBatteryQuarter, faBatteryHalf, faBatteryThreeQuarters, faBatteryFull, faBatteryEmpty, faLock } from '@fortawesome/free-solid-svg-icons'
 
-const PasswordInput = ({inputHandler, strength})=>{
+const PasswordInput = ({inputHandler, strength, id})=>{
    const [eyeState, toggleEye ] = useState(false)
    const temperature = ()=> {
        if(strength === -1) return {color:{color:'var(--light)'}, icon:faLock};
@@ -15,7 +15,7 @@ const PasswordInput = ({inputHandler, strength})=>{
    }
     return (
       <div className="form-group">
-        <label className="input password" htmlFor="supporter-password">
+        <label className="input password" htmlFor={`supporter-password${id}`}>
             
           Password
      
@@ -25,7 +25,7 @@ const PasswordInput = ({inputHandler, strength})=>{
             icon={temperature(strength).icon}
           />
           <input
-            id="supporter-password"
+            id={`supporter-password${id}`}
             name="password"
             type={(eyeState)?"text":"password"}
             className="form-control"
@@ -49,6 +49,7 @@ const PasswordInput = ({inputHandler, strength})=>{
 PasswordInput.propTypes = {
     inputHandler: PropTypes.func.isRequired,
     strength: PropTypes.number,
+    id: PropTypes.string.isRequired
 }
 PasswordInput.defaultProps = {
     strength: 0,

@@ -4,10 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-env_url.js
+envURL.js
 # testing
 /coverage
-
+src/static/certificates
 # production
 /build
 

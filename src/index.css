@@ -36,6 +36,10 @@ body {
 .light--text {
   color: var(--light);
 }
+.brown {
+  background-color: var(--brown);
+  color: var(--light);
+}
 
 .light {
   background-color: var(--light);
@@ -62,7 +66,22 @@ body {
 .bold {
   font-weight: 700;
 }
+.flex-row-wrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
 
+}
+.flex-row-justified-aligned-c{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
 .hoverable-card {
   transition: cubic-bezier(0.47, 0, 0.745, 0.715);
   transition-delay: 0.1s;
@@ -72,8 +91,8 @@ body {
 .hoverable-card:active,
 .hoverable-card:focus,
 .hoverable-card:hover {
-  transform: translate3d(2px, -15px, -90px);
-  filter: brightness(50%);
+  transform: translate3d(2px, -10px, -90px);
+  filter: brightness(80%);
   -webkit-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
   -moz-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
   box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
