@@ -151,7 +151,7 @@ aside {
 }
 
 .edu-scrolled {
-  animation: my-work 1.3s ease-in-out;
+  animation: slideInRight .5s ease-in-out;
 }
 /* #credentials {
   font-size: 1.1em;
@@ -345,7 +345,7 @@ p {
   }
 }
 
-@keyframes my-work {
+/* @keyframes my-work {
   0% {
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
@@ -359,4 +359,4 @@ p {
     z-index: -3;
     opacity: 1;
   }
-}
+} */
