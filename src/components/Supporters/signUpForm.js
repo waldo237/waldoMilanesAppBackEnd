@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
-import signUpValidator from './signUpValidator'
-import PasswordInput from './PasswordInput'
+import signUpValidator from './utilities/signUpValidator'
+import PasswordInput from './utilities/PasswordInput'
 import envURL from '../../envURL';
+
 const SignUpForm = () =>{ 
     const [user] = useState({});
     const [response, setResponse] = useState(null);

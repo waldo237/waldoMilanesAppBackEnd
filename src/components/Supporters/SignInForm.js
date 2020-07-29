@@ -5,10 +5,9 @@ import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
-import signInValidator from './signInValidator'
-import PasswordInput from './PasswordInput'
-import envURL from '../../envURL';
-import { auth, gProvider, fProvider } from './Auth0';
+import signInValidator from './utilities/signInValidator'
+import PasswordInput from './utilities/PasswordInput'
+import {saveTokenLocally, distroyToken, logIn, signWithGoogleOrFB, logOut} from './utilities/authorizationFunctions'
 
 const SignInForm = () => {
   const [user] = useState({});
@@ -26,58 +25,20 @@ const SignInForm = () => {
     document.title = "Become my supporter";
   }, []);
 
-  // sign with google
-  const signWithGoogleOrFB = (whichService) => {
-    const provider = (whichService === 'fb') ? fProvider : gProvider;
-    auth().signInWithPopup(provider)
-      .then((result)=> {
-        console.log(result.user.metadata)
-        // TODO HANDLE THIS
-        // This gives you a Google Access Token.
-        // const token = result.credential.accessToken;
-        // The signed-in user info.
-        // const { user } = result;
-        // console.log(result)
-      })
-      .catch(err => console.log(err.message));
-  };
-
-
-  const logIn = (e) => {
-    e.preventDefault();
-    if (signInValidator(user).valid) {
-      setRequest(true);
-      const sanitizedData = signInValidator(user).sanitized;
-      fetch(`${envURL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(sanitizedData),
-      })
-        .then((res) => res.json()
-          .then(jsonRes => ({ successful: res.ok, message: jsonRes.message, link: jsonRes.link })))
-        .then(setResponse)
-        .catch(console.error);
-
-    } else {
-      setErrors(signInValidator(user).errors);
-    }
-  }
 
   return (
-    <form className="sign-form" onSubmit={logIn}>
+    <form className="sign-form" onSubmit={(e)=>{ e.preventDefault(); logIn(user, setRequest,setResponse, setErrors)}}>
       <div className="o-auth-btns">
         {response
           ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
         <ErrorCard errors={displayableErrors} />
-        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google') }}>
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setResponse) }}>
           {" "}
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google
         </button>
-        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb') }}>
+        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse) }}>
           {" "}
           <FontAwesomeIcon
             className="fa-lg"
