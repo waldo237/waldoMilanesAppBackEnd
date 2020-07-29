@@ -6,7 +6,7 @@ const escape = require('validator/lib/escape');
 exports.emailController = (req, res) => {
     try {
         if (!messageValidator(req.body).valid) {
-            return res.status(400).send({ successful: false, message: messageValidator(req.body).errors.map((err) => err.message).join(", ") })
+            return res.status(400).send({ message: messageValidator(req.body).errors.map((err) => err.message).join(", ") })
         }
 
         const mailOptions = {
@@ -26,12 +26,12 @@ exports.emailController = (req, res) => {
   
         transporter.sendMail(mailOptions, (err, data) => {
             if (err) {
-                return res.json({ successful: false, message: 'An Error has occured while sending the email' })
+                return res.json({ message: 'An Error has occured while sending the email' })
             }
-            return res.json({ successful: true, message: 'Your Message was successfully sent' })
+            return res.json({ message: 'Your Message was successfully sent' })
         });
     } catch (error) {
-        return res.status(500).json({ successful: false, message: 'Error processing request.' })
+        return res.status(500).json({ message: 'Error processing request.' })
     }
 
 }
