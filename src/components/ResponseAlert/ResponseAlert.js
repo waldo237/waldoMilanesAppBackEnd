@@ -17,9 +17,11 @@ const ResponseAlert = ({ response, setResponse, email }) => {
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
+      // eslint-disable-next-line object-shorthand
       body: JSON.stringify({email:email }),
     })
-      .then((res) => res.json())
+      .then((res) => res.json()
+        .then(jsonRes => ({ successful: res.ok, message: jsonRes.message })))
       .then(setResponse)
       .catch(console.error);
   }

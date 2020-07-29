@@ -12,6 +12,7 @@ import ErrorCard from "../ErrorCard/ErrorCard";
 import ResponseAlert from "../ResponseAlert/ResponseAlert";
 import Loading from "../Loading/Loading";
 import envURL from '../../envURL';
+
 const Contacts = () => {
   const [user] = useState({});
   const [response, setResponse] = useState(null);
@@ -40,9 +41,9 @@ const Contacts = () => {
         },
         body: JSON.stringify(sanitizedData),
       })
-        .then((res) => res.json())
+        .then((res) => res.json()
+          .then(jsonRes => ({ successful: res.ok, message: jsonRes.message })))
         .then(setResponse)
-        // .then(setRequest(false))
         .catch(console.error);
     } else {
       setErrors(contactValidator(user).errors);
@@ -113,12 +114,12 @@ const Contacts = () => {
 
           <form className="sign-form" onSubmit={postEmail}>
             {response ? (
-              <ResponseAlert response={response} />
+              <ResponseAlert response={response} setResponse={setResponse} />
             ) : (
-              <div>
-                {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
-              </div>
-            )}
+                <div>
+                  {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
+                </div>
+              )}
             <ErrorCard errors={displayableErrors} />
             <div>
               <h2 className="primary--text">Email me</h2>

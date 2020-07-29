@@ -36,7 +36,8 @@ const SignUpForm = () =>{
             },
             body: JSON.stringify(sanitizedData),
           })
-            .then((res) => res.json())
+            .then((res) => res.json()
+              .then(jsonRes => ({ successful: res.ok, message: jsonRes.message })))
             .then(setResponse)
             .catch(console.error);
             // setErrors([]) // empty displayble arrays
@@ -49,7 +50,7 @@ const SignUpForm = () =>{
       <form className="sign-form" onSubmit={signUp}>
         <h3>Sign Up</h3>
         {response 
-          ? (  <ResponseAlert response={response} />) 
+          ? (  <ResponseAlert response={response} setResponse={setResponse} />) 
           : (<div>{requestStarted ? <Loading message="Processing your registration" /> : null}{" "} </div>)}
         <ErrorCard errors={displayableErrors} suggestions={signUpValidator(user).suggestions} />
         <div className="form-group">

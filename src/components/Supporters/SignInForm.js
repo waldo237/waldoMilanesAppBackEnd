@@ -30,13 +30,14 @@ const SignInForm = () => {
   const signWithGoogleOrFB = (whichService) => {
     const provider = (whichService === 'fb') ? fProvider : gProvider;
     auth().signInWithPopup(provider)
-      .then(function (result) {
+      .then((result)=> {
+        console.log(result.user.metadata)
         // TODO HANDLE THIS
         // This gives you a Google Access Token.
         // const token = result.credential.accessToken;
         // The signed-in user info.
         // const { user } = result;
-        console.log(result)
+        // console.log(result)
       })
       .catch(err => console.log(err.message));
   };
@@ -54,7 +55,8 @@ const SignInForm = () => {
         },
         body: JSON.stringify(sanitizedData),
       })
-        .then((res) => res.json())
+        .then((res) => res.json()
+          .then(jsonRes => ({ successful: res.ok, message: jsonRes.message, link: jsonRes.link })))
         .then(setResponse)
         .catch(console.error);
 
