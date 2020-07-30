@@ -7,17 +7,18 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
-import {saveTokenLocally, distroyToken, logIn, signWithGoogleOrFB, logOut} from './utilities/authorizationFunctions'
+import {logIn, signWithGoogleOrFB} from './utilities/authorizationFunctions'
 
 const SignInForm = () => {
   const [user] = useState({});
+  
   const [response, setResponse] = useState(null);
   const [requestStarted, setRequest] = useState(false);
   const [displayableErrors, setErrors] = useState([]);
 
   const inputHandler = (event) => {
     const { name } = event.target;
-    user[name] = event.target.value;
+    user[name] = (event.target.checked)? event.target.checked: event.target.value;
     setErrors(signInValidator(user).errors.filter((e) => e.type === name));
   };
 
@@ -33,12 +34,12 @@ const SignInForm = () => {
           ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
         <ErrorCard errors={displayableErrors} />
-        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setResponse) }}>
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setResponse, user.rememberMe) }}>
           {" "}
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google
         </button>
-        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse) }}>
+        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}>
           {" "}
           <FontAwesomeIcon
             className="fa-lg"
@@ -70,8 +71,10 @@ const SignInForm = () => {
 
           <input
             id="customCheck"
+            name="rememberMe"
             type="checkbox"
             className="custom-control-input"
+            onChange={inputHandler}
           />
           <label
             className="custom-control-label"

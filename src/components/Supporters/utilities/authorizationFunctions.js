@@ -4,13 +4,13 @@ import envURL from '../../../envURL';
 import signInValidator from './signInValidator'
 
 /**
- * Write a @function saveTokenLocally to be chained after the token is received throw all methods
+ * @function saveTokenLocally to be chained after the token is received throw all methods
  * if rememberMe is true, take the token in the response and save it in localstorage
  * else save it on sessionCookies
  */
-const saveTokenLocally = (token) => {
-    // TODO
-    localStorage.setItem('auth_access_token', token);
+const saveTokenLocally = (token, rememberMe) => {
+    if (rememberMe ===true) return localStorage.setItem('auth_access_token', token);
+    return sessionStorage.setItem('auth_access_token', token)
 }
 
 const distroyToken = () => {
@@ -39,7 +39,10 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
             body: JSON.stringify(sanitizedData),
         })
             .then((res) => res.json()
-                .then(jsonRes => ({ successful: res.ok, message: jsonRes.message, link: jsonRes.link })))
+                .then(jsonRes => {
+                    if(jsonRes.token)  saveTokenLocally(jsonRes.token, user.rememberMe);
+                    return { successful: res.ok, message: jsonRes.message, link: jsonRes.link }
+                }))
             .then(setResponse)
             .catch(console.error);
 
@@ -49,7 +52,7 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
 }
 
 // sign with google
-const signWithGoogleOrFB = (whichService, setResponse) => {
+const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
     const provider = (whichService === 'fb') ? fProvider : gProvider;
     auth().signInWithPopup(provider)
         .then((result) => {
@@ -64,20 +67,16 @@ const signWithGoogleOrFB = (whichService, setResponse) => {
                 },
                 body: JSON.stringify(reqBody),
             })
-                // .then((res)=> console.log(res.json()))
-
-                .then(res => res.json())
+            .then((res) => res.json()
                 .then(jsonRes => {
-                    saveTokenLocally(jsonRes.token);
-                    return { successful: jsonRes.ok, message: jsonRes.message, link: jsonRes.link };
-                })
-                .then(setResponse)
-                .catch(console.error);
+                    if(jsonRes.token)  saveTokenLocally(jsonRes.token, rememberMe);
+                    return { successful: res.ok, message: jsonRes.message }
+                }))
+            .then(setResponse)
+            .catch(console.error);
         })
         .catch(err => console.log(err.message));
 };
-
-
 
 
 // eslint-disable-next-line import/prefer-default-export

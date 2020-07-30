@@ -1,7 +1,7 @@
 main {
   margin-top: 15px;
   display: grid;
-  grid-template-columns: 0.2fr 4fr 0.2fr;
+  grid-template-columns: 0.5fr 3fr 0.5fr;
   grid-template-rows: 0.2fr 0.3fr 0.5fr;
   gap: 20px 5px;
 }
@@ -11,11 +11,9 @@ main {
   grid-row: 1/2;
   background: var(--light)
     url("../../static/waldo.jpg") no-repeat center;
-  background-size: 390px;
+  background-size: 100%;
   background-position: cover;
   background-attachment: fixed;
-  min-width: 300px;
-  max-width: 95%;
   height: 250px;
   align-self: flex-start;
   transition-delay: 0.1s;
@@ -39,18 +37,18 @@ main {
   border-radius: 2px;
   letter-spacing: 1.5px;
   font-size: 0.8em;
-  font-weight: 200;
+  font-weight: 300;
   position: absolute;
   opacity: 0;
-  top: 90%;
+  bottom: 0px;
   width: 92%;
-  height: 0%;
+  height: 0px;
   padding: 4%;
   transition: opacity .9s ease 0s,height .7s ease 0s, top 0.4s ease 0s;
 }
 .wm-img:hover::after {
   opacity: 1;
-  top: 68%;
+  bottom: 0px;
   height: 20%;
 }
 
@@ -88,7 +86,7 @@ main {
   align-self: center;
 }
 #description {
-  grid-column: 2/3;
+  grid-column: 1/4;
   grid-row: 3/-1;
   font-size: 1.2em;
   font-family: Lato;
@@ -100,7 +98,7 @@ main {
 }
 #synthesis {
   justify-content: center;
-  margin: 0px 15px;
+  margin: 0px 6%;
 }
 
 .description-in {
@@ -232,6 +230,7 @@ p {
 }
 @media screen and (min-width: 780px) {
   main {
+    grid-template-columns: 0.2fr 4fr 0.2fr;
     grid-template-rows: 0.2fr 0.5fr 0.5fr;
     gap: 6px 5px;
   }

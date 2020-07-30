@@ -10,9 +10,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Technologies = () => {
-  useEffect(() => {
-    document.title = "Projects";
-  }, []);
   const projects = [
     {
       url: "/project/node",

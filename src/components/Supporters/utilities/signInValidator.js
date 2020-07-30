@@ -7,7 +7,6 @@ const signInValidator = (user) => {
     errors: [],
   };
 
-
   if (!user.email) {
     res.errors.push({
       type: "email",
@@ -43,6 +42,7 @@ const signInValidator = (user) => {
     res.sanitized = {
       email: user.email.trim(),
       password: user.password.trim(),
+      rememberMe: user.rememberMe
     };
   }
 
