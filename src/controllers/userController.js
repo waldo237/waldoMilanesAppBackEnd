@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -30,10 +31,10 @@ exports.loginRequired = (req, res, next) => {
 const register = async (req, res, next) => {
   try {
     // define boolean if already exists.
-    let alreadyExists = await User.findOne({ email: req.body.email },(err, user) => {
-        if (err) throw err;
-        if (user) return true;
-      }
+    let alreadyExists = await User.findOne({ email: req.body.email }, (err, user) => {
+      if (err) throw err;
+      if (user) return true;
+    }
     );
 
     if (alreadyExists) {
@@ -43,11 +44,11 @@ const register = async (req, res, next) => {
       newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
       //verify user if has a valid id from a provider
       const hasIdByProvider = req.body.cu_id && req.originalUrl === '/auth/withProvider';
-      if(hasIdByProvider)  newUser.isVerified = true; 
+      if (hasIdByProvider) newUser.isVerified = true;
       newUser.save((err, user) => {
-        if (err) return res.status(500).send({ message: "There was an issue with your request. Please try again."});
-        if(hasIdByProvider) return directLoginWithProvider(req, res, next, user);
-        
+        if (err) return res.status(500).send({ message: "There was an issue with your request. Please try again." });
+        if (hasIdByProvider) return directLoginWithProvider(req, res, next, user);
+
         sendVerificationTokenToEmail(req, res, user);
       });
     }
@@ -67,10 +68,10 @@ const register = async (req, res, next) => {
  */
 exports.registerWithProvider = async (req, res, next) => {
   try {
-    let alreadyExists = await User.findOne({ email: req.body.email },(err, user) => {
-        if (err) throw err;
-        if (user) return true;
-      });
+    let alreadyExists = await User.findOne({ email: req.body.email }, (err, user) => {
+      if (err) throw err;
+      if (user) return true;
+    });
     req.body.password = await req.body.cu_id;
 
     if (alreadyExists) {
@@ -109,14 +110,14 @@ exports.resendVerificationToken = async (req, res) => {
  * @function directLoginWithProvider() return
  */
 const directLoginWithProvider = (req, res, next, user) => {
-     res.status(200).json({
-      message: "You have successfully logged in.",
-      token: jwt.sign(
-        { hashed_access: bcrypt.hashSync(user.email, 5)},
-        process.env.APP_KEY
-      ),
-    });
-    return next();
+  res.status(200).json({
+    message: "You have successfully logged in.",
+    token: jwt.sign(
+      { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email },
+      process.env.APP_KEY
+    ),
+  });
+  return next();
 };
 
 
@@ -128,28 +129,28 @@ const login = (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) throw err;
       if (!user) {
-        return res.status(401).json({message:'Authentication failed. "You have entered an invalid username or password"'});
+        return res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
       } else if (user && req.body.password) {
         if (!user.comparePassword(req.body.password, user.hashPassword)) {
-          return res.status(401).json({ message:'Authentication failed. "You have entered an invalid username or password"' });
+          return res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
         } else {
           // Make sure the user has been verified
           if (!user.isVerified) return res.status(401).send({
-              type: "not-verified",
-              message: "Your account has not been verified. Please check your inbox or",
-              link: { label: 'Send another email', href: `http://${req.headers.host}/auth/resend-vefication-token/false` }
-            });
+            type: "not-verified",
+            message: "Your account has not been verified. Please check your inbox or",
+            link: { label: 'Send another email', href: `http://${req.headers.host}/auth/resend-vefication-token/false` }
+          });
 
           return res.status(200).json({
             message: "You have successfully logged in.",
             token: jwt.sign(
-              { hashed_access: bcrypt.hashSync(user.email, 5)},
+              { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email },
               process.env.APP_KEY
             ),
           });
         }
       } else {
-        res.status(401).json({message:'Authentication failed. "You have entered an invalid username or password"'});
+        res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
       }
     });
   } catch (error) {
@@ -194,9 +195,9 @@ exports.emailConfirmation = (req, res, next) => {
 const verifyUser = (req, res) => {
   try {
     User.findOne({ _id: req.params.id, email: req.params.email }, function (err, user) {
-      if (!user) return  res.status(400).render('index',  {successful: false, type: 'user-not-found', message: 'We were unable to find a user for this token.' });
+      if (!user) return res.status(400).render('index', { successful: false, type: 'user-not-found', message: 'We were unable to find a user for this token.' });
       if (user.isVerified) return res.status(200).render('index', { successful: true, type: 'already-verified', message: 'This account has already been verified.', link: 'https://waldomilanes.com/supporters' })
-  
+
       // Verify and save the user
       user.isVerified = true;
       user.save(function (err) {
@@ -222,7 +223,7 @@ const assertion = (params) => {
 
 const sendVerificationTokenToEmail = (req, res, user) => {
   // Create a verification token for this user
-  const jsonToken = jwt.sign({ hashed_access: bcrypt.hashSync(user.email, 5)}, process.env.APP_KEY);
+  const jsonToken = jwt.sign({ hashed_access: bcrypt.hashSync(user.email, 5), email: user.email }, process.env.APP_KEY);
   const token = new Token({ _userId: user._id, token: jsonToken });
 
   // save token
@@ -243,19 +244,50 @@ const sendVerificationTokenToEmail = (req, res, user) => {
       html: verificationEmailInHTML(req.headers.host, user, token.token),
     };
     transporter.sendMail(mailOptions, function (err) {
-      const serverSideRendered = req.params.ssr ==='true';
+      const serverSideRendered = req.params.ssr === 'true';
       if (err) {
         return (serverSideRendered)
-        ? res.status(500).render('index', { successful: false, message: err.message })
-        : res.status(500).send({ message: err.message })
+          ? res.status(500).render('index', { successful: false, message: err.message })
+          : res.status(500).send({ message: err.message })
       }
       return (serverSideRendered)
-      ? res.status(200).render('index', { successful: true, message: `A verification email has been sent to ${user.email}.` })
-      : res.status(200).send({ message: `A verification email has been sent to ${user.email}.`});
+        ? res.status(200).render('index', { successful: true, message: `A verification email has been sent to ${user.email}.` })
+        : res.status(200).send({ message: `A verification email has been sent to ${user.email}.` });
     });
   });
 }
 
+/**
+ * @function userIsLoggedIn
+ *  it receives JWT token, fetches payload --> hashed_access and email,
+ *  compares it against hashing algorithm 
+ *  send it back with code401 or code200
+ */
+exports.userIsLoggedIn = (req, res) => {
+  try {
+    const token = req.body.token;
+    const pL = (token) ? fetchPayloadFromJWT(token) : null;
+    const comparisonPassed = bcrypt.compareSync(pL.email, pL.hashed_access);
+
+    if (comparisonPassed) {
+      return res.status(200).send(`${pL.hashed_access}code200`);
+    } else {
+      return res.status(401).send(`${pL.hashed_access}code401`);
+    }
+  } catch (error) {
+    res.status(500).send('There was an issue while processing your request, please verify the data and try again.')
+  }
+}
+
+/**
+ * @param token a valid  JWT token
+ *  it receives JWT token, fetches payload and returns it
+ */
+const fetchPayloadFromJWT = (token) => {
+  let payload = {};
+  payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+  return payload
+}
 // declared exports 
 exports.login = login;
 exports.register = register;
