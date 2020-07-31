@@ -112,7 +112,7 @@ const directLoginWithProvider = (req, res, next, user) => {
      res.status(200).json({
       message: "You have successfully logged in.",
       token: jwt.sign(
-        { email: user.email, _id: user.id },
+        { hashed_access: bcrypt.hashSync(user.email, 5)},
         process.env.APP_KEY
       ),
     });
@@ -143,7 +143,7 @@ const login = (req, res) => {
           return res.status(200).json({
             message: "You have successfully logged in.",
             token: jwt.sign(
-              { email: user.email, _id: user.id },
+              { hashed_access: bcrypt.hashSync(user.email, 5)},
               process.env.APP_KEY
             ),
           });
@@ -222,7 +222,7 @@ const assertion = (params) => {
 
 const sendVerificationTokenToEmail = (req, res, user) => {
   // Create a verification token for this user
-  const jsonToken = jwt.sign({ email: user.email, _id: user._id }, process.env.APP_KEY);
+  const jsonToken = jwt.sign({ hashed_access: bcrypt.hashSync(user.email, 5)}, process.env.APP_KEY);
   const token = new Token({ _userId: user._id, token: jsonToken });
 
   // save token
