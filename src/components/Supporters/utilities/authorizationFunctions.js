@@ -11,15 +11,15 @@ import signInValidator from './signInValidator'
  * @param {*} rememberMe  a boolean to decide where the token is stored.
  */
 const saveTokenLocally = (token, rememberMe) => {
-   ((t)=> {
-        const tokenContent = {};
-        tokenContent.raw = token;
-        tokenContent.header = JSON.parse(window.atob(token.split('.')[0]));
-        tokenContent.payload = JSON.parse(window.atob(token.split('.')[1]));
-        console.log(tokenContent);
-        return (tokenContent)
-      })()
-    if (rememberMe ===true) return localStorage.setItem('auth_access_token', token);
+    //    ((t)=> {
+    //         const tokenContent = {};
+    //         tokenContent.raw = token;
+    //         tokenContent.header = JSON.parse(window.atob(token.split('.')[0]));
+    //         tokenContent.payload = JSON.parse(window.atob(token.split('.')[1]));
+    //         console.log(tokenContent);
+    //         return (tokenContent)
+    //       })()
+    if (rememberMe === true) return localStorage.setItem('auth_access_token', token);
     return sessionStorage.setItem('auth_access_token', token)
 }
 
@@ -31,12 +31,12 @@ const saveTokenLocally = (token, rememberMe) => {
  */
 const logOut = (history) => {
     auth().signOut()
-    .then(()=>{
-        sessionStorage.removeItem('auth_access_token');
-        localStorage.removeItem('auth_access_token');
-    })
-    .then(history.push('/'))
-    .catch(console.err)
+        .then(() => {
+            sessionStorage.removeItem('auth_access_token');
+            localStorage.removeItem('auth_access_token');
+        })
+        .then(history.push('/'))
+        .catch(console.err)
 }
 
 /**
@@ -59,7 +59,7 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
         })
             .then((res) => res.json()
                 .then(jsonRes => {
-                    if(jsonRes.token)  saveTokenLocally(jsonRes.token, user.rememberMe);
+                    if (jsonRes.token) saveTokenLocally(jsonRes.token, user.rememberMe);
                     return { successful: res.ok, message: jsonRes.message, link: jsonRes.link }
                 }))
             .then(setResponse)
@@ -91,17 +91,50 @@ const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
                 },
                 body: JSON.stringify(reqBody),
             })
-            .then((res) => res.json()
-                .then(jsonRes => {
-                    if(jsonRes.token)  saveTokenLocally(jsonRes.token, rememberMe);
-                    return { successful: res.ok, message: jsonRes.message }
-                }))
-            .then(setResponse)
-            .catch(console.error);
+                .then((res) => res.json()
+                    .then(jsonRes => {
+                        if (jsonRes.token) saveTokenLocally(jsonRes.token, rememberMe);
+                        return { successful: res.ok, message: jsonRes.message }
+                    }))
+                .then(setResponse)
+                .catch(console.error);
         })
         .catch(err => console.log(err.message));
 };
 
+
+/**
+ * @function fetchHashedAccess verifies in sessionStorage for {hashed_access}. 
+ * if it does not find it,  it hits auth/userIsLoggedIn with the access_token in the body. 
+ * if it receives a negative answer (access_token.split('true')[1]==='401'), it will delete the jwt_token. 
+ * else If it receives (access_token.split('true')[1]==='200'), it stores it in sessionStorage. 
+ */
+const fetchHashedAccess = () => {
+    return new Promise((resolve, reject) => {
+        const hashedAccess = sessionStorage.getItem('hashed_access');
+        const token = (localStorage.getItem('auth_access_token'))
+            ? localStorage.getItem('auth_access_token')
+            : sessionStorage.getItem('auth_access_token')
+
+        if(!token) return reject(new Error('there is not an existing token'));
+        if (!hashedAccess) {
+            fetch(`${envURL}/auth/userIsLoggedIn`,
+                {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json;charset=utf-8"
+                    },
+                    body: JSON.stringify({token})
+                }
+            )
+            .then(res => res.json())
+            .then((hash)=>sessionStorage.setItem('hashed_access', hash))
+            .catch(()=> reject(new Error('there was an issue while getting the data')))
+        } 
+           
+        return resolve();
+    })
+}
 
 /**
  * TODO
@@ -111,4 +144,4 @@ const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
  */
 
 // eslint-disable-next-line import/prefer-default-export
-export { logIn, signWithGoogleOrFB, logOut }
+export { logIn, signWithGoogleOrFB, logOut, fetchHashedAccess }
