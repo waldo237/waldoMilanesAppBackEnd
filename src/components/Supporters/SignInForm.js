@@ -2,19 +2,20 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
+import {useHistory} from 'react-router-dom'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
-import {logIn, signWithGoogleOrFB} from './utilities/authorizationFunctions'
+import {logIn, signWithGoogleOrFB, logOut} from './utilities/authorizationFunctions'
 
 const SignInForm = () => {
   const [user] = useState({});
-  
   const [response, setResponse] = useState(null);
   const [requestStarted, setRequest] = useState(false);
   const [displayableErrors, setErrors] = useState([]);
+  const history = useHistory();
 
   const inputHandler = (event) => {
     const { name } = event.target;
@@ -39,7 +40,13 @@ const SignInForm = () => {
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google
         </button>
-        <button type="submit" className="facebook-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}>
+        <button
+          type="submit"
+          className="facebook-btn" 
+        // onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
+          onClick={e => { e.preventDefault(); logOut(history)}}
+        
+        >
           {" "}
           <FontAwesomeIcon
             className="fa-lg"

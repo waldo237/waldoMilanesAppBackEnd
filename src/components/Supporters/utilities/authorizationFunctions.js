@@ -1,32 +1,51 @@
-
 import { auth, gProvider, fProvider } from './auth0';
 import envURL from '../../../envURL';
 import signInValidator from './signInValidator'
 
+
 /**
- * @function saveTokenLocally to be chained after the token is received throw all methods
+ * @function saveTokenLocally to be chained after the token is received
  * if rememberMe is true, take the token in the response and save it in localstorage
  * else save it on sessionCookies
+ * @param {*} token a JWT token
+ * @param {*} rememberMe  a boolean to decide where the token is stored.
  */
 const saveTokenLocally = (token, rememberMe) => {
+   ((t)=> {
+        const tokenContent = {};
+        tokenContent.raw = token;
+        tokenContent.header = JSON.parse(window.atob(token.split('.')[0]));
+        tokenContent.payload = JSON.parse(window.atob(token.split('.')[1]));
+        console.log(tokenContent);
+        return (tokenContent)
+      })()
     if (rememberMe ===true) return localStorage.setItem('auth_access_token', token);
     return sessionStorage.setItem('auth_access_token', token)
 }
 
-const distroyToken = () => {
-    // TODO
-    /* 
-  write a function distroyToken that will locate the token and delete it from localStorage
-     */
-}
-const logOut = () => {
-    // TODO
-    /* 
-  write a function distroyToken that will locate the token and delete it from localStorage
-     */
+/**
+ * @function logOut  logs out the user from services,
+ * locates the token,delete it from localStorage, and redirects to '/ '
+ * @param history is an instance of the useHistory hook
+ * @todo before using it, prevent default behavior from event, in case it's called inside form.
+ */
+const logOut = (history) => {
+    auth().signOut()
+    .then(()=>{
+        sessionStorage.removeItem('auth_access_token');
+        localStorage.removeItem('auth_access_token');
+    })
+    .then(history.push('/'))
+    .catch(console.err)
 }
 
-
+/**
+ * @function logIn logs the user with convetional techniques.
+ * @param {*} user an object {email:string, password:string, rememberMe:boolean}
+ * @param {*} setRequest a useState function(requestStarted:boolean)
+ * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
+ * @param {*} setErrors a useState function (errors:array)
+ */
 const logIn = (user, setRequest, setResponse, setErrors) => {
     if (signInValidator(user).valid) {
         setRequest(true);
@@ -45,13 +64,18 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
                 }))
             .then(setResponse)
             .catch(console.error);
-
     } else {
         setErrors(signInValidator(user).errors);
     }
 }
 
-// sign with google
+/**
+ * @function signWithGoogleOrFB logs the user with the Auth0 technique.
+ * @param {*} whichService string (fb | google)
+ * @param {*} setRequest a useState function(requestStarted:boolean)
+ * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
+ * @param {*} setErrors a useState function (errors:array)
+ */
 const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
     const provider = (whichService === 'fb') ? fProvider : gProvider;
     auth().signInWithPopup(provider)
@@ -79,5 +103,12 @@ const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
 };
 
 
+/**
+ * TODO
+ * Now, when the user visits the page later
+ * , the token in localstorage is sent to the server when the page is loaded 
+ * and validated against the JWT. giving a friendly experience.
+ */
+
 // eslint-disable-next-line import/prefer-default-export
-export { saveTokenLocally, distroyToken, logIn, signWithGoogleOrFB, logOut }
+export { logIn, signWithGoogleOrFB, logOut }
