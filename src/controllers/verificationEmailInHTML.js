@@ -1,7 +1,5 @@
-
-
-exports.verificationEmailInHTML = (host, user, token)=>{
-    return `<body>
+/* eslint-disable no-underscore-dangle */
+exports.verificationEmailInHTML = (host, user, token) => `<body>
                             <center class="wrapper" data-link-color="rgb(35, 35, 61)" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#FFFFFF;">
                               <div class="webkit">
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#FFFFFF">
@@ -192,5 +190,4 @@ exports.verificationEmailInHTML = (host, user, token)=>{
             </tbody></table>
             </div>
         </center>
-    </body>`
-}
+    </body>`;
