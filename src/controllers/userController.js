@@ -10,7 +10,7 @@ const User = mongoose.model('User', UserSchema);
 const Token = mongoose.model('Token', TokenSchema);
 
 /**
- * @function login(), confirm that the user data is valid and send a token if it does.
+ * @function login confirm that the user data is valid and send a token if it does.
  */
 const login = (req, res) => {
   try {
@@ -47,7 +47,7 @@ const login = (req, res) => {
 };
 
 /**
- * @function directLoginWithProvider() return
+ * @function directLoginWithProvider() return a JWT
  */
 const directLoginWithProvider = (req, res, next, user) => {
   res.status(200).json({
@@ -266,14 +266,11 @@ exports.emailConfirmation = (req, res) => {
 };
 
 /**
+ * @function fetchPayloadFromJWT it receives JWT token, fetches payload and returns it
  * @param token a valid  JWT token
- *  it receives JWT token, fetches payload and returns it
  */
-const fetchPayloadFromJWT = (token) => {
-  let payload = {};
-  payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-  return payload;
-};
+const fetchPayloadFromJWT = (token) => JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+
 /**
  * @function userIsLoggedIn
  *  it receives JWT token, fetches payload --> hashed_access and email,

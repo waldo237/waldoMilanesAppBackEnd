@@ -30,7 +30,7 @@ try {
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-    .then(() => console.log(`connected to DataBase successfully! at ${new Date().toLocaleString()}`))
+    .then(() => console.log(`connected to DataBase successfully! -- ${new Date().toLocaleString()}`))
     .catch((err) => console.log(`Could not connect to DataBase: ${err}`));
 } catch (error) {
   console.log(error);
