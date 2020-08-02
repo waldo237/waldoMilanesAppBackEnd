@@ -15,12 +15,15 @@ import {
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import bannerImg from "../../static/banner.png";
+import Avatar from '../Avatar/Avatar';
+import {confirmLoggedIn} from '../Supporters/utilities/authorizationFunctions';
 
 class Navigation extends Component {
   constructor() {
     super();
     this.state = {
       showSideMenu: false,
+      isLoggedIn: false,
       navItems: [
         { title: "Home", link: "/" },
         {
@@ -34,18 +37,18 @@ class Navigation extends Component {
           ],
         },
         { title: "Articles", link: "/articles" },
-        { title: "Contact me", link: "/contacts" },
-        { title: "Be my supporter", link: "/supporters" },
+        { title: "Contacts", link: "/contacts" },
         {
           title: "",
           link: "/React",
           icon: faLanguage,
           children: [
-            { title: "English", link: "/" },
-            { title: "español", link: "/" },
-            { title: "français", link: "/" },
+            { title: "EN", link: "/" },
+            { title: "ES", link: "/" },
+            { title: "FR", link: "/" },
           ],
         },
+        { title: "followers", link: "/supporters" },
       ],
       // turn icon .rotate and .closable
       openInnerList: () => {
@@ -57,7 +60,10 @@ class Navigation extends Component {
     };
   }
 
-  componentDidMount() {
+  
+
+  async componentDidMount() {
+    this.setState({ isLoggedIn: await confirmLoggedIn() });
     const nav = document.getElementById("navbar");
     const navOriginalPositioin = nav.offsetTop + nav.offsetHeight;
     const wProgrammingImg = document.querySelector(".small-w-programming-img");
@@ -179,7 +185,8 @@ class Navigation extends Component {
   }
 
   render() {
-    const { showSideMenu, navItems } = this.state;
+    const { showSideMenu, navItems, isLoggedIn } = this.state;
+    console.log(isLoggedIn);
     return (
       <nav id="navbar" className="primary">
         <img
@@ -208,7 +215,9 @@ class Navigation extends Component {
               {" "}
               <ul className="navItems" id="navItems">
                 {navItems.map((navItem) => (
-                  <li key={navItem.title}>{this.listNavItems(navItem)}</li>
+                 (isLoggedIn && navItem.title === 'followers')
+                  ?<Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} />
+                  :<li key={navItem.title}>{this.listNavItems(navItem)}</li>
                 ))}
               </ul>
             </div>

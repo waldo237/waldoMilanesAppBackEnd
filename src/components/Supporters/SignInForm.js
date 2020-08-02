@@ -8,7 +8,7 @@ import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
-import {logIn, signWithGoogleOrFB, logOut, fetchHashedAccess} from './utilities/authorizationFunctions'
+import {logIn, signWithGoogleOrFB, confirmLoggedIn} from './utilities/authorizationFunctions'
 
 const SignInForm = () => {
   const [user] = useState({});
@@ -43,11 +43,10 @@ const SignInForm = () => {
         <button
           type="submit"
           className="facebook-btn" 
-          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
+          // onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
           // TESTS
-          // onClick={e => { e.preventDefault(); logOut(history)}}
-          // onClick={e => { e.preventDefault(); fetchHashedAccess()}}
-        
+  
+          onClick={e => { e.preventDefault(); confirmLoggedIn()}}
         >
           {" "}
           <FontAwesomeIcon
