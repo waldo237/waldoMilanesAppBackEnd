@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faTimes,
-  faLanguage,
   faChevronDown,
+  faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css";
 import {
@@ -16,6 +16,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import bannerImg from "../../static/banner.png";
 import Avatar from '../Avatar/Avatar';
+import Settings from '../Dashboard/Settings';
+import Dashboard from '../Dashboard/Dashboard';
 import {confirmLoggedIn} from '../Supporters/utilities/authorizationFunctions';
 
 class Navigation extends Component {
@@ -24,6 +26,7 @@ class Navigation extends Component {
     this.state = {
       showSideMenu: false,
       isLoggedIn: false,
+      settingsActivated: false,
       navItems: [
         { title: "Home", link: "/" },
         {
@@ -37,18 +40,9 @@ class Navigation extends Component {
           ],
         },
         { title: "Articles", link: "/articles" },
-        { title: "Contacts", link: "/contacts" },
-        {
-          title: "",
-          link: "/React",
-          icon: faLanguage,
-          children: [
-            { title: "EN", link: "/" },
-            { title: "ES", link: "/" },
-            { title: "FR", link: "/" },
-          ],
-        },
         { title: "followers", link: "/supporters" },
+        { title: "Contacts", link: "/contacts" },
+        {title: "settings", icon: faEllipsisV  },
       ],
       // turn icon .rotate and .closable
       openInnerList: () => {
@@ -59,8 +53,6 @@ class Navigation extends Component {
       },
     };
   }
-
-  
 
   async componentDidMount() {
     this.setState({ isLoggedIn: await confirmLoggedIn() });
@@ -131,27 +123,7 @@ class Navigation extends Component {
             onKeyDown={openInnerList}
           >
             {item.title}
-            {item.icon ? (
-              <div>
-                <select
-                  id="selectbox"
-                  data-selected=""
-                  className="translator btn"
-                >
-                  {item.children.map((child) => (
-                    <option
-                      className="primary"
-                      key={child.title}
-                      value={child.title}
-                    >
-                      {child.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ) : (
-              <FontAwesomeIcon className=" drop-icon" icon={faChevronDown} />
-            )}
+            <FontAwesomeIcon className=" drop-icon" icon={faChevronDown} />
           </span>
           {!item.icon ? (
             <ul className="inner-nav-item">
@@ -185,8 +157,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { showSideMenu, navItems, isLoggedIn } = this.state;
-    console.log(isLoggedIn);
+    const { showSideMenu, navItems, isLoggedIn, settingsActivated } = this.state;
     return (
       <nav id="navbar" className="primary">
         <img
@@ -215,14 +186,20 @@ class Navigation extends Component {
               {" "}
               <ul className="navItems" id="navItems">
                 {navItems.map((navItem) => (
+                 // eslint-disable-next-line no-nested-ternary
                  (isLoggedIn && navItem.title === 'followers')
                   ?<Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} />
+                  :(!isLoggedIn && navItem.title === 'settings')
+                  ?<FontAwesomeIcon key={navItem.title} className="fa-lg btn setting-wrapper" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
                   :<li key={navItem.title}>{this.listNavItems(navItem)}</li>
                 ))}
+              
               </ul>
+              <Dashboard />
             </div>
           </div>
         ) : null}
+        { (settingsActivated)?  <Settings />: null}
       </nav>
     );
   }

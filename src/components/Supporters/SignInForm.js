@@ -77,17 +77,17 @@ const SignInForm = () => {
       <div className="form-group">
         <div className="custom-control custom-checkbox">
 
-          <input
-            id="customCheck"
-            name="rememberMe"
-            type="checkbox"
-            className="custom-control-input"
-            onChange={inputHandler}
-          />
           <label
-            className="custom-control-label"
+            className="form-switch"
             htmlFor="customCheck"
           >
+            <input
+              id="customCheck"
+              name="rememberMe"
+              type="checkbox"
+              onChange={inputHandler}
+            />
+            <i />
             Remember me
           </label>
         </div>

@@ -76,11 +76,21 @@ body {
   flex-direction: row;
 
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+
+}
 .flex-row-justified-aligned-c{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-items: center;
+}
+
+/* font-family */
+.Lato{
+  font-family: Lato, Arial, Helvetica, sans-serif;
 }
 .hoverable-card {
   transition: cubic-bezier(0.47, 0, 0.745, 0.715);

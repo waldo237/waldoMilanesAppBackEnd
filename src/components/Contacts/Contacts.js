@@ -116,9 +116,9 @@ const Contacts = () => {
             {response ? (
               <ResponseAlert response={response} setResponse={setResponse} />
             ) : (
-                <div>
-                  {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
-                </div>
+              <div>
+                {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
+              </div>
               )}
             <ErrorCard errors={displayableErrors} />
             <div>
