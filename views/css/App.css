@@ -13,7 +13,7 @@
   grid-area: "header";
   display: grid;
   grid-template-rows: 0.8fr 0.1fr 0.1fr;
-  grid-template-areas:
+  grid-template-areas: 
     "up"
  
 }
