@@ -1,6 +1,6 @@
 .app {
   display: grid;
-  grid-template-rows: 1fr 3.5fr 1fr;
+  grid-template-rows: .2fr 3.5fr 1fr;
   grid-template-areas:
     "header"
     "main"
@@ -11,21 +11,10 @@
 
 .header {
   grid-area: "header";
-  display: grid;
-  grid-template-rows: 0.8fr 0.1fr 0.1fr;
-  grid-template-areas:
-    "up"
-    "mid"
-    "down";
 }
 
-.header ul {
-  grid-area: "down";
-}
-.header title {
-  grid-area: "up";
-  padding: 30px;
-}
+
+
 .main {
   grid-area: "main";
 }
@@ -102,31 +91,20 @@
 
 @media screen and (min-width: 780px) {
   .app {
-    display: grid;
+    /* display: grid;
     grid-template-rows: 1.2fr 3.5fr 1fr;
     grid-template-areas:
       "header"
       "main"
       "footer";
     width: 100%;
-    height: 100vh;
+    height: 100%; */
   }
 
   .header {
     grid-area: "header";
-    display: grid;
-    grid-template-rows: 0.8fr 0.4fr;
-    grid-template-areas:
-      "up"
-      "mid";
   }
 
-  .header ul {
-    grid-area: "down";
-  }
-  .header title {
-    grid-area: "up";
-  }
 
   .main {
     grid-area: "main";

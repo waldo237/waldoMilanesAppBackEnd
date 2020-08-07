@@ -58,16 +58,15 @@ class Navigation extends Component {
     this.setState({ isLoggedIn: await confirmLoggedIn() });
     const nav = document.getElementById("navbar");
     const navOriginalPositioin = nav.offsetTop + nav.offsetHeight;
-    const wProgrammingImg = document.querySelector(".small-w-programming-img");
     const makeNavSticky = () => {
       if (window.pageYOffset > navOriginalPositioin) {
         nav.classList.add("sticky");
         nav.classList.remove("stuck");
-        wProgrammingImg.classList.remove("display-none");
+       
       } else {
         nav.classList.remove("sticky");
         nav.classList.add("stuck");
-        wProgrammingImg.classList.add("display-none");
+       
       }
     };
     window.onscroll = () => makeNavSticky();
@@ -87,13 +86,11 @@ class Navigation extends Component {
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
         const innerNav = document.querySelector(".span-with-children");
-        const translator = document.querySelector(".translator");
         let targetElement = evt.target;
         do {
           if (
             targetElement === navItems ||
-            targetElement === innerNav ||
-            targetElement === translator
+            targetElement === innerNav
           ) {
             return;
           }
@@ -115,7 +112,7 @@ class Navigation extends Component {
       return (
         <div
           id="with-children"
-          className={` ${!item.icon ? "nav-item-with-children" : "translator"}`}
+          className="nav-item-with-children"
         >
           <span
             className="span-with-children"
@@ -159,11 +156,12 @@ class Navigation extends Component {
   render() {
     const { showSideMenu, navItems, isLoggedIn, settingsActivated } = this.state;
     return (
-      <nav id="navbar" className="primary">
+      
+      <nav id="navbar" className="primary shadow">
         <img
           src={bannerImg}
           alt="W Programming icon"
-          className="small-w-programming-img display-none"
+          className="small-w-programming-img"
         />
         <div className="mid primary" id="nav">
           <button
@@ -180,6 +178,7 @@ class Navigation extends Component {
             )}
           </button>
         </div>
+        
         {showSideMenu ? (
           <div className="navItems-outer-wrapper">
             <div className="navItems-container primary">
@@ -195,7 +194,7 @@ class Navigation extends Component {
                 ))}
               
               </ul>
-              <Dashboard />
+              {/* <Dashboard /> */}
             </div>
           </div>
         ) : null}

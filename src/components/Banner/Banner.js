@@ -1,10 +1,10 @@
 import React from "react";
-import "./Title.css";
+import "./Banner.css";
 import img from "../../static/banner.png";
 
-const Title = () => (
+const Banner = () => (
   <>
-    <article className="title">
+    <article className="title primary shadow">
       <div>
         <img src={img} alt="WM robot" className="mw-robot" />
       </div>
@@ -14,5 +14,5 @@ const Title = () => (
   </>
 );
 
-export default Title;
+export default Banner;
  

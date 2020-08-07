@@ -18,43 +18,44 @@ const Settings = () => {
       };
     return (
       <>
-        <div className='dashboard light'>
-          <div className='dash-title-wrapper bold flex-row'>
+        <div className='dash-wrapper'>
+          <div className='settings light'>
+            <div className='dash-title-wrapper bold flex-row'>
 
-            <div id='title-img' />
-            <div className='dash-title'> Settings</div>
+              <div id='title-img' />
+              <div className='dash-title'> Settings</div>
 
-          </div>
-          <div className='dashboard-content'>
-
-            <div className='dash-action flex-row-justified-aligned-c dash-animation'>
-              <div className=" dash-icon">
-                <FontAwesomeIcon
-                  icon={faMoon}
-                />
-              </div>
-              <h1 className='dash-action-text primary--text Lato'>Dark mode &nbsp;</h1>
-              <div className="toggleWrapper">
-                <label htmlFor="toggle1" className="form-switch">
-                  <input type="checkbox" name="toggle1" className="mobileToggle" id="toggle1" />
-                  <i />
-                </label>
-              </div>
             </div>
+            <div className='dashboard-content'>
 
-            <div className='dash-action flex-row-justified-aligned-c dash-animation'>
-              <div className=" dash-icon">
-                <FontAwesomeIcon
-                  icon={faLanguage}
-                />
+              <div className='dash-action flex-row-justified-aligned-c dash-animation'>
+                <div className=" dash-icon">
+                  <FontAwesomeIcon
+                    icon={faMoon}
+                  />
+                </div>
+                <h1 className='dash-action-text primary--text Lato'>Dark mode &nbsp;</h1>
+                <div className="toggleWrapper">
+                  <label htmlFor="toggle1" className="form-switch">
+                    <input type="checkbox" name="toggle1" className="mobileToggle" id="toggle1" />
+                    <i />
+                  </label>
+                </div>
               </div>
-              {/* <h1 className='dash-action-text primary--text Lato'>Languages &nbsp;</h1> */}
-              <div style={{width: '100px'}}>
-                <Select
-                  onChange={handleChange}
-                  options={languages}
-                />
-                {/* <select
+
+              <div className='dash-action flex-row-justified-aligned-c dash-animation'>
+                <div className=" dash-icon">
+                  <FontAwesomeIcon
+                    icon={faLanguage}
+                  />
+                </div>
+                {/* <h1 className='dash-action-text primary--text Lato'>Languages &nbsp;</h1> */}
+                <div style={{width: '100px'}}>
+                  <Select
+                    onChange={handleChange}
+                    options={languages}
+                  />
+                  {/* <select
                   id="selectbox"
                   data-selected=""
                   className="translator btn"
@@ -70,9 +71,11 @@ const Settings = () => {
 )
                  )}
                 </select> */}
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </>
     )

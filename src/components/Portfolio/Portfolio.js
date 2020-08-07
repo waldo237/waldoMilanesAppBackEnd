@@ -45,7 +45,7 @@ const Portfolio = () => {
   ];
   return (
     <>
-      <main className="main animate__animated animate__fadeInUp light">
+      <main className=" animate__animated animate__fadeInUp light">
         <header className="porfolio-title title-font primary--text ">
           <h1>My Work</h1>
         </header>
