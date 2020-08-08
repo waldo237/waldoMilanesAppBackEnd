@@ -230,71 +230,91 @@ p {
 }
 @media screen and (min-width: 780px) {
   .main-home {
-      grid-template-columns: 1fr 180px  .2fr 1fr;
-      grid-template-rows:   300px .1fr .1fr;
-     
+  display: flex;
     }
-
-    .wm-img {
-      grid-column: 2/3;
-      grid-row: 1/2;
-      background-size: 320px;
-      width: 320px;
-      height: 230px;
-      left: 220px;
-      top:80px;
+    
+    .shapes{
+      --shape-width: 30%;
+      max-width: 30%;
+      position: relative;
+      margin: 0%;
       display: flex;
       align-self: flex-end;
       justify-self: flex-end;
-      z-index: 1;
+    }
+    .shapes-lower-left, .shapes-upper-right{
       position: relative;
-      /* border-radius: 50%; */
-      /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
     }
-    .db-shape{
-      grid-column: 1/4;
-      grid-row: 2/2;
-      width: 150px;
+    .security-shape{
+      width: 140px;
       z-index: 102;
-      bottom:180px;
-      left: 260px;
-     position: relative;
-     animation: bounce 2s linear .1s infinite;
+      left: calc(var(--shape-width) - 120px);
+      bottom: 22px;
+     position: absolute;
+      animation: headShake 3s linear .1s infinite;
+  }
+    .code-shape{
+      width: 130px;
+      z-index: 102;
+      top:130px;
+      left: calc(var(--shape-width) - 90px);
+     position: absolute;
+     transform:rotateZ(-25deg) skew(32deg, 4deg) rotate(5deg);
+
     }
-    
+    .stacks{
+      position: relative;
+    }
+    .wm-img {
+      background-size: 212px;
+      width: 212px;
+      height: 160px;
+      z-index: 4;
+      position:  absolute;
+      top: 90px;
+      left: 70px;
+      transform:rotateZ(-25deg) skew(32deg, 4deg) rotate(-10deg);
+      transition: all .5s ease;
+    }
+    .wm-img:hover, .wm-img:active {
+      background-size: 280px;
+      width: 280px;
+      height: 260px;
+      transform:rotateZ(0deg) skew(0deg, 0deg) rotate(0deg);
+    }
   .stack-shape{
-    grid-column: 3/4;
-    grid-row: 1/2;
       width: 350px;
       display: flex;
-      z-index: 2;
+      z-index: 3;
       position: relative;
   }
-  .ship-shape{
-    grid-column: 1/3;
-    grid-row: 1/2;
-    width: 130px;
-    height: 100px;
-    top:-200px;
-}
-  .security-shape{
-    grid-row: 1/2;
-    width: 150px;
-    right: 1%;
-    top:-150px;
-    z-index: 98;
-    position: relative;
+
+ 
+.db-shape{
+  width: 170px;
+  bottom: calc(50% - 136px);
+  left: -15px;
+  z-index: 98;
+  position: absolute;
+ animation: bounce 2s linear .1s infinite;
 }
 
 .server-shape{
-  width: 150px;
-  position: relative;
-  z-index: 99;
-  bottom:280px;
-  right: 200px;
-  animation: headShake 3s linear .1s infinite;
-}
+  width: 100px;
+  bottom: calc(2vh -  140px);
+  left: -20px;
+  position: absolute;
+  z-index: 1;
+  transform:rotateZ(-30deg) skew(25deg, -2deg) rotate(-275deg);
 
+}
+.ship-shape{
+  grid-column: 1/3;
+  grid-row: 1/2;
+  width: 130px;
+  height: 100px;
+  top:-200px;
+}
     .home-banner {
       grid-column: 1/2;
       grid-row: 1/4;
