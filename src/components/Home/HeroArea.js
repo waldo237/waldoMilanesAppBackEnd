@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { DBShape, SecurityShape, ServerShape, ShipShape, StackShape, CodeShape } from './Shapes'
+import { DBShape, SecurityShape, ServerShape, StackShape, CodeShape } from './Shapes'
 
-const MainCard = () => {
+const HeroArea = () => {
   useEffect(() => {
 
     // const wmImg = document.querySelector(".wm-img");
@@ -54,33 +54,37 @@ const MainCard = () => {
   return (
     <>
 
-      <div className="home-banner">
-        <div className="title-wrapper">
-          <div className="qualities">
-            <h1>A Pragmatic Dedicated</h1>
-          </div>
-          <small className="job-title">Web Developer</small>
-        </div>
+      <div id="hero-title-wrapper" className='primary--text'>
+        <h2 id="pragmatic-dedicated">A Pragmatic and Dedicated</h2>
+        <h1 id="web-developer">Web Developer</h1>
+        <p id='introduction-paragraph'>
+          Hi, my name is Waldo Milanes. I am an enthusiastic and skilled
+          professional with substantial technical expertise in designing
+          and developing web applications.
+        </p>
+        <button id='hear-more-btn' type="button" className="my-work-btn my-work-btn-wide primary--text">
+          hear more
+        </button>
       </div>
-      <div className='shapes flex-row'>
-        <div className='shapes-lower-left '>
-        
-        <SecurityShape />
-        <CodeShape />
+   
+      <div className="main-shape-wrapper flex-row">
+        <div className='shapes flex-row'>
+          <div className='shapes-lower-left '>
+            <SecurityShape />
+            <CodeShape />
+          </div>
+          <div className='stacks flex-column'>
 
+            <div className="wm-img shadow" />
+            <StackShape  />
+          </div>
+          <div className='shapes-upper-right'>
+            <DBShape />
+            <ServerShape />
+          </div>
         </div>
-        <div className='stacks flex-column'>
-          <div className="wm-img shadow" />
-          <StackShape  />
-        </div>
-        <div className='shapes-upper-right'>
-        <DBShape />
-        <ServerShape />
-          
-        </div>
-
       </div>
     </>
   );
 };
-export default MainCard
+export default HeroArea
