@@ -54,6 +54,7 @@ const HeroArea = () => {
   return (
     <>
 
+     
       <div id="hero-title-wrapper" className='primary--text'>
         <h2 id="pragmatic-dedicated">A Pragmatic and Dedicated</h2>
         <h1 id="web-developer">Web Developer</h1>
@@ -67,6 +68,7 @@ const HeroArea = () => {
         </button>
       </div>
    
+        
       <div className="main-shape-wrapper flex-row">
         <div className='shapes flex-row'>
           <div className='shapes-lower-left '>
@@ -85,6 +87,7 @@ const HeroArea = () => {
         </div>
       </div>
     </>
+
   );
 };
 export default HeroArea

@@ -6,6 +6,7 @@ import Select from 'react-select';
  
 
 const Settings = () => {
+  
     const [selectedOption,setSelect] = useState(null);
     const languages = [
         { value: "EN", label:"EN"},
@@ -18,7 +19,7 @@ const Settings = () => {
       };
     return (
       <>
-        <div className='dash-wrapper'>
+        <div id='settings-container' className='dash-wrapper'>
           <div className='settings light'>
             <div className='dash-title-wrapper bold flex-row'>
 

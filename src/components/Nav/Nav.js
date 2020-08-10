@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
-  faTimes,
   faChevronDown,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
@@ -62,15 +60,12 @@ class Navigation extends Component {
       if (window.pageYOffset > navOriginalPositioin) {
         nav.classList.add("sticky");
         nav.classList.remove("stuck");
-       
       } else {
         nav.classList.remove("sticky");
         nav.classList.add("stuck");
-       
       }
     };
     window.onscroll = () => makeNavSticky();
-
     const activateSideNav = () => {
       if (document.body.clientWidth >= 780) {
         this.setState({ showSideMenu: true });
@@ -98,6 +93,19 @@ class Navigation extends Component {
         } while (targetElement);
         this.setState({ showSideMenu: false });
       }
+    });
+    // make the settings colapse if clicked away.
+    document.addEventListener("click", (evt) => {
+        const settingsContainer = document.getElementById("settings-container");
+        const dotsBtn = document.getElementById('setting-btn');
+        let targetElement = evt.target;
+        do {
+          if (targetElement === settingsContainer || targetElement ===dotsBtn){
+            return;
+          } 
+          targetElement = targetElement.parentNode;
+        } while (targetElement);
+        this.setState({ settingsActivated: false });
     });
   }
 
@@ -164,19 +172,13 @@ class Navigation extends Component {
           className="small-w-programming-img"
         />
         <div className="mid primary" id="nav">
-          <button
-            className="fab-btn"
-            type="button"
-            onClick={() => {
-              this.setState({ showSideMenu: !showSideMenu });
-            }}
+          <div
+            onClick={() => {this.setState({ showSideMenu: !showSideMenu });}}
+            onKeyDown={() => {this.setState({ showSideMenu: !showSideMenu }); }}
+            className={showSideMenu ?'menu-btn open':'menu-btn'}
           >
-            {showSideMenu ? (
-              <FontAwesomeIcon className="fa-lg" icon={faTimes} />
-            ) : (
-              <FontAwesomeIcon className="fa-lg" icon={faBars} />
-            )}
-          </button>
+            <div className="menu-btn__burger" />
+          </div>
         </div>
         
         {showSideMenu ? (
@@ -189,16 +191,16 @@ class Navigation extends Component {
                  (isLoggedIn && navItem.title === 'followers')
                   ?<Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} />
                   :(!isLoggedIn && navItem.title === 'settings')
-                  ?<FontAwesomeIcon key={navItem.title} className="fa-lg btn setting-wrapper" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
+                  ?<FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg btn setting-btn" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
                   :<li key={navItem.title}>{this.listNavItems(navItem)}</li>
                 ))}
               
               </ul>
-              {/* <Dashboard /> */}
             </div>
           </div>
         ) : null}
         { (settingsActivated)?  <Settings />: null}
+        {/* <Dashboard /> */}
       </nav>
     );
   }

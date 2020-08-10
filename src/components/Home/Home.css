@@ -4,8 +4,18 @@
   width: 92%;
   display: flex;
   flex-direction: column;
-  padding: 0px 4% 0px 4%;
+  padding: 0px 3% 0px 4%;
+  margin-top: 8px;
     }
+  .elipsis-shape{
+    width: 0;
+    height:0;
+    /* background-color: var(--primary-color); */
+    clip-path: circle(76.3% at 24% 49%);
+    position: absolute;
+    right: 0px;
+    /* top: 350px; */
+  }
   #hero-title-wrapper {
     display: flex;
     align-content: flex-start;
@@ -41,13 +51,15 @@
       display: flex;
       align-content: center;
       justify-content: center;
-      width: 100;
-      
+      width: 100%;
     }
+
+
     .shapes{
       --shape-width: 30%;
       position: relative;
       left: 5px;
+      
     }
     .shapes-lower-left, .shapes-upper-right{
       position: relative;
@@ -80,7 +92,7 @@
       background-position: cover;
       background-size: 140px;
       width: 135px;
-      height: 110px;
+      height: 100px;
       z-index: 4;
       position:  absolute;
       top: 5px;
@@ -133,29 +145,29 @@
 .server-shape{
   width: 80px;
   height: 90px;
-  bottom: -135px;
-  left: -35%;
+  bottom: -126px;
+  left: -45%;
   position: relative;
-  transform:rotateZ(-25deg) skew(25deg, 0deg) rotate(-280deg);
+  transform:rotateZ(-45deg) skew(25deg, 2deg) rotate(-260deg);
 
 }
 
 
-#description {
-  grid-column: 1/4;
-  grid-row: 3/-1;
-  font-size: 1.2em;
-  font-family: Lato;
+#more-about-me-container{
+  font-size: 1em;
   line-height: 1.5;
-  text-align: justify;
+  width: 92%;
+  margin: 30px 4% 0px 4%;
+}
+#more-about-me-wrapper{
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
 }
-#synthesis {
-  justify-content: center;
-  margin: 0px 6%;
+.more-about-me-card{
+  padding: 5%;
+  margin: 5px 0px;
 }
+
 
 .description-in {
   animation: backInUp 1s alternate;
@@ -283,13 +295,23 @@ p {
   margin: 0px;
   padding: 0px;
 }
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 800px) {
   .hero-area-wrapper {
     min-height: 430px;
     width: 92%;
     display: flex;
     flex-direction: row;
     padding: 0px 2% 0px 6%;
+    margin-top: 0px;
+      }
+      .elipsis-shape{
+        width: 68%;
+        height:550px;
+        background-color: var(--primary-color);
+        clip-path: circle(55.5% at 61% 16%);
+        position: absolute;
+        right: 0px;
+        
       }
       #hero-title-wrapper {
         width:35%;
@@ -345,8 +367,8 @@ p {
     .server-shape{
       width: 96px;
       height: 100px;
-      bottom: -30px;
-      left: -20px;
+      bottom: 4px;
+      left: -35px;
       position: absolute;
     }
     #synthesis {
