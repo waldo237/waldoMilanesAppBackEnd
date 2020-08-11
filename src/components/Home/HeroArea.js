@@ -55,7 +55,7 @@ const HeroArea = () => {
     <>
 
      
-      <div id="hero-title-wrapper" className='primary--text'>
+      <div id="hero-title-wrapper" className='primary--text fadeInUpx'>
         <h2 id="pragmatic-dedicated">A Pragmatic and Dedicated</h2>
         <h1 id="web-developer">Web Developer</h1>
         <p id='introduction-paragraph'>
@@ -63,9 +63,11 @@ const HeroArea = () => {
           professional with substantial technical expertise in designing
           and developing web applications.
         </p>
-        <button id='hear-more-btn' type="button" className="my-work-btn my-work-btn-wide primary--text">
-          hear more
-        </button>
+        <a href="#more-about-me-container">
+          <button id='hear-more-btn' type="button" className="my-work-btn my-work-btn-wide primary--text">
+            hear more
+          </button>
+        </a>
       </div>
    
         

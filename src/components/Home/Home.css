@@ -4,6 +4,7 @@
   width: 92%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 0px 3% 0px 4%;
   margin-top: 8px;
     }
@@ -18,7 +19,7 @@
   }
   #hero-title-wrapper {
     display: flex;
-    align-content: flex-start;
+    align-items: stretch;
     justify-content: flex-end;
     flex-direction: column;
     width:95%;
@@ -33,9 +34,9 @@
   }
   #web-developer {
     margin: 0px;
-    align-self: flex-start;
     font-size: 11vw;
   }
+
   #introduction-paragraph{
     margin: 22px 0px;
     line-height: 1.5;
@@ -44,6 +45,7 @@
   #hear-more-btn{
     margin:0px;
     z-index: 99;
+    width: 100%;
   }
    /* SHAPES */
    .main-shape-wrapper{
@@ -157,15 +159,33 @@
   font-size: 1em;
   line-height: 1.5;
   width: 92%;
-  margin: 30px 4% 0px 4%;
+  padding: 80px 4% 0px 4%;
 }
 #more-about-me-wrapper{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .more-about-me-card{
-  padding: 5%;
-  margin: 5px 0px;
+  padding: 4%;
+  margin: 10px 0px;
+  height: 240px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+.fadeInUpx {
+  opacity: 0;
+  animation-name: fadeInUpx;
+  -webkit-animation-name: fadeInUpx;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  opacity: 0
 }
 
 
@@ -217,9 +237,6 @@ aside {
   padding: 0px;
 }
 
-.edu-scrolled {
-  /* animation: slideInRight .5s ease-in-out; */
-}
 
 #credentials {
   grid-column: 1/2;
@@ -300,6 +317,7 @@ p {
     min-height: 430px;
     width: 92%;
     display: flex;
+    align-items: stretch;
     flex-direction: row;
     padding: 0px 2% 0px 6%;
     margin-top: 0px;
@@ -314,6 +332,8 @@ p {
         
       }
       #hero-title-wrapper {
+        align-items: stretch;
+        justify-content: flex-end;
         width:35%;
         padding: 0px;
        }
@@ -371,12 +391,29 @@ p {
       left: -35px;
       position: absolute;
     }
+    #more-about-me-container{
+      font-size: 1.1em;
+      line-height: 1.5;
+      width: 90%;
+      padding: 140px 5% 0px 5%;
+      /* background: var(--light-brown); */
+    }
+    #more-about-me-wrapper{
+      display: flex;
+      flex-direction: row;
+    }
+    #more-about-me-card{
+      width:28%;
+     
+
+    }
     #synthesis {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6%;
       justify-content: center;
       margin: 1px 35px;
+      
     }
     #description {
       min-height: 300px;
@@ -449,4 +486,29 @@ p {
     -ms-transform: translate(206px, -19px);
   }
 }
+
+/* Animation */
+
+@keyframes fadeInUpx {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUpx {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
 

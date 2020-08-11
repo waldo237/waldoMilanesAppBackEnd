@@ -55,7 +55,7 @@ class Navigation extends Component {
   async componentDidMount() {
     this.setState({ isLoggedIn: await confirmLoggedIn() });
     const nav = document.getElementById("navbar");
-    const navOriginalPositioin = nav.offsetTop + nav.offsetHeight;
+    const navOriginalPositioin = nav.offsetTop;
     const makeNavSticky = () => {
       if (window.pageYOffset > navOriginalPositioin) {
         nav.classList.add("sticky");
@@ -182,7 +182,7 @@ class Navigation extends Component {
         </div>
         
         {showSideMenu ? (
-          <div className="navItems-outer-wrapper">
+          <div className="navItems-outer-wrapper ">
             <div className="navItems-container primary">
               {" "}
               <ul className="navItems" id="navItems">

@@ -6,6 +6,7 @@ import {FishFlock, FishFlock2} from "./FishFlock";
 import Education from "./Education";
 import HeroArea from "./HeroArea";
 import Banner from "../Banner/Banner";
+import MoreAboutMe from "./MoreAboutMe";
 
 const Home = () => {
   useEffect(() => {
@@ -18,35 +19,11 @@ const Home = () => {
   return (
     <>
       <main className="hero-area-wrapper light">
-      <div className='elipsis-shape'/>
+        <div className='elipsis-shape' />
         <HeroArea  />
       </main>
       {/* <Banner  /> */}
-      <article id="more-about-me-container" className="primary--text">
-        <div id="more-about-me-wrapper" >
-          <div className="more-about-me-card">
-            <p>
-              I know how to efficiently create elegant and user-friendly interfaces, setup back-end
-              databases that serve different business needs, and connect these
-              two ends in a way that is secured and optimized.{" "}
-            </p>
-          </div>
-          <div className="more-about-me-card">
-            <p>
-              {" "}
-              Working as a manager in the educational field for several years
-              has given me the ability to help small teams foster
-              cooperation to deliver accurate results. 
-            </p>
-          </div>
-          <div className="more-about-me-card">
-            <p>I excel
-              at communicating my ideas respectfully and negotiating
-              differences with my colleagues.{" "}
-            </p>
-          </div>
-        </div>
-      </article>
+      <MoreAboutMe />
       <svg width="0" height="0"> <defs> <clipPath id="my-shape" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)"> <path d="M0,64L120,96C240,128,480,192,720,186.7C960,181,1200,107,1320,69.3L1440,32L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z" /> </clipPath> <clipPath id="my-shape2" clipPathUnits="objectBoundingBox" transform="scale(0.00104, 0.00344)"> <path d=" M0 67 C 273,183 822,-40 1920.00,106 V 359 H 0 V 67 Z"> <animate repeatCount="indefinite" attributeName="d" dur="20s" attributeType="XML" values=" M0 77 C 473,283 822,-40 1920,116 V 389 H 0 V 67 Z; M0 77 C 373,-40 1222,283 1920,136 V 359 H 0 V 67 Z; M0 77 C 973,260 1722,-53 1920,120 V 459 H 0 V 67 Z; M0 77 C 573,283 822,-40 1920,116 V 359 H 0 V 67 Z " /> </path> </clipPath> </defs> </svg>
       <article className="light">
         <div id="my-work">
