@@ -13,11 +13,10 @@ const MoreAboutMe = ()=>{
         moreAboutMe.forEach((item)=>{
             const observer = new IntersectionObserver((entries) => {
               entries.forEach((entry) =>
-                entry.isIntersecting
-                  ?  item.classList.add("fadeInUpx")
-                  : item.classList.remove("fadeInUpx")
+               (entry.rootBounds) ? item.classList.toggle("fadeInUpx"): ''
+                  
               );
-            });
+            }, );
             observer.observe(item);
         })
 

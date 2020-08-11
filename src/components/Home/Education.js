@@ -121,11 +121,11 @@ const educationPoints = [
         <>
           <div id="credentials">
             <div className="education-title">
-              <h1 className="title-font primary--text title-2 ">Education</h1>
+              <h1 className=" primary--text ">Education</h1>
 
             </div>
             {educationPoints.map((item) => (
-              <div key={item.id} className="certificate">
+              <div key={item.id} className="certificate more-about-me-paragraph">
                 <div className='date-place'> 
                   <h5> 
                     {item.duration}
@@ -137,13 +137,16 @@ const educationPoints = [
                 <div className="institution-description shadow hoverable-card">
                   <div className="flex-row-justified-aligned-c">
                     <h2>{item.career}  &nbsp;</h2>
-                    <a href={item.url} target='_blank' rel="noopener noreferrer">
-
-                      <button type='button' className=".my-work-btn brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
-                    </a>
+           
                   </div>  
                   <h4>{item.university}</h4> 
                   <p> {item.description} </p>
+                  <div>
+                  <a href={item.url} target='_blank' rel="noopener noreferrer">
+
+<button type='button' className=".my-work-btn brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
+</a>
+                  </div>
                 </div>
              
               </div>

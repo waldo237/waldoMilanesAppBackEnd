@@ -46,6 +46,8 @@
     margin:0px;
     z-index: 99;
     width: 100%;
+    border:0px;
+    font-weight: 700; 
   }
    /* SHAPES */
    .main-shape-wrapper{
@@ -141,7 +143,7 @@
   left: -50px;
   z-index: 98;
   position: relative;
- animation: bounce 2s linear .1s infinite;
+ animation: bounce 2.5s linear .8s infinite;
 }
 
 .server-shape{
@@ -168,7 +170,7 @@
 }
 .more-about-me-card{
   padding: 4%;
-  margin: 10px 0px;
+  margin: 20px 0px;
   height: 240px;
   width: 80%;
   display: flex;
@@ -176,6 +178,21 @@
   align-items: center;
   justify-items: center;
   text-align: center;
+}
+.attributes-shape{
+  position: relative;
+  z-index: 2;
+}
+.attributes-shape::after{
+  content: "";
+  background: var(--primary-color);
+  width: 110px;
+  height: 110px;
+  bottom: 5px;
+  right: -15px;
+  border-radius: 50%;
+  z-index: -1;
+  position: absolute;
 }
 .fadeInUpx {
   opacity: 0;
@@ -194,20 +211,22 @@
 }
 
 #my-work {
-  background:  linear-gradient(#64b9ee, #0083B0,#224488 90.71%);
-  -webkit-clip-path: url(#my-shape2);
-  clip-path: url(#my-shape2);
+  background:  linear-gradient(#64b9ee, #015d9b,#1a3566 96.71%);
   width: 100%;
-  min-height: 450px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  z-index: 2;
 }
-
+.fish-animation{
+  width: 100%;
+  /* height: 40px; */
+}
 .my-work-btn-wide{
   padding: 8px 70px;
-  margin: 20px;
+  margin: 40px 20px 20px 20px;
 }
 .my-work-btn {
   box-shadow: 4px 10px 14px -10px var(--primary-color);
@@ -216,10 +235,8 @@
   background: rgba(35, 35, 61, 0.164);
   display: inline-block;
   cursor: pointer;
-  font-family: Lato, Arial, Helvetica, sans-serif;
   font-size: 0.7em;
   text-transform: uppercase;
-  text-shadow: 0px 1px 0px var(--primary-color);
   transition-delay: 0.1s;
   transition-duration: 0.6s;
 }
@@ -232,6 +249,7 @@
   position: relative;
   top: 1px;
 }
+
 aside {
   transition-duration: 0.8s;
   padding: 0px;
@@ -243,7 +261,7 @@ aside {
   line-height: 1.5em;
   z-index: -1;
   font-size: 0.8em;
-  background-color: var(--light-brown);
+  /* background-color: var(--light-brown); */
   padding: 0px 41px 150x 10px;
   /* position: relative; */
 }
@@ -293,12 +311,13 @@ aside {
 }
 .diploma-btn{
   border: 0px;
-  border-radius: 15px;
+  border-radius: 5px;
+  padding: 10px 20px;
 }
 .institution-description{
   position: relative;
-  background-color: #fbf7f48a;
-  border-radius: 10px;
+  background-color: #fbf7f496;
+  border-radius: 5px;
   padding: 30px 5px;
   right: 98%;
   width: 90vw;
@@ -379,7 +398,7 @@ p {
         width: 350px;
      }
      .db-shape{
-      width: 100px;
+      width: 90px;
       bottom: 270px;
       left: -15px;
       position: absolute;
@@ -465,7 +484,7 @@ p {
   .institution-description{
     font-size: 0.8em;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-left: 10px;
     right: 0%;
     width: 100%;
