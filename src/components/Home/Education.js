@@ -125,7 +125,7 @@ const educationPoints = [
 
             </div>
             {educationPoints.map((item) => (
-              <div key={item.id} className="certificate more-about-me-paragraph">
+              <div key={item.id} className="certificate lazy-effect">
                 <div className='date-place'> 
                   <h5> 
                     {item.duration}
@@ -135,17 +135,16 @@ const educationPoints = [
                   </h5>
                 </div>
                 <div className="institution-description shadow hoverable-card">
-                  <div className="flex-row-justified-aligned-c">
+                  <h4 >{item.university}</h4> 
+                  <div className='education-university'>
                     <h2>{item.career}  &nbsp;</h2>
-           
                   </div>  
-                  <h4>{item.university}</h4> 
                   <p> {item.description} </p>
                   <div>
-                  <a href={item.url} target='_blank' rel="noopener noreferrer">
+                    <a href={item.url} target='_blank' rel="noopener noreferrer">
 
-<button type='button' className=".my-work-btn brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
-</a>
+                      <button type='button' className=".my-work-btn brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
+                    </a>
                   </div>
                 </div>
              

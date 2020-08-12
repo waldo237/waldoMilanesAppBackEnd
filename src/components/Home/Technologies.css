@@ -12,12 +12,12 @@
     flex-direction: row;
     justify-content: center;
     font-size: .8em;
-    font-weight: 400;
+    /* font-weight: 400; */
     border-radius: 5px;
 }
 .tech-icon{
     font-size: 2.5em;
-    margin: 5px;
+    margin: 0px 5px;
 }
 @media screen and (min-width: 780px) {
     .technology-wrapper{
@@ -31,9 +31,12 @@
         padding: 10px 60px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-content: center;
+        justify-items: auto;
+        align-items: auto;
         font-size: 1.3em;
-        font-weight: 300;
+        
+    }
+    .technology-title{
+        font-weight: 200;
     }
 }

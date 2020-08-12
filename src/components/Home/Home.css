@@ -161,7 +161,7 @@
   font-size: 1em;
   line-height: 1.5;
   width: 92%;
-  padding: 80px 4% 0px 4%;
+  padding: 80px 4% 40px 4%;
 }
 #more-about-me-wrapper{
   display: flex;
@@ -213,7 +213,7 @@
 #my-work {
   background:  linear-gradient(#64b9ee, #015d9b,#1a3566 96.71%);
   width: 100%;
-  min-height: 420px;
+  min-height: 425px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -222,11 +222,12 @@
 }
 .fish-animation{
   width: 100%;
+  padding-bottom: 10px;
   /* height: 40px; */
 }
 .my-work-btn-wide{
-  padding: 8px 70px;
-  margin: 40px 20px 20px 20px;
+  padding: 8px 90px;
+  margin: 40px 10px 20px 10px;
 }
 .my-work-btn {
   box-shadow: 4px 10px 14px -10px var(--primary-color);
@@ -250,10 +251,10 @@
   top: 1px;
 }
 
-aside {
+/* aside {
   transition-duration: 0.8s;
   padding: 0px;
-}
+} */
 
 
 #credentials {
@@ -309,14 +310,26 @@ aside {
   padding: 30px 0px;
   
 }
+.education-university{
+  padding: 4px 0px 14px;
+}
 .diploma-btn{
   border: 0px;
   border-radius: 5px;
+  margin: 15px 0px 0px;
   padding: 10px 20px;
+  cursor: pointer;
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+.diploma-btn:hover,
+.diploma-btn:active{
+  box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.301);
 }
 .institution-description{
   position: relative;
-  background-color: #fbf7f496;
+  background-color: #fbf7f485;
   border-radius: 5px;
   padding: 30px 5px;
   right: 98%;
@@ -414,7 +427,7 @@ p {
       font-size: 1.1em;
       line-height: 1.5;
       width: 90%;
-      padding: 140px 5% 0px 5%;
+      padding: 140px 5% 80px 5%;
       /* background: var(--light-brown); */
     }
     #more-about-me-wrapper{
@@ -423,10 +436,9 @@ p {
     }
     #more-about-me-card{
       width:28%;
-     
 
     }
-    #synthesis {
+    /* #synthesis {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6%;
@@ -436,9 +448,9 @@ p {
     }
     #description {
       min-height: 300px;
-    }
+    } */
     .my-work-btn {
-      padding: 10px 85px;
+      padding: 14px 150px;
       font-size: 0.8em;
     }
 
@@ -447,13 +459,21 @@ p {
       line-height: 1.5em;
       grid-column: 1/2;
       z-index: -1;
-      padding: 40px 100px 150px 200px;
+      padding: 40px 150px 60px 200px;
     }
     .education-title{
       display: flex;
       flex-direction: row;
-      
+      position: relative;
+      height: 40px;
+      right: 70px;
+      padding: 20px 0px;
+      font-size: 1.2em;
     }
+    .education-title h1{
+      position: absolute;
+    }
+
     .certificate::before {
       content: counter(section);
       position: absolute;
@@ -481,30 +501,20 @@ p {
     margin: 6px 0px;
     padding: 0px;
   }
+
   .institution-description{
-    font-size: 0.8em;
-    padding: 15px;
+    font-size: 0.9em;
+    padding: 30px;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 20px;
     right: 0%;
     width: 100%;
   }
-  .certificate 
-  h4,
-  p {
-    margin: 2px 0px;
-    padding: 0px;
+  .education-university{
+    padding: 4px 0px 18px;
   }
 }
 
-@keyframes slideSlow {
-  0% {
-    -ms-transform: translate(206px, -19px);
-  }
-  100% {
-    -ms-transform: translate(206px, -19px);
-  }
-}
 
 /* Animation */
 

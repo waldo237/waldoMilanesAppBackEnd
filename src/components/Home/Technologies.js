@@ -45,14 +45,14 @@ const Technologies = () => {
             className="hoverable-card"
           >
             <Link to={project.url} className="link">
-              <div className="technology-card">
+              <div className="technology-card lazy-effect">
                 <FontAwesomeIcon
                   className="fa-5x light--text tech-icon"
                   icon={project.icon}
                 />
-                <h1 className=" light--text ">
+                <h3 className=" light--text technology-title">
                   {project.title}
-                </h1>
+                </h3>
               </div>
             </Link>
 

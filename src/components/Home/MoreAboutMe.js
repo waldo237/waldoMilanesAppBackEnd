@@ -9,16 +9,16 @@ const MoreAboutMe = ()=>{
     
     ]
     useEffect(()=>{
-        const moreAboutMe = document.querySelectorAll(".more-about-me-paragraph");
+        const moreAboutMe = document.querySelectorAll(".lazy-effect");
         moreAboutMe.forEach((item)=>{
             const observer = new IntersectionObserver((entries) => {
               entries.forEach((entry) =>
-               (entry.rootBounds) ? item.classList.toggle("fadeInUpx"): ''
+               (entry.isIntersecting && !item.classList.contains('fadeInUpx')) ? item.classList.add("fadeInUpx"): ''
                   
               );
             }, );
             observer.observe(item);
-        })
+        }, {  rootMargin: "100px" })
 
     })
     return (      
@@ -30,8 +30,8 @@ const MoreAboutMe = ()=>{
               { (paragraph.title === 'technical skills')? <Ability /> 
             : (paragraph.title ==='managerial skills')? <Management />
             : <Communication />}
-              <h2 className='more-about-me-paragraph'>{paragraph.title}</h2>
-              <p className='more-about-me-paragraph'>
+              <h2 className='lazy-effect'>{paragraph.title}</h2>
+              <p className='lazy-effect'>
                 {paragraph.content}
               </p>
             </div>
