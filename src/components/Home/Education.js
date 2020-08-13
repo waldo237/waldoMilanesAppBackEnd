@@ -119,14 +119,14 @@ const educationPoints = [
   const Education = () =>{
       return (
         <>
-          <div id="credentials">
+          <div id="education-container">
             <div className="education-title">
               <h1 className=" primary--text ">Education</h1>
 
             </div>
             {educationPoints.map((item) => (
-              <div key={item.id} className="certificate lazy-effect">
-                <div className='date-place'> 
+              <div key={item.id} className="education-card lazy-effect">
+                <div className='education-date-and-place'> 
                   <h5> 
                     {item.duration}
                   </h5>
@@ -134,16 +134,16 @@ const educationPoints = [
                     {item.place}
                   </h5>
                 </div>
-                <div className="institution-description shadow hoverable-card">
-                  <h4 >{item.university}</h4> 
-                  <div className='education-university'>
+                <div className="education-description-card shadow hoverable-card">
+                  <h4>{item.university}</h4> 
+                  <div className='education-institution'>
                     <h2>{item.career}  &nbsp;</h2>
                   </div>  
                   <p> {item.description} </p>
                   <div>
                     <a href={item.url} target='_blank' rel="noopener noreferrer">
 
-                      <button type='button' className=".my-work-btn brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
+                      <button type='button' className="brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
                     </a>
                   </div>
                 </div>

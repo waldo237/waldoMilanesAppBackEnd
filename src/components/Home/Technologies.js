@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import "./Technologies.css";
+import React from "react";
+import "./Technologies.scss";
 import { Link } from "react-router-dom";
 import {
   faNodeJs,

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./Home.css";
+import React, { useEffect } from "react";
+import "./Home.scss";
 import { Link } from "react-router-dom";
 import Tecnologies from './Technologies';
 import {FishFlock, FishFlock2} from "./FishFlock";
@@ -23,9 +23,9 @@ const Home = () => {
       {/* <Banner  /> */}
       <MoreAboutMe />
       <article className="light">
-        <div id="my-work">
+        <div id="my-work-container">
           <Link to="/portfolio">
-            <button type="button" className="my-work-btn my-work-btn-wide light--text">
+            <button type="button" className="my-work-btn light--text">
               my work
             </button>
           </Link>

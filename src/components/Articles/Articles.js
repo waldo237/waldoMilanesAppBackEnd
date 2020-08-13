@@ -24,7 +24,7 @@ const Articles = () => {
 
   return (
     <>
-      <div className="page-main animate__animated animate__fadeInUp light">
+      <div className="page-main-container animate__animated animate__fadeInUp light">
         <div className="main-title contact-title">
           <FontAwesomeIcon
             className="fa-2x primary--text  "

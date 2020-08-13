@@ -1,0 +1,22 @@
+@mixin bp($point) {
+    @if $point == desktop {
+      @media (min-width: 800px) { @content; }
+    }
+    @else if $point == tablet {
+      @media (min-width: 640px) { @content; }
+    }
+  }
+
+  .flex-row-wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-column{
+    display: flex;
+    flex-direction: column;
+  }

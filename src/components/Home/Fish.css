@@ -10,14 +10,11 @@
    justify-content: flex-end;
   
 }
-
 .fish-class-2 {
   animation: moveRight 15s ease-in-out infinite;
   -webkit-animation: moveRight 15s ease-in-out  infinite;
   opacity: 0.4;
   }
-
-  
   .fish-class {
     animation: moveRight 15s infinite;
     -webkit-animation: moveRight 15s infinite;
@@ -152,8 +149,6 @@
     }
   }
   
-  /*END Fish Animation*/
-
-
+  
 
   

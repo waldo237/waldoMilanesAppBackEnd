@@ -1,0 +1,97 @@
+// @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
+// @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+:root {
+  --primary-color: rgb(35, 35, 61);
+  --secondary-color: rgb(251, 211, 3);
+  --light: #fbf7f4;
+  --light-brown: rgb(225,193,164);
+  --brown: rgb(149,95,38);
+  --light-blue: rgb(100,185,238);
+  --text-shadow: 0px 1px 2px var(--primary-color);
+  
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+
+  .primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  .secondary {
+    background-color: var(--secondary-color);
+  }
+  .secondary--text {
+    color: var(--secondary-color);
+  }
+  .primary--text {
+    color: var(--primary-color);
+  }
+  .light--text {
+    color: var(--light);
+  }
+  .brown {
+    background-color: var(--brown);
+    color: var(--light);
+  }
+
+  .light {
+    background-color: var(--light);
+  }
+  .neom {
+    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+      -12px -12px 24px 0 rgba(243, 243, 243, 0.637);
+  }
+  .shadow {
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .title-font {
+    font-family: "Bebas Neue", sans-serif;
+  }
+  .bold {
+    font-weight: 700;
+  }
+  .flex-row-wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-column{
+    display: flex;
+    flex-direction: column;
+  }
+.flex-row-justified-aligned-c{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
+  /* font-family */
+  .Lato{
+    font-family: Lato, Arial, Helvetica, sans-serif;
+  }
+  .hoverable-card {
+    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+      &:active,
+      &:focus,
+      &:hover {
+      transform: translate3d(0px, -4px, -90px);
+      -webkit-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+      -moz-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+      box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+    } 
+  }
+}

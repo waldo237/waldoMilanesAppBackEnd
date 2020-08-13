@@ -50,7 +50,7 @@ const Contacts = () => {
     }
   };
   return (
-    <main className="page-main animate__animated animate__fadeInUp light">
+    <main className="page-main-container animate__animated animate__fadeInUp light">
       <div className="contact-title main-title">
         <FontAwesomeIcon
           className="fa-2x primary--text  small-icon"

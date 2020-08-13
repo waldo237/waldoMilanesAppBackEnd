@@ -5,17 +5,14 @@
   align-content: center;
   margin: 15px;
 }
-
 .social {
   margin: 15px;
 }
-
 .social-link{
  color: var(--light);
 }
-@media screen and (min-width: 780px) {
-  .footer-credits {
-    display: flex;
-    flex-direction: column;
-  }
+.footer-credits {
+  display: flex;
+  flex-direction: column;
 }
+

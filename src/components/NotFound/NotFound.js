@@ -9,7 +9,7 @@ const NotFound = () => {
     document.title = "This page was not found";
   }, []);
   return (
-    <main className="page-main animate__animated animate__fadeInUp light">
+    <main className="page-main-container animate__animated animate__fadeInUp light">
       <div className="contact-title main-title rubberband">
         <h1 className="primary--text title-font">oops </h1>
         <FontAwesomeIcon

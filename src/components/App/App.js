@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 // import { useTransition, useSpring, animated } from "react-spring";
 import Banner from "../Banner/Banner";
 import Navigation from "../Nav/Nav";

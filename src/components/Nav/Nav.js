@@ -5,7 +5,7 @@ import {
   faChevronDown,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Nav.css";
+import "./Nav.scss";
 import {
   faNodeJs,
   faJava,
@@ -45,7 +45,7 @@ class Navigation extends Component {
       // turn icon .rotate and .closable
       openInnerList: () => {
         const icon = document.querySelector(".drop-icon");
-        const innerItems = document.querySelector(".inner-nav-item");
+        const innerItems = document.querySelector(".inner-nav-item-list");
         icon.classList.toggle("rotate");
         innerItems.classList.toggle("closable");
       },
@@ -80,7 +80,7 @@ class Navigation extends Component {
     document.addEventListener("click", (evt) => {
       if (document.body.clientWidth < 780) {
         const navItems = document.getElementById("nav");
-        const innerNav = document.querySelector(".span-with-children");
+        const innerNav = document.querySelector(".nav-item-with-children-span");
         let targetElement = evt.target;
         do {
           if (
@@ -123,7 +123,7 @@ class Navigation extends Component {
           className="nav-item-with-children"
         >
           <span
-            className="span-with-children"
+            className="nav-item-with-children-span"
             onClick={openInnerList}
             onKeyDown={openInnerList}
           >
@@ -131,15 +131,15 @@ class Navigation extends Component {
             <FontAwesomeIcon className=" drop-icon" icon={faChevronDown} />
           </span>
           {!item.icon ? (
-            <ul className="inner-nav-item">
+            <ul className="inner-nav-item-list">
               {item.children.map((child) => (
                 <NavLink
-                  activeClassName="active"
+                  activeClassName="active-route"
                   exact
                   to={child.link}
                   key={child.title}
                 >
-                  <button type="button" className="btn spacious block ">
+                  <button type="button" className="btn spacious">
                     {!item.icon ? (
                       <FontAwesomeIcon className="fa-lg" icon={child.icon} />
                     ) : null}{" "}
@@ -153,7 +153,7 @@ class Navigation extends Component {
       );
     }
     return (
-      <NavLink activeClassName="active" exact to={item.link}>
+      <NavLink activeClassName="active-route" exact to={item.link}>
         <button type="button" className="btn spacious">
           {item.title}
         </button>
@@ -182,10 +182,10 @@ class Navigation extends Component {
         </div>
         
         {showSideMenu ? (
-          <div className="navItems-outer-wrapper ">
-            <div className="navItems-container primary">
+          <div className="nav-items-main-wrapper">
+            <div className="nav-items-container primary">
               {" "}
-              <ul className="navItems" id="navItems">
+              <ul className="nav-items-list" id="nav-items-list">
                 {navItems.map((navItem) => (
                  // eslint-disable-next-line no-nested-ternary
                  (isLoggedIn && navItem.title === 'followers')

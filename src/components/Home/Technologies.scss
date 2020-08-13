@@ -1,0 +1,30 @@
+ @import '../Utilities.scss';
+
+.technology-wrapper{
+    @extend .flex-row-wrap;
+    justify-content: center;
+    .technology-card{
+        padding: 5px 25px;
+        margin: 5px 5px;
+        @extend .flex-row;
+        justify-content: center;
+        font-size: .8em;
+        border-radius: 5px;
+        @include bp(desktop) {
+            margin-top: 10px;
+            padding: 10px 60px;
+            flex-direction: column;
+            justify-items: auto;
+            align-items: auto;
+            font-size: 1.3em;
+        }
+    }
+    .tech-icon{
+        font-size: 2.5em;
+        margin: 0px 5px;
+    }
+    .technology-title{
+        font-weight: 200;
+        margin: 8px 0px;
+    }
+}

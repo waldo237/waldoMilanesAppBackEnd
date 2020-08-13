@@ -1,0 +1,227 @@
+@import '../Utilities.scss';
+
+
+.btn{
+  background: linear-gradient(
+    to bottom,
+    rgb(35, 35, 61) 5%,
+    rgb(35, 35, 61) 100%
+  );
+  border: 0px;
+  display: inline-block;
+  cursor: pointer;
+  color: var(--light);
+  font-size: 11px;
+  text-decoration: none;
+  text-transform: uppercase;
+    &:hover,
+    &:active {
+    text-shadow: var(--text-shadow);
+    transform: scale(1.1);
+    transition: all .1s linear;
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+.setting-btn{
+  padding: 15px 32px;
+  font-size: 1em;
+  display: inline-block;
+  width: 100%;
+  @include bp(desktop) {
+    padding: 14px 18px 10px 10px;
+    font-size: 1em;
+  }
+}
+
+.active-route:after {
+  content: "";
+  display: block;
+  height: 1.5px;
+  position: relative;
+  background: var(--secondary-color);
+  transition: width 0.4s ease 0s, left 0.4s ease 0s;
+  width: 100%;
+  left: 0;
+}
+
+.sticky {
+  position: fixed;
+  position: -webkit-sticky;
+  top: 0;
+  width: 100%;
+  z-index: 101;
+  grid-area: "header";
+}
+
+.nav-items-main-wrapper {
+  position: relative;
+  @include bp(desktop) {
+    position: unset;
+  }
+  .nav-items-container {
+    position: absolute;
+    float: left;
+    right: 0px;
+    z-index: 102;
+    height: 100vh;
+    animation: slideInRight 0.1s ease-in-out;
+    @include bp(desktop) {
+      position: unset;
+      max-height: 0px;
+    }
+      .nav-items-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-items: flex-start;
+        @include bp(desktop) {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          align-content: flex-start;
+          position: absolute;
+          margin: 0px;
+          padding: 0px;
+          top: 0%;
+          right: 0px;
+        }
+    }
+  }
+}
+
+
+.nav-item-with-children {
+    @extend .btn;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    &:hover > span > .rotate,
+    &:active > span > .rotate {
+    transform: rotate(90deg);
+    }
+    &:active > .closable,
+    &:hover > .closable {
+      display: flex;
+    }
+    .nav-item-with-children-span {
+      margin: 15px 32px;
+      @include bp(desktop) {
+        margin: 14px 22px;
+      }
+    }
+    @include bp(desktop) {
+      position: relative;
+      z-index: 101;
+        &:hover > span > .drop-icon,
+        &:active > span > .drop-icon {
+          transform: rotate(90deg);
+        }
+        &:active > .inner-nav-item-list,
+        &:hover > .inner-nav-item-list {
+          display: flex;
+          -webkit-flex-direction: column;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          padding: 0;
+          position: relative;
+          right: 0;
+          top: 0;
+        }
+    }
+
+  .inner-nav-item-list {
+    display: none;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    justify-items: flex-start;
+    flex-wrap: nowrap;
+    margin: 0px;
+    position: relative;
+    right: 10px;
+    animation: fadeIn 0.1s ease-in-out;
+    @include bp(desktop) {
+      position: relative;
+    }
+  }
+}
+
+
+.drop-icon {
+  padding: 0px;
+  margin: 0px 5px 0px;
+}
+.spacious {
+  padding: 15px 32px;
+  width: 100%;
+  @include bp(desktop) {
+    padding: 15px 22px;
+  }
+}
+
+.mid {
+  grid-area: "mid";
+  float: right;
+}
+
+.small-w-programming-img {
+  width: 30px;
+  margin: 5px 25px 5px;
+}
+
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 40px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  @include bp(desktop) {
+    display: none;
+  }
+  .menu-btn__burger {
+    width: 28px;
+    height: 2px;
+    background: #fff;
+    border-radius: 5px;
+    transition: all .5s ease-in-out;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: #fff;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+      }
+      &::before {
+        transform: translateY(-8px);
+      }
+      &::after {
+        transform: translateY(8px);
+      }
+  }
+      /* ANIMATION */
+    &.open .menu-btn__burger {
+      transform: translateX(-50px);
+      background: transparent;
+      box-shadow: none;
+    }
+    &.open .menu-btn__burger::before {
+      transform: rotate(45deg) translate(35px, -35px);
+    }
+    &.open .menu-btn__burger::after {
+      transform: rotate(-45deg) translate(35px, 35px);
+    }
+}
+
