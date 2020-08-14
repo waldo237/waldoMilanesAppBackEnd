@@ -30,7 +30,7 @@ const Articles = () => {
             className="fa-2x primary--text  "
             icon={faFeatherAlt}
           />{" "}
-          <h1 className="primary--text title-font">Articles I have written</h1>
+          <h1 className="primary--text">Articles I have written</h1>
         </div>
         {articles.map((item) => (
           <article

@@ -115,7 +115,7 @@
         left: 0px;
         bottom: 180px;
         position: absolute;
-        animation: headShake 3s linear .1s infinite;
+        animation: headShake 4s linear 1s infinite;
         @include bp(tablet) {
           width: 100px;
           left: calc(var(--shape-width) - 105px);
@@ -227,7 +227,7 @@
         left: -50px;
         z-index: 98;
         position: relative;
-        animation: bounce 2.5s linear .8s infinite;
+        animation: bounce 4s 4s   infinite;
         @include bp(desktop){
           width: 90px;
           bottom: 270px;
@@ -287,8 +287,12 @@
       align-items: center;
       justify-items: center;
       text-align: center;
+     h2, p{
+       margin-bottom: 0px;
+     }
       @include bp(desktop){
         width:28%;
+        
       }
     }
     .personal-quality-shape{
@@ -486,4 +490,9 @@
   }
 }
 
-
+@keyframes headShake {
+  10%, 90% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  
+}

@@ -75,7 +75,7 @@ const ProjectViewer = ({ match }) => {
     <>
       <main className="node-main light main animate__animated animate__fadeInUp">
         <div className="contact-title main-title">
-          <h1 className="main-title primary--text title-font">
+          <h1 className="main-title primary--text">
             <IconizeFile name={technology.extension} usingExtension />
             {" "}
             My
@@ -88,7 +88,7 @@ const ProjectViewer = ({ match }) => {
               // eslint-disable-next-line react/jsx-indent
               <article className="all-projects" key={project._id}>
                 <div className="project-container light">
-                  <h1 className="project-title primary--text title-font">
+                  <h1 className="project-title primary--text">
                     Title:
                     {project.title}
                   </h1>

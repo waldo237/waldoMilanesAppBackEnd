@@ -160,9 +160,9 @@ const compareAccessKeys = ({ hashedAccess, token }) => {
 /**
  * @function confirmLoggedIn fetches tokens, compares them @returns boolean
  */
-const confirmLoggedIn = () =>{
+const confirmLoggedIn =async () =>{
     // return false;
-  const res = fetchHashedAccess()
+  const res = await fetchHashedAccess()
     .then(compareAccessKeys)
     .catch((e)=>{console.log(e.message)});
 

@@ -56,7 +56,7 @@ const Contacts = () => {
           className="fa-2x primary--text  small-icon"
           icon={faAddressCard}
         />
-        <h1 className="primary--text title-font">Let&apos;s get in contact</h1>
+        <h1 className="primary--text">Let&apos;s get in contact</h1>
       </div>
 
       <section>

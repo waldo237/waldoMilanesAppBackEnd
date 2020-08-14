@@ -17,7 +17,7 @@ const Loading = ({ message }) => {
     <>
       <div
         style={loadingStyle}
-        className=" animate__animated animate__fadeInUp title-font"
+        className=" animate__animated animate__fadeInUp"
       >
         <FontAwesomeIcon
           className="fa-spin fa-4x secondary--text"

@@ -21,7 +21,7 @@ const Supporters = () => {
   return (
     <>
       <div className="page-main-container animate__animated animate__fadeInUp light">
-        <section className="supporter-title title-font primary--text ">
+        <section className="supporter-title primary--text ">
           <h1>Supporters</h1>
           <p>
             If you like what I do, you can register to

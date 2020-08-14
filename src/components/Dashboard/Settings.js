@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Dashboard.css';
+import './Dashboard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faLanguage } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';

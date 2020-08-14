@@ -46,7 +46,7 @@ const Portfolio = () => {
   return (
     <>
       <main className=" animate__animated animate__fadeInUp light">
-        <header className="porfolio-title title-font primary--text ">
+        <header className="porfolio-title primary--text ">
           <h1>My Work</h1>
         </header>
         {projects.map((project) => (
@@ -59,7 +59,7 @@ const Portfolio = () => {
                 className="fa-5x primary--text  "
                 icon={project.icon}
               />
-              <h1 className="title-font primary--text technoly-title">
+              <h1 className=" primary--text technoly-title">
                 {project.title}
               </h1>
             </Link>

@@ -1,10 +1,11 @@
-import React from 'react';
-import './Dashboard.css';
+import React, {useRef, useEffect} from 'react';
+import './Dashboard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faProjectDiagram, faNewspaper, faBell, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '../Avatar/Avatar';
 
 const Dashboard = ()=>{
+
 const actions = [
     {title:'Special projects', icon:faProjectDiagram, link:''},
     {title:'Special Articles', icon:faNewspaper, link:''},

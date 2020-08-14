@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import './Fish.css';
-import propTypes from 'prop-types'
 
 export const FishFlock = () => {
     return (
@@ -54,8 +53,3 @@ export const FishFlock2 = () => {
       </>
     );
     }
-
-FishFlock2.propTypes = {
-    // eslint-disable-next-line react/forbid-prop-types
-    fishType: propTypes.object.isRequired,
-  };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -17,11 +17,12 @@ import Avatar from '../Avatar/Avatar';
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import {confirmLoggedIn} from '../Supporters/utilities/authorizationFunctions';
-
+import ClickAwayCloser from './ClickAwayCloser'
 class Navigation extends Component {
   constructor() {
     super();
     this.state = {
+      
       showSideMenu: false,
       isLoggedIn: false,
       settingsActivated: false,
@@ -38,9 +39,9 @@ class Navigation extends Component {
           ],
         },
         { title: "Articles", link: "/articles" },
-        { title: "followers", link: "/supporters" },
         { title: "Contacts", link: "/contacts" },
-        {title: "settings", icon: faEllipsisV  },
+        { title: "followers", link: "/supporters" },
+        {title: "settings", icon: faEllipsisV, link:'/'  },
       ],
       // turn icon .rotate and .closable
       openInnerList: () => {
@@ -94,19 +95,19 @@ class Navigation extends Component {
         this.setState({ showSideMenu: false });
       }
     });
-    // make the settings colapse if clicked away.
-    document.addEventListener("click", (evt) => {
-        const settingsContainer = document.getElementById("settings-container");
-        const dotsBtn = document.getElementById('setting-btn');
-        let targetElement = evt.target;
-        do {
-          if (targetElement === settingsContainer || targetElement ===dotsBtn){
-            return;
-          } 
-          targetElement = targetElement.parentNode;
-        } while (targetElement);
-        this.setState({ settingsActivated: false });
-    });
+    // // make the settings colapse if clicked away.
+    // document.addEventListener("click", (evt) => {
+    //     const settingsContainer = document.getElementById("settings-container");
+    //     const dotsBtn = document.getElementById('setting-btn');
+    //     let targetElement = evt.target;
+    //     do {
+    //       if (targetElement === settingsContainer || targetElement ===dotsBtn){
+    //         return;
+    //       } 
+    //       targetElement = targetElement.parentNode;
+    //     } while (targetElement);
+    //     this.setState({ settingsActivated: false });
+    // });
   }
 
   componentWillUnmount() {
@@ -166,11 +167,14 @@ class Navigation extends Component {
     return (
       
       <nav id="navbar" className="primary shadow">
-        <img
-          src={bannerImg}
-          alt="W Programming icon"
-          className="small-w-programming-img"
-        />
+        <Link to="/" className="social-link link">
+          <img
+            src={bannerImg}
+            alt="W Programming icon"
+            className="small-w-programming-img"
+          />
+        </Link>
+      
         <div className="mid primary" id="nav">
           <div
             onClick={() => {this.setState({ showSideMenu: !showSideMenu });}}
@@ -189,9 +193,12 @@ class Navigation extends Component {
                 {navItems.map((navItem) => (
                  // eslint-disable-next-line no-nested-ternary
                  (isLoggedIn && navItem.title === 'followers')
-                  ?<Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} />
-                  :(!isLoggedIn && navItem.title === 'settings')
-                  ?<FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg btn setting-btn" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
+                  ?<div className='avatar-wrapper'> <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} /></div>
+                  // eslint-disable-next-line no-nested-ternary
+                  :( navItem.title === 'settings')
+                  ?(isLoggedIn)
+                  ?null
+                  :<FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
                   :<li key={navItem.title}>{this.listNavItems(navItem)}</li>
                 ))}
               
@@ -199,8 +206,8 @@ class Navigation extends Component {
             </div>
           </div>
         ) : null}
-        { (settingsActivated)?  <Settings />: null}
-        {/* <Dashboard /> */}
+        { (settingsActivated)?  <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser>: null}
+        { (isLoggedIn)? <ClickAwayCloser> <Dashboard /> </ClickAwayCloser>: null}
       </nav>
     );
   }
