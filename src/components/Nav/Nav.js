@@ -18,6 +18,7 @@ import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import {confirmLoggedIn} from '../Supporters/utilities/authorizationFunctions';
 import ClickAwayCloser from './ClickAwayCloser'
+
 class Navigation extends Component {
   constructor() {
     super();
@@ -67,6 +68,7 @@ class Navigation extends Component {
       }
     };
     window.onscroll = () => makeNavSticky();
+    
     const activateSideNav = () => {
       if (document.body.clientWidth >= 780) {
         this.setState({ showSideMenu: true });
@@ -79,7 +81,7 @@ class Navigation extends Component {
 
     // make the nav colapse if click away.
     document.addEventListener("click", (evt) => {
-      if (document.body.clientWidth < 780) {
+      if (document.body.clientWidth <= 780) {
         const navItems = document.getElementById("nav");
         const innerNav = document.querySelector(".nav-item-with-children-span");
         let targetElement = evt.target;

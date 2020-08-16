@@ -1,0 +1,73 @@
+@import '../Utilities.scss';
+
+.portfolio-container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2% 96% 2%;
+  .porfolio-title {
+    grid-column: 2/3;
+    justify-self: center;
+    height: 200px;
+    width: 380px;
+    @extend .flex-row-space-evenly;
+    transition: ease-in-out;
+    letter-spacing: 0.8px;
+    // margin-bottom: 20px;
+    h1{
+      margin-bottom: 0px;
+      font-size: 3.2em;
+      @include bp(desktop) {
+        font-size: 3.5em;
+      }
+    }
+    h4{
+      margin-top: 0px;
+      font-size: 1.4em;
+      font-weight: lighter;
+    }
+    .portfolio-title-icon{
+      margin-right: 5px;
+      position: relative;
+      z-index: 1;
+      &::after{
+        @extend .title-icons-background;
+      }
+    }
+  }
+  .technology-container {
+    grid-column: 2/3;
+    justify-self: center;
+    padding: 20px 25px;
+    margin: 30px 25px 30px 30px;
+    
+    a{
+      color: var(--brown);
+      font-weight: 900;
+    }
+    @extend .shadow;
+    @extend .round-edges;
+    p {
+      font-size: 1em;
+      color: var(--primary-color)
+    }
+    .technology-icon {
+      color: var(--secondary-color);
+      position: relative;
+      z-index: 1;
+      left: -25px;
+      top: -22px;
+        &::after{
+          background-color: var(--primary-color);
+          width: 90px;
+          height: 90px;
+          left: -25px;
+          top: -25px;
+          @extend .title-icons-background;
+        }
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+}
