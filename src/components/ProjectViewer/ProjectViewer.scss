@@ -3,19 +3,30 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2% 96% 2%;
+      margin-bottom: 30px;
   .project-viewer-title {
+    @extend .flex-column;
     grid-column: 2/3;
     justify-self: center;
-    height: 200px;
-    width: 400px;
+    // align-content: flex-end;
+    justify-content: flex-end;
+    height: 250px;
+    width: 90%; 
+    @include bp(desktop) {
+      flex-direction: row;
+      width: 400px; 
+      height: 200px;
+      justify-items: center;
+      align-items: center;
+    }
     @extend .flex-row-space-evenly;
     transition: ease-in-out;
     letter-spacing: 0.8px;
-    // margin-bottom: 20px;
     h1{
-      margin-bottom: 0px;
-      font-size: 3.2em;
+      margin: 2px 0px;
+      font-size: 3em;
       @include bp(desktop) {
+        margin: 15px 0px 5px;
         font-size: 3.5em;
       }
     }
@@ -26,7 +37,10 @@
       font-weight: lighter;
     }
     .project-viewer-title-icon{
-      margin-right: 5px;
+      margin: 0px 0px 30px;
+      @include bp(desktop) {
+        margin: 0px 30px 0px;
+      }
       font-size: 2.2em;
       color: var(--primary-color);
       position: relative;
@@ -51,17 +65,23 @@
     // justify-content: center;
     padding: 20px 30px;
     margin: 2%;
-    width: 96%; 
+    width: 90%; 
+    @include bp(tablet){
+      width: 80%;    
+     }
    @include bp(desktop){
     width: 60%;    
    }
     .project-screenshot {
-      max-width: 550px;
-      height: 300px;
+      max-width: 96%;
       @extend .round-edges;
       transition: all;
       transition-delay: 0.1s;
       transition-duration: 0.3s;
+      @include bp(desktop){
+        width: 90%;
+        max-width: 550px;  
+       }
     }
     .project-title {
     }
@@ -112,6 +132,33 @@
  
 }
 
+/*######### modal  ################*/
+
+.modal {
+  @extend .round-edges;
+  z-index: 100;
+  position: absolute;
+  left: -3vw;
+  bottom: -225px;
+  width: 85vw;
+  height: 450px;
+  padding: 0px 10px;
+  overflow: scroll; 
+  word-wrap: unset;
+  transition: all 0.5s ease-out;
+  @include bp(desktop){
+    width: 82vw;
+    left: -14vw;
+  }
+  .code {
+    margin: 20px;
+  }
+   span {
+    padding: 10px 1px 10px 1px;
+    opacity: 0.9;
+  }
+}
+
 
 .file {
   position: relative;
@@ -131,33 +178,6 @@
 .turn-downwards {
   transform: rotate(90deg);
 }
-
-/*######### modal  ################*/
-
-  .modal {
-    @extend .round-edges;
-    z-index: 100;
-    position: absolute;
-    left: -3vw;
-    bottom: -225px;
-    width: 85vw;
-    height: 450px;
-    padding: 0px 10px;
-    overflow: scroll; 
-    word-wrap: unset;
-    transition: all 0.5s ease-out;
-    @include bp(desktop){
-      width: 83vw;
-      left: -14vw;
-    }
-    .code {
-      margin: 20px;
-    }
-     span {
-      padding: 10px 1px 10px 1px;
-      opacity: 0.9;
-    }
-  }
 
 .modal{
   
