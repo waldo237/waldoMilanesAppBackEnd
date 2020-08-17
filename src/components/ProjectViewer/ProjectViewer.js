@@ -6,11 +6,16 @@ import {
   faFile,
   faFolder,
   faChevronRight,
+  faLink,
+  faCalendarCheck,
+  faCertificate,
 } from "@fortawesome/free-solid-svg-icons";
 import IconizeFile from "./IconizeFile";
 import CodeModal from "./CodeModal";
 import Loading from "../Loading/Loading";
 import envURL from '../../envURL';
+import ScreenshotViewer from "./ScreenshotViewer";
+
 
 const ProjectViewer = ({ match }) => {
   const technologySwicher = () => {
@@ -94,41 +99,33 @@ const ProjectViewer = ({ match }) => {
             // eslint-disable-next-line react/jsx-indent
           
             <div className="project-container light" key={project._id}>
-              <a
-                target="_blank"
-                href={project.screenshot}
-                className="screenshot-container"
-                rel="noopener noreferrer"
-              >
-                <picture>
-                  <source
-                    media="(min-width:650px)"
-                    srcSet={project.screenshot}
-                  />
-                  <source
-                    media="(min-width:465px)"
-                    srcSet={project.screenshot}
-                  />
-                  <img
-                    className="project-screenshot"
-                    src={project.screenshot}
-                    alt={`${project.title}-view`}
-                  />
-                </picture>
-              </a>
+              <ScreenshotViewer screenshot={project.screenshot} title={project.title} />
               <div className='project-description-container'>
                 <h1 className="project-title primary--text">
-                  
                   {project.title}
                 </h1>
                 <p>
-                  <span className="project-description-label">Created on:</span>{" "}
+                  <span className="project-description-label">
+                    <FontAwesomeIcon
+                      icon={faCalendarCheck}
+                      className="secondary--text"
+                    />
+                    {" "}
+                    Updated on:
+                  </span>{" "}
                   {new Date(project.date).toLocaleString("eng-US", {
                       dateStyle: "long",
                     })}
                 </p>
                 <p>
-                  <span className="project-description-label">URL:</span>{" "}
+                  <span className="project-description-label">
+                    <FontAwesomeIcon
+                      icon={faLink}
+                      className="secondary--text"
+                    />
+                    {" "}
+                    URL:
+                  </span>{" "}
                   <a
                     target="_blank"
                     href={project.url}
@@ -138,7 +135,13 @@ const ProjectViewer = ({ match }) => {
                   </a>
                 </p>
                 <p>
-                  <span className="project-description-label">Description:</span>{" "}
+                  <span className="project-description-label">
+                  <FontAwesomeIcon
+                      icon={faCertificate}
+                      className="secondary--text"
+                    />
+                    {" "}
+                    Description:</span>{" "}
                   {project.description}
                 </p>
               </div>

@@ -48,3 +48,16 @@
   .round-edges{
     border-radius: 5px;
   }
+  .hoverable-card {
+    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+      &:active,
+      &:focus,
+      &:hover {
+      transform: translate3d(0px, -4px, -90px);
+      -webkit-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+      -moz-box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+      box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
+    } 
+  }

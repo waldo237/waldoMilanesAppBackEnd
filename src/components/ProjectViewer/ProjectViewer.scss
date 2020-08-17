@@ -62,6 +62,7 @@
     @extend .shadow;
     @extend .round-edges;
     @extend .flex-column;
+    @extend .hoverable-card;
     // justify-content: center;
     padding: 20px 30px;
     margin: 2%;
@@ -72,26 +73,45 @@
    @include bp(desktop){
     width: 60%;    
    }
-    .project-screenshot {
-      max-width: 96%;
-      @extend .round-edges;
-      transition: all;
-      transition-delay: 0.1s;
-      transition-duration: 0.3s;
-      @include bp(desktop){
-        width: 90%;
-        max-width: 550px;  
-       }
+   .project-screenshot-container{
+     @extend .flex-column;
+     align-self: center;
+     align-items: center;
+      width: 100%;
+      position: relative;
+      .project-device-showing-screenshot{
+        width: 96%;
+        position: relative;
+        @include bp(desktop){
+          width: 70%;
+          // max-width: 550px;  
+        }
+      }
+      .project-screenshot {
+        @extend .round-edges;
+        @extend .shadow;
+        width: 85%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: calc(5%);
+        @include bp(desktop){
+          width: 66%;
+          
+        }
+     }
     }
+    
     .project-title {
     }
     .project-description-container{
       p{
         margin: 12px 0px;
-        color: var(--primary-color);
+        color: var(--brown);
         .project-description-label{
-          font-weight: 700;
-        
+          color: var(--primary-color);
+
         }
       }
      
@@ -101,8 +121,7 @@
 
 .file-container {
   @extend .round-edges;
-  display: flex;
-  flex-direction: column;
+  @extend .flex-column;
   max-width: 250px;
   span {
     padding: 5px;
@@ -114,21 +133,33 @@
     padding: 2px 1px ;
     font-size: 0.8em;
     background-color: transparent;
+    color: var(--brown);
     text-align: start;
     border: 0px;
     cursor: pointer;
-    animation: slideInDown 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    transition: all 0.2s cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    &:hover {
-      background-color: lightgray;
-    }
-    &:active {
-      position: relative;
-      top: 1px;
-      background-color: grey;
-    }
+      &:hover {
+        background-color: lightgray;
+      }
+      &:active {
+        position: relative;
+        top: 1px;
+        background-color: grey;
+      }
   }
-  
+  .file {
+    position: relative;
+  }
+
+  .folder-closed {
+    display: none;
+  }
+  .folder-opened {
+    display: unset;
+  }
+
+  .internal-files {
+    padding-left: 15px;
+  }
  
 }
 
@@ -138,7 +169,7 @@
   @extend .round-edges;
   z-index: 100;
   position: absolute;
-  left: -3vw;
+  left: -5vw;
   bottom: -225px;
   width: 85vw;
   height: 450px;
@@ -160,28 +191,12 @@
 }
 
 
-.file {
-  position: relative;
-}
-
-.folder-closed {
-  display: none;
-}
-.folder-opened {
-  display: unset;
-}
-
-.internal-files {
-  padding-left: 15px;
-}
 /* this turn an icon downwards */
 .turn-downwards {
   transform: rotate(90deg);
 }
 
 .modal{
-  
-
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px;
@@ -220,13 +235,29 @@
 
 .modal-closed {
   display: none;
-  animation: zoomOut 0.5s ease-in-out;
+  animation: ZoomInBack 0.5s ease-in-out;
 }
 .modal-opened {
   display: unset;
-  animation: zoomIn 0.5s ease-in-out;
+  animation: ZoomInBack 0.5s ease-in-out;
 }
-
+/* Animation */
+@keyframes ZoomInBack {
+  from {
+      transform: scale(0.2);
+  }
+  to {
+      transform: scale(1);
+  }
+}
+@-webkit-keyframes ZoomInBack {
+  from {
+    transform: scale(0.2);
+}
+to {
+    transform: scale(1);
+}
+}
 .float-right {
   display: flex;
   flex-direction: row;
