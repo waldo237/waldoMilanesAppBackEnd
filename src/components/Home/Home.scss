@@ -313,17 +313,7 @@
     }
   }
 }
-/* fadeInUpx is a global effect*/
-.fadeInUpx {
-  opacity: 0;
-  animation-name: fadeInUpx;
-  -webkit-animation-name: fadeInUpx;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  opacity: 0
-}
+
 
 #my-work-container {
   background:  linear-gradient(#64b9ee, #015d9b,#1a3566 96.71%);
@@ -465,31 +455,12 @@
       transition-duration: 150ms;
       &:hover,
       &:active{
-        box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.301);
+        box-shadow: 1px 4px 7px 1px rgba(0, 0, 0, 0.26);
       }
     }
   }
 }
 
-/* Animation */
-@keyframes fadeInUpx {
-  from {
-      transform: translate3d(0,40px,0)
-  }
-  to {
-      transform: translate3d(0,0,0);
-      opacity: 1
-  }
-}
-@-webkit-keyframes fadeInUpx {
-  from {
-      transform: translate3d(0,40px,0)
-  }
-  to {
-      transform: translate3d(0,0,0);
-      opacity: 1
-  }
-}
 
 @keyframes headShake {
   10%, 90% {

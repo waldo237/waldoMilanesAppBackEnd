@@ -3,53 +3,9 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2% 96% 2%;
-      margin-bottom: 30px;
+   padding-bottom: 30px;
   .project-viewer-title {
-    @extend .flex-column;
-    grid-column: 2/3;
-    justify-self: center;
-    // align-content: flex-end;
-    justify-content: flex-end;
-    height: 250px;
-    width: 90%; 
-    @include bp(desktop) {
-      flex-direction: row;
-      width: 400px; 
-      height: 200px;
-      justify-items: center;
-      align-items: center;
-    }
-    @extend .flex-row-space-evenly;
-    transition: ease-in-out;
-    letter-spacing: 0.8px;
-    h1{
-      margin: 2px 0px;
-      font-size: 3em;
-      @include bp(desktop) {
-        margin: 15px 0px 5px;
-        font-size: 3.5em;
-      }
-    }
-    h4{
-      margin-top: 0px;
-      font-size: 1.4em;
-      color: var(--brown) ;
-      font-weight: lighter;
-    }
-    .project-viewer-title-icon{
-      margin: 0px 0px 30px;
-      @include bp(desktop) {
-        margin: 0px 30px 0px;
-      }
-      font-size: 2.2em;
-      color: var(--primary-color);
-      position: relative;
-      z-index: 1;
-        &::after{
-          background-color: var(--light-blue);
-          @extend .title-icons-background;
-        }
-    }
+    @extend .page-default-title;
   }
 }
 

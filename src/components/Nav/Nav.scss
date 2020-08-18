@@ -1,29 +1,6 @@
 @import '../Utilities.scss';
 
 
-.btn{
-  background: linear-gradient(
-    to bottom,
-    rgb(35, 35, 61) 5%,
-    rgb(35, 35, 61) 100%
-  );
-  border: 0px;
-  display: inline-block;
-  cursor: pointer;
-  color: var(--light);
-  font-size: 12px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: all .4s ease-in-out;
-    &:hover,
-    &:active {
-    color: var(--secondary-color);
-  }
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-}
 .avatar-wrapper{
   @extend .btn;
   padding: 0px 32px;

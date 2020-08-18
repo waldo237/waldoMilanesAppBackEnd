@@ -14,12 +14,10 @@ const MoreAboutMe = ()=>{
             const observer = new IntersectionObserver((entries) => {
               entries.forEach((entry) =>
                (entry.isIntersecting && !item.classList.contains('fadeInUpx')) ? item.classList.add("fadeInUpx"): ''
-                  
               );
             }, );
             observer.observe(item);
         }, {  rootMargin: "100px" })
-
     })
     return (      
       <article id="more-about-me-container" className="light primary--text">

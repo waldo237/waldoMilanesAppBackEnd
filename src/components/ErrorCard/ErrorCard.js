@@ -17,7 +17,7 @@ const ErrorCard = ({ errors, suggestions }) => {
             style={mystyle}
             className={
               errors.length
-                ? "card-container animate__animated animate__fadeInUp "
+                ? "card-container fadeInUpx"
                 : ""
             }
           >
@@ -25,11 +25,11 @@ const ErrorCard = ({ errors, suggestions }) => {
               {errors.map((error) => (
                 <li key={error.message}>
                   <FontAwesomeIcon style={mystyle} icon={faExclamationCircle} />{" "}
-                  {error.message} 
+                  {error.message} {" "}
                   
                 </li>
               ))}
-              {(suggestions.length)? <ol className="animate__animated animate__fadeInUp">{suggestions.map((sug)=> <li key={sug}>{sug}</li>)}</ol>  :null}
+              {(suggestions.length)? <ol className="fadeInUpx">{suggestions.map((sug)=> <li key={sug}>{sug}</li>)}</ol>  :null}
             </ul>
             
           </div>

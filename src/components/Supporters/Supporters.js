@@ -11,7 +11,7 @@
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
-import "./Supporters.css";
+import "./Supporters.scss";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./signUpForm";
 
@@ -20,7 +20,7 @@ const Supporters = () => {
 
   return (
     <>
-      <div className="page-main-container animate__animated animate__fadeInUp light">
+      <div className="page-main-container fadeInUpx light">
         <section className="supporter-title primary--text ">
           <h1>Supporters</h1>
           <p>

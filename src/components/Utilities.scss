@@ -7,6 +7,43 @@
     }
   }
 
+  .btn{
+    background: var(--primary-color);
+    border: 0px;
+    display: inline-block;
+    cursor: pointer;
+    color: var(--light);
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+      &:hover,
+      &:active {
+      color: var(--secondary-color);
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+    }
+  }
+  .hoverable-btn{
+    height: 40px;
+    border-width: 0;
+    background: #dd4b39;
+    color: white;
+    border-radius: 5px;
+    white-space: nowrap;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+    transition-property: background-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+    padding: 0;
+    margin: 10px;
+    &:hover,
+    &:active{
+      box-shadow: 1px 4px 7px 1px rgba(0, 0, 0, 0.26);
+    }
+  }
   .flex-row-wrap{
     display: flex;
     flex-direction: row;
@@ -61,3 +98,109 @@
       box-shadow: -1px 2px 8px -1px rgba(0, 0, 0, 0.62);
     } 
   }
+
+  .page-default-title {
+    @extend .flex-column;
+    @extend .fadeInUpx;
+    grid-column: 2/3;
+    justify-self: center;
+    // align-content: flex-end;
+    justify-content: flex-end;
+    height: 250px;
+    width: 90%; 
+    @include bp(desktop) {
+      flex-direction: row;
+      width: 400px; 
+      height: 160px;
+      justify-items: center;
+      align-items: center;
+    }
+    @extend .flex-row-space-evenly;
+    transition: ease-in-out;
+    letter-spacing: 0.8px;
+    h1{
+      margin: 2px 0px;
+      font-size: 3em;
+      @include bp(desktop) {
+        margin: 15px 0px 5px;
+        font-size: 3.3em;
+      }
+    }
+    h4{
+      margin-top: 0px;
+      font-size: 1.4em;
+      color: var(--brown) ;
+      font-weight: lighter;
+    }
+    .page-default-title-icon{
+      margin: 0px 0px 30px;
+      @include bp(desktop) {
+        margin: 0px 30px 0px;
+      }
+      font-size: 2.2em;
+      color: var(--primary-color);
+      position: relative;
+      z-index: 1;
+        &::after{
+          background-color: var(--light-blue);
+          @extend .title-icons-background;
+        }
+    }
+  }
+  .card-container {
+    @extend .round-edges;
+    display: flex;
+    align-items: center;
+    align-self: center;
+
+  }
+
+  .hover-underline-yellow{
+    &::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: -2px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 15%;
+    position: relative;
+    background: var(--secondary-color);
+    transition: width 0.4s ease 0s, left 0.4s ease 0s;
+    width: 0%;
+  }
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* fadeInUpx is a global effect*/
+.fadeInUpx {
+  opacity: 0;
+  animation-name: fadeInUpx;
+  -webkit-animation-name: fadeInUpx;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  opacity: 0
+}
+/* Animation */
+@keyframes fadeInUpx {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+@-webkit-keyframes fadeInUpx {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}

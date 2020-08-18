@@ -10,9 +10,20 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import envURL from '../../envURL';
+import Loading from "../Loading/Loading";
 
 const Articles = () => {
-
+  useEffect(()=>{
+    const moreAboutMe = document.querySelectorAll(".lazy-effect");
+    moreAboutMe.forEach((item)=>{
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) =>
+           (entry.isIntersecting && !item.classList.contains('fadeInUpx')) ? item.classList.add("fadeInUpx"): ''
+          );
+        }, );
+        observer.observe(item);
+    }, {  rootMargin: "100px" })
+});
   const [articles, setData] = useState([]);
   useEffect(() => {
     document.title = "Articles I have written";
@@ -24,20 +35,31 @@ const Articles = () => {
 
   return (
     <>
-      <div className="page-main-container animate__animated animate__fadeInUp light">
-        <div className="main-title contact-title">
-          <FontAwesomeIcon
-            className="fa-2x primary--text  "
-            icon={faFeatherAlt}
-          />{" "}
-          <h1 className="primary--text">Articles I have written</h1>
-        </div>
-        {articles.map((item) => (
+      <main className="articles-container light">
+        <header className="articles-title">
+          <div className='page-default-title-icon'>
+            <FontAwesomeIcon
+              className="fa-2x"
+              icon={faFeatherAlt}
+            />{" "}
+          </div>
+          <div>
+            <h1 className="primary--text">
+              Articles
+            </h1>
+            <h4>
+              Compositions related to software
+            </h4>
+          </div>
+        </header>
+        
+        {articles && articles.length
+        ?articles.map((item) => (
           <article
             key={item._id}
-            className="hoverable-card card-container article-card"
+            className="article-card lazy-effect"
           >
-            <div>
+            <div className='article-img-wrapper'>
               <picture>
                 <source media="(min-width:650px)" srcSet={item.photo} />
                 <source media="(min-width:465px)" srcSet={item.photo} />
@@ -49,9 +71,11 @@ const Articles = () => {
               </picture>
             </div>
             <div>
-              <h1 className="primary--text">{item.title} </h1>
+              <h1 className="articles-card-title primary--text">{item.title} </h1>
               <small>
-                {item.date.toLocaleString("eng-US", { dateStyle: "full" })}{" "}
+                Pubished on: {" "} {new Date(item.date).toLocaleString("eng-US", {
+                      dateStyle: "long",
+                    })}
               </small>
               <p className="article-body"> {item.body} </p>
               <small className="read-more-wrapper">
@@ -64,8 +88,13 @@ const Articles = () => {
               </small>
             </div>
           </article>
-        ))}
-      </div>
+        ))
+        : (
+          <article className="all-projects">
+            <Loading message="Loading the items! ...If it's taking too long, you should probably come back later" />
+          </article>
+        )}
+      </main>
     </>
   );
 };

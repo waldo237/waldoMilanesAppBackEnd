@@ -5,7 +5,7 @@ import Tecnologies from './Technologies';
 import {FishFlock, FishFlock2} from "./FishFlock";
 import Education from "./Education";
 import HeroArea from "./HeroArea";
-import Banner from "../Banner/Banner";
+// import Banner from "../Banner/Banner";
 import MoreAboutMe from "./MoreAboutMe";
 
 const Home = () => {
@@ -33,8 +33,8 @@ const Home = () => {
           <Tecnologies />
          
           <div className='fish-animation'>
-          <FishFlock  />
-          <FishFlock2 />
+            <FishFlock  />
+            <FishFlock2 />
 
           </div>
         </div>

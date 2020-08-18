@@ -41,7 +41,7 @@ const ResponseAlert = ({ response, setResponse, email }) => {
         <div>
           <div
             style={dangerStyle}
-            className="card-container animate__animated animate__fadeInUp "
+            className="card-container fadeInUpx"
           >
             <ul style={dangerStyle}>
               <li>
@@ -60,7 +60,7 @@ const ResponseAlert = ({ response, setResponse, email }) => {
         <div>
           <div
             style={successStyle}
-            className="card-container animate__animated animate__fadeInUp "
+            className="card-container fadeInUpx "
           >
             <ul style={successStyle}>
               <li>

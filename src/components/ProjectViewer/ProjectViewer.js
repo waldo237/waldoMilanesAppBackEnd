@@ -79,7 +79,7 @@ const ProjectViewer = ({ match }) => {
     <>
       <main className="project-viewer-container light">
         <header className="project-viewer-title">
-          <div className='project-viewer-title-icon'>
+          <div className='page-default-title-icon'>
             <IconizeFile name={technology.extension} usingExtension />
           </div>
           <div>
@@ -93,7 +93,7 @@ const ProjectViewer = ({ match }) => {
 
 
         </header>
-        <article className="all-projects">
+        <article className="all-projects fadeInUpx">
           {collection && collection.length
           ? collection.map((project) => (
             // eslint-disable-next-line react/jsx-indent
@@ -136,12 +136,13 @@ const ProjectViewer = ({ match }) => {
                 </p>
                 <p>
                   <span className="project-description-label">
-                  <FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={faCertificate}
                       className="secondary--text"
                     />
                     {" "}
-                    Description:</span>{" "}
+                    Description:
+                  </span>{" "}
                   {project.description}
                 </p>
               </div>
@@ -218,7 +219,7 @@ const ProjectViewer = ({ match }) => {
           ))
           : (
             <article className="all-projects">
-              <Loading message={`Getting the ${technology.title} projects!
+              <Loading message={`Loading the ${technology.title} projects!
               If it's taking too long, you should probably come back later`}
               />
             </article>

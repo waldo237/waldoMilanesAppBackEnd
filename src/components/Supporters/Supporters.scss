@@ -1,3 +1,4 @@
+@import '../Utilities.scss';
 .supporter-title {
   display: flex;
   align-items: center;
@@ -97,41 +98,18 @@
 }
 
 .google-btn {
+  @extend .hoverable-btn;
   grid-row: 1/2;
-  height: 40px;
-  border-width: 0;
   background: #dd4b39;
-  color: white;
-  border-radius: 5px;
-  white-space: nowrap;
-  box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-  transition-property: background-color, box-shadow;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
-  padding: 0;
-  margin: 10px;
+ 
 }
-.google-btn:hover {
-  box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.301);
-}
+
 .facebook-btn {
+  @extend .hoverable-btn;
   grid-row: 2/3;
-  height: 40px;
-  border-width: 0;
   background: #3b5998;
-  color: white;
-  border-radius: 5px;
-  white-space: nowrap;
-  box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-  transition-property: background-color, box-shadow;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
-  padding: 0;
-  margin: 10px;
 }
-.facebook-btn:hover {
-  box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.301);
-}
+
 .or {
   grid-row: 3/4;
   justify-self: center;
@@ -261,39 +239,7 @@
 .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
 
 .form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
-/* 
-input[type="checkbox"] {
-  visibility: hidden;
-}
-label {
-  cursor: pointer;
-}
-input[type="checkbox"] + label:before {
-  border: 1.5px solid var(--primary-color);
-  content: "\00a0";
-  display: inline-block;
-  margin: 0 0.25em 0 0;
-  padding: 0;
-  vertical-align: top;
-  width: 14px;
-  border-radius: 1px;
-}
-input[type="checkbox"]:checked + label:before {
-  background: var(--primary-color);
-  border: 1.5px solid var(--secondary-color);
-  color: var(--secondary-color);
-  content: "\2713";
-  text-align: center;
-  width: 16px;
-  border-radius: 1px;
-}
-input[type="checkbox"]:checked + label:after {
-  font-weight: bold;
-}
 
-input[type="checkbox"]:focus + label::before {
-  outline: var(--secondary-color) auto 5px;
-} */
 
 @media screen and (min-width: 780px) {
   .tab {
