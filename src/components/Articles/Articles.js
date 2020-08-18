@@ -5,7 +5,7 @@
 */
 
 import React, { useState, useEffect } from "react";
-import "./Articles.css";
+import "./Articles.scss";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
