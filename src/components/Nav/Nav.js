@@ -41,7 +41,7 @@ class Navigation extends Component {
         },
         { title: "Articles", link: "/articles" },
         { title: "Contacts", link: "/contacts" },
-        { title: "followers", link: "/supporters" },
+        { title: "followers", link: "/followers" },
         {title: "settings", icon: faEllipsisV, link:'/'  },
       ],
       // turn icon .rotate and .closable

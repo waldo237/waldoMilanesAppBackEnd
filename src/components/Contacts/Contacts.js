@@ -6,6 +6,7 @@ import {
   faPhone,
   faEnvelope,
   faMapMarker,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import contactValidator from "./contactValidator";
 import ErrorCard from "../ErrorCard/ErrorCard";
@@ -52,8 +53,8 @@ const Contacts = () => {
   const ContactTitleIcon = () => {
     return (
       <>
-        <div >
-          <svg xmlns="http://www.w3.org/2000/svg" height="70" viewBox="0 0 64 64" width="70"><g id="Talk_on_phone" data-name="Talk on phone"><path d="m24.908 16.464a2 2 0 0 0 0-2.828l-8.485-8.485a2 2 0 0 0 -2.829 0l-4.242 4.242 11.313 11.314z" fill="#ff7956" /><path d="m58.849 50.406a2 2 0 0 0 0-2.829l-8.485-8.485a2 2 0 0 0 -2.828 0l-4.243 4.243 11.314 11.313z" fill="#ff7956" /><path d="m20.665 20.707-11.313-11.314-1.415 1.415a16 16 0 0 0 0 22.627l22.628 22.627a16 16 0 0 0 22.627 0l1.415-1.414-11.314-11.313-1.414 1.414a6 6 0 0 1 -8.486 0l-14.142-14.142a6 6 0 0 1 0-8.486z" fill="#ffcd00" /><path d="m61 7v16a4 4 0 0 1 -4 4h-12l-8 9v-9h-2a4 4 0 0 1 -4-4v-16a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4z" fill="#d80027" /><g fill="#ffcd00"><circle cx="38" cy="15" r="2" /><circle cx="46" cy="15" r="2" /><circle cx="54" cy="15" r="2" /></g><path d="m14.594 6.05h2.828v16h-2.828z" fill="#ff6243" transform="matrix(.707 -.707 .707 .707 -5.246 15.435)" /><path d="m48.536 39.991h2.828v16h-2.828z" fill="#ff6243" transform="matrix(.707 -.707 .707 .707 -19.305 49.376)" /><path d="m32.565 54.062-22.627-22.627a15.987 15.987 0 0 1 -.557-22.012l-.029-.03-1.415 1.415a16 16 0 0 0 0 22.627l22.628 22.627a16 16 0 0 0 22.627 0l1.415-1.414-.03-.029a15.987 15.987 0 0 1 -22.012-.557z" fill="#ddb200" /></g></svg>        
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="70" viewBox="0 0 64 64" width="70"><path d="m61 27-10 10h-3v-23z" fill="#ee8700" /><path d="m48 7v30h-32v-30a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4z" fill="#5aaae7" /><path d="m32.12 27.12a2 2 0 0 0 2.83 0l.71-.7 2.83 2.83-.71.7a5.01 5.01 0 0 1 -7.07 0l-5.66-5.66a5 5 0 0 1 0-7.07l.71-.7 2.83 2.83-.71.7a2 2 0 0 0 0 2.83z" fill="#e6e7e8" /><g fill="#ff9811"><path d="m36.36 22.88 5.66 5.66-1.41 1.41a1.008 1.008 0 0 1 -1.42 0l-.7-.7-2.83-2.83-.71-.71a1.008 1.008 0 0 1 0-1.42z" /><path d="m26.46 12.98 5.66 5.66-1.41 1.41a1.008 1.008 0 0 1 -1.42 0l-.7-.7-2.83-2.83-.71-.71a1.008 1.008 0 0 1 0-1.42z" /><path d="m38 3v2a2.006 2.006 0 0 1 -2 2h-8a2.006 2.006 0 0 1 -2-2v-2z" /></g><path d="m16 14v23h-3l-10-10z" fill="#ee8700" /><path d="m61 27v32a2.006 2.006 0 0 1 -2 2h-54a2.006 2.006 0 0 1 -2-2v-32l10 10h38z" fill="#ffa733" /><path d="m50 16v21h-2v-23z" fill="#cc7400" /></svg>
         </div>
       </>
     );
@@ -138,7 +139,13 @@ const Contacts = () => {
             <ErrorCard errors={displayableErrors} />
           </div>
           <div>
-            <h2 className="primary--text">Email me</h2>
+            <h2 className="primary--text">
+              Email me {" "}
+              <FontAwesomeIcon
+                className="contact-card-icon"
+                icon={faPaperPlane}
+              />
+            </h2>
           </div>
 
           <div className="form-group">

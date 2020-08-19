@@ -24,7 +24,7 @@ const SignInForm = () => {
   };
 
   useEffect(() => {
-    document.title = "Become my supporter";
+    document.title = "Become my follower";
   }, []);
 
 
@@ -59,9 +59,9 @@ const SignInForm = () => {
       </div>
 
       <div className="form-group">
-        <label className="input" htmlFor="supporter-sign-in-email">Email address
+        <label className="input" htmlFor="follower-sign-in-email">Email address
           <input
-            id="supporter-sign-in-email"
+            id="follower-sign-in-email"
             name="email"
             type="email"
             className="form-control"
@@ -94,7 +94,7 @@ const SignInForm = () => {
       </div>
 
       <button type="submit" className="submit-btn primary">
-        Submit
+       Sign On
       </button>
       <p className="forgot-password text-right">
         Forgot <a href="/">password?</a>

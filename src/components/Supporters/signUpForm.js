@@ -20,7 +20,7 @@ const SignUpForm = () =>{
     };
   
     useEffect(() => {
-      document.title = "Become my supporter";
+      document.title = "Become my follower";
     }, []);
   
  
@@ -55,10 +55,10 @@ const SignUpForm = () =>{
           : (<div>{requestStarted ? <Loading message="Processing your registration" /> : null}{" "} </div>)}
         <ErrorCard errors={displayableErrors} suggestions={signUpValidator(user).suggestions} />
         <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-up-first-name">
+          <label className="input" htmlFor="follower-sign-up-first-name">
             First name
             <input
-              id="supporter-sign-up-first-name"
+              id="follower-sign-up-first-name"
               name="firstName"
               type="text"
               className="form-control"
@@ -70,10 +70,10 @@ const SignUpForm = () =>{
         </div>
 
         <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-up-last-name">
+          <label className="input" htmlFor="follower-sign-up-last-name">
             Last name
             <input
-              id="supporter-sign-up-last-name"
+              id="follower-sign-up-last-name"
               name="lastName"
               type="text"
               className="form-control"
@@ -85,10 +85,10 @@ const SignUpForm = () =>{
         </div>
 
         <div className="form-group">
-          <label className="input" htmlFor="supporter-sign-up-email">
+          <label className="input" htmlFor="follower-sign-up-email">
             Email address
             <input
-              id="supporter-sign-up-email"
+              id="follower-sign-up-email"
               name="email"
               type="email"
               className="form-control"
@@ -103,8 +103,8 @@ const SignUpForm = () =>{
         <button type="submit" className="submit-btn primary">
           Sign Up
         </button>
-        <p className="forgot-password text-right">
-          Already registered? <a href="/">sign in</a>
+        <p className="alredy-registered-question text-right">
+          Already registered? sign on
         </p>
       </form>
         

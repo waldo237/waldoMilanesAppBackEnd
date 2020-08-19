@@ -6,7 +6,7 @@ import { faEye, faEyeSlash, faBatteryQuarter, faBatteryHalf, faBatteryThreeQuart
 const PasswordInput = ({inputHandler, strength, id})=>{
    const [eyeState, toggleEye ] = useState(false)
    const temperature = ()=> {
-       if(strength === -1) return {color:{color:'var(--light)'}, icon:faLock};
+       if(strength === -1) return {color:{color:'var(--light-card)'}, icon:faLock};
        if(strength === 1) return {color:{color:'red'}, icon:faBatteryQuarter};
        if(strength ===2) return {color:{color:'orange'}, icon:faBatteryHalf};
        if(strength ===3) return {color:{color:'yellow'}, icon:faBatteryThreeQuarters};

@@ -16,6 +16,7 @@
     @extend .card-container;
     grid-column:2/3;
     color: var(--primary-color);
+    background: var(--light-card);
     width: 86%;
     padding: 4%;
     margin: 20px auto;

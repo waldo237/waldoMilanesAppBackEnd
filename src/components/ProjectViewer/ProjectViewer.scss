@@ -19,7 +19,7 @@
     @extend .round-edges;
     @extend .flex-column;
     @extend .hoverable-card;
-    // justify-content: center;
+    background: var(--light-card);
     padding: 20px 30px;
     margin: 2%;
     width: 90%; 
@@ -68,7 +68,7 @@
         color: var(--brown);
         .project-description-label{
           color: var(--primary-color);
-
+          font-weight: 600;
         }
       }
      
@@ -81,7 +81,8 @@
   @extend .flex-column;
   max-width: 250px;
   span {
-    padding: 5px;
+    padding: 5px 0px;
+    color: var(--primary-color);
   }
 
   .file-button {
