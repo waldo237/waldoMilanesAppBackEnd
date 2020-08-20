@@ -143,7 +143,7 @@ const educationPoints = [
                   <div>
                     <a href={item.url} target='_blank' rel="noopener noreferrer">
 
-                      <button type='button' className="brown diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
+                      <button type='button' className=" diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
                     </a>
                   </div>
                 </div>

@@ -6,10 +6,11 @@
 :root {
   --primary-color: rgb(11,34,57);
   --secondary-color: rgb(251, 211, 3);
-  --light: #f1f0f0;
+  --light:   rgb(240,242,245);
+
   --light-card: #fcfcfc;
   --light-brown: rgb(225,193,164);
-  --brown: rgb(149,95,38);
+  --brown: rgb(117, 73, 26);
   --light-blue: rgb(116, 198, 248);
   --text-shadow: 0px 1px 2px var(--primary-color);
   
@@ -46,10 +47,8 @@ body {
   }
   .neom {
     box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-      -12px -12px 24px 0 rgba(243, 243, 243, 0.637);
+      -12px -12px 18px 0 rgba(243, 243, 243, 0.637);
   }
-
-
   .bold {
     font-weight: 700;
   }
@@ -72,9 +71,5 @@ body {
   align-items: center;
   justify-items: center;
 }
-  /* font-family */
-  .Lato{
-    font-family: Lato, Arial, Helvetica, sans-serif;
-  }
 
 }

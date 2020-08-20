@@ -27,33 +27,34 @@
       width: 80%;    
      }
    @include bp(desktop){
-    width: 60%;    
+    width: 50%;    
    }
    .project-screenshot-container{
      @extend .flex-column;
      align-self: center;
-     align-items: center;
       width: 100%;
       position: relative;
-      .project-device-showing-screenshot{
-        width: 96%;
-        position: relative;
-        @include bp(desktop){
-          width: 70%;
-          // max-width: 550px;  
-        }
-      }
+      // .project-device-showing-screenshot{
+      //   width: 96%;
+      //   height: 250px;
+      //   position: relative;
+      //   @include bp(desktop){
+      //     width: 70%;
+      //     height: 400px;
+      //     // max-width: 550px;  
+      //   }
+      // }
       .project-screenshot {
         @extend .round-edges;
         @extend .shadow;
+        align-self: center;
         width: 85%;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
+        position: relative;
+        margin: auto 7.5%;
         top: calc(5%);
         @include bp(desktop){
           width: 66%;
+          margin: auto 17%;
           
         }
      }

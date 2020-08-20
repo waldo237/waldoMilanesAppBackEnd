@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import './Fish.css';
+import './Fish.scss';
 
 export const FishFlock = () => {
     return (

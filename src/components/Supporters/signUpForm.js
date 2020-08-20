@@ -104,7 +104,7 @@ const SignUpForm = () =>{
           Sign Up
         </button>
         <p className="alredy-registered-question text-right">
-          Already registered? sign on
+          Already registered? <a href="#one-panel">sign on</a>
         </p>
       </form>
         

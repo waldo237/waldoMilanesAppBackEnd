@@ -4,22 +4,26 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2% 96% 2%;
-   padding-bottom: 30px;
+  padding-bottom: 30px;
 .followers-title {
   @extend .page-default-title;
   justify-content: center;
   align-content: center;
+  text-align: center;
   width: 80%;
-  height: 350px;
+  height: 360px;
   padding: 15px 10%;
-  h1{
-    color: var(--primary-color);
+  @include bp(mid-phone) {
+    height: 350px;
   }
   @include bp(desktop){
     min-width: 760px;
     max-width: 780px;
     height: 200px;
-    
+    text-align:start;
+  }
+  h1{
+    color: var(--primary-color);
   }
 }
 }
@@ -68,13 +72,13 @@
   display: none;
 }
 .panel-title {
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: bold;
 }
 .radio {
   display: none;
 }
-.alredy-registered-question:hover ~ .panels #one-panel, //check if doable
+
 #one:checked ~ .panels #one-panel,
 #two:checked ~ .panels #two-panel {
   display: block;
@@ -90,7 +94,6 @@
 
 
 .sign-form {
-
   display: flex;
   flex-direction: column;
   .o-auth-btns {
@@ -120,7 +123,6 @@
     background: var(--primary-color);
     font-size: 1em;
   }
-  
 }
 
 .password{
@@ -160,9 +162,7 @@
     top: 0;
     display: block;
     transition: 0.2s;
-    // font-size: 1em;
     color: var(--secondary-color);
-    // font-weight: 700;
   }
   &:focus {
     padding-bottom: 4px;
@@ -180,7 +180,6 @@
   top: 0;
   display: block;
   transition: 0.2s;
-  // font-size: 1rem;
   color: var(--secondary-color);
 }
 
@@ -236,7 +235,7 @@
 
 .form-switch input { display: none; }
 
-.form-switch input:checked + i { background-color: var(--light-blue); }
+.form-switch input:checked + i { background-color: var(--secondary-color); }
 
 .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
 

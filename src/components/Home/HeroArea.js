@@ -1,56 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { DBShape, SecurityShape, ServerShape, StackShape, CodeShape } from './Shapes'
 
 const HeroArea = () => {
-  useEffect(() => {
-
-    // const wmImg = document.querySelector(".wm-img");
-    // const description = document.querySelector("#description");
-    // const education = document.querySelector("#education");
-
-    // const descriptionObserver = new IntersectionObserver(
-    //   (entries) =>
-    //     entries.forEach((entry) => {
-    //       if (entry.isIntersecting && document.body.clientWidth >= 900) {
-    //         wmImg.classList.add("img-scrolled-1");
-    //       } else {
-    //         wmImg.classList.remove("img-scrolled-1");
-    //       }
-    //     }),
-    //   document.body.clientWidth < 1500
-    //     ? { rootMargin: "0px" }
-    //     : { rootMargin: "-150px" }
-    // );
-
-    // const descriptionObserver2 = new IntersectionObserver(
-    //   (entries) => {
-    //     entries.forEach((entry) => {
-    //       if (entry.intersectionRatio > 0 && !open) toggle({ open: true });
-    //       if (entry.isIntersecting) {
-    //         wmImg.classList.add("img-out");
-    //       } else {
-    //         wmImg.classList.remove("img-out");
-    //       }
-    //     });
-    //   },
-    //   document.body.clientWidth < 1500
-    //     ? { rootMargin: "-150px" }
-    //     : { rootMargin: "-250px" }
-    // );
-
-
-    // const educObserver = new IntersectionObserver((entries) => {
-    //   entries.forEach((entry) =>
-    //     entry.isIntersecting
-    //       ? education.classList.add("edu-scrolled")
-    //       : education.classList.remove("edu-scrolled")
-    //   );
-    // });
-    // descriptionObserver.observe(description);
-    // descriptionObserver2.observe(description);
-    // educObserver.observe(education);
-  });
-
   return (
     <>
 
@@ -71,7 +22,7 @@ const HeroArea = () => {
       </div>
    
         
-      <div className="main-shape-wrapper flex-row">
+      <div className="main-shape-wrapper flex-row fadeInUpx">
         <div className='shapes flex-row'>
           <div className='shapes-lower-left '>
             <SecurityShape />

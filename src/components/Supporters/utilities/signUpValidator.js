@@ -44,7 +44,7 @@ const signUpValidator = (user) => {
   } else if (!isEmail(user.email)) {
     res.errors.push({
       type: "email",
-      message: "The email your provided is not correct.",
+      message: "The email you provided is not correct.",
     });
     res.valid = false;
   }
