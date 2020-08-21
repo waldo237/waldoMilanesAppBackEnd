@@ -80,21 +80,21 @@
 @keyframes flipping {
 
   0% {
-    -moz-transform: rotate3d(5deg);
-    transform: rotate3d(5deg);
-    -moz-transform: rotate3d(5deg);
+    -moz-transform: rotate3d(0,0,0,5deg);
+    transform: rotate3d(0,0,0,5deg);
+    -moz-transform: rotate3d(0,0,0,5deg);
   }
 
  50%{
-    -moz-transform: rotate3d(0deg);
-    transform: rotate3d(0deg);
-    -moz-transform:rotate3d(0deg);
+    -moz-transform: rotate3d(0,0,0,0deg);
+    transform: rotate3d(0,0,0,0deg);
+    -moz-transform:rotate3d(0,0,0,0deg);
   }
 
  100%{
-    -moz-transform: rotate3d(-5deg);
-    transform: rotate3d(-5deg);
-    -moz-transform:rotate3d(-5deg);
+    -moz-transform: rotate3d(0,0,0,-5deg);
+    transform: rotate3d(0,0,0,-5deg);
+    -moz-transform:rotate3d(0,0,0,-5deg);
   }
 }
   @-moz-keyframes bounce {
