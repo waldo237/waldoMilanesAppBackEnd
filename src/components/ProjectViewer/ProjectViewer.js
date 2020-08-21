@@ -15,6 +15,7 @@ import CodeModal from "./CodeModal";
 import Loading from "../Loading/Loading";
 import envURL from '../../envURL';
 import ScreenshotViewer from "./ScreenshotViewer";
+import CommentBox from "../Articles/CommentBox";
 
 
 const ProjectViewer = ({ match }) => {
@@ -215,6 +216,7 @@ const ProjectViewer = ({ match }) => {
                     ))}
                 </>
               </div>
+              <CommentBox />
             </div>
           ))
           : (

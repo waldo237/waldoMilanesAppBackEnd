@@ -30,20 +30,14 @@
     width: 50%;    
    }
    .project-screenshot-container{
-     @extend .flex-column;
-     align-self: center;
+      @extend .flex-column;
+      align-self: center;
       width: 100%;
       position: relative;
-      // .project-device-showing-screenshot{
-      //   width: 96%;
-      //   height: 250px;
-      //   position: relative;
-      //   @include bp(desktop){
-      //     width: 70%;
-      //     height: 400px;
-      //     // max-width: 550px;  
-      //   }
-      // }
+      padding: .6em 0px;
+      @include bp(desktop){
+        padding: 1em 0px;
+      }
       .project-screenshot {
         @extend .round-edges;
         @extend .shadow;
@@ -55,7 +49,6 @@
         @include bp(desktop){
           width: 66%;
           margin: auto 17%;
-          
         }
      }
     }
