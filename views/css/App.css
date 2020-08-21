@@ -28,7 +28,7 @@
 .main {
   grid-area: "main";
 }
-.page-main {
+.page-main-container {
   display: flex;
   flex-direction: column;
   justify-items: center;

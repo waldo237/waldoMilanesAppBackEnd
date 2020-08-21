@@ -10,7 +10,7 @@ const routes = (app) => {
     .post(loginRequired, postArticle);
 
   app.route('/article/:id')
-    .get(loginRequired, getArticle)
+    .get(getArticle)
     .put(loginRequired, updateArticle)
     .delete(loginRequired, deleteArticle);
 };
