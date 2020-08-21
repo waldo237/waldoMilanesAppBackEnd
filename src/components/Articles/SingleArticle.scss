@@ -1,0 +1,48 @@
+@import '../Utilities.scss';
+
+.single-article-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2% 96% 2%;
+    padding-bottom: 30px;
+    .single-article-card{
+        @extend .shadow;
+        @extend .hoverable-card;
+        @extend .card-container;
+        grid-column: 2/3;
+        color: var(--primary-color);
+        background: var(--light-card);
+        width: 86%;
+        padding: 4%;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 2% 96% 2%;
+        .single-article-header{
+            grid-column: 2/3;
+            .single-article-title{
+
+            }
+        }
+        .single-article-date{
+            grid-column: 2/3;
+        }
+        .single-article-img-wrapper{
+            grid-column: 2/3;
+            .single-article-img{
+                width: 280px;
+                height: 230px;
+            }
+        }
+        .single-article-text{
+            grid-column: 2/3;
+            line-height: 1.5;
+        }
+        .single-article-action{
+            grid-column: 2/3;
+            width: 100%;
+            height: 40px;
+            border-top: 1px solid rgb(151, 150, 150);
+            border-bottom: 1px solid rgb(168, 167, 167);
+        }
+    }
+}

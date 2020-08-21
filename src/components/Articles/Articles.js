@@ -80,7 +80,7 @@ const Articles = () => {
               <p className="article-body"> {item.body} </p>
               <small className="read-more-wrapper">
                 <Link
-                  to={`articles/${item._id}`}
+                  to={`article/${item._id}`}
                   className="primary--text hover-underline-yellow"
                 >
                   Read more

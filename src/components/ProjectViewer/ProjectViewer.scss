@@ -18,7 +18,7 @@
     @extend .shadow;
     @extend .round-edges;
     @extend .flex-column;
-    @extend .hoverable-card;
+    // @extend .hoverable-card;
     background: var(--light-card);
     padding: 20px 30px;
     margin: 2%;
@@ -83,7 +83,7 @@
   max-width: 250px;
   span {
     padding: 5px 0px;
-    color: var(--primary-color);
+   
   }
 
   .file-button {
@@ -96,6 +96,7 @@
     text-align: start;
     border: 0px;
     cursor: pointer;
+    animation: fadeInDown 0.2s  cubic-bezier(0.550, 0.055, 0.675, 0.190) both;
       &:hover {
         background-color: lightgray;
       }
@@ -106,7 +107,8 @@
       }
   }
   .file {
-    position: relative;
+    // position: absolute;
+    width: 100%;
   }
 
   .folder-closed {
@@ -128,17 +130,19 @@
   @extend .round-edges;
   z-index: 100;
   position: absolute;
-  left: -5vw;
-  bottom: -225px;
-  width: 85vw;
+  width: 90%;
+  left: 0;
+  right: 0;
+  // top: 0;
+  bottom: 0;
+  margin: auto;
   height: 450px;
   padding: 0px 10px;
   overflow: scroll; 
   word-wrap: unset;
   transition: all 0.5s ease-out;
   @include bp(desktop){
-    width: 82vw;
-    left: -14vw;
+    width: 80%;
   }
   .code {
     margin: 20px;
@@ -194,7 +198,6 @@
 
 .modal-closed {
   display: none;
-  animation: ZoomInBack 0.5s ease-in-out;
 }
 .modal-opened {
   display: unset;
@@ -232,7 +235,6 @@ to {
   position: sticky;
   top: -10px;
   left: calc(100% - 20px);
-  color: #aaa;
   float: right;
   font-size: 28px;
   &:hover,
@@ -242,5 +244,4 @@ to {
     cursor: pointer;
   }
 }
-
 
