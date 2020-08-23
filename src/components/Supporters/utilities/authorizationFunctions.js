@@ -165,8 +165,8 @@ const confirmLoggedIn =async () =>{
   const res = await fetchHashedAccess()
     .then(compareAccessKeys)
     .catch((e)=>{console.log(e.message)});
-
+    console.log(res);
     return res
 }
 // eslint-disable-next-line import/prefer-default-export
-export { logIn, signWithGoogleOrFB, logOut, confirmLoggedIn}
+export { logIn, signWithGoogleOrFB, logOut, confirmLoggedIn, fetchPayloadFromJWT}

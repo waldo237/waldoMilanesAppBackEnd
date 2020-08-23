@@ -59,7 +59,7 @@ const Avatar = ({size, user}) => {
                 {user.firstName.split('')[0]} &nbsp; 
               </h1> 
               <h1 style={initialsH1Style}>
-                {user.LastName.split('')[0]} 
+                {user.lastName.split('')[0]} 
               </h1> 
             </div>
 )}
@@ -72,7 +72,7 @@ Avatar.propTypes = {
   size: PropTypes.number.isRequired,
   user: PropTypes.shape({
     firstName: PropTypes.string,
-    LastName: PropTypes.string,
+    lastName: PropTypes.string,
     email: PropTypes.string,
     photoURL: PropTypes.string,
   }).isRequired

@@ -2,10 +2,18 @@ import React, {useRef, useEffect} from 'react';
 import './Dashboard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faProjectDiagram, faNewspaper, faBell, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 import Avatar from '../Avatar/Avatar';
 
 const Dashboard = ()=>{
-
+  const  history = useHistory();
+const sendToProfile= async()=>{
+  const token = (localStorage.getItem('auth_access_token'))
+  ? localStorage.getItem('auth_access_token')
+  : sessionStorage.getItem('auth_access_token');
+ const {_id} = await JSON.parse(window.atob(token.split('.')[1]));
+ history.push(`/user/profile/${_id}`);
+}
 const actions = [
     {title:'Special projects', icon:faProjectDiagram, link:''},
     {title:'Special Articles', icon:faNewspaper, link:''},
@@ -26,11 +34,11 @@ const actions = [
             <div className='dashboard-content'>
 
          
-              <div className='dash-user-info flex-row dash-animation'>
-                <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={65} />
+              <div className='dash-user-info flex-row'>
+                <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', lastName: 'Taveras', email:'ajo@.fo.com'}} size={65} />
                 <div className='flex-column'>
-                  <h1 className='dash-user-info-name primary--text Lato'>Waldo Milanes</h1>
-                  <p className='dash-user-info-profile Lato'>profile</p>
+                  <h1 className='dash-user-info-name primary--text'>Waldo Milanes</h1>
+                  <button type='button' onClick={sendToProfile} className='dash-user-info-profile'>profile</button> 
                 </div>
               </div>
 

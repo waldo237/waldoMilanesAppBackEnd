@@ -195,7 +195,7 @@ class Navigation extends Component {
                 {navItems.map((navItem) => (
                  // eslint-disable-next-line no-nested-ternary
                  (isLoggedIn && navItem.title === 'followers')
-                  ?<div className='avatar-wrapper'> <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', LastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} /></div>
+                  ?<div className='avatar-wrapper'> <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', lastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} /></div>
                   // eslint-disable-next-line no-nested-ternary
                   :( navItem.title === 'settings')
                   ?(isLoggedIn)

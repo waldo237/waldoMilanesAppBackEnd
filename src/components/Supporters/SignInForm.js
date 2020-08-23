@@ -43,10 +43,10 @@ const SignInForm = () => {
         <button
           type="submit"
           className="facebook-btn" 
-          // onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
+          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
           // TESTS
   
-          onClick={e => { e.preventDefault(); confirmLoggedIn()}}
+          // onClick={e => { e.preventDefault(); confirmLoggedIn()}}
         >
           {" "}
           <FontAwesomeIcon
@@ -94,7 +94,7 @@ const SignInForm = () => {
       </div>
 
       <button type="submit" className="submit-btn primary">
-       Sign On
+        Sign On
       </button>
       <p className="forgot-password text-right">
         Forgot <a href="/">password?</a>

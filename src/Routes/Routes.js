@@ -7,6 +7,7 @@ import SingleArticle from "../components/Articles/SingleArticle";
 import Contacts from "../components/Contacts/Contacts";
 import Follower from "../components/Supporters/Followers";
 import ProjectViewer from "../components/ProjectViewer/ProjectViewer";
+import Profile from "../components/Dashboard/Profile";
 import NotFound from "../components/NotFound/NotFound";
 
 const Routes = () => (
@@ -18,6 +19,7 @@ const Routes = () => (
     <Route path="/contacts" component={Contacts} />
     <Route path="/followers" component={Follower} />
     <Route path="/project/:language" component={ProjectViewer} />
+    <Route path="/user/profile/:id" component={Profile} />
     <Route path="*" component={NotFound} />
   </Switch>
 );
