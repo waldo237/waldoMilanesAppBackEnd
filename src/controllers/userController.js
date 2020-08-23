@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -34,7 +35,7 @@ const login = (req, res) => {
         return res.status(200).json({
           message: 'You have successfully logged in.',
           token: jwt.sign(
-            { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email },
+            { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email, _id: user._id },
             process.env.APP_KEY,
           ),
         });
@@ -53,7 +54,7 @@ const directLoginWithProvider = (req, res, next, user) => {
   res.status(200).json({
     message: 'You have successfully logged in.',
     token: jwt.sign(
-      { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email },
+      { hashed_access: bcrypt.hashSync(user.email, 5), email: user.email, _id: user._id },
       process.env.APP_KEY,
     ),
   });

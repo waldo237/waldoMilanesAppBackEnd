@@ -26,7 +26,7 @@ exports.authenticateToMakeChanges = (req, res, next) => {
       if (!user || !comparisonPassed || pL.email !== email) {
         return res.status(401).json({
           message: `Authentication failed.
-          You are not authorized to edit this profile. Check if you are properly logged in.`,
+          You are not authorized to access or edit this profile. Check if you are properly logged in.`,
         });
       }
       next();
@@ -35,7 +35,21 @@ exports.authenticateToMakeChanges = (req, res, next) => {
     res.status(500).send(`caught error: ${error}`);
   }
 };
-
+/**
+ * @function retrieveProfile get information about a user using the uid.
+ */
+exports.retrieveProfile = (req, res) => {
+  const { _id } = req.body;
+  User.findOne({ _id }, { hashPassword: 0, isVerified: 0 }, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.status(401).json({
+        message: 'This account has been canceled. If want to use this service, you may create another account.',
+      });
+    }
+    res.status(200).json(user);
+  });
+};
 /**
  * @function updateProfile allow users to update their profile {firstName, lastName, photoURL}.
  */
@@ -80,13 +94,18 @@ exports.deleteProfile = async (req, res) => {
  * if inactive, notify the user, otherwise call next
  */
 exports.checkAccountStatus = (req, res, next) => {
-  User.findOne({ email: req.body.email }, (err, user) => {
-    if (err) throw err;
-    if (user.acccountStatus === 'inactive') {
-      return res.status(401).json({
-        message: 'This account has been canceled. If want to use this service, you may create another account.',
-      });
-    }
-    next();
-  });
+  try {
+    User.findOne({ email: req.body.email }, (err, user) => {
+      if (err) throw err;
+      if (!user) return res.status(401).json({ message: 'There is not user with this description' });
+      if (user.acccountStatus === 'inactive') {
+        return res.status(401).json({
+          message: 'This account has been canceled. If want to use this service, you may create another account.',
+        });
+      }
+      next();
+    });
+  } catch (error) {
+    res.status(500).send(`caught error: ${error}`);
+  }
 };
