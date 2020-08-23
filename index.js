@@ -17,6 +17,7 @@ const registrationRoutes = require('./src/routes/registrationRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
 const articleRoutes = require('./src/routes/articleRoutes');
 const emailRoutes = require('./src/routes/emailRoutes');
+const profileRoutes = require('./src/routes/profileRoutes');
 
 const PORT = process.env.PORT || 3001;
 
@@ -83,6 +84,7 @@ app.use((req, res, next) => {
 
 // handle http routes
 registrationRoutes(app);
+profileRoutes(app);
 projectRoutes(app);
 articleRoutes(app);
 emailRoutes(app);

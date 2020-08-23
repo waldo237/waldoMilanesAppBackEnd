@@ -19,6 +19,18 @@ exports.UserSchema = new Schema({
     minlength: 3,
     maxlength: 60,
   },
+  photoURL: {
+    type: String,
+    required: false,
+    trim: true,
+    minlength: 10,
+  },
+  acccountStatus: {
+    type: String,
+    validate: /^(active|inactive)$/,
+    required: true,
+    default: 'active',
+  },
   email: {
     type: String,
     required: true,

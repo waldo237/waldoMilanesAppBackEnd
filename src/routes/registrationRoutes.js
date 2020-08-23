@@ -2,6 +2,7 @@ const rateLimit = require('express-rate-limit');
 const {
   login, register, emailConfirmation, resendVerificationToken, registerWithProvider, userIsLoggedIn,
 } = require('../controllers/userController');
+const { checkAccountStatus } = require('../controllers/profileController');
 
 const accountscreatedLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 1 hour window
@@ -13,9 +14,9 @@ const accountscreatedLimiter = rateLimit({
 const routes = (app) => {
   // registration route
   app.route('/auth/register').post(accountscreatedLimiter, register);
-  app.route('/auth/withProvider').post(accountscreatedLimiter, registerWithProvider);
+  app.route('/auth/withProvider').post(accountscreatedLimiter, checkAccountStatus, registerWithProvider);
   // login route
-  app.route('/auth/login').post(login);
+  app.route('/auth/login').post(checkAccountStatus, login);
   // Token Confirmation
   app.route('/auth/confirmation/:email/:id/:token').get(emailConfirmation);
   app.route('/auth/resend-vefication-token/:ssr').post(accountscreatedLimiter, resendVerificationToken);

@@ -295,3 +295,4 @@ exports.userIsLoggedIn = (req, res) => {
 // declared exports
 exports.login = login;
 exports.register = register;
+exports.fetchPayloadFromJWT = fetchPayloadFromJWT;
