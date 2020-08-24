@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Profile.scss'
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import envURL from '../../envURL';
 import {fetchPayloadFromJWT} from '../Supporters/utilities/authorizationFunctions';
 import Avatar from '../Avatar/Avatar';
@@ -28,15 +30,43 @@ const Profile = (match) => {
   }, [match.url]);
 
 
-
 return (
   <>
-    <main>
+    <main className='profile-container'>
+      <h1 className='profile-title'>Edit profile</h1>
       {(profileData)
       ?(
-        <div>
-          <Avatar size={70} user={profileData} />
-        
+        <div className='profile-card'>
+          <div className='profile-avatar-wrapper'>
+            <Avatar size={100} user={profileData} className='profile-avatar' /> 
+ 
+            <FontAwesomeIcon className='fa-lg profile-photo-btn' icon={faCamera} />
+          </div>
+          <div className='profile-fixed-details'>
+            <small>{profileData.email}</small>
+            <small>  account created on {new Date(profileData.created_date).toLocaleDateString()}</small>
+          </div>
+          <div className='profile-fields'>
+            <span className='profile-property-label'>
+              First Name:
+            </span>
+            <span suppressContentEditableWarning contentEditable className='profile-property'>
+              {profileData.firstName}
+            </span>
+       
+            <span className='profile-property-label'>
+              Last Name:
+            </span>
+            <span suppressContentEditableWarning contentEditable className='profile-property'>
+              {profileData.lastName}
+            </span>
+            <button type='button' className='profile-edit-btn'>Save Changes</button>
+          </div>
+          <div className='profile-serious-actions'>
+            <h3>Account Dangerous Actions</h3>
+            <button type='button' className='profile-cancel-btn'>Cancel Account</button>
+
+          </div>
         </div>
 )
       : null}
