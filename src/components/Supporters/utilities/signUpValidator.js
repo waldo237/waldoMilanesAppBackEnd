@@ -85,7 +85,6 @@ const signUpValidator = (user) => {
           "Your password should be at least 8 characters in length, but no more than 32",
       });
     }
-   
   }
   if (res.valid) {
     res.sanitized = {
