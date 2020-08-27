@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import avatarImg from "../../static/waldo.jpg";
 import  getRandomColor from './colorRandomizer';
 
 const Avatar = ({size, user}) => {
@@ -11,9 +10,7 @@ const Avatar = ({size, user}) => {
     alightSelft: 'center',
     justifySelft: 'center',
     backgroundColor: 'white',
-    borderRadius: '50%',
-    // border: 'solid 1px var(--secondary-color)',
-  
+    borderRadius: '50%',  
   };
   const photoStyle = {
     width:`${size-1}px`,
@@ -48,18 +45,17 @@ const Avatar = ({size, user}) => {
           ? (
             <img
               style={photoStyle}
-            // src={avatarImg}
               src={user.photoURL}
               alt="your avatar"
             />
  )
           : (
             <div style={initialsStyle}>
-              <h1 style={initialsH1Style} >
-                {user.firstName.split('')[0]} &nbsp; 
+              <h1 style={initialsH1Style}>
+                {(user && user.firstName)? user.firstName.split('')[0]: null} &nbsp; 
               </h1> 
               <h1 style={initialsH1Style}>
-                {user.lastName.split('')[0]} 
+                {(user && user.lastName)?user.lastName.split('')[0]: null} 
               </h1> 
             </div>
 )}

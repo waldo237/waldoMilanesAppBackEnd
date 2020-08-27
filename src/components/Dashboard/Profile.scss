@@ -12,21 +12,26 @@
         margin: 1em auto;
         grid-column: 2/3;
     }
+    .loading-card{
+        grid-column: 2/3;
+    }
     .profile-card{
         @extend .shadow;
         @extend .round-edges;
         grid-column: 2/3;
         width: 86%;
-        height: 720px;
+        height: 820px;
         padding: 4%;
         margin: auto;
         display: grid;
         grid-template-columns: 2% 96% 2%;
-        grid-template-rows: 120px 30px 300px 230px;
+        grid-template-rows: 120px 60px 250px 270px;
         background:var(--light-card);
         justify-items: center;
         @include bp(mid-phone){
-            height: 680px;
+            height: 780px;
+            grid-template-rows: 120px 60px 350px 230px;
+
         }
         @include bp(desktop){
             max-width: 750px;
@@ -65,12 +70,15 @@
         .profile-fields{
             @extend .flex-column;
             @extend .round-edges;
-            // @extend .shadow;
             height: 300px;
             grid-column: 2/3;
             grid-row: 3/4;
             width: 100%;
-            padding: 4%;
+            padding: auto;
+            margin: auto;
+            @include bp(mid-phone){
+                height: 350px;
+            }
             .profile-property-label{
                 margin: 30px 0px 0px;
             }
@@ -82,7 +90,7 @@
                 padding:12px;
             }
             .profile-edit-btn{
-                width: 90%;
+                width: 100%;
                 @extend .hoverable-btn;
                 margin: auto;
                 background: var(--primary-color);
@@ -99,10 +107,10 @@
             @extend .flex-column;
             @extend .round-edges;
             @extend .shadow;
-            height: 250px;
+            height: 270px;
             grid-column: 2/3;
             grid-row: 4/5;
-            width: 90%;
+            width: 96%;
             margin: auto;
             padding: 0px 2%;
             background: rgba(243, 210, 215, 0.808);
@@ -111,7 +119,8 @@
                 background: var(--primary-color);
             }
             @include bp(mid-phone){
-                height: 200px;
+                width: 90%;
+                height: 250px;
             }
             @include bp(tablet){
                 margin-right: 6%;
@@ -119,7 +128,7 @@
           .profile-cancel-btn{
               @extend .hoverable-btn;
               width: 90%;
-              margin-top: 20px;
+              margin-top:40px;
               @include bp(desktop){
                   font-size: .9em;
                 }
@@ -145,7 +154,7 @@
                  padding: 5px 0;
                  position: absolute;
                  right:-10px ;
-                 top: -25px;
+                 top: -15px;
                  z-index: 1;
                  @include bp(desktop){
                     font-size: .8em;
@@ -157,11 +166,19 @@
 }
     .response-message{
         .profile-card{
-            height: 770px;
-            grid-template-rows: 120px 30px 360px 230px;
+            height: 840px;
+            grid-template-rows: 120px 60px 380px 230px;
             
         }
         .profile-fields{
-            height: 360px;
+            height: 380px;
+        }
+        .card-container{
+            max-width: 98%;
+            margin: auto 0px;
+            @include bp(desktop){
+                max-width: 94%;
+
+              }
         }
     }

@@ -142,7 +142,7 @@ const fetchHashedAccess = () => {
  * @function fetchPayloadFromJWT it receives JWT token, fetches payload and returns it
  * @param token a valid  JWT token
  */
-const fetchPayloadFromJWT = (token) => JSON.parse(window.atob(token.split('.')[1]));
+const fetchPayloadFromJWT = (token) => (token)? JSON.parse(window.atob(token.split('.')[1])): '';
 
 /**
  * @function compareAccessKeys compares access_token in sessionStorage 

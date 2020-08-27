@@ -17,7 +17,7 @@ const Loading = ({ message }) => {
     <>
       <div
         style={loadingStyle}
-        className="fadeInUpx"
+        className="fadeInUpx loading-card"
       >
         <FontAwesomeIcon
           className="fa-spin fa-4x secondary--text"
