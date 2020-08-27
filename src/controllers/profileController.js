@@ -59,12 +59,10 @@ exports.updateProfile = (req, res) => {
       firstName, lastName, photoURL, _id,
     } = req.body;
     User.updateOne({ _id }, { firstName, lastName, photoURL },
-      { runValidators: true, new: true }, (error, updatedUser) => {
-        if (error) throw error;
-        return (updatedUser.nModified)
-          ? res.status(200).json({ message: 'The user was modified correctly.' })
-          : res.status(404).json({ message: 'The update did not take effect.' });
-      });
+      { runValidators: true, new: true },
+      (error, updatedUser) => ((updatedUser && updatedUser.nModified)
+        ? res.status(200).json({ message: 'The user was modified correctly.' })
+        : res.status(404).json({ message: 'The update did not take effect.' })));
   } catch (error) {
     res.status(500).send(`caught error: ${error}`);
   }
