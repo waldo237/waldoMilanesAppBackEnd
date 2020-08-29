@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect} from "react";
 import PropTypes from 'prop-types';
 import {
   faExclamationCircle,
@@ -9,6 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const ResponseAlert = ({ response, setResponse, email }) => {
+  useEffect(() => {
+    const timer = setTimeout(() =>setResponse(null), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const action = (e) => {
     e.preventDefault();
@@ -37,25 +41,27 @@ const ResponseAlert = ({ response, setResponse, email }) => {
   };
   return (
     <>
-      {!response.successful ? (
-        <div>
-          <div
-            style={dangerStyle}
-            className="card-container fadeInUpx"
-          >
-            <ul style={dangerStyle}>
-              <li>
-                <FontAwesomeIcon
-                  style={dangerStyle}
-                  icon={faExclamationCircle}
-                />{" "}
-                {response.message}
-                {(response.link)
+ 
+      <div>
+        {!response.successful ? (
+          <div>
+            <div
+              style={dangerStyle}
+              className="card-container fadeInUpx"
+            >
+              <ul style={dangerStyle}>
+                <li>
+                  <FontAwesomeIcon
+                    style={dangerStyle}
+                    icon={faExclamationCircle}
+                  />{" "}
+                  {response.message}
+                  {(response.link)
                   ? <button type="button" className="btn" onClick={action}>{response.link.label}</button> : null}
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
       ) : (
         <div>
           <div
@@ -71,6 +77,7 @@ const ResponseAlert = ({ response, setResponse, email }) => {
           </div>
         </div>
         )}
+      </div>
     </>
   );
 };

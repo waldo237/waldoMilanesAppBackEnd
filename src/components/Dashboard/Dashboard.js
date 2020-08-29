@@ -1,11 +1,12 @@
-import React, {useRef, useEffect} from 'react';
+import React from 'react';
 import './Dashboard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faProjectDiagram, faNewspaper, faBell, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
+import Propstype from 'prop-types';
 import Avatar from '../Avatar/Avatar';
 
-const Dashboard = ()=>{
+const Dashboard = ({toggleSettings})=>{
   const  history = useHistory();
 const sendToProfile= async()=>{
   const token = (localStorage.getItem('auth_access_token'))
@@ -18,12 +19,12 @@ const actions = [
     {title:'Special projects', icon:faProjectDiagram, link:''},
     {title:'Special Articles', icon:faNewspaper, link:''},
     {title:'Notifications', icon:faBell, link:''},
-    {title:'Settings', icon: faCog, link:''},
+    {title:'Settings', icon: faCog, link:'', id:'setting-btn', func: toggleSettings },
     {title:'Sign out', icon: faSignOutAlt, link:''},
 ]
     return (
       <>
-        <div id='settings-container' className='dash-wrapper'>
+        <div id='dashboard-dialog' className='dash-wrapper'>
           <div className='dashboard light'>
             <div className='dash-title-wrapper bold flex-row '>
    
@@ -43,7 +44,13 @@ const actions = [
               </div>
 
               { actions.map((action)=> (
-                <div className='dash-action flex-row-justified-aligned-c dash-animation' key={action.title}>
+                <div
+                  id={action.id} 
+                  onClick={()=>{if(action.func) action.func()}} 
+                  onKeyDown={()=>{if(action.func) action.func()}} 
+                  className='dash-action flex-row-justified-aligned-c dash-animation'
+                  key={action.title}
+                >
                   <div className=" dash-icon">
                     <FontAwesomeIcon icon={action.icon} />
                   </div>
@@ -58,4 +65,7 @@ const actions = [
     )
 }
 
+Dashboard.propTypes = {
+  toggleSettings: Propstype.func.isRequired,
+}
 export default Dashboard

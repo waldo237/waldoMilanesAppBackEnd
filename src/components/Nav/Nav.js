@@ -16,14 +16,14 @@ import bannerImg from "../../static/banner.png";
 import Avatar from '../Avatar/Avatar';
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
-import {confirmLoggedIn} from '../Supporters/utilities/authorizationFunctions';
+import { confirmLoggedIn } from '../Supporters/utilities/authorizationFunctions';
 import ClickAwayCloser from './ClickAwayCloser'
 
 class Navigation extends Component {
   constructor() {
     super();
     this.state = {
-      
+
       showSideMenu: false,
       isLoggedIn: false,
       settingsActivated: false,
@@ -42,7 +42,7 @@ class Navigation extends Component {
         { title: "Articles", link: "/articles" },
         { title: "Contacts", link: "/contacts" },
         { title: "followers", link: "/followers" },
-        {title: "settings", icon: faEllipsisV, link:'/'  },
+        { title: "settings", icon: faEllipsisV, link: '/' },
       ],
       // turn icon .rotate and .closable
       openInnerList: () => {
@@ -51,6 +51,15 @@ class Navigation extends Component {
         icon.classList.toggle("rotate");
         innerItems.classList.toggle("closable");
       },
+      toggleSettings: () => this.setState({ settingsActivated: !this.state.settingsActivated }),
+      removeDisplayNone: (id) => {
+        const hiddenelements = document.querySelectorAll('.display-none');
+        hiddenelements.forEach((elem) => {
+          if (elem.children[0].id === id) {
+            elem.classList.remove('display-none');
+          };
+        })
+      }
     };
   }
 
@@ -68,7 +77,7 @@ class Navigation extends Component {
       }
     };
     window.onscroll = () => makeNavSticky();
-    
+
     const activateSideNav = () => {
       if (document.body.clientWidth >= 780) {
         this.setState({ showSideMenu: true });
@@ -97,19 +106,6 @@ class Navigation extends Component {
         this.setState({ showSideMenu: false });
       }
     });
-    // // make the settings colapse if clicked away.
-    // document.addEventListener("click", (evt) => {
-    //     const settingsContainer = document.getElementById("settings-container");
-    //     const dotsBtn = document.getElementById('setting-btn');
-    //     let targetElement = evt.target;
-    //     do {
-    //       if (targetElement === settingsContainer || targetElement ===dotsBtn){
-    //         return;
-    //       } 
-    //       targetElement = targetElement.parentNode;
-    //     } while (targetElement);
-    //     this.setState({ settingsActivated: false });
-    // });
   }
 
   componentWillUnmount() {
@@ -165,9 +161,9 @@ class Navigation extends Component {
   }
 
   render() {
-    const { showSideMenu, navItems, isLoggedIn, settingsActivated } = this.state;
+    const { showSideMenu, navItems, isLoggedIn, settingsActivated, removeDisplayNone, toggleSettings } = this.state;
     return (
-      
+
       <nav id="navbar" className="primary shadow">
         <Link to="/" className="social-link link">
           <img
@@ -176,40 +172,50 @@ class Navigation extends Component {
             className="small-w-programming-img"
           />
         </Link>
-      
+
         <div className="mid primary" id="nav">
           <div
-            onClick={() => {this.setState({ showSideMenu: !showSideMenu });}}
-            onKeyDown={() => {this.setState({ showSideMenu: !showSideMenu }); }}
-            className={showSideMenu ?'menu-btn open':'menu-btn'}
+            onClick={() => { this.setState({ showSideMenu: !showSideMenu }); }}
+            onKeyDown={() => { this.setState({ showSideMenu: !showSideMenu }); }}
+            className={showSideMenu ? 'menu-btn open' : 'menu-btn'}
           >
             <div className="menu-btn__burger" />
           </div>
         </div>
-        
+
         {showSideMenu ? (
           <div className="nav-items-main-wrapper">
             <div className="nav-items-container primary">
               {" "}
               <ul className="nav-items-list" id="nav-items-list">
                 {navItems.map((navItem) => (
-                 // eslint-disable-next-line no-nested-ternary
-                 (isLoggedIn && navItem.title === 'followers')
-                  ?<div className='avatar-wrapper'> <Avatar user={{photoURL:'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName:'Jose', lastName: 'Taveras', email:'ajo@.fo.com'}} size={38} key={navItem.title} /></div>
                   // eslint-disable-next-line no-nested-ternary
-                  :( navItem.title === 'settings')
-                  ?(isLoggedIn)
-                  ?null
-                  :<FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> this.setState({ settingsActivated: !settingsActivated })} />
-                  :<li key={navItem.title}>{this.listNavItems(navItem)}</li>
+                  (isLoggedIn && navItem.title === 'followers')
+                    ? (
+                      <div
+                        key={navItem.title}
+                        className='avatar-wrapper'
+                        id='avatar-wrapper'
+                        onClick={() => removeDisplayNone('dashboard-dialog')}
+                        onKeyDown={() => removeDisplayNone('dashboard-dialog')}
+                      >
+                        <Avatar user={{ photoURL: 'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName: 'Jose', lastName: 'Taveras', email: 'ajo@.fo.com' }} size={38} key={navItem.title} />
+                      </div>
+                    )
+                    // eslint-disable-next-line no-nested-ternary
+                    : (navItem.title === 'settings')
+                      ? (isLoggedIn)
+                        ? null
+                        : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={toggleSettings} />
+                      : <li key={navItem.title}>{this.listNavItems(navItem)}</li>
                 ))}
-              
+
               </ul>
             </div>
           </div>
         ) : null}
-        { (settingsActivated)?  <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser>: null}
-        { (isLoggedIn)? <ClickAwayCloser> <Dashboard /> </ClickAwayCloser>: null}
+        {(settingsActivated) ? <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser> : null}
+        {(isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard toggleSettings={toggleSettings} /> </ClickAwayCloser> : null}
       </nav>
     );
   }

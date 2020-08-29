@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ErrorCard = ({ errors, suggestions }) => {
+const ErrorCard = ({ errors, suggestions, setErrors }) => {
+  useEffect(() => {
+    const timer = setTimeout(() =>setErrors(null), 3000);
+    return () => clearTimeout(timer);
+  }, [setErrors]);
   const mystyle = {
     color: "rgb(96, 0, 0)",
     backgroundColor: "pink",
@@ -11,7 +15,7 @@ const ErrorCard = ({ errors, suggestions }) => {
   };
   return (
     <>
-      {errors ? (
+      {errors.length? (
         <div>
           <div
             style={mystyle}
@@ -43,9 +47,11 @@ ErrorCard.propTypes={
   errors: PropTypes.array,
   // eslint-disable-next-line react/forbid-prop-types
   suggestions: PropTypes.array,
+  setErrors: PropTypes.func.isRequired
 }
 ErrorCard.defaultProps ={
   errors: [],
-  suggestions: []
+  suggestions: [],
+  
 }
 export default ErrorCard;

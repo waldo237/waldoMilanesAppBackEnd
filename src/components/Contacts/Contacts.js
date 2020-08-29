@@ -45,6 +45,7 @@ const Contacts = () => {
         .then((res) => res.json()
           .then(jsonRes => ({ successful: res.ok, message: jsonRes.message })))
         .then(setResponse)
+        .then(()=>setRequest(false))
         .catch(console.error);
     } else {
       setErrors(contactValidator(user).errors);
@@ -136,7 +137,7 @@ const Contacts = () => {
                 {requestStarted ? <Loading message="Processing your email" /> : null}{" "}
               </div>
               )}
-            <ErrorCard errors={displayableErrors} />
+            {(displayableErrors)? <ErrorCard errors={displayableErrors} setErrors={setErrors} />:null}
           </div>
           <div>
             <h2 className="primary--text">

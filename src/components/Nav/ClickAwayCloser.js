@@ -13,7 +13,7 @@ const ClickAwayCloser = ({ children, exceptionById }) => {
                     if (ref.current && !ref.current.contains(event.target)
                         && !ref.current.contains(excludedElement)) {
                         ref.current.classList.add('display-none');
-                        console.log(excludedElement)
+                        // console.log(  ref.current)
                     }
                    
                 }else if (ref.current && !ref.current.contains(event.target)) {

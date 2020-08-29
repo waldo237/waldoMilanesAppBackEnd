@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
-import {logIn, signWithGoogleOrFB, confirmLoggedIn} from './utilities/authorizationFunctions'
+import { logIn, signWithGoogleOrFB, confirmLoggedIn } from './utilities/authorizationFunctions'
 
 const SignInForm = () => {
   const [user] = useState({});
@@ -19,7 +19,7 @@ const SignInForm = () => {
 
   const inputHandler = (event) => {
     const { name } = event.target;
-    user[name] = (event.target.checked)? event.target.checked: event.target.value;
+    user[name] = (event.target.checked) ? event.target.checked : event.target.value;
     setErrors(signInValidator(user).errors.filter((e) => e.type === name));
   };
 
@@ -29,24 +29,21 @@ const SignInForm = () => {
 
 
   return (
-    <form className="sign-form" onSubmit={(e)=>{ e.preventDefault(); logIn(user, setRequest,setResponse, setErrors)}}>
+    <form className="sign-form" onSubmit={(e) => { e.preventDefault(); logIn(user, setRequest, setResponse, setErrors) }}>
       <div className="o-auth-btns">
         {response
           ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
-        <ErrorCard errors={displayableErrors} />
-        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setResponse, user.rememberMe) }}>
+        {(displayableErrors) ? <ErrorCard errors={displayableErrors} setErrors={setErrors} /> : null}
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setRequest, setResponse, user.rememberMe) }}>
           {" "}
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google
         </button>
         <button
           type="submit"
-          className="facebook-btn" 
-          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setResponse, user.rememberMe) }}
-          // TESTS
-  
-          // onClick={e => { e.preventDefault(); confirmLoggedIn()}}
+          className="facebook-btn"
+          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setRequest, setResponse, user.rememberMe) }}
         >
           {" "}
           <FontAwesomeIcon

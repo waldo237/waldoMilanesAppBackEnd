@@ -25,22 +25,33 @@
         margin: auto;
         display: grid;
         grid-template-columns: 2% 96% 2%;
-        grid-template-rows: 120px 60px 250px 270px;
+        grid-template-rows: 5px 120px 60px 250px 270px;
         background:var(--light-card);
         justify-items: center;
         @include bp(mid-phone){
             height: 780px;
-            grid-template-rows: 120px 60px 350px 230px;
+            grid-template-rows: 5px 120px 60px 350px 230px;
 
         }
         @include bp(desktop){
             max-width: 750px;
             font-size: 1.3em;
         }
-        .profile-avatar-wrapper{
-            @extend .round-edges;
+        .progress-display{
             grid-column: 2/3;
             grid-row: 1/2;
+            margin: auto;
+            color: green;
+            font-weight: 700;
+            // width: 100%;
+            position: relative;
+            z-index: 1;
+           top: -20px;
+        }
+        .profile-avatar-wrapper, .fa-spin{
+            @extend .round-edges;
+            grid-column: 2/3;
+            grid-row: 2/3;
             margin: auto;
             width: 100px;
             height: 100px;
@@ -63,7 +74,7 @@
         .profile-fixed-details{
             @extend .flex-column;
             grid-column: 2/3;
-            grid-row: 2/3;
+            grid-row: 3/4;
             justify-items: center;
             align-items: center;
         }
@@ -72,7 +83,7 @@
             @extend .round-edges;
             height: 300px;
             grid-column: 2/3;
-            grid-row: 3/4;
+            grid-row: 4/5;
             width: 100%;
             padding: auto;
             margin: auto;
@@ -109,7 +120,7 @@
             @extend .shadow;
             height: 270px;
             grid-column: 2/3;
-            grid-row: 4/5;
+            grid-row: 5/6;
             width: 96%;
             margin: auto;
             padding: 0px 2%;
@@ -167,7 +178,7 @@
     .response-message{
         .profile-card{
             height: 840px;
-            grid-template-rows: 120px 60px 380px 230px;
+            grid-template-rows:5px 120px 60px 380px 230px;
             
         }
         .profile-fields{

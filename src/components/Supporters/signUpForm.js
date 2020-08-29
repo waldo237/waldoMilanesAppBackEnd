@@ -26,7 +26,6 @@ const SignUpForm = () =>{
  
     const signUp = (e)=>{
         e.preventDefault();
-        setRequest(false);
         if (signUpValidator(user).valid) {
           setRequest(true);
           const sanitizedData = signUpValidator(user).sanitized;
@@ -40,6 +39,7 @@ const SignUpForm = () =>{
             .then((res) => res.json()
               .then(jsonRes => ({ successful: res.ok, message: jsonRes.message })))
             .then(setResponse)
+            .then(()=>setRequest(false))
             .catch(console.error);
             // setErrors([]) // empty displayble arrays
         } else {
@@ -53,7 +53,7 @@ const SignUpForm = () =>{
         {response 
           ? (  <ResponseAlert response={response} setResponse={setResponse} />) 
           : (<div>{requestStarted ? <Loading message="Processing your registration" /> : null}{" "} </div>)}
-        <ErrorCard errors={displayableErrors} suggestions={signUpValidator(user).suggestions} />
+        {(displayableErrors)? <ErrorCard errors={displayableErrors} suggestions={signUpValidator(user).suggestions} setErrors={setErrors} />:null} 
         <div className="form-group">
           <label className="input" htmlFor="follower-sign-up-first-name">
             First name

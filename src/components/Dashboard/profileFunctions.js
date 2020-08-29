@@ -1,4 +1,5 @@
 import escape from "validator/es/lib/escape";
+import { storage } from '../Supporters/utilities/auth0';
 import envURL from "../../envURL";
 import { fetchPayloadFromJWT } from '../Supporters/utilities/authorizationFunctions';
 
@@ -47,21 +48,22 @@ const profileValidator = (user) => {
   return res;
 };
 
- const getTokenFromLocalStorage = () =>{
- return (localStorage.getItem('auth_access_token'))
-  ? localStorage.getItem('auth_access_token')
-  : sessionStorage.getItem('auth_access_token');
- }
+const getTokenFromLocalStorage = () => {
+  return (localStorage.getItem('auth_access_token'))
+    ? localStorage.getItem('auth_access_token')
+    : sessionStorage.getItem('auth_access_token');
+}
 /**
  * @function saveChanges sends the new changes to the server.
+ * @param options:object containing the other parameters
  * @param {*} profileData:object {email:string, firtName:string, lastName:string,  photoURL:string}
- * @param {*} setRequest a useState function(requestStarted:boolean)
- * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
- * @param {*} setErrors a useState function (errors:array)
+ * @param {*} setRequest :function useState(requestStarted:boolean)
+ * @param {*} setResponse :function useState(object:{message:string, successful:boolean, link:url})
+ * @param {*} setErrors :function useState(errors:array)
  *  @param pathname:string -- a URI
  */
 const saveChanges = (options) => {
-  const { profileData, setRequest, setResponse, setErrors, pathname } = options;
+  const { profileData, setRequest, setResponse, setErrors, pathname, response, setData,setUnsavedChanges } = options;
   const token = getTokenFromLocalStorage();
   if (profileValidator(profileData).valid) {
     setRequest(true);
@@ -81,7 +83,8 @@ const saveChanges = (options) => {
           });
       })
       .then(setResponse)
-      // .then(setRequest(false))
+      .then(()=>setUnsavedChanges(false))
+      .then(() => setRequest(false))
       .catch(console.error);
   } else {
     setErrors(profileValidator(profileData).errors);
@@ -90,8 +93,8 @@ const saveChanges = (options) => {
 
 /**
  * @function fetchProfile calls API to get the user profile.
- * @param {*} setData a useState function(user:object)
- *  @param pathname:string -- a URI
+ * @param {*} setData :function useState(user:object)
+ * @param pathname:string -- a URI
  */
 const fetchProfile = (pathname, setData) => {
   const token = getTokenFromLocalStorage();
@@ -112,11 +115,12 @@ const fetchProfile = (pathname, setData) => {
 }
 /**
  * @function cancelAccount calls API to request an the cancelation of the account.
- * @param {*} profileData:object {email:string, firtName:string, lastName:string,  photoURL:string}
- * @param {*} setRequest a useState function(requestStarted:boolean)
- * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
- * @param {*} setErrors a useState function (errors:array)
- *  @param pathname:string -- a URI
+ * @param options:object containing the other parameters
+ * @param {*} profileData :object {email:string, firtName:string, lastName:string,  photoURL:string}
+ * @param {*} setRequest :function useState(requestStarted:boolean)
+ * @param {*} setResponse :function useState(object:{message:string, successful:boolean, link:url})
+ * @param {*} setErrors :function useState(errors:array)
+ * @param {*} pathname:string -- a URI
  */
 const cancelAccount = (options) => {
   const { profileData, setRequest, setResponse, setErrors, pathname } = options;
@@ -139,7 +143,7 @@ const cancelAccount = (options) => {
           });
       })
       .then(setResponse)
-      .then(setRequest(false))
+      .then(() => setRequest(false))
       .catch(console.error);
   } else {
     setErrors(profileValidator(profileData).errors);
@@ -158,29 +162,93 @@ const cancelAccount = (options) => {
  * @param {*} contentEditableElement:DOM element.
  *
  */
-const setEndOfContenteditable =(contentEditableElement)=> {
-    let range;
-    let selection;
-    if(document.createRange) {
-        range = document.createRange();
-        range.selectNodeContents(contentEditableElement);
-        range.collapse(false);
-        selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-    }
-    else if(document.selection){ 
-        range = document.body.createTextRange();
-        range.moveToElementText(contentEditableElement);
-        range.collapse(false);
-        range.select();
-    }
+const setEndOfContenteditable = (contentEditableElement) => {
+  let range;
+  let selection;
+  if (document.createRange) {
+    range = document.createRange();
+    range.selectNodeContents(contentEditableElement);
+    range.collapse(false);
+    selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+  else if (document.selection) {
+    range = document.body.createTextRange();
+    range.moveToElementText(contentEditableElement);
+    range.collapse(false);
+    range.select();
+  }
 }
 
-const moveCursorRight =(e) =>{
-     const elem = e.target;
-      elem.focus();
-      setEndOfContenteditable(elem);
+/**
+ * @function moveCursorRight --- calls setEndOfContenteditable on event.target
+ *  @param {*} event
+ */
+const moveCursorRight = (e) => {
+  const elem = e.target;
+  elem.focus();
+  setEndOfContenteditable(elem);
+}
+/**
+ * @function validateBlob -- ensure that a blob exists, is not bigger than 5MB,
+ * and its type is image.
+ *  @param {*} blob
+ * @returns errs:array
+ */
+const validateBlob = (blob) => {
+  const errs = [];
+  if (!blob) {
+    errs.push({
+      type: "image",
+      message: "Please make sure you select the image correctly.",
+    })
+  } else {
+    if (blob.size > 5242880) {
+      errs.push({
+        type: "image",
+        message: "The image you are trying to upload is bigger than 5MB, please select another image or shrink its size.",
+      })
+    }
+    if (blob.type.split('/')[0] !== 'image') {
+      errs.push({
+        type: "image",
+        message: "The format of this file is not supported. Please try another image.",
+      })
+    }
+  }
+
+  return errs;
 }
 
-export { profileValidator, saveChanges, fetchProfile, moveCursorRight, cancelAccount };
+
+/**
+ * @function uploadPhoto uploads a picture to a firebase bucket,
+ * sets a value to a integer to signal how much has been uploaded.
+ * @param {*}  profileData:object {email:string, firtName:string, lastName:string,  photoURL:string}
+ * @param {*}  setProgress :function useState(requestStarted:boolean) 
+ * @param {*} selectedFile :blob with the data from the photo
+ * @param {*} setData :function useState(requestStarted:boolean) 
+ */
+const uploadPhoto = (profileData, setProgress, selectedFile, setData, setLoadingPhoto, setUnsavedChanges) => {
+  const { firstName, lastName, _id } = profileData;
+  const reference = `${_id}/profilePicture/${firstName}/${lastName}`;
+  const ref = storage().ref(reference);
+  return new Promise((resolve, reject) => {
+    ref.put(selectedFile).on("state_changed", snapshot => {
+      const progress = Math.ceil(((snapshot.bytesTransferred / snapshot.totalBytes)) * 100);
+      setProgress(progress);
+      if (progress === 100) return resolve();
+    })
+  })
+    .then(() => storage().ref(reference))
+    .then(refe => refe.getDownloadURL())
+    .then(url => setData({ ...profileData, photoURL: url }))
+    .then(()=>setUnsavedChanges(true))
+    .then(() => setLoadingPhoto(false))
+    .catch(console.error)
+}
+
+
+
+export { profileValidator, saveChanges, fetchProfile, moveCursorRight, cancelAccount, uploadPhoto, validateBlob };

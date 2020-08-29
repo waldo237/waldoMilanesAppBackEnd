@@ -57,6 +57,7 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
                     return { successful: res.ok, message: jsonRes.message, link: jsonRes.link }
                 }))
             .then(setResponse)
+            .then(()=>setRequest(false))
             .catch(console.error);
     } else {
         setErrors(signInValidator(user).errors);
@@ -70,8 +71,9 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
  * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
  * @param {*} setErrors a useState function (errors:array)
  */
-const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
+const signWithGoogleOrFB = (whichService, setRequest, setResponse, rememberMe) => {
     const provider = (whichService === 'fb') ? fProvider : gProvider;
+    setRequest(true);
     auth().signInWithPopup(provider)
         .then((result) => {
             const { user } = result;
@@ -91,6 +93,7 @@ const signWithGoogleOrFB = (whichService, setResponse, rememberMe) => {
                         return { successful: res.ok, message: jsonRes.message }
                     }))
                 .then(setResponse)
+                .then(()=>setRequest(false))
                 .catch(console.error);
         })
         .catch(err => console.log(err.message));
