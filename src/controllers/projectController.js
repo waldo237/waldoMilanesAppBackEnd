@@ -73,7 +73,7 @@ exports.updateProject = (req, res) => {
     const id = mongoose.Types.ObjectId(req.params.id);
     Project.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, project) => {
       if (err) res.send(err.message);
-      console.log(project);
+      // console.log(project);
       return (project.nModified) ? res.json('The project was modified correctly.') : res.status(404).send('The update did not take effect.');
     });
   } catch (error) {
