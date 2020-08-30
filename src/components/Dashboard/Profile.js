@@ -1,20 +1,22 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Profile.scss'
-import { faCamera, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Avatar from '../Avatar/Avatar';
 import {
-  profileValidator, saveChanges, fetchProfile,
+  profileValidator, saveChanges,
   cancelAccount, moveCursorRight, uploadPhoto,
   validateBlob
 } from './profileFunctions'
 import ErrorCard from '../ErrorCard/ErrorCard';
 import ResponseAlert from '../ResponseAlert/ResponseAlert';
 import Loading from '../Loading/Loading';
+import { Context } from '../../store/store';
 
 const Profile = (match) => {
-  const [profileData, setData] = useState(null);
+ const  [state, dispatch]= useContext(Context);
+ const [profileCopy, setData] = useState(null);
   const [agreement, toggleAgreement] = useState(false);
   const [displayableErrors, setErrors] = useState([]);
   const [response, setResponse] = useState(null);
@@ -24,14 +26,11 @@ const Profile = (match) => {
   const [progress, setProgress] = useState(0);
 
   const { pathname } = match.location;
-  const options = { profileData, setRequest, setResponse,
-    setUnsavedChanges, setErrors, pathname, response, setData };
-  useEffect(() => {
-    document.title = `User profile`;
-    fetchProfile(pathname, setData);
-  }, [pathname]);
+  const options = { profileCopy, setRequest, setResponse,
+    setUnsavedChanges, setErrors, pathname, response, dispatch };
 
   useEffect(()=>{
+    document.title = `User profile`;
     window.addEventListener("beforeunload", (e)=> {
       if (unsavedChanges) {
         e.preventDefault();
@@ -39,17 +38,18 @@ const Profile = (match) => {
       }
       delete e.returnValue;
     });
-  }, [unsavedChanges])
+    setData(state.profile);
+  }, [unsavedChanges,state.profile ])
 
   const inputHandler = (event) => {
     const name = event.target.attributes.name.value;
     const value = event.target.innerText;
     // eslint-disable-next-line prefer-const
-    let tempObj = { ...profileData };
+    let tempObj = { ...profileCopy };
     tempObj[name] = value;
     setData(tempObj);
     setUnsavedChanges(true);
-    setErrors(profileValidator(profileData).errors.filter((e) => e.type === name));
+    setErrors(profileValidator(profileCopy).errors.filter((e) => e.type === name));
   };
   const triggerFileInput = () => {
     const fileInput = document.getElementById("file-input");
@@ -66,24 +66,24 @@ const Profile = (match) => {
         return resolve();
       })
         .then(() => setLoadingPhoto(true))
-        .then(() => uploadPhoto(profileData, setProgress, blob, setData, setLoadingPhoto, setUnsavedChanges))
+        .then(() => uploadPhoto(profileCopy, setProgress, blob, dispatch, setLoadingPhoto, setUnsavedChanges))
         .catch((err) => console.error(err.message))
     }
     return setErrors([{ type: "image", message: "the file was not selected." }]);
   }
   return (
     <>
-      <main className={(response || displayableErrors) ? 'profile-container response-message' : 'profile-container'}>
+      <main className={(response || displayableErrors) ? 'profile-container response-message fadeInUpx' : 'profile-container fadeInUpx'}>
         <h1 className='profile-title'>Edit profile</h1>
         {(requestStarted) ? <Loading message="Sending your changes" />
-          : (profileData)
+          : (profileCopy)
             ? (
               <div className='profile-card'>
                 {(progress && progress < 100) ? <span className='progress-display'>{progress}%</span> : null}
                 <div onClick={triggerFileInput} onKeyDown={triggerFileInput} className='profile-avatar-wrapper'>
                   {(loadingPhoto)
                     ? <FontAwesomeIcon className='fa-spin fa-4x' icon={faCircleNotch} />
-                    : <Avatar size={100} user={profileData} className='profile-avatar' />}
+                    : <Avatar size={100} user={profileCopy} className='profile-avatar' />}
                   <FontAwesomeIcon className='fa-lg profile-photo-btn' icon={faCamera} />
                   <input
                     onChange={collectPhoto}
@@ -95,8 +95,8 @@ const Profile = (match) => {
                 </div>
                 <div className='profile-fixed-details'>
 
-                  <small>{profileData.email}</small>
-                  <small>  account created on {new Date(profileData.created_date).toLocaleDateString()}</small>
+                  <small>{profileCopy.email}</small>
+                  <small>  account created on {new Date(profileCopy.created_date).toLocaleDateString()}</small>
                 </div>
                 <div className='profile-fields'>
                   {response
@@ -114,7 +114,7 @@ const Profile = (match) => {
                     contentEditable
                     className='profile-property'
                   >
-                    {profileData.firstName}
+                    {profileCopy.firstName}
                   </span>
 
                   <span className='profile-property-label'>
@@ -128,7 +128,7 @@ const Profile = (match) => {
                     contentEditable
                     className='profile-property'
                   >
-                    {profileData.lastName}
+                    {profileCopy.lastName}
                   </span>
                   <button
                     type='button'

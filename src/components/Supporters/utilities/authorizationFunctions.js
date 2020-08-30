@@ -25,9 +25,11 @@ const removeTokensFromStorage = () => {
  * @param history is an instance of the useHistory hook
  * @todo before using it, prevent default behavior from event, in case it's called inside form.
  */
-const logOut = (history) => {
+const logOut = (history, dispatch) => {
     auth().signOut()
         .then(removeTokensFromStorage())
+        .then(dispatch({type:'SET_PROFILE', payload: {}}))
+        .then( dispatch({type:'SET_USER_IS_LOGGED_IN', payload: false}))
         .then(history.push('/'))
         .catch(console.err)
 }
@@ -40,7 +42,7 @@ const logOut = (history) => {
  * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
  * @param {*} setErrors a useState function (errors:array)
  */
-const logIn = (user, setRequest, setResponse, setErrors) => {
+const logIn = (user, setRequest, setResponse, setErrors, dispatch) => {
     if (signInValidator(user).valid) {
         setRequest(true);
         const sanitizedData = signInValidator(user).sanitized;
@@ -53,7 +55,10 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
         })
             .then((res) => res.json()
                 .then(jsonRes => {
-                    if (jsonRes.token) saveTokenLocally(jsonRes.token, user.rememberMe);
+                    if (jsonRes.token){
+                        saveTokenLocally(jsonRes.token, user.rememberMe);
+                        dispatch({type:'SET_USER_IS_LOGGED_IN', payload: res.ok});
+                    }  
                     return { successful: res.ok, message: jsonRes.message, link: jsonRes.link }
                 }))
             .then(setResponse)
@@ -71,7 +76,7 @@ const logIn = (user, setRequest, setResponse, setErrors) => {
  * @param {*} setResponse a useState function (object:{message:string, successful:boolean, link:url})
  * @param {*} setErrors a useState function (errors:array)
  */
-const signWithGoogleOrFB = (whichService, setRequest, setResponse, rememberMe) => {
+const signWithGoogleOrFB = (whichService, setRequest, setResponse, rememberMe, dispatch) => {
     const provider = (whichService === 'fb') ? fProvider : gProvider;
     setRequest(true);
     auth().signInWithPopup(provider)
@@ -89,7 +94,7 @@ const signWithGoogleOrFB = (whichService, setRequest, setResponse, rememberMe) =
             })
                 .then((res) => res.json()
                     .then(jsonRes => {
-                        if (jsonRes.token) saveTokenLocally(jsonRes.token, rememberMe);
+                        if (jsonRes.token) saveTokenLocally(jsonRes.token, rememberMe); dispatch({type:'SET_USER_IS_LOGGED_IN', payload: res.ok});
                         return { successful: res.ok, message: jsonRes.message }
                     }))
                 .then(setResponse)
@@ -171,5 +176,13 @@ const confirmLoggedIn =async () =>{
     console.log(res);
     return res
 }
+
+const getIdFromLocalToken  = () => {
+    const token = (localStorage.getItem('auth_access_token'))
+      ? localStorage.getItem('auth_access_token')
+      : sessionStorage.getItem('auth_access_token');
+    return (token) ? JSON.parse(window.atob(token.split('.')[1])) : {};
+  }
+  
 // eslint-disable-next-line import/prefer-default-export
-export { logIn, signWithGoogleOrFB, logOut, confirmLoggedIn, fetchPayloadFromJWT}
+export { logIn, signWithGoogleOrFB, logOut, confirmLoggedIn, fetchPayloadFromJWT, getIdFromLocalToken}

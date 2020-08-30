@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChevronDown,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Nav.scss";
@@ -12,59 +11,55 @@ import {
   faVuejs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
+import {Context} from '../../store/store'
 import bannerImg from "../../static/banner.png";
 import Avatar from '../Avatar/Avatar';
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
-import { confirmLoggedIn } from '../Supporters/utilities/authorizationFunctions';
 import ClickAwayCloser from './ClickAwayCloser'
+import ListWithNavItems from "./ListWithNavItems";
 
-class Navigation extends Component {
-  constructor() {
-    super();
-    this.state = {
+const Navigation = () => {
+ const [state] = useContext(Context);
+const [showSideMenu, toggleSideMenu] = useState(false);
+const [settingsActivated, toggleSettings] = useState(false);
 
-      showSideMenu: false,
-      isLoggedIn: false,
-      settingsActivated: false,
-      navItems: [
-        { title: "Home", link: "/" },
-        {
-          title: "My Work",
-          link: "/portfolio",
-          children: [
-            { title: "Node", link: "/project/node", icon: faNodeJs },
-            { title: "Java", link: "/project/java", icon: faJava },
-            { title: "Vue", link: "/project/vue", icon: faVuejs },
-            { title: "React", link: "/project/react", icon: faReact },
-          ],
-        },
-        { title: "Articles", link: "/articles" },
-        { title: "Contacts", link: "/contacts" },
-        { title: "followers", link: "/followers" },
-        { title: "settings", icon: faEllipsisV, link: '/' },
+
+const navItems = [
+    { title: "Home", link: "/" },
+    {
+      title: "My Work",
+      link: "/portfolio",
+      children: [
+        { title: "Node", link: "/project/node", icon: faNodeJs },
+        { title: "Java", link: "/project/java", icon: faJava },
+        { title: "Vue", link: "/project/vue", icon: faVuejs },
+        { title: "React", link: "/project/react", icon: faReact },
       ],
-      // turn icon .rotate and .closable
-      openInnerList: () => {
-        const icon = document.querySelector(".drop-icon");
-        const innerItems = document.querySelector(".inner-nav-item-list");
-        icon.classList.toggle("rotate");
-        innerItems.classList.toggle("closable");
-      },
-      toggleSettings: () => this.setState({ settingsActivated: !this.state.settingsActivated }),
-      removeDisplayNone: (id) => {
-        const hiddenelements = document.querySelectorAll('.display-none');
-        hiddenelements.forEach((elem) => {
-          if (elem.children[0].id === id) {
-            elem.classList.remove('display-none');
-          };
-        })
-      }
-    };
+    },
+    { title: "Articles", link: "/articles" },
+    { title: "Contacts", link: "/contacts" },
+    { title: "followers", link: "/followers" },
+    { title: "settings", icon: faEllipsisV, link: '/' },
+  ];
+  // turn icon .rotate and .closable
+  const openInnerList = () => {
+    const icon = document.querySelector(".drop-icon");
+    const innerItems = document.querySelector(".inner-nav-item-list");
+    icon.classList.toggle("rotate");
+    innerItems.classList.toggle("closable");
+  };
+  const removeDisplayNone = (id) => {
+    const hiddenelements = document.querySelectorAll('.display-none');
+    hiddenelements.forEach((elem) => {
+      if (elem.children[0].id === id) {
+        elem.classList.remove('display-none');
+      };
+    })
   }
 
-  async componentDidMount() {
-    this.setState({ isLoggedIn: await confirmLoggedIn() });
+
+  useEffect(() => {
     const nav = document.getElementById("navbar");
     const navOriginalPositioin = nav.offsetTop;
     const makeNavSticky = () => {
@@ -80,9 +75,9 @@ class Navigation extends Component {
 
     const activateSideNav = () => {
       if (document.body.clientWidth >= 780) {
-        this.setState({ showSideMenu: true });
+        toggleSideMenu(true);
       } else {
-        this.setState({ showSideMenu: false });
+        toggleSideMenu(false);
       }
     };
     activateSideNav();
@@ -91,134 +86,78 @@ class Navigation extends Component {
     // make the nav colapse if click away.
     document.addEventListener("click", (evt) => {
       if (document.body.clientWidth <= 780) {
-        const navItems = document.getElementById("nav");
+        const navElem = document.getElementById("nav");
         const innerNav = document.querySelector(".nav-item-with-children-span");
         let targetElement = evt.target;
         do {
           if (
-            targetElement === navItems ||
+            targetElement === navElem ||
             targetElement === innerNav
           ) {
             return;
           }
           targetElement = targetElement.parentNode;
         } while (targetElement);
-        this.setState({ showSideMenu: false });
+        toggleSideMenu(false);
       }
     });
-  }
+  }, [])
 
-  componentWillUnmount() {
-    document.removeEventListener("click");
-    document.removeEventListener("resize");
-  }
+  return (
+    <nav id="navbar" className="primary shadow">
+      <Link to="/" className="social-link link">
+        <img
+          src={bannerImg}
+          alt="W Programming icon"
+          className="small-w-programming-img"
+        />
+      </Link>
 
-  listNavItems(item) {
-    const { openInnerList } = this.state;
-    if (item.children) {
-      return (
+      <div className="mid primary" id="nav">
         <div
-          id="with-children"
-          className="nav-item-with-children"
+          onClick={() => toggleSideMenu(!showSideMenu)}
+          onKeyDown={() => toggleSideMenu(!showSideMenu)}
+          className={showSideMenu ? 'menu-btn open' : 'menu-btn'}
         >
-          <span
-            className="nav-item-with-children-span"
-            onClick={openInnerList}
-            onKeyDown={openInnerList}
-          >
-            {item.title}
-            <FontAwesomeIcon className=" drop-icon" icon={faChevronDown} />
-          </span>
-          {!item.icon ? (
-            <ul className="inner-nav-item-list">
-              {item.children.map((child) => (
-                <NavLink
-                  activeClassName="active-route"
-                  exact
-                  to={child.link}
-                  key={child.title}
-                >
-                  <button type="button" className="btn spacious">
-                    {!item.icon ? (
-                      <FontAwesomeIcon className="fa-lg" icon={child.icon} />
-                    ) : null}{" "}
-                    {child.title}
-                  </button>
-                </NavLink>
-              ))}
-            </ul>
-          ) : null}
+          <div className="menu-btn__burger" />
         </div>
-      );
-    }
-    return (
-      <NavLink activeClassName="active-route" exact to={item.link}>
-        <button type="button" className="btn spacious">
-          {item.title}
-        </button>
-      </NavLink>
-    );
-  }
+      </div>
 
-  render() {
-    const { showSideMenu, navItems, isLoggedIn, settingsActivated, removeDisplayNone, toggleSettings } = this.state;
-    return (
-
-      <nav id="navbar" className="primary shadow">
-        <Link to="/" className="social-link link">
-          <img
-            src={bannerImg}
-            alt="W Programming icon"
-            className="small-w-programming-img"
-          />
-        </Link>
-
-        <div className="mid primary" id="nav">
-          <div
-            onClick={() => { this.setState({ showSideMenu: !showSideMenu }); }}
-            onKeyDown={() => { this.setState({ showSideMenu: !showSideMenu }); }}
-            className={showSideMenu ? 'menu-btn open' : 'menu-btn'}
-          >
-            <div className="menu-btn__burger" />
-          </div>
-        </div>
-
-        {showSideMenu ? (
-          <div className="nav-items-main-wrapper">
-            <div className="nav-items-container primary">
-              {" "}
-              <ul className="nav-items-list" id="nav-items-list">
-                {navItems.map((navItem) => (
+      {showSideMenu ? (
+        <div className="nav-items-main-wrapper">
+          <div className="nav-items-container primary">
+            {" "}
+            <ul className="nav-items-list" id="nav-items-list">
+              {navItems.map((navItem) => (
+                // eslint-disable-next-line no-nested-ternary
+                (state.isLoggedIn && navItem.title === 'followers')
+                  ? (
+                    <div
+                      key={navItem.title}
+                      className='avatar-wrapper'
+                      id='avatar-wrapper'
+                      onClick={() => removeDisplayNone('dashboard-dialog')}
+                      onKeyDown={() => removeDisplayNone('dashboard-dialog')}
+                    >
+                      <Avatar user={state.profile} size={38} key={navItem.title} />
+                    </div>
+                  )
                   // eslint-disable-next-line no-nested-ternary
-                  (isLoggedIn && navItem.title === 'followers')
-                    ? (
-                      <div
-                        key={navItem.title}
-                        className='avatar-wrapper'
-                        id='avatar-wrapper'
-                        onClick={() => removeDisplayNone('dashboard-dialog')}
-                        onKeyDown={() => removeDisplayNone('dashboard-dialog')}
-                      >
-                        <Avatar user={{ photoURL: 'https://lh3.googleusercontent.com/ogw/ADGmqu93dmNB10G5iAvsETm2tDsVefUNE3oDWzGW0Iav=s83-c-mo', firstName: 'Jose', lastName: 'Taveras', email: 'ajo@.fo.com' }} size={38} key={navItem.title} />
-                      </div>
-                    )
-                    // eslint-disable-next-line no-nested-ternary
-                    : (navItem.title === 'settings')
-                      ? (isLoggedIn)
-                        ? null
-                        : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={toggleSettings} />
-                      : <li key={navItem.title}>{this.listNavItems(navItem)}</li>
-                ))}
+                  : (navItem.title === 'settings')
+                    ? (state.isLoggedIn)
+                      ? null
+                      : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={toggleSettings} />
+                    : <li key={navItem.title}><ListWithNavItems item={navItem} openInnerList={openInnerList} /></li>
+              ))}
 
-              </ul>
-            </div>
+            </ul>
           </div>
-        ) : null}
-        {(settingsActivated) ? <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser> : null}
-        {(isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard toggleSettings={toggleSettings} /> </ClickAwayCloser> : null}
-      </nav>
-    );
-  }
+        </div>
+      ) : null}
+      {(settingsActivated) ? <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser> : null}
+      {(state.isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard toggleSettings={toggleSettings} /> </ClickAwayCloser> : null}
+    </nav>
+  );
 }
 
 export default Navigation;

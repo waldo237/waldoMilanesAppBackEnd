@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { useHistory } from 'react-router-dom'
@@ -9,8 +9,10 @@ import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
 import { logIn, signWithGoogleOrFB, confirmLoggedIn } from './utilities/authorizationFunctions'
+import { Context } from '../../store/store'
 
 const SignInForm = () => {
+  const [, dispatch]= useContext(Context);
   const [user] = useState({});
   const [response, setResponse] = useState(null);
   const [requestStarted, setRequest] = useState(false);
@@ -29,13 +31,13 @@ const SignInForm = () => {
 
 
   return (
-    <form className="sign-form" onSubmit={(e) => { e.preventDefault(); logIn(user, setRequest, setResponse, setErrors) }}>
+    <form className="sign-form" onSubmit={(e) => { e.preventDefault(); logIn(user, setRequest, setResponse, setErrors,dispatch) }}>
       <div className="o-auth-btns">
         {response
           ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
         {(displayableErrors) ? <ErrorCard errors={displayableErrors} setErrors={setErrors} /> : null}
-        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setRequest, setResponse, user.rememberMe) }}>
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setRequest, setResponse, user.rememberMe,dispatch) }}>
           {" "}
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google

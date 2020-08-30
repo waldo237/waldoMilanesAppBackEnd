@@ -4,11 +4,12 @@ import envURL from "../../envURL";
 import { fetchPayloadFromJWT } from '../Supporters/utilities/authorizationFunctions';
 
 const profileValidator = (user) => {
+  console.log(user)
   const res = {
     valid: true,
     errors: [],
   };
-
+  if (user){
   if (!user.firstName) {
     res.errors.push({
       type: "firstName",
@@ -44,8 +45,8 @@ const profileValidator = (user) => {
       photoURL: user.photoURL
     };
   }
-
-  return res;
+}
+return res;
 };
 
 const getTokenFromLocalStorage = () => {
@@ -56,18 +57,18 @@ const getTokenFromLocalStorage = () => {
 /**
  * @function saveChanges sends the new changes to the server.
  * @param options:object containing the other parameters
- * @param {*} profileData:object {email:string, firtName:string, lastName:string,  photoURL:string}
+ * @param {*} profileCopy:object {email:string, firtName:string, lastName:string,  photoURL:string}
  * @param {*} setRequest :function useState(requestStarted:boolean)
  * @param {*} setResponse :function useState(object:{message:string, successful:boolean, link:url})
  * @param {*} setErrors :function useState(errors:array)
  *  @param pathname:string -- a URI
  */
 const saveChanges = (options) => {
-  const { profileData, setRequest, setResponse, setErrors, pathname, response, setData,setUnsavedChanges } = options;
+  const { profileCopy, setRequest, setResponse, setErrors, pathname, dispatch, setUnsavedChanges } = options;
   const token = getTokenFromLocalStorage();
-  if (profileValidator(profileData).valid) {
+  if (profileValidator(profileCopy).valid) {
     setRequest(true);
-    const sanitizedData = profileValidator(profileData).sanitized;
+    const sanitizedData = profileValidator(profileCopy).sanitized;
     fetch(`${envURL}${pathname}`, {
       method: "PUT",
       headers: {
@@ -83,11 +84,12 @@ const saveChanges = (options) => {
           });
       })
       .then(setResponse)
-      .then(()=>setUnsavedChanges(false))
+      .then(dispatch({ type: 'SET_PROFILE', payload: { ...profileCopy } }))
+      .then(() => setUnsavedChanges(false))
       .then(() => setRequest(false))
       .catch(console.error);
   } else {
-    setErrors(profileValidator(profileData).errors);
+    setErrors(profileValidator(profileCopy).errors);
   }
 }
 
@@ -96,7 +98,7 @@ const saveChanges = (options) => {
  * @param {*} setData :function useState(user:object)
  * @param pathname:string -- a URI
  */
-const fetchProfile = (pathname, setData) => {
+const fetchProfile = (pathname, dispatch) => {
   const token = getTokenFromLocalStorage();
   const { email } = fetchPayloadFromJWT(token);
   if (token) {
@@ -109,25 +111,25 @@ const fetchProfile = (pathname, setData) => {
       body: JSON.stringify({ email })
     })
       .then((res) => res.json())
-      .then(setData)
+      .then((data) => dispatch({ type: 'SET_PROFILE', payload: data }))
       .catch(console.error);
   }
 }
 /**
  * @function cancelAccount calls API to request an the cancelation of the account.
  * @param options:object containing the other parameters
- * @param {*} profileData :object {email:string, firtName:string, lastName:string,  photoURL:string}
+ * @param {*} profileCopy :object {email:string, firtName:string, lastName:string,  photoURL:string}
  * @param {*} setRequest :function useState(requestStarted:boolean)
  * @param {*} setResponse :function useState(object:{message:string, successful:boolean, link:url})
  * @param {*} setErrors :function useState(errors:array)
  * @param {*} pathname:string -- a URI
  */
 const cancelAccount = (options) => {
-  const { profileData, setRequest, setResponse, setErrors, pathname } = options;
+  const { profileCopy, setRequest, setResponse, setErrors, pathname } = options;
   const token = getTokenFromLocalStorage();
-  if (profileValidator(profileData).valid) {
+  if (profileValidator(profileCopy).valid) {
     setRequest(true);
-    const sanitizedData = profileValidator(profileData).sanitized;
+    const sanitizedData = profileValidator(profileCopy).sanitized;
     fetch(`${envURL}${pathname}`, {
       method: "DELETE",
       headers: {
@@ -146,7 +148,7 @@ const cancelAccount = (options) => {
       .then(() => setRequest(false))
       .catch(console.error);
   } else {
-    setErrors(profileValidator(profileData).errors);
+    setErrors(profileValidator(profileCopy).errors);
   }
 }
 
@@ -225,13 +227,13 @@ const validateBlob = (blob) => {
 /**
  * @function uploadPhoto uploads a picture to a firebase bucket,
  * sets a value to a integer to signal how much has been uploaded.
- * @param {*}  profileData:object {email:string, firtName:string, lastName:string,  photoURL:string}
+ * @param {*}  profileCopy:object {email:string, firtName:string, lastName:string,  photoURL:string}
  * @param {*}  setProgress :function useState(requestStarted:boolean) 
  * @param {*} selectedFile :blob with the data from the photo
  * @param {*} setData :function useState(requestStarted:boolean) 
  */
-const uploadPhoto = (profileData, setProgress, selectedFile, setData, setLoadingPhoto, setUnsavedChanges) => {
-  const { firstName, lastName, _id } = profileData;
+const uploadPhoto = (profileCopy, setProgress, selectedFile, dispatch, setLoadingPhoto, setUnsavedChanges) => {
+  const { firstName, lastName, _id } = profileCopy;
   const reference = `${_id}/profilePicture/${firstName}/${lastName}`;
   const ref = storage().ref(reference);
   return new Promise((resolve, reject) => {
@@ -243,8 +245,8 @@ const uploadPhoto = (profileData, setProgress, selectedFile, setData, setLoading
   })
     .then(() => storage().ref(reference))
     .then(refe => refe.getDownloadURL())
-    .then(url => setData({ ...profileData, photoURL: url }))
-    .then(()=>setUnsavedChanges(true))
+    .then(url => dispatch({ type: 'SET_PROFILE', payload: { ...profileCopy, photoURL: url } }))
+    .then(() => setUnsavedChanges(true))
     .then(() => setLoadingPhoto(false))
     .catch(console.error)
 }
