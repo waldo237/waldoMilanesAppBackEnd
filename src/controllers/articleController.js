@@ -10,7 +10,7 @@ exports.getAllArticles = (req, res) => {
   try {
     Article.find({}, (err, articles) => {
       if (err) res.status(500).send('An  error occured while fetching the data');
-      if (articles.length <= 0) return res.status(500).send('An  error occured while fetching the data');
+      if (articles && articles.length <= 0) return res.status(500).send('An  error occured while fetching the data');
       return res.json(articles);
     });
   } catch (error) {
