@@ -28,16 +28,16 @@ const SignInForm = () => {
   useEffect(() => {
     document.title = "Become my follower";
   }, []);
-
+const options =  {setRequest, setErrors, setResponse, rememberMe:user.rememberMe, dispatch, history};
 
   return (
-    <form className="sign-form" onSubmit={(e) => { e.preventDefault(); logIn(user, setRequest, setResponse, setErrors,dispatch) }}>
+    <form className="sign-form" onSubmit={(e) => { e.preventDefault(); logIn(user, options) }}>
       <div className="o-auth-btns">
         {response
           ? (<ResponseAlert response={response} email={user.email} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Checking your credentials" /> : null}{" "} </div>)}
         {(displayableErrors) ? <ErrorCard errors={displayableErrors} setErrors={setErrors} /> : null}
-        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', setRequest, setResponse, user.rememberMe,dispatch) }}>
+        <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', options) }}>
           {" "}
           <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
           with google
@@ -45,7 +45,7 @@ const SignInForm = () => {
         <button
           type="submit"
           className="facebook-btn"
-          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', setRequest, setResponse, user.rememberMe) }}
+          onClick={e => { e.preventDefault(); signWithGoogleOrFB('fb', options) }}
         >
           {" "}
           <FontAwesomeIcon

@@ -55,7 +55,7 @@ const Portfolio = () => {
   };
   return (
     <>
-      <main className="portfolio-container light"> 
+      <main className="portfolio-container light fadeInUpx"> 
         <header className="porfolio-title primary--text ">
           <PortfolioTitleIcon /> <div> <h1>My Work</h1> <h4> A collection of projects</h4></div> 
         </header>

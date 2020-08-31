@@ -8,7 +8,7 @@ import Propstype from 'prop-types';
 import Avatar from '../Avatar/Avatar';
 import { logOut, getIdFromLocalToken} from '../Supporters/utilities/authorizationFunctions'
 
-const Dashboard = ({ toggleSettings }) => {
+const Dashboard = ({ removeDisplayNone }) => {
   const [state, dispatch] = useContext(Context)
   const history = useHistory();
   
@@ -21,7 +21,7 @@ const Dashboard = ({ toggleSettings }) => {
     { title: 'Special projects', icon: faProjectDiagram, link: '' },
     { title: 'Special Articles', icon: faNewspaper, link: '' },
     { title: 'Notifications', icon: faBell, link: '' },
-    { title: 'Settings', icon: faCog, link: '', id: 'setting-btn', func: toggleSettings },
+    { title: 'Settings', icon: faCog, link: '', id: 'setting-btn', func: ()=> removeDisplayNone('settings-container') },
     { title: 'Sign out', icon: faSignOutAlt, link: '', func: ()=> logOut(history, dispatch) },
   ]
   return (
@@ -68,7 +68,7 @@ const Dashboard = ({ toggleSettings }) => {
 }
 
 Dashboard.propTypes = {
-  toggleSettings: Propstype.func.isRequired,
+  removeDisplayNone: Propstype.func.isRequired,
 }
 export default Dashboard
 

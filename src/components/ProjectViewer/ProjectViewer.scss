@@ -20,6 +20,7 @@
     @extend .flex-column;
     // @extend .hoverable-card;
     background: var(--light-card);
+    color: var(--primary-color);
     padding: 20px 30px;
     margin: 2%;
     width: 90%; 

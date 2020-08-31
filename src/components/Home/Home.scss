@@ -3,7 +3,7 @@
 .home-btn {
   box-shadow: 4px 10px 14px -10px var(--primary-color);
   border-radius: 5px;
-  border: 1px solid #fbf7f4;
+  border: 1px solid var(--light-card);
   background: rgba(35, 35, 61, 0.164);
   display: inline-block;
   cursor: pointer;
@@ -15,7 +15,7 @@
   margin: 40px 10px 20px 10px;
   &:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--light-card);
     transform: scale(1.1);
   }
   &:active {
@@ -349,6 +349,7 @@
 }
 
 #education-container {
+  background: var(--light);
   line-height: 1.5em;
   z-index: -1;
   font-size: 0.8em;
@@ -395,7 +396,7 @@
       background-color: var(--brown);
       text-align: center;
       line-height: 1.25em;
-      color: white;
+      color: var(--light-card);
       font-size: .8em;
       }
       @include bp(desktop){
@@ -410,7 +411,7 @@
     }
     .education-description-card{
       position: relative;
-      background-color: #fafafa85;
+      background-color: var(--education-card-color);
       border-radius: 5px;
       padding: 30px 5px;
       right: 98%;
@@ -460,6 +461,7 @@
       @extend .hoverable-btn;
       @extend .round-edges;
       background: var(--brown);
+      color: var(--light-card);
       padding: 10px 20px;
     }
   }

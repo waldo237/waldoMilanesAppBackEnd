@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEllipsisV,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import "./Nav.scss";
 import {
   faNodeJs,
@@ -22,7 +20,7 @@ import ListWithNavItems from "./ListWithNavItems";
 const Navigation = () => {
  const [state] = useContext(Context);
 const [showSideMenu, toggleSideMenu] = useState(false);
-const [settingsActivated, toggleSettings] = useState(false);
+// const [settingsActivated, removeDisplayNone] = useState(true);
 
 
 const navItems = [
@@ -146,7 +144,7 @@ const navItems = [
                   : (navItem.title === 'settings')
                     ? (state.isLoggedIn)
                       ? null
-                      : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={toggleSettings} />
+                      : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> removeDisplayNone('settings-container')} />
                     : <li key={navItem.title}><ListWithNavItems item={navItem} openInnerList={openInnerList} /></li>
               ))}
 
@@ -154,8 +152,8 @@ const navItems = [
           </div>
         </div>
       ) : null}
-      {(settingsActivated) ? <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser> : null}
-      {(state.isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard toggleSettings={toggleSettings} /> </ClickAwayCloser> : null}
+      <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser>
+      {(state.isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard removeDisplayNone={removeDisplayNone} /> </ClickAwayCloser> : null}
     </nav>
   );
 }

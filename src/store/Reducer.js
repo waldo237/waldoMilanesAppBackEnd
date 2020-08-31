@@ -10,10 +10,10 @@ const Reducer = (state, action) => {
                 ...state,
                 isLoggedIn: action.payload
             };
-        case 'ADD_POST':
+        case 'DARK_THEME':
             return {
                 ...state,
-                posts: state.posts.concat(action.payload)
+                darkTheme: action.payload
             };
         case 'REMOVE_POST':
             return {

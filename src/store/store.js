@@ -6,7 +6,8 @@ const initialState = {
     posts: ['newpost'],
     isLoggedIn:false,
     profile: {},
-    error: null
+    error: null,
+    darkTheme: false
 };
 
 const Store = ({ children }) => {

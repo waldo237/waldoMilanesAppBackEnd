@@ -22,11 +22,16 @@ const App = () => {
   .then(()=>{ const {_id} =  getIdFromLocalToken(); return _id})
   .then((_id)=>fetchProfile(`/user/profile/${_id}`, dispatch))  
   .catch((err)=>console.log(err.message));
-  },[state.isLoggedIn])
+  },[state.isLoggedIn]);
+
+  useEffect(()=>{
+    const darkTheme = localStorage.getItem('darkTheme')  === 'true';
+    dispatch({ type: 'DARK_THEME', payload: darkTheme });
+  },[state.darkTheme])
   return (
     <Router>
       <ScrollToTop />
-      <div className="app light">
+      <div className={(state.darkTheme)?'app dark': 'app light'}>
         <header className="header primary " id="header">
           <Navigation />
         </header>

@@ -32,7 +32,7 @@ const ClickAwayCloser = ({ children, exceptionById }) => {
         }
     });
 
-    return <div ref={ref}>{children}</div>;
+    return <div className='display-none' ref={ref}>{children}</div>;
 }
 ClickAwayCloser.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
