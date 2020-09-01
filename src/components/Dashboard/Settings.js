@@ -1,18 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, {  useContext, useEffect } from 'react';
 import './Dashboard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faLanguage } from '@fortawesome/free-solid-svg-icons';
-import Select from 'react-select';
 import { Context } from '../../store/store';
+import i18n from '../../i18n';
 
 
 const Settings = () => {
-  const [selectedOption, setSelect] = useState(null);
   const [state, dispatch] = useContext(Context);
   const languages = [
-    { value: "EN", label: "EN" },
-    { value: "ES", label: "ES" },
-    { value: "FR", label: "FR" }
+    { value: "en", label: "EN" },
+    { value: "es", label: "ES" },
+    { value: "fr", label: "FR", default:true }
   ];
   useEffect(() => {
     if (state.darkTheme) {
@@ -20,9 +19,11 @@ const Settings = () => {
       darkThemeSwich.setAttribute('checked', state.darkTheme);
     }
   }, [state.darkTheme])
-  const handleChange = (selection) => {
-    setSelect({ selection });
-    console.log(`Option selected:`, selectedOption);
+  const handleChange = (e) => {
+   const {value} = e.target;
+    localStorage.setItem('language',value);
+    dispatch({type: 'CHANGE_LANGUAGE', value});
+    i18n.changeLanguage(value);
   };
   const inputHandler = (event) => {
     localStorage.setItem('darkTheme', event.target.checked);
@@ -61,28 +62,26 @@ const Settings = () => {
                   icon={faLanguage}
                 />
               </div>
-              {/* <h1 className='dash-action-text primary--text Lato'>Languages &nbsp;</h1> */}
+              <h1 className='dash-action-text primary--text Lato'>Languages &nbsp;</h1>
               <div style={{ width: '100px' }}>
-                <Select
-                  onChange={handleChange}
-                  options={languages}
-                />
-                {/* <select
+                <select
                   id="selectbox"
-                  data-selected=""
-                  className="translator btn"
+                  defaultValue={state.language}
+                  className=""
+                  onChange={handleChange}
                 >
                   {languages.map((lang) =>  (
                     <option
-                      className="primary"
-                      key={lang.title}
-                      value={lang.title}
+                      className=""
+                      key={lang.label}
+                      value={lang.value}
+                      
                     >
-                      {lang.title}
+                      {lang.label}
                     </option>
 )
                  )}
-                </select> */}
+                </select>
               </div>
             </div>
           </div>

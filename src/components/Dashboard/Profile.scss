@@ -193,3 +193,30 @@
               }
         }
     }
+
+    select {
+        @extend .shadow;
+        @extend .round-edges;
+        
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -webkit-padding-end: 20px;
+        -moz-padding-end: 20px;
+        -webkit-padding-start: 2px;
+        -moz-padding-start: 2px;
+        background: var(--light-card);
+        border: none;
+        color: var(--primary-color);
+        font-size: inherit;
+        margin:auto;
+        overflow: hidden;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        option{
+            color: var(--primary-color);
+        }
+    }

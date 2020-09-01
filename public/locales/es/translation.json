@@ -1,0 +1,9 @@
+{
+  "title": "Welcome to react using react-i18next",
+  "home": {
+    "aPracmatic": "Un pragmático y dedicado",
+    "developer": "Desarrollador web",
+    "introductionParagraph":"Hola, mi nombre es Waldo Milanes. Soy un profesional entusiasta y capacitado con una considerable experiencia técnica en el diseño y desarrollo de aplicaciones web.",
+    "hearMore":"escuchar mas"
+  }
+}

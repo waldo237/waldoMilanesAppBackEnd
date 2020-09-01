@@ -15,10 +15,10 @@ const Reducer = (state, action) => {
                 ...state,
                 darkTheme: action.payload
             };
-        case 'REMOVE_POST':
+        case 'CHANGE_LANGUAGE':
             return {
                 ...state,
-                posts: state.posts.filter(post => post.id !== action.payload)
+                language:  action.payload
             };
         case 'SET_ERROR':
             return {

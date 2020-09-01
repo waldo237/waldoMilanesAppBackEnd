@@ -1,22 +1,21 @@
 import React from "react";
+import {useTranslation } from 'react-i18next'
 import { DBShape, SecurityShape, ServerShape, StackShape, CodeShape } from './Shapes'
 
 const HeroArea = () => {
+  const {t} =useTranslation();
   return (
     <>
-
      
       <div id="hero-title-wrapper" className='primary--text fadeInUpx'>
-        <h2 id="pragmatic-dedicated">A Pragmatic and Dedicated</h2>
-        <h1 id="web-developer">Web Developer</h1>
+        <h2 id="pragmatic-dedicated">{t("home.aPracmatic")}</h2>
+        <h1 id="web-developer">{t('home.developer')}</h1>
         <p id='introduction-paragraph'>
-          Hi, my name is Waldo Milanes. I am an enthusiastic and skilled
-          professional with substantial technical expertise in designing
-          and developing web applications.
+          {t('home.introductionParagraph')}
         </p>
         <a href="#more-about-me-container">
           <button id='hear-more-btn' type="button" className="my-work-btn my-work-btn-wide primary--text">
-            hear more
+          {t('home.hearMore')}
           </button>
         </a>
       </div>

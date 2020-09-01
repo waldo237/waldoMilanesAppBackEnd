@@ -184,7 +184,7 @@
   .menu-btn__burger {
     width: 28px;
     height: 2px;
-    background: #fff;
+    background: var(--light);
     border-radius: 5px;
     transition: all .5s ease-in-out;
       &::before,
@@ -193,7 +193,7 @@
         position: absolute;
         width: 28px;
         height: 2px;
-        background: #fff;
+        background: var(--light);
         border-radius: 5px;
         transition: all .5s ease-in-out;
       }

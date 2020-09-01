@@ -1,13 +1,14 @@
 import React, { createContext, useReducer } from "react";
+import PropTypes from 'prop-types'
 import Reducer from './Reducer'
-
-
+const initialLang = localStorage.getItem('language');
 const initialState = {
     posts: ['newpost'],
     isLoggedIn:false,
     profile: {},
     error: null,
-    darkTheme: false
+    darkTheme: false,
+    language: (initialLang)?initialLang: 'EN'
 };
 
 const Store = ({ children }) => {
@@ -18,6 +19,11 @@ const Store = ({ children }) => {
       </Context.Provider>
     )
 };
-
+Store.propTypes= {
+  children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+  ]).isRequired
+}
 export const Context = createContext(initialState);
 export default Store;

@@ -28,6 +28,11 @@ const App = () => {
     const darkTheme = localStorage.getItem('darkTheme')  === 'true';
     dispatch({ type: 'DARK_THEME', payload: darkTheme });
   },[state.darkTheme])
+
+  useEffect(()=>{
+   const savedLang = localStorage.getItem('language');
+    dispatch({type: 'CHANGE_LANGUAGE', payload: savedLang});
+  },[state.language])
   return (
     <Router>
       <ScrollToTop />

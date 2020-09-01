@@ -51,3 +51,4 @@ SingleArticle.propTypes = {
   match: Proptypes.object.isRequired,
 }
 export default SingleArticle;
+
