@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import PropTypes from 'prop-types'
+import { Trans } from 'react-i18next'
 import Reducer from './Reducer'
+
 const initialLang = localStorage.getItem('language');
 const initialState = {
     posts: ['newpost'],
@@ -8,7 +10,8 @@ const initialState = {
     profile: {},
     error: null,
     darkTheme: false,
-    language: (initialLang)?initialLang: 'EN'
+    language: (initialLang) || 'EN',
+    Trans
 };
 
 const Store = ({ children }) => {

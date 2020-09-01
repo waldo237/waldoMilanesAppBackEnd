@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
+import { useTranslation } from 'react-i18next'
 import Navigation from "../Nav/Nav";
 import Routes from "../../Routes/Routes";
 import Footer from "../Footer/Footer";
@@ -29,9 +30,12 @@ const App = () => {
     dispatch({ type: 'DARK_THEME', payload: darkTheme });
   },[state.darkTheme])
 
+  const {t}=  useTranslation(); //INITIALIZE T FUNCTION
   useEffect(()=>{
    const savedLang = localStorage.getItem('language');
     dispatch({type: 'CHANGE_LANGUAGE', payload: savedLang});
+    dispatch({type: 'SET_T', payload: t});
+
   },[state.language])
   return (
     <Router>

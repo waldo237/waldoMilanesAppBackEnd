@@ -20,10 +20,10 @@ const Reducer = (state, action) => {
                 ...state,
                 language:  action.payload
             };
-        case 'SET_ERROR':
+        case 'SET_T':
             return {
                 ...state,
-                error: action.payload
+                t: action.payload
             };
         default:
             return state;

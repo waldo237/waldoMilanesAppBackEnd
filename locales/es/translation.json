@@ -1,24 +1,4 @@
 {
-  "nav": {
-    "home": "Accueil",
-    "myWork":"mes travaux",
-    "articles": "Des articles",
-    "Contacts": "Contactez moi",
-    "followers": "suiveurs"
-  },
-  "home": {
-    "aPracmatic": "Un pragmatique et dévoué",
-    "developer": "Développeur web",
-    "introductionParagraph": "Salut, je m'appelle Waldo Milanes. Je suis un professionnel passionné et compétent avec une expertise technique substantielle dans la conception et le développement d'applications Web.",
-    "hearMore":"en savoir plus",
-    "technicalTitle": "compétences techniques",
-    "technicalContent": "Je sais comment créer efficacement des interfaces élégantes et faciles à utiliser et configurer des bases de données back-end qui répondent aux différents besoins de l'entreprise.",
-    "managerialTitle": "compétences managériales",
-    "managerialContent": "Mon expérience en gestion pédagogique m'a donné l'opportunité d'aider de petites équipes à favoriser la coopération pour d'excellents résultats.",
-    "attitudelTitle": "attitude professionnelle",
-    "attitudeContent": "En particulier, j'excelle à communiquer mes idées avec respect et à négocier d'éventuelles divergences avec mes collègues.",
-    "myWorkBtn": "mes travaux"
-  },
   "education": {
     "career1T": "Bachelors of Arts in Modern Languages",
     "career1U": "Santiago University of Technology (UTESA)",
@@ -58,5 +38,25 @@
     "career10T": "Autonomous University of Santo Domingo (UASD)",
     "career10P": " Dominican Republic",
     "career10D": "Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively."
+  },
+  "home": {
+    "aPracmatic": "A Pragmatic and Dedicated",
+    "developer": "Web Developer",
+    "introductionParagraph": "Hi, my name is Waldo Milanes. I am an enthusiastic and skilled professional with substantial technical expertise in designing and developing web applications.",
+    "hearMore": "Hear more",
+    "myWorkBtn": "my work",
+    "technicalTitle": "technical skills",
+    "technicalContent": "I know how to efficiently create elegant and user-friendly interfaces and setup back-end databases that serve different business needs.",
+    "managerialTitle": "managerial skills",
+    "managerialContent": "Working as a manager in the educational field for several years has given me the ability to help small teams foster cooperation to deliver accurate results.",
+    "attitudelTitle": "professional attitude",
+    "attitudeContent": "I excel at communicating my ideas respectfully and negotiating differences with my colleagues."
+  },
+  "nav": {
+    "home": "Home",
+    "myWork": "Articles",
+    "articles": "Articles",
+    "Contacts": "Contacts",
+    "followers": "followers"
   }
 }

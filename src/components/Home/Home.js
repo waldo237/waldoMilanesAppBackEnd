@@ -1,41 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Home.scss";
 import { Link } from "react-router-dom";
 import Tecnologies from './Technologies';
 import {FishFlock, FishFlock2} from "./FishFlock";
 import Education from "./Education";
 import HeroArea from "./HeroArea";
-// import Banner from "../Banner/Banner";
 import MoreAboutMe from "./MoreAboutMe";
+import { Context } from "../../store/store";
 
 const Home = () => {
+ const [state]= useContext(Context);
+ const {Trans} = state;
   useEffect(() => {
     document.title = "Waldo Milanes' professional profile";
   });
-  // const [open, toggle] = useState(false);
-
   return (
     <>
       <main className="hero-area-wrapper light">
         <div className='elipsis-shape' />
         <HeroArea  />
       </main>
-      {/* <Banner  /> */}
       <MoreAboutMe />
       <article className="light">
         <div id="my-work-container">
           <Link to="/portfolio">
             <button type="button" className="my-work-btn light--text">
-              my work
+              <Trans i18nKey="home.myWorkBtn">my work</Trans>
             </button>
           </Link>
         
           <Tecnologies />
-         
+
           <div className='fish-animation'>
             <FishFlock  />
             <FishFlock2 />
-
           </div>
         </div>
       </article>

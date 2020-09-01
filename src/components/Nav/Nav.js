@@ -16,29 +16,31 @@ import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import ClickAwayCloser from './ClickAwayCloser'
 import ListWithNavItems from "./ListWithNavItems";
+import {uuidv4} from '../gobalUtil'
 
 const Navigation = () => {
  const [state] = useContext(Context);
 const [showSideMenu, toggleSideMenu] = useState(false);
 // const [settingsActivated, removeDisplayNone] = useState(true);
 
-
+const {Trans} = state;
 const navItems = [
-    { title: "Home", link: "/" },
+    { id:uuidv4(), title: <Trans i18nKey="nav.home">Home</Trans>, link: "/" },
     {
-      title: "My Work",
+      id:uuidv4(),
+      title: <Trans i18nKey="nav.myWork">My Work</Trans>,
       link: "/portfolio",
       children: [
-        { title: "Node", link: "/project/node", icon: faNodeJs },
-        { title: "Java", link: "/project/java", icon: faJava },
-        { title: "Vue", link: "/project/vue", icon: faVuejs },
-        { title: "React", link: "/project/react", icon: faReact },
+        {id:uuidv4(), title: "Node", link: "/project/node", icon: faNodeJs },
+        {id:uuidv4(), title: "Java", link: "/project/java", icon: faJava },
+        {id:uuidv4(), title: "Vue", link: "/project/vue", icon: faVuejs },
+        {id:uuidv4(), title: "React", link: "/project/react", icon: faReact },
       ],
     },
-    { title: "Articles", link: "/articles" },
-    { title: "Contacts", link: "/contacts" },
-    { title: "followers", link: "/followers" },
-    { title: "settings", icon: faEllipsisV, link: '/' },
+    { id:uuidv4(), title:<Trans i18nKey="nav.articles">Articles</Trans>, link: "/articles" },
+    { id:uuidv4(), title: <Trans i18nKey="nav.Contacts">Contacts</Trans> , link: "/contacts" },
+    { id:uuidv4(), title: <Trans i18nKey="nav.followers">followers</Trans>, link: "/followers" },
+    { id:uuidv4(), title: "settings", icon: faEllipsisV, link: '/' },
   ];
   // turn icon .rotate and .closable
   const openInnerList = () => {
@@ -131,21 +133,21 @@ const navItems = [
                 (state.isLoggedIn && navItem.title === 'followers')
                   ? (
                     <div
-                      key={navItem.title}
+                      key={navItem.id}
                       className='avatar-wrapper'
                       id='avatar-wrapper'
                       onClick={() => removeDisplayNone('dashboard-dialog')}
                       onKeyDown={() => removeDisplayNone('dashboard-dialog')}
                     >
-                      <Avatar user={state.profile} size={38} key={navItem.title} />
+                      <Avatar user={state.profile} size={38} key={navItem.id} />
                     </div>
                   )
                   // eslint-disable-next-line no-nested-ternary
                   : (navItem.title === 'settings')
                     ? (state.isLoggedIn)
                       ? null
-                      : <FontAwesomeIcon key={navItem.title} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> removeDisplayNone('settings-container')} />
-                    : <li key={navItem.title}><ListWithNavItems item={navItem} openInnerList={openInnerList} /></li>
+                      : <FontAwesomeIcon key={navItem.id} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> removeDisplayNone('settings-container')} />
+                    : <li key={navItem.id}><ListWithNavItems item={navItem} openInnerList={openInnerList} /></li>
               ))}
 
             </ul>
