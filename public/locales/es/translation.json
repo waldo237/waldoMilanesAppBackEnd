@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Principal",
-    "myWork":"Mis trabajos",
+    "myWork": "Mis trabajos",
     "articles": "Articulos",
     "Contacts": "Contactame",
     "followers": "seguidores"
@@ -19,7 +19,7 @@
     "attitudeContent": "Particularmente, me destaco en comunicar mis ideas con respeto y en negociar cualquier diferencia con mis colegas.",
     "myWorkBtn": "Mis trabajos"
   },
-"education": {
+  "education": {
     "career1T": "Licenciatura en lenguas modernas",
     "career1U": "Universidad tecnológica de Santiago (UTESA)",
     "career1P": "Republica Dominicana",
@@ -63,5 +63,27 @@
   },
   "footer": {
     "dev": "Desarrollado por Waldo Milanes"
+  },
+  "portfolio": {
+    "java": {
+      "title": "Aplicaciones de escritorio y API RESTful que he hecho con Java",
+      "desc": "Dado que fue el primer lenguaje de programación que aprendí, tengo un lugar especial para Java. Tiene una comunidad enorme y ha sido probado durante décadas. Me gusta cómo se ocupa de la experiencia del desarrollador; permitiéndote saber de antemano lo que está permitido y lo que no. Me presentaron los conceptos de programación orientada a objetos utilizando Java. Ciertamente me dio una base sólida para comprender los patrones de diseño y las estructuras de datos comunes. Otra gran ventaja que tiene Java es que estás obligado a utilizar explícitamente tipos de datos cuando declaras una variable, por lo que te hace reflexionar sobre la importancia de la misma "
+    },
+    "node": {
+      "title": "Servidores y API RESTful que he hecho con NodeJS",
+      "desc": "Después de tener experiencia en el diseño de API RESTful en Java, comencé a trabajar con NodeJS. Personalmente, me gusta esta implementación de JavaScript fuera del navegador porque me permite desarrollar una aplicación completa usando un idioma de principio a fin. Además, cuando lo combino con Express, ofrece un toque muy limpio y conciso a la apariencia de mi código. El concepto de 'middleware también' es una arquitectura brillante; solo el hecho de que puede conectar un middleware a un punto final existente y agregar nueva funcionalidad, hace que parezca mágico. "
+    },
+    "vue": {
+      "title": "Aplicaciones web que he creado con VueJS",
+      "desc": "VueJS fue el primer framework de front-end que aprendí. Hace un gran trabajo al simplificar muchas de las tareas habituales involucradas en el desarrollo de front-end, como modelar datos, recorrer arreglos y usar condicionales. descubrí el concepto del ciclo de vida del renderizado mientras experimentaba con Vue. También aprendí mucho sobre la administración del estado y cómo hacer cumplir un estado global usando Vuex."
+    },
+    "react": {
+      "title": "Mis proyectos hechos con ReactJS",
+      "desc": "En mi experiencia, React es un marco muy robusto que permite la manipulación del objeto DOM de una manera muy similar a Vanilla JavaScript. La idea del enlace de datos unidireccional brinda una comprensión de la inmutabilidad de los datos y que NOSOTROS, como desarrolladores, necesitamos encontrar formas de respetar este principio. Mi experiencia con las librerias en el ecosistema de React ha sido bastante agradable; están muy bien documentadas y probadas."
+    },
+    "title": {
+      "h1": "Mis Trabajos",
+      "h4": "Una colección de proyectos"
+    }
   }
 }

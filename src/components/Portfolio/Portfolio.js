@@ -25,14 +25,14 @@ const Portfolio = () => {
       icon: faJava,
       title: <Trans i18nKey="portfolio.java.title">Desktop Apps and RESTful APIs I have done with Java </Trans>,
       description:
-  <Trans i18nKey="portfolio.java.desc">Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. <br /> Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it.</Trans>
+  <Trans i18nKey="portfolio.java.desc">Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. &nbsp; Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it.</Trans>
     },
     {
       id: uuidv4(),
       url: "/project/node",
       icon: faNodeJs,
       title: <Trans i18nKey="portfolio.node.title">Servers and RESTful APIs I have done with NodeJS</Trans>,
-      description: <Trans i18nKey='portfolio.node.desc'>After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of "middleware" is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic.</Trans>
+      description: <Trans i18nKey='portfolio.node.desc'>After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of &ldquo;middleware&ldquo; is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic.</Trans>
         
     },
     {
@@ -47,9 +47,9 @@ const Portfolio = () => {
       id: uuidv4(),
       url: "/project/react",
       icon: faReact,
-      title: <Trans i18nKey="portfolio.vue.title">My projects done with ReactJS</Trans>,
+      title: <Trans i18nKey="portfolio.react.title">My projects done with ReactJS</Trans>,
       description:
-  <Trans i18nKey='portfolio.react'>In my experience, React is a very robust framework that allows for the manipulation of the DOM object in a very similar way as Vanilla JavaScript. The idea of the one-way data binding brings an understanding of data immutability and that WE, as developers, need to find ways to respect this principle. My journey with the libraries surrounding React has been quite pleasant; they are very well-documented and mature.</Trans>
+  <Trans i18nKey="portfolio.react.desc">In my experience, React is a very robust framework that allows for the manipulation of the DOM object in a very similar way as Vanilla JavaScript. The idea of the one-way data binding brings an understanding of data immutability and that WE, as developers, need to find ways to respect this principle. My journey with the libraries surrounding React has been quite pleasant; they are very well-documented and mature.</Trans>
     },
   ];
  const PortfolioTitleIcon = () => {

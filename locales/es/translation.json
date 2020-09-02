@@ -33,7 +33,7 @@
     "career7D": "Basics of Vue.js, working with templates, binding classes with objects and arrays, creating transitions and animations, building routes and creating route links, loading modules, importing and looping through data, using props; methods; and events, Vue Router, and Vuex.",
     "career8T": "Become a MERN Stack JavaScript Developer",
     "career8U": "LinkedIn Learning",
-    "career8P": "React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.",
+    "career8P": "Online",
     "career8D": "React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.",
     "career9T": "Effective Assessment Practices Certification",
     "career9U": "University of Oregon",
@@ -42,7 +42,7 @@
     "career10T": "Autonomous University of Santo Domingo (UASD)",
     "career10P": " Dominican Republic",
     "career10D": "Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.",
-    "diplomaBtn": "view credentials"
+    "diplomaBtn": "View Credential"
   },
   "home": {
     "aPracmatic": "A Pragmatic and Dedicated",
@@ -53,15 +53,37 @@
     "technicalTitle": "technical skills",
     "technicalContent": "I know how to efficiently create elegant and user-friendly interfaces and setup back-end databases that serve different business needs.",
     "managerialTitle": "managerial skills",
-    "managerialContent": "Working as a manager in the educational field for several years has given me the ability to help small teams foster cooperation to deliver accurate results.",
+    "managerialContent": "My experience in educational management has given me the opportunity to help small teams foster cooperation for excellent results.",
     "attitudelTitle": "professional attitude",
-    "attitudeContent": "I excel at communicating my ideas respectfully and negotiating differences with my colleagues."
+    "attitudeContent": "I excel particularly at communicating my ideas respectfully and negotiating differences with my colleagues."
   },
   "nav": {
     "home": "Home",
-    "myWork": "Articles",
+    "myWork": "My Work",
     "articles": "Articles",
     "Contacts": "Contacts",
     "followers": "followers"
+  },
+  "portfolio": {
+    "java": {
+      "title": "Desktop Apps and RESTful APIs I have done with Java ",
+      "desc": "Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. <1></1> Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it."
+    },
+    "node": {
+      "title": "Servers and RESTful APIs I have done with NodeJS",
+      "desc": "After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of \"middleware\" is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic."
+    },
+    "vue": {
+      "title": "Web Apps I have built with VueJS",
+      "desc": "VueJS was the first front-end framework I learned. It does a great job of simplifying a lot of the regular tasks involved in front-end development, such as modeling data, looping through arrays, and using conditionals. I discovered the concept of the rendering lifecycle while experimenting with Vue. I also learned a lot about state management and how to enforce a global state by using Vuex."
+    },
+    "react": {
+      "title": "My projects done with ReactJS",
+      "desc": "In my experience, React is a very robust framework that allows for the manipulation of the DOM object in a very similar way as Vanilla JavaScript. The idea of the one-way data binding brings an understanding of data immutability and that WE, as developers, need to find ways to respect this principle. My journey with the libraries surrounding React has been quite pleasant; they are very well-documented and mature."
+    },
+    "title": {
+      "h1": "My Work",
+      "h4": "A collection of projects"
+    }
   }
 }

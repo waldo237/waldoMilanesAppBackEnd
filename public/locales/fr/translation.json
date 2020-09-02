@@ -63,5 +63,27 @@
   },
   "footer": {
     "dev": "Développé par Waldo Milanes"
+  },
+  "portfolio": {
+    "java": {
+      "title": "Applications de bureau et API RESTful que j'ai créées avec Java",
+      "desc": "Comme c'était le premier langage de programmation que j'ai appris, j'ai une place spéciale pour Java. Il a une énorme communauté et a été testé pendant des décennies. J'aime la façon dont il traite l'expérience des développeurs; vous faire savoir à l'avance ce que ce qui est autorisé et ce qui ne l'est pas. J'ai été initié aux concepts de la programmation orientée objet à l'aide de Java. Cela m'a certainement donné une base solide pour comprendre les modèles de conception et les structures de données courantes. Un autre grand avantage de Java est que vous devez utiliser explicitement des types de données lorsque vous déclarez une variable, ce qui vous fait réfléchir à son importance "
+    },
+    "node": {
+      "title": "Serveurs et API RESTful que j'ai fait avec NodeJS",
+      "desc": "Après avoir eu l'expérience de la conception d'API RESTful en Java, j'ai commencé à travailler avec NodeJS. Personnellement, j'aime cette implémentation de JavaScript en dehors du navigateur car elle me permet de développer une application entière en utilisant un seul langage du début à la fin. De plus, quand je le combine avec Express, il offre une touche très claire et concise à l'apparence de mon code. Le concept de 'middleware' est également une architecture brillante; juste le fait que vous pouvez brancher un middleware à un point de terminaison existant et ajouter nouvelle fonctionnalité, donne l'impression d'être magique. "
+    },
+    "vue": {
+      "title": "Applications Web que j'ai créées avec VueJS",
+      "desc": "VueJS a été le premier framework front-end que j'ai appris. Il simplifie très bien un grand nombre des tâches habituelles impliquées dans le développement front-end, telles que la modélisation des données, le bouclage de tableaux et l'utilisation de conditions. I J'ai découvert le concept du cycle de vie du rendu en expérimentant avec Vue. J'ai également beaucoup appris sur la gestion des états et comment appliquer un état global en utilisant Vuex. "
+    },
+    "react": {
+      "title": "Mes projets réalisés avec ReactJS",
+      "desc": "D'après mon expérience, React est un framework très robuste qui permet la manipulation de l'objet DOM d'une manière très similaire à Vanilla JavaScript. L'idée de la liaison de données unidirectionnelle apporte une compréhension de l'immuabilité des données et que En tant que développeurs, nous devons trouver des moyens de respecter ce principe. Mon parcours avec les bibliothèques de code entourant React a été assez agréable; elles sont très bien documentées et matures. "
+    },
+    "title": {
+      "h1": "Mes Travaux",
+      "h4": "Une collection de projets"
+    }
   }
 }
