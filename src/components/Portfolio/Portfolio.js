@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Portfolio.scss";
 import { Link } from "react-router-dom";
 import {
@@ -8,40 +8,48 @@ import {
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import {uuidv4} from '../gobalUtil'
+import { Context } from "../../store/store";
 
 const Portfolio = () => {
+  const [state]= useContext(Context);
+  const {Trans} = state;
   useEffect(() => {
     document.title = "Projects";
   }, []);
   const projects = [
+
     {
-      url: "/project/node",
-      icon: faNodeJs,
-      title: "My projects done with NodeJs",
-      description:
-        "A collection of projects I have created using NodeJs. They reflect my experience working with this technology.",
-    },
-    {
+      id: uuidv4(),
       url: "/project/java",
       icon: faJava,
-      title: "My projects done with Java",
+      title: <Trans i18nKey="portfolio.java.title">Desktop Apps and RESTful APIs I have done with Java </Trans>,
       description:
-        "A collection of projects I have created using Java. They reflect my experience working with this technology.",
+  <Trans i18nKey="portfolio.java.desc">Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. <br /> Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it.</Trans>
     },
     {
+      id: uuidv4(),
+      url: "/project/node",
+      icon: faNodeJs,
+      title: <Trans i18nKey="portfolio.node.title">Servers and RESTful APIs I have done with NodeJS</Trans>,
+      description: <Trans i18nKey='portfolio.node.desc'>After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of "middleware" is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic.</Trans>
+        
+    },
+    {
+      id: uuidv4(),
       url: "/project/vue",
       icon: faVuejs,
-      title: "My projects done with VueJS",
+      title: <Trans i18nKey="portfolio.vue.title">Web Apps I have built with VueJS</Trans>,
       description:
-        "A collection of projects I have created using VueJS. They reflect my experience working with this technology.",
+  <Trans i18nKey="portfolio.vue.desc">VueJS was the first front-end framework I learned. It does a great job of simplifying a lot of the regular tasks involved in front-end development, such as modeling data, looping through arrays, and using conditionals. I discovered the concept of the rendering lifecycle while experimenting with Vue. I also learned a lot about state management and how to enforce a global state by using Vuex.</Trans> ,
     },
     {
+      id: uuidv4(),
       url: "/project/react",
       icon: faReact,
-      title: "My projects done with ReactJS",
+      title: <Trans i18nKey="portfolio.vue.title">My projects done with ReactJS</Trans>,
       description:
-        "A collection of projects I have created using ReactJS. They reflect my experience working with this technology.",
+  <Trans i18nKey='portfolio.react'>In my experience, React is a very robust framework that allows for the manipulation of the DOM object in a very similar way as Vanilla JavaScript. The idea of the one-way data binding brings an understanding of data immutability and that WE, as developers, need to find ways to respect this principle. My journey with the libraries surrounding React has been quite pleasant; they are very well-documented and mature.</Trans>
     },
   ];
  const PortfolioTitleIcon = () => {
@@ -57,11 +65,15 @@ const Portfolio = () => {
     <>
       <main className="portfolio-container light fadeInUpx"> 
         <header className="porfolio-title primary--text ">
-          <PortfolioTitleIcon /> <div> <h1>My Work</h1> <h4> A collection of projects</h4></div> 
+          <PortfolioTitleIcon /> 
+          <div> 
+            <h1> <Trans i18nKey='portfolio.title.h1'>My Work</Trans> </h1>
+            <h4><Trans i18nKey='portfolio.title.h4'>A collection of projects</Trans> </h4>
+          </div> 
         </header>
         {projects.map((project) => (
           <article
-            key={project.url}
+            key={project.id}
             className="hoverable-card technology-container"
           >
             <Link to={project.url} className="link">

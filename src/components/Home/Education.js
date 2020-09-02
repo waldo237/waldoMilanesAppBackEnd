@@ -110,7 +110,7 @@ const Education = () => {
       place: <Trans i18nKey="education.career8P">Online</Trans>,
       url: MERN,
       description:
-        <Trans i18nKey="education.career8P">
+        <Trans i18nKey="education.career8D">
 
           React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.
         </Trans>
@@ -167,7 +167,7 @@ const Education = () => {
               <div>
                 <a href={item.url} target='_blank' rel="noopener noreferrer">
 
-                  <button type='button' className=" diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;view credentials</button>
+                  <button type='button' className=" diploma-btn"><FontAwesomeIcon icon={faEye} /> &nbsp;<Trans i18nKey='education.diplomaBtn'>View Credential</Trans></button>
                 </a>
               </div>
             </div>

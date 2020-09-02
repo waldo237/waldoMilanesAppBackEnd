@@ -1,4 +1,7 @@
 {
+  "footer": {
+    "dev": "developed by Waldo Milanes"
+  },
   "education": {
     "career1T": "Bachelors of Arts in Modern Languages",
     "career1U": "Santiago University of Technology (UTESA)",
@@ -31,13 +34,15 @@
     "career8T": "Become a MERN Stack JavaScript Developer",
     "career8U": "LinkedIn Learning",
     "career8P": "React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.",
+    "career8D": "React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.",
     "career9T": "Effective Assessment Practices Certification",
     "career9U": "University of Oregon",
     "career9P": "Eugene, Oregon, USA",
     "career9D": "Up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.",
     "career10T": "Autonomous University of Santo Domingo (UASD)",
     "career10P": " Dominican Republic",
-    "career10D": "Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively."
+    "career10D": "Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.",
+    "diplomaBtn": "view credentials"
   },
   "home": {
     "aPracmatic": "A Pragmatic and Dedicated",

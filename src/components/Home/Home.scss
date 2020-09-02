@@ -81,7 +81,11 @@
       #introduction-paragraph{
         margin: 22px 0px;
         line-height: 1.5;
-        text-align: start
+        text-align: start;
+        font-size: 1em;
+        @include bp(desktop){
+          font-size: 1.1em;
+        }
       }
       #hear-more-btn{
         @extend .home-btn;
