@@ -85,5 +85,10 @@
       "h1": "Mis Trabajos",
       "h4": "Una colección de proyectos"
     }
+  },
+  "settings": {
+    "title": "Configuración",
+    "theme": "Modo oscuro",
+    "language": "Idiomas"
   }
 }

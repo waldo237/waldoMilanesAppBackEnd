@@ -8,6 +8,7 @@ import i18n from '../../i18n';
 
 const Settings = () => {
   const [state, dispatch] = useContext(Context);
+  const {Trans} = state;
   const languages = [
     { value: "en", label: "EN" },
     { value: "es", label: "ES" },
@@ -36,7 +37,7 @@ const Settings = () => {
           <div className='dash-title-wrapper bold flex-row'>
 
             <div id='title-img' />
-            <div className='dash-title'> Settings</div>
+            <div className='dash-title'><Trans i18nKey="settings.title">Settings</Trans></div>
 
           </div>
           <div className='dashboard-content'>
@@ -47,7 +48,7 @@ const Settings = () => {
                   icon={faMoon}
                 />
               </div>
-              <h1 className='dash-action-text primary--text Lato'>Dark mode &nbsp;</h1>
+              <h1 className='dash-action-text primary--text Lato'><Trans i18nKey="settings.theme">Dark mode</Trans> &nbsp;</h1>
               <div className="toggleWrapper">
                 <label htmlFor="dark-theme" className="form-switch">
                   <input onClick={inputHandler} type="checkbox" name="dark-theme" className="mobileToggle" id="dark-theme" />
@@ -62,7 +63,7 @@ const Settings = () => {
                   icon={faLanguage}
                 />
               </div>
-              <h1 className='dash-action-text primary--text Lato'>Languages &nbsp;</h1>
+              <h1 className='dash-action-text primary--text Lato'><Trans i18nKey="settings.language">Languages</Trans> &nbsp;</h1>
               <div style={{ width: '100px' }}>
                 <select
                   id="selectbox"

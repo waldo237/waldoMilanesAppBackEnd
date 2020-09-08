@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "title": "Settings",
+    "theme": "Dark mode",
+    "language": "Languages"
+  },
   "footer": {
     "dev": "developed by Waldo Milanes"
   },

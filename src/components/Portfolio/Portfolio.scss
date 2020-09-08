@@ -46,6 +46,7 @@
     a{
       color: var(--brown);
       font-weight: 900;
+      // margin-bottom: 1em;
     }
     @extend .shadow;
     @extend .round-edges;

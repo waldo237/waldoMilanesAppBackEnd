@@ -63,7 +63,7 @@
   },
   "footer": {
     "dev": "Développé par Waldo Milanes"
-  },
+  },  
   "portfolio": {
     "java": {
       "title": "Applications de bureau et API RESTful que j'ai créées avec Java",
@@ -85,5 +85,10 @@
       "h1": "Mes Travaux",
       "h4": "Une collection de projets"
     }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "theme": "Mode sombre",
+    "language": "Languages"
   }
 }
