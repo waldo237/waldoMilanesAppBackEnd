@@ -20,15 +20,15 @@ const Settings = () => {
       darkThemeSwich.setAttribute('checked', state.darkTheme);
     }
   }, [state.darkTheme])
-  const handleChange = (e) => {
-   const {value} = e.target;
-    localStorage.setItem('language',value);
-    dispatch({type: 'CHANGE_LANGUAGE', value});
-    i18n.changeLanguage(value);
-  };
   const inputHandler = (event) => {
     localStorage.setItem('darkTheme', event.target.checked);
     dispatch({ type: 'DARK_THEME', payload: event.target.checked });
+  };
+  const handleChange = (e) => {
+    const {value} = e.target;
+    localStorage.setItem('language',value);
+    dispatch({type: 'CHANGE_LANGUAGE', value});
+    i18n.changeLanguage(value);
   };
   return (
     <>

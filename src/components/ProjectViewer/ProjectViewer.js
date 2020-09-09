@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ProjectViewer.scss";
 import Proptypes from 'prop-types'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ import Loading from "../Loading/Loading";
 import envURL from '../../envURL';
 import ScreenshotViewer from "./ScreenshotViewer";
 import CommentBox from "../Articles/CommentBox";
-
+import { Context } from '../../store/store'
 
 const ProjectViewer = ({ match }) => {
   const technologySwicher = () => {
@@ -41,6 +41,8 @@ const ProjectViewer = ({ match }) => {
   };
 
   const [collection, setData] = useState(null);
+  const [state] = useContext(Context);
+  const { Trans } = state;
   const technology = technologySwicher();
 
   useEffect(() => {
@@ -88,7 +90,7 @@ const ProjectViewer = ({ match }) => {
               {technology.title}
             </h1>
             <h4>
-              Applications and APIs
+              <Trans i18nKey='projectViewer.mainTitle'>Applications and APIs</Trans>  
             </h4>
           </div>
 
@@ -112,7 +114,7 @@ const ProjectViewer = ({ match }) => {
                       className="secondary--text"
                     />
                     {" "}
-                    Updated on:
+                    <Trans i18nKey='projectViewer.updated'>Updated on:</Trans>  
                   </span>{" "}
                   {new Date(project.date).toLocaleString("eng-US", {
                       dateStyle: "long",
@@ -142,14 +144,14 @@ const ProjectViewer = ({ match }) => {
                       className="secondary--text"
                     />
                     {" "}
-                    Description:
+                    <Trans i18nKey='projectViewer.description'>Description:</Trans>
                   </span>{" "}
                   {project.description}
                 </p>
               </div>
              
               <div className="file-container">
-                <span className="bold">Files</span>
+                <span className="bold"><Trans i18nKey='projectViewer.files'>Files</Trans></span>
                 <>
                   <div key={project.code.file._id} className="file">
                     <button

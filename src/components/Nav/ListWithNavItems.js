@@ -1,6 +1,6 @@
 
 import React from 'react';
-import PropsType, { object } from 'prop-types';
+import PropsType from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';

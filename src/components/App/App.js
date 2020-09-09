@@ -37,6 +37,7 @@ const App = () => {
     dispatch({type: 'SET_T', payload: t});
 
   },[state.language])
+  
   return (
     <Router>
       <ScrollToTop />

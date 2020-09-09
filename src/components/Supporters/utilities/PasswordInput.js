@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faBatteryQuarter, faBatteryHalf, faBatteryThreeQuarters, faBatteryFull, faBatteryEmpty, faLock } from '@fortawesome/free-solid-svg-icons'
+import { Context } from '../../../store/store'
 
 const PasswordInput = ({inputHandler, strength, id})=>{
-   const [eyeState, toggleEye ] = useState(false)
+  const [state] = useContext(Context);
+  const { Trans } = state;
+   const [eyeState, toggleEye ] = useState(false);
    const temperature = ()=> {
        if(strength === -1) return {color:{color:'var(--light-card)'}, icon:faLock};
        if(strength === 1) return {color:{color:'red'}, icon:faBatteryQuarter};
@@ -17,7 +20,7 @@ const PasswordInput = ({inputHandler, strength, id})=>{
       <div className="form-group">
         <label className="input password" htmlFor={`supporter-password${id}`}>
             
-          Password
+          <Trans i18nKey='signInForm.password'>Password</Trans>  
      
           <FontAwesomeIcon
             className="fa-lg temperature-password-strength"

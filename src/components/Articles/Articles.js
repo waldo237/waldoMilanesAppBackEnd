@@ -4,15 +4,19 @@
     PLANT THE INCOMING ARTICLES IN THE LOCALSTORAGE OR USE SERVICE WORKER
 */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Articles.scss";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import envURL from '../../envURL';
 import Loading from "../Loading/Loading";
+import { Context } from "../../store/store";
 
 const Articles = () => {
+  const [state] = useContext(Context);
+  const { Trans } = state;
+  const [articles, setData] = useState([]);
   useEffect(()=>{
     const moreAboutMe = document.querySelectorAll(".lazy-effect");
     moreAboutMe.forEach((item)=>{
@@ -24,7 +28,6 @@ const Articles = () => {
         observer.observe(item);
     }, {  rootMargin: "100px" })
 });
-  const [articles, setData] = useState([]);
   useEffect(() => {
     document.title = "Articles I have written";
     fetch(`${envURL}/articles`)
@@ -45,10 +48,11 @@ const Articles = () => {
           </div>
           <div>
             <h1 className="primary--text">
-              Articles
+              <Trans i18nKey='articles.titleArticles'>Articles</Trans>
             </h1>
             <h4>
-              Compositions related to software
+              
+              <Trans i18nKey='articles.titleSub'>Compositions related to software</Trans>
             </h4>
           </div>
         </header>
@@ -73,7 +77,8 @@ const Articles = () => {
             <div>
               <h1 className="articles-card-title primary--text">{item.title} </h1>
               <small>
-                Pubished on: {" "} {new Date(item.date).toLocaleString("eng-US", {
+                <Trans i18nKey='articles.pubished'>Pubished on:</Trans>   {" "} 
+                {new Date(item.date).toLocaleString("eng-US", {
                       dateStyle: "long",
                     })}
               </small>
@@ -83,7 +88,7 @@ const Articles = () => {
                   to={`article/${item._id}`}
                   className="primary--text hover-underline-yellow"
                 >
-                  Read more
+                  <Trans i18nKey='articles.readMore'>Read more</Trans>  
                 </Link>
               </small>
             </div>

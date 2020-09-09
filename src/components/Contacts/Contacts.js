@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Contacts.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAddressCard,
   faPhone,
   faEnvelope,
   faMapMarker,
   faPaperPlane,
+  faCircleNotch,
 } from "@fortawesome/free-solid-svg-icons";
 import contactValidator from "./contactValidator";
 import ErrorCard from "../ErrorCard/ErrorCard";
 import ResponseAlert from "../ResponseAlert/ResponseAlert";
 import Loading from "../Loading/Loading";
 import envURL from '../../envURL';
+import { Context } from "../../store/store";
 
 const Contacts = () => {
+  const [state] = useContext(Context);
+  const { Trans } = state;
   const [user] = useState({});
   const [response, setResponse] = useState(null);
   const [requestStarted, setRequest] = useState(false);
@@ -68,17 +71,20 @@ const Contacts = () => {
         </div>
         <div>
           <h1 className="primary--text">
-            Interested?
+            <Trans i18nKey='contact.titleInterested'>Interested?</Trans>  
           </h1>
           <h4>
-            Let&apos;s get in contact
+           
+            <Trans i18nKey='contact.titleLets'> Let&apos;s get in contact</Trans>  
           </h4>
         </div>
       </header>
 
       <section className=" contact-card">
         <div className="contact-info-card">
-          <h1 className="waldo-milanes">Waldo Milanes</h1>
+          <h1 className="waldo-milanes">
+            <Trans i18nKey='contact.waldo'> Waldo Milanes</Trans>   
+          </h1>
           <div className="contact-info">
             <a
               href="https://goo.gl/maps/kqbnLG1M8YErout38"
@@ -92,7 +98,7 @@ const Contacts = () => {
                   className="contact-card-icon"
                   icon={faMapMarker}
                 />{" "}
-                c/12 #44 Ensanche Mella 2, Santiago, Dom. Rep.
+                <Trans i18nKey='contact.address'>c/12 #44 Ensanche Mella 2, Santiago, Dom. Rep.</Trans>   
               </p>
             </a>
             <a
@@ -141,7 +147,8 @@ const Contacts = () => {
           </div>
           <div>
             <h2 className="primary--text">
-              Email me {" "}
+              <Trans i18nKey='contact.emailMe'> Email me</Trans>   
+              {" "}
               <FontAwesomeIcon
                 className="contact-card-icon"
                 icon={faPaperPlane}
@@ -151,7 +158,7 @@ const Contacts = () => {
 
           <div className="form-group">
             <label className="input" htmlFor="emailer-name">
-              Name
+              <Trans i18nKey='contact.name'>Name</Trans> 
               <input
                 id="emailer-name"
                 type="text"
@@ -165,7 +172,8 @@ const Contacts = () => {
           </div>
           <div className="form-group">
             <label className="input" htmlFor="emailer-email">
-              E-mail
+              
+              <Trans i18nKey='contact.email'>E-mail</Trans> 
               <input
                 id="emailer-email"
                 type="email"
@@ -178,7 +186,7 @@ const Contacts = () => {
           </div>
           <div className="form-group">
             <label className="input" htmlFor="email-message">
-              Message
+              <Trans i18nKey='contact.message'>Message</Trans> 
               <textarea
                 id="email-message"
                 type="text"
@@ -192,8 +200,10 @@ const Contacts = () => {
               />
             </label>
           </div>
-          <button type="submit" className="contact-submit-btn">
-            Send
+          <button disabled={requestStarted} type="submit" className="contact-submit-btn">
+            {(requestStarted)
+           ? <FontAwesomeIcon className="fa-spin" icon={faCircleNotch} />
+            :  <Trans i18nKey='contact.btnSend'>Send</Trans>}
           </button>
         </form>
       </section>

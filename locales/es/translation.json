@@ -1,4 +1,35 @@
 {
+  "articles": {
+    "titleArticles": "Articles",
+    "titleSub": "Compositions related to software",
+    "pubished": "Pubished on:",
+    "readMore": "Read more"
+  },
+  "commentBox": {
+    "impression": "Impression",
+    "comments": "Comments",
+    "share": "Share",
+    "write": "Write a comment"
+  },
+  "contact": {
+    "titleInterested": "Interested?",
+    "titleLets": " Let&apos;s get in contact",
+    "waldo": " Waldo Milanes",
+    "address": "c/12 #44 Ensanche Mella 2, Santiago, Dom. Rep.",
+    "emailMe": " Email me",
+    "name": "Name",
+    "email": "E-mail",
+    "message": "Message",
+    "btnSend": "Send"
+  },
+  "dashboard": {
+    "sP": "Special projects",
+    "sA": "Special Articles",
+    "notification": "Notifications",
+    "settings": "Settings",
+    "SignOut": "Dashboard",
+    "profile": "profile"
+  },
   "settings": {
     "title": "Settings",
     "theme": "Dark mode",
@@ -90,5 +121,35 @@
       "h1": "My Work",
       "h4": "A collection of projects"
     }
+  },
+  "projectViewer": {
+    "mainTitle": "Applications and APIs",
+    "updated": "Updated on:",
+    "description": "Description:",
+    "files": "Files"
+  },
+  "followers": {
+    "followers": "Followers",
+    "subtitle": " If you like what I do, you can register to access all my content and receive notifications when I publish new material.",
+    "tabSignUp": " Sign Up",
+    "tabSignOn": " Sign On"
+  },
+  "signInForm": {
+    "signGoogle": " sign with google",
+    "signFacebook": " sign with facebook",
+    "or": "Or",
+    "emailA": "Email address",
+    "remember": "Remember me",
+    "forgot": "Forgot",
+    "password": "password?"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "fistName": "First name",
+    "lastName": "Last name",
+    "emailA": "Email address",
+    "btnSignUp": "Sign Up",
+    "already": "Already registered?",
+    "signOn": "sign on"
   }
 }

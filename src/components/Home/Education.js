@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faAssistiveListeningSystems } from '@fortawesome/free-solid-svg-icons'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 import lmo from "../../static/certificates/lmo.pdf";
 import softDev from "../../static/certificates/softwareDev.pdf";
 import java from "../../static/certificates/java.pdf";
@@ -26,8 +26,8 @@ const Education = () => {
       place: <Trans i18nKey="education.career1P">Dominican Republic</Trans>,
       url: lmo,
       description:
-        <Trans i18nKey="education.career1D">
-          The ability to communicate clearly in two foreign languages (English and French), both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.
+  <Trans i18nKey="education.career1D">
+    The ability to communicate clearly in two foreign languages (English and French), both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.
   </Trans>
     },
     {
@@ -38,8 +38,8 @@ const Education = () => {
       place: <Trans i18nKey="education.career2P">Dominican Republic</Trans>,
       url: softDev,
       description:
-        <Trans i18nKey="education.career2D">
-          The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; design patterns, the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.
+  <Trans i18nKey="education.career2D">
+    The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; design patterns, the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.
   </Trans>
     },
     {
@@ -50,8 +50,8 @@ const Education = () => {
       place: <Trans i18nKey="education.career3P">Dominican Republic</Trans>,
       url: java,
       description:
-        <Trans i18nKey="education.career3D">
-          Basic concepts, logic and syntax of the Java programming language, event-driven programming, sequential and associative data structures, classic data structures, sorting and searching, exception handling, database programming with JDBC, networking programming, GUI development using Swing, multithreading, Java Applets, web applications (Servlets), advanced I/O classes, regular expressions, Java graphics, introduction to Spring using Spring Boot.
+  <Trans i18nKey="education.career3D">
+    Basic concepts, logic and syntax of the Java programming language, event-driven programming, sequential and associative data structures, classic data structures, sorting and searching, exception handling, database programming with JDBC, networking programming, GUI development using Swing, multithreading, Java Applets, web applications (Servlets), advanced I/O classes, regular expressions, Java graphics, introduction to Spring using Spring Boot.
   </Trans>
     },
     {
@@ -62,9 +62,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career4P">Dominican Republic</Trans>,
       url: SQL,
       description:
-        <Trans i18nKey="education.career4D">
-          The foundation of database programming: planning a database, relational databases, records, data types, adding validation rules, normalization and denormalization, referential integrity, ACID transactions, SQL queries, CRUD operations, sorting results, and joining tables.
-        </Trans>
+  <Trans i18nKey="education.career4D">
+    The foundation of database programming: planning a database, relational databases, records, data types, adding validation rules, normalization and denormalization, referential integrity, ACID transactions, SQL queries, CRUD operations, sorting results, and joining tables.
+  </Trans>
     },
     {
       id: uuidv4(),
@@ -74,9 +74,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career5P">Online</Trans>,
       url: webDev,
       description:
-        <Trans i18nKey="education.career5D">
-          The basics of HTML, CSS fundamental concepts; CSS box model, Flexbox and Grid. JavaScript core principles like variables, data types, conditionals, loops, and DOM scripting; higher-order functions, IIFE functions, scopes, and closure; partial application and recursion; prototypes and classes; callbacks and promises, JS module system. Version control software; the use of Git.
-        </Trans>
+  <Trans i18nKey="education.career5D">
+    The basics of HTML, CSS fundamental concepts; CSS box model, Flexbox and Grid. JavaScript core principles like variables, data types, conditionals, loops, and DOM scripting; higher-order functions, IIFE functions, scopes, and closure; partial application and recursion; prototypes and classes; callbacks and promises, JS module system. Version control software; the use of Git.
+  </Trans>
     },
     {
       id: uuidv4(),
@@ -86,9 +86,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career6P">Online</Trans>,
       url: node,
       description:
-        <Trans i18nKey="education.career6D">
-          The global object, Importing the core modules, creating custom events with the EventEmitter, reading; writing; and removing files, working with file streams, creating child processes with the exec and spawn functions, managing third-party packages with npm, REST APIs, Node.js frameworks, creating a basic Express.js application, managing data to MongoDB with Mongoose, error handling and debugging, consulting OWASP resources and handling security threats, adding two-factor and read-only tokens, encrypting user data and session management, adding HTTPS protocol to an application, using cookie attributes, continuous deployment faAssistiveListeningSystems.
-        </Trans>
+  <Trans i18nKey="education.career6D">
+    The global object, Importing the core modules, creating custom events with the EventEmitter, reading; writing; and removing files, working with file streams, creating child processes with the exec and spawn functions, managing third-party packages with npm, REST APIs, Node.js frameworks, creating a basic Express.js application, managing data to MongoDB with Mongoose, error handling and debugging, consulting OWASP resources and handling security threats, adding two-factor and read-only tokens, encrypting user data and session management, adding HTTPS protocol to an application, using cookie attributes, continuous deployment faAssistiveListeningSystems.
+  </Trans>
     },
     {
       id: uuidv4(),
@@ -98,9 +98,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career7P">Online</Trans>,
       url: vue,
       description:
-        <Trans i18nKey="education.career7D">
-          Basics of Vue.js, working with templates, binding classes with objects and arrays, creating transitions and animations, building routes and creating route links, loading modules, importing and looping through data, using props; methods; and events, Vue Router, and Vuex.
-        </Trans>
+  <Trans i18nKey="education.career7D">
+    Basics of Vue.js, working with templates, binding classes with objects and arrays, creating transitions and animations, building routes and creating route links, loading modules, importing and looping through data, using props; methods; and events, Vue Router, and Vuex.
+  </Trans>
     },
     {
       id: uuidv4(),
@@ -110,10 +110,10 @@ const Education = () => {
       place: <Trans i18nKey="education.career8P">Online</Trans>,
       url: MERN,
       description:
-        <Trans i18nKey="education.career8D">
+  <Trans i18nKey="education.career8D">
 
-          React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.
-        </Trans>
+    React.js fundamentals, creating and rendering React elements, introducing JSX, creating a React component, managing state with hooks, using multi-state variables, fetching data, using React-Router links, Redux essentials.
+  </Trans>
     },
 
     {
@@ -124,9 +124,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career9P">Eugene, Oregon, USA</Trans>,
       url: oregon,
       description:
-        <Trans i18nKey="education.career9D">
-          Up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.
-        </Trans>
+  <Trans i18nKey="education.career9D">
+    Up-to-date information about current methodologies associated with assessment practices in the language-learning classroom. It includes: learning outcomes, aligning instructional practices with assessments, writing good test items / informal test analysis, formative assessment, performance-based assessments, rubrics.
+  </Trans>
     },
     {
       id: uuidv4(),
@@ -136,9 +136,9 @@ const Education = () => {
       place: <Trans i18nKey="education.career10P"> Dominican Republic</Trans>,
       url: ma,
       description:
-        <Trans i18nKey="education.career10D">
-          Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.
-        </Trans>
+  <Trans i18nKey="education.career10D">
+    Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.
+  </Trans>
     },
   ];
   return (

@@ -3,16 +3,18 @@ import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { useHistory } from 'react-router-dom'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
 import signInValidator from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
-import { logIn, signWithGoogleOrFB, confirmLoggedIn } from './utilities/authorizationFunctions'
+import { logIn, signWithGoogleOrFB } from './utilities/authorizationFunctions'
 import { Context } from '../../store/store'
 
 const SignInForm = () => {
-  const [, dispatch]= useContext(Context);
+  const [state, dispatch]= useContext(Context);
+  const {Trans} = state;
   const [user] = useState({});
   const [response, setResponse] = useState(null);
   const [requestStarted, setRequest] = useState(false);
@@ -39,8 +41,9 @@ const options =  {setRequest, setErrors, setResponse, rememberMe:user.rememberMe
         {(displayableErrors) ? <ErrorCard errors={displayableErrors} setErrors={setErrors} /> : null}
         <button type="submit" className="google-btn" onClick={e => { e.preventDefault(); signWithGoogleOrFB('google', options) }}>
           {" "}
-          <FontAwesomeIcon className="fa-lg" icon={faGoogle} /> sign
-          with google
+          <FontAwesomeIcon className="fa-lg" icon={faGoogle} />
+          {" "}
+          <Trans i18nKey='signInForm.signGoogle'> sign with google</Trans>
         </button>
         <button
           type="submit"
@@ -52,13 +55,14 @@ const options =  {setRequest, setErrors, setResponse, rememberMe:user.rememberMe
             className="fa-lg"
             icon={faFacebookF}
           />{" "}
-          sign with facebook{" "}
+          <Trans i18nKey='signInForm.signFacebook'> sign with facebook</Trans>
+          {" "}
         </button>
-        <h4 className="or">Or</h4>
+        <h4 className="or"><Trans i18nKey='signInForm.or'>Or</Trans></h4>
       </div>
 
       <div className="form-group">
-        <label className="input" htmlFor="follower-sign-in-email">Email address
+        <label className="input" htmlFor="follower-sign-in-email"><Trans i18nKey='signInForm.emailA'>Email address</Trans> 
           <input
             id="follower-sign-in-email"
             name="email"
@@ -87,16 +91,20 @@ const options =  {setRequest, setErrors, setResponse, rememberMe:user.rememberMe
               onChange={inputHandler}
             />
             <i />
-            Remember me
+            <Trans i18nKey='signInForm.remember'>Remember me</Trans> 
+            
           </label>
         </div>
       </div>
 
-      <button type="submit" className="submit-btn primary">
-        Sign On
+      <button disabled={requestStarted} type="submit" className="submit-btn primary">
+        {(requestStarted)
+           ? <FontAwesomeIcon className="fa-spin" icon={faCircleNotch} />
+            : <Trans i18nKey='followers.tabSignOn'>Sign On</Trans>} 
+       
       </button>
       <p className="forgot-password text-right">
-        Forgot <a href="/">password?</a>
+        <Trans i18nKey='signInForm.forgot'>Forgot</Trans>  <a href="/"><Trans i18nKey='signInForm.password'>password?</Trans></a>
       </p>
     </form>
   )

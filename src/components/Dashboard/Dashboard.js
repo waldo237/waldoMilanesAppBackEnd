@@ -7,9 +7,11 @@ import { useHistory } from 'react-router-dom';
 import Propstype from 'prop-types';
 import Avatar from '../Avatar/Avatar';
 import { logOut, getIdFromLocalToken} from '../Supporters/utilities/authorizationFunctions'
+import { uuidv4 } from '../gobalUtil';
 
 const Dashboard = ({ removeDisplayNone }) => {
   const [state, dispatch] = useContext(Context)
+  const { Trans } = state;
   const history = useHistory();
   
   const sendToProfile = async () => {
@@ -18,11 +20,11 @@ const Dashboard = ({ removeDisplayNone }) => {
     history.push(`/user/profile/${_id}`);
   }
   const actions = [
-    { title: 'Special projects', icon: faProjectDiagram, link: '' },
-    { title: 'Special Articles', icon: faNewspaper, link: '' },
-    { title: 'Notifications', icon: faBell, link: '' },
-    { title: 'Settings', icon: faCog, link: '', id: 'setting-btn', func: ()=> removeDisplayNone('settings-container') },
-    { title: 'Sign out', icon: faSignOutAlt, link: '', func: ()=> logOut(history, dispatch) },
+    { key: uuidv4(), title:  <Trans i18nKey='dashboard.sP'>Special projects</Trans>, icon: faProjectDiagram, link: '' },
+    {  key: uuidv4(),title: <Trans i18nKey='dashboard.sA'>Special Articles</Trans>, icon: faNewspaper, link: '' },
+    {  key: uuidv4(),title:  <Trans i18nKey='dashboard.notification'>Notifications</Trans>, icon: faBell, link: '' },
+    {  key: uuidv4(),title:  <Trans i18nKey='dashboard.settings'>Settings</Trans>, icon: faCog, link: '', id: 'setting-btn', func: ()=> removeDisplayNone('settings-container') },
+    {  key: uuidv4(),title:  <Trans i18nKey='dashboard.SignOut'>Sign out</Trans>, icon: faSignOutAlt, link: '', func: ()=> logOut(history, dispatch) },
   ]
   return (
     <>
@@ -31,7 +33,9 @@ const Dashboard = ({ removeDisplayNone }) => {
           <div className='dash-title-wrapper bold flex-row '>
 
             <div id='title-img' />
-            <div className='dash-title'> Dashboard</div>
+            <div className='dash-title'>
+              <Trans i18nKey='dashboard.dash'>Dashboard</Trans> 
+            </div>
 
           </div>
           <div className='dashboard-content'>
@@ -41,7 +45,9 @@ const Dashboard = ({ removeDisplayNone }) => {
               <Avatar user={state.profile} size={65} />
               <div className='flex-column'>
                 <h1 className='dash-user-info-name primary--text'>{state.profile.firstName}{" "} {state.profile.lastName}</h1>
-                <button type='button' onClick={sendToProfile} className='dash-user-info-profile'>profile</button>
+                <button type='button' onClick={sendToProfile} className='dash-user-info-profile'>
+                  <Trans i18nKey='dashboard.profile'>profile</Trans> 
+                  </button>
               </div>
             </div>
 
@@ -51,7 +57,7 @@ const Dashboard = ({ removeDisplayNone }) => {
                 onClick={() => { if (action.func) action.func() }}
                 onKeyDown={() => { if (action.func) action.func() }}
                 className='dash-action flex-row-justified-aligned-c dash-animation'
-                key={action.title}
+                key={action.key}
               >
                 <div className=" dash-icon">
                   <FontAwesomeIcon icon={action.icon} />

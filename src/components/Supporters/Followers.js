@@ -1,21 +1,13 @@
-
-
-/* TODO    
-  MAKE TWO OBJECTS TO BE TRANSPORTERS, ONE FOR LOGIN AND 1 FOR REGISTER 
-  REFACTOR TO ATOMIC UNITS
-  INSERT THE EVENT HANDLERS
-   WITHIN INPUT HANDLER FIND THE ID OF THE EVENT, USE IT TO IDENTIFY THE TYPE OF OBJECT IT WILL CREATE
-  MAKE THE O-AUTH AUTHENTICATION.
-*/
-
-
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useContext } from "react";
 import "./Followers.scss";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./signUpForm";
+import { Context } from "../../store/store";
 
 const Followers = () => {
+  const [state] = useContext(Context);
+  const { Trans } = state;
   const FollowersTitleIcon = () => {
     return (
       <>
@@ -34,10 +26,12 @@ const Followers = () => {
             <FollowersTitleIcon />
           </div>
           <div>
-            <h1>Followers</h1>
+            <h1><Trans i18nKey='followers.followers'>Followers</Trans>  </h1>
             <h4>
-              If you like what I do, you can register to
-              access all my content and receive notifications when I publish new material.
+              <Trans i18nKey='followers.subtitle'> If you like what I do, you can register to
+                access all my content and receive notifications when I publish new material.
+              </Trans>
+             
             </h4>
           </div>
         </header>
@@ -64,14 +58,14 @@ const Followers = () => {
               id="two-tab"
               htmlFor="two"
             >
-              Sign Up
+              <Trans i18nKey='followers.tabSignUp'> Sign Up</Trans>
             </label>
             <label
               className="tab neom hover-underline-yellow"
               id="one-tab"
               htmlFor="one"
             >
-              Sign On
+              <Trans i18nKey='followers.tabSignOn'> Sign On</Trans>
             </label>
           </div>
           <div className="panels">

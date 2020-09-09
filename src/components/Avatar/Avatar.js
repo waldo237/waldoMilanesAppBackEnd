@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import  getRandomColor from './colorRandomizer';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ColorFactory } from '../gobalUtil';
+
+const {color} = ColorFactory.getInstance();
 
 const Avatar = ({size, user}) => {
   const avatarStyle = {
@@ -24,24 +28,24 @@ const Avatar = ({size, user}) => {
     height: `${size-1}px`,
     borderRadius: '50%',
     
-    backgroundColor:`${getRandomColor()}`,
+    backgroundColor:`${color}`,
     color: 'var(--light)',
     display:'flex',
-    alignContent: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
-    border: '1px groove var(--light)'
   }
   const initialsH1Style = {
-  padding:'0px',
-  margin:'10px 0px 0px',
   justifySelft:'center',
   textShadow: 'var(--text-shadow)',
-
+  fontSize:`${size/2.5}px`,
   }
     return (
       <>
-        <div className='avatar btn' style={avatarStyle}>
-          {user.photoURL
+        {
+       (user._id)
+       ? (
+         <div className='avatar btn' style={avatarStyle}>
+           {user.photoURL
           ? (
             <img
               style={photoStyle}
@@ -59,7 +63,10 @@ const Avatar = ({size, user}) => {
               </h1> 
             </div>
 )}
-        </div>
+         </div>
+)
+        : <FontAwesomeIcon className="fa-spin primary--text" style={avatarStyle} icon={faCircleNotch} />
+      }
       </>
     )
 };

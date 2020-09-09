@@ -1,4 +1,37 @@
 {
+  "articles": {
+    "titleArticles": "Articles",
+    "titleSub": "liés au développement de logiciels",
+    "pubished": "Publié le:",
+    "readMore": "En savoir plus"
+  },
+  "commentBox": {
+    "impression": "Avis",
+    "comments": "Commentaires",
+    "share": "Partager",
+    "write": "Rédiger un commentaire"
+  },
+  "contact": {
+    "titleInterested": "Intéressé?",
+    "titleLets": "Contactons-nous ",
+    "waldo": " Waldo Milanes",
+    "address": "c/12 #44 Ensanche Mella 2, Santiago, République dominicaine",
+    "emailMe": "Envoyez-moi un courriel",
+    "name": "Nom",
+    "email": "Messagerie électronique",
+    "message": "Message",
+    "btnSend": "Envoyer"
+  },
+  "dashboard": {
+    "dash": "Bord",
+    "sP": "Projets spéciaux",
+    "sA": "Articles spéciaux",
+    "notification": "Notifications",
+    "settings": "Paramètres",
+    "SignOut": "Se déconnecter",
+    "profile": "Profil"
+  },
+
   "nav": {
     "home": "Accueil",
     "myWork":"mes travaux",
@@ -90,5 +123,37 @@
     "title": "Paramètres",
     "theme": "Mode sombre",
     "language": "Languages"
-  }  
+  },
+  "projectViewer": {
+    "mainTitle": "Applications et API",
+    "updated": "Mis à jour sur:",
+    "description": "Description:",
+    "files": "Fichiers"
+  },
+  "followers": {
+    "followers": "Suiveurs",
+    "subtitle": "Si vous aimez ce que je fais, vous pouvez vous inscrire pour accéder à tout mon contenu et recevoir des notifications lorsque je publie de nouveaux documents.",
+    "tabSignUp": "S'enregistrer",
+    "tabSignOn": " Connectez-vous"
+  },
+  "signInForm": {
+    "signGoogle": "signer avec Google",
+    "signFacebook": " signer avec Facebook",
+    "or": "Ou",
+    "emailA": "Adresse e-mail",
+    "remember": "souvenez-vous de moi",
+    "forgot": "Oublié",
+    "password": "Mot de passe?"
+  },
+  "signUp": {
+    "title": "s'enregistrer",
+    "fistName": "Prénom",
+    "lastName": "Nom de famille",
+    "emailA": "Adresse e-mail",
+    "btnSignUp": "s'enregistrer",
+    "already": "Déjà enregistré?",
+    "signOn": "Connectez-vous",
+    "password": "Mot de passe?"
+  }
+  
 }

@@ -1,4 +1,37 @@
 {
+  "articles": {
+    "titleArticles": "Artículos",
+    "titleSub": "de desarrollo de software",
+    "pubished": "Publicado en:",
+    "readMore": "Leer más"
+  },
+  "commentBox": {
+    "impression": "Opinión",
+    "comments": "Comentarios",
+    "share": "Compartir",
+    "write": "Escribir un comentario"
+  },
+  "contact": {
+    "titleInterested": "Interesado?",
+    "titleLets": "Pongámonos en contacto",
+    "waldo": " Waldo Milanes",
+    "address": "c/12 #44 Ensanche Mella 2, Santiago, Republica Dominicana",
+    "emailMe": "Envíame un correo electrónico",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "btnSend": "Enviar"
+  },
+  "dashboard": {
+    "sP": "Proyectos especiales",
+    "sA": "Artículos especiales",
+    "notification": "Notificaciones",
+    "settings": "Configuración",
+    "dash": "Tablero",
+    "SignOut": "Cerrar sesión",
+    "profile": "Perfil"
+  },
+
   "nav": {
     "home": "Principal",
     "myWork": "Mis trabajos",
@@ -90,6 +123,36 @@
     "title": "Configuración",
     "theme": "Modo oscuro",
     "language": "Idiomas"
+  },
+  "projectViewer": {
+    "mainTitle": "Aplicaciones y API",
+    "updated": "Actualizado en:",
+    "description": "Descripción:",
+    "files": "Archivos"
+  },
+  "followers": {
+    "followers": "Seguidores",
+    "subtitle": "Si te gusta lo que hago, puedes registrarte para acceder a todo mi contenido y recibir notificaciones cuando publique nuevo material.",
+    "tabSignUp": "Únete",
+    "tabSignOn": "Iniciar sesión"
+  },
+  "signInForm": {
+    "signGoogle": "entrar con  Google",
+    "signFacebook": " entrar con  Facebook",
+    "or": "Or",
+    "emailA": "Dirección de correo electrónico",
+    "remember": "Recuérdame",
+    "forgot": "Olvidó",
+    "password": "Contraseña?"
+  },
+  "signUp": {
+    "title": "Únete",
+    "fistName": "Nombre",
+    "lastName": "Apellido",
+    "emailA": "Dirección de correo electrónico",
+    "btnSignUp": "Únete",
+    "already": "¿Ya está registrado?",
+    "signOn": " Iniciar sesión"
   }
 }
  

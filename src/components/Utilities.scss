@@ -28,6 +28,9 @@
       position: relative;
       top: 1px;
     }
+    &:disabled{
+      background: rgb(167, 166, 166);
+    }
   }
   .hoverable-btn{
     height: 40px;
@@ -45,6 +48,9 @@
     &:hover,
     &:active{
       box-shadow: 1px 4px 7px 1px rgba(0, 0, 0, 0.26);
+    }
+    &:disabled{
+      background: rgb(167, 166, 166);
     }
   }
   .flex-row-wrap{

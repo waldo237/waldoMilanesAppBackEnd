@@ -130,7 +130,7 @@ const navItems = [
             <ul className="nav-items-list" id="nav-items-list">
               {navItems.map((navItem) => (
                 // eslint-disable-next-line no-nested-ternary
-                (state.isLoggedIn && navItem.title === 'followers')
+                (state.isLoggedIn && navItem.link === "/followers")
                   ? (
                     <div
                       key={navItem.id}

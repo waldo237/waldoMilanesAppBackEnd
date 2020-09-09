@@ -11,19 +11,17 @@
   --brown: rgb(117, 73, 26);
   --light-blue: rgb(116, 198, 248);
   --text-shadow: 0px 1px 2px var(--primary-color);
-  .dark{
-
-    --primary-color: rgb(240,242,245);
-    --secondary-color: rgb(251, 211, 3);
-    --light:   rgb(11,34,57);
-    --education-card-color: #74747485;
-    --light-card: rgb(5, 15, 26);
-    --light-brown: rgb(117, 73, 26);
-    --brown: rgb(225,193,164);
-    --light-blue: rgb(116, 198, 248);
-    --text-shadow: 0px 1px 2px var(--primary-color);
-
-}
+    .dark{
+      --primary-color: rgb(240,242,245);
+      --secondary-color: rgb(251, 211, 3);
+      --light:   rgb(11,34,57);
+      --education-card-color: #74747485;
+      --light-card: rgb(5, 15, 26);
+      --light-brown: rgb(117, 73, 26);
+      --brown: rgb(225,193,164);
+      --light-blue: rgb(116, 198, 248);
+      --text-shadow: 0px 1px 2px var(--primary-color);
+  }
 }
 
 
