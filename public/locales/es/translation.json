@@ -143,7 +143,10 @@
     "emailA": "Dirección de correo electrónico",
     "remember": "Recuérdame",
     "forgot": "Olvidó",
-    "password": "Contraseña?"
+    "password": "Contraseña?",
+    "rePasswordInput": "volver a introducir la contraseña",
+    "passwordInput": "introducir la contraseña"
+
   },
   "signUp": {
     "title": "Únete",
@@ -153,6 +156,18 @@
     "btnSignUp": "Únete",
     "already": "¿Ya está registrado?",
     "signOn": " Iniciar sesión"
+  },
+  "enterNewPass": {
+    "title": "Restablece tu contraseña",
+    "subtitle": "Por favor, introduzca y confirme su nueva contraseña a continuación",
+    "btn": "Enviar nueva contraseña"
+  },
+
+  "passwordReset": {
+    "title": "Olvidé mi contraseña",
+    "subtitle": "Introduzca su dirección de correo electrónico",
+    "btn": "Restablecer contraseña"
   }
+
 }
  

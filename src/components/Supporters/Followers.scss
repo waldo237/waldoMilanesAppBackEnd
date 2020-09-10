@@ -37,9 +37,6 @@
   justify-content: center;
   font-size: 1em;
   width: 100%;
-  @include bp(desktop){
-
-  }
   .tab {
     cursor: pointer;
     padding: 10px 30px;
@@ -241,4 +238,25 @@
 .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
 
 .form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
+
+.password-reset-card{
+  @extend .shadow;
+    @extend .hoverable-card;
+    @extend .card-container;
+    grid-column:2/3;
+    color: var(--primary-color);
+    background: var(--light-card);
+    width: 92%;
+    max-width: 740px;
+    padding: 2%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    .followers-title{
+      padding: 0;
+      margin: 0;
+      height: auto;
+      flex-direction: column;
+    }
+}
 

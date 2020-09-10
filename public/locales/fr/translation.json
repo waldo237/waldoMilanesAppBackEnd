@@ -143,7 +143,10 @@
     "emailA": "Adresse e-mail",
     "remember": "souvenez-vous de moi",
     "forgot": "Oublié",
-    "password": "Mot de passe?"
+    "password": "Mot de passe?",
+    "rePasswordInput": "saisir à nouveau le mot de passe",
+    "passwordInput": " saisir le mot de passe"
+
   },
   "signUp": {
     "title": "s'enregistrer",
@@ -154,6 +157,17 @@
     "already": "Déjà enregistré?",
     "signOn": "Connectez-vous",
     "password": "Mot de passe?"
+  },
+  "enterNewPass": {
+    "title": "Réinitialiser votre mot de passe",
+    "subtitle": "S’il vous plaît entrez et confirmer votre nouveau mot de passe soufflet",
+    "btn": "Envoyer un nouveau mot de passe"
+  },
+
+  "passwordReset": {
+    "title": "Oublié mon mot de passe",
+    "subtitle": "Entrez votre adresse e-mail",
+    "btn": "Réinitialiser le mot de passe"
   }
-  
+
 }

@@ -143,7 +143,9 @@
       "emailA": "Email address",
       "remember": "Remember me",
       "forgot": "Forgot",
-      "password": "password?"
+      "password": "password?",
+      "rePasswordInput": "re-enter password",
+      "passwordInput": "enter password"
     },
     "signUp": {
       "title": "Sign Up",
@@ -153,5 +155,16 @@
       "btnSignUp": "Sign Up",
       "already": "Already registered?",
       "signOn": "sign on"
+    },
+    "enterNewPass": {
+      "title": "Reset your password",
+      "subtitle": "  Please enter and confirm your new password bellow",
+      "btn": "Send new password"
+    },
+  
+    "passwordReset": {
+      "title": "Forgot my password",
+      "subtitle": "Enter your email address",
+      "btn": "Reset password"
     }
 }

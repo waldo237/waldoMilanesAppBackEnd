@@ -1,6 +1,6 @@
 import { auth, gProvider, fProvider } from './auth0';
 import envURL from '../../../envURL';
-import signInValidator from './signInValidator'
+import {signInValidator} from './signInValidator'
 
 
 /**

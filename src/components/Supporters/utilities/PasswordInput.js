@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faBatteryQuarter, faBatteryHalf, faBatteryThreeQuarters, faBatteryFull, faBatteryEmpty, faLock } from '@fortawesome/free-solid-svg-icons'
 import { Context } from '../../../store/store'
 
-const PasswordInput = ({inputHandler, strength, id})=>{
+const PasswordInput = ({inputHandler, strength, id, reEnter})=>{
   const [state] = useContext(Context);
   const { Trans } = state;
    const [eyeState, toggleEye ] = useState(false);
@@ -19,8 +19,9 @@ const PasswordInput = ({inputHandler, strength, id})=>{
     return (
       <div className="form-group">
         <label className="input password" htmlFor={`supporter-password${id}`}>
-            
-          <Trans i18nKey='signInForm.password'>Password</Trans>  
+          { (reEnter)
+          ? <Trans i18nKey='signInForm.rePasswordInput'>re-enter password</Trans>  
+          :<Trans i18nKey='signInForm.passwordInput'>enter password</Trans>  }
      
           <FontAwesomeIcon
             className="fa-lg temperature-password-strength"
@@ -29,7 +30,7 @@ const PasswordInput = ({inputHandler, strength, id})=>{
           />
           <input
             id={`supporter-password${id}`}
-            name="password"
+            name={(reEnter)?"reEntered":"password"}
             type={(eyeState)?"text":"password"}
             className="form-control"
             placeholder="Enter password"
@@ -52,9 +53,11 @@ const PasswordInput = ({inputHandler, strength, id})=>{
 PasswordInput.propTypes = {
     inputHandler: PropTypes.func.isRequired,
     strength: PropTypes.number,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    reEnter: PropTypes.bool,
 }
 PasswordInput.defaultProps = {
     strength: 0,
+    reEnter: false,
 }
 export default PasswordInput

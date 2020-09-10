@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ErrorCard = ({ errors, suggestions, setErrors }) => {
   useEffect(() => {
-    const timer = setTimeout(() =>setErrors(null), 3000);
+    const timer = setTimeout(() =>setErrors(null), 4000);
     return () => clearTimeout(timer);
   }, [setErrors]);
   const mystyle = {

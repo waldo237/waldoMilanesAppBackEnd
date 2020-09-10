@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ResponseAlert = ({ response, setResponse, email }) => {
   useEffect(() => {
-    const timer = setTimeout(() =>setResponse(null), 3000);
+    const timer = setTimeout(() =>setResponse(null), 4000);
     return () => clearTimeout(timer);
   }, []);
 

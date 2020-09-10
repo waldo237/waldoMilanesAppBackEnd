@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
-import { useHistory } from 'react-router-dom'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { useHistory, Link } from 'react-router-dom'
 import ResponseAlert from '../ResponseAlert/ResponseAlert'
 import Loading from '../Loading/Loading'
 import ErrorCard from '../ErrorCard/ErrorCard'
-import signInValidator from './utilities/signInValidator'
+import {signInValidator} from './utilities/signInValidator'
 import PasswordInput from './utilities/PasswordInput'
 import { logIn, signWithGoogleOrFB } from './utilities/authorizationFunctions'
 import { Context } from '../../store/store'
@@ -104,7 +104,7 @@ const options =  {setRequest, setErrors, setResponse, rememberMe:user.rememberMe
        
       </button>
       <p className="forgot-password text-right">
-        <Trans i18nKey='signInForm.forgot'>Forgot</Trans>  <a href="/"><Trans i18nKey='signInForm.password'>password?</Trans></a>
+        <Trans i18nKey='signInForm.forgot'>Forgot</Trans> <Link to='/PasswordReset'><Trans i18nKey='signInForm.password'>password?</Trans></Link> 
       </p>
     </form>
   )

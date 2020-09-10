@@ -6,6 +6,8 @@ import Articles from "../components/Articles/Articles";
 import SingleArticle from "../components/Articles/SingleArticle";
 import Contacts from "../components/Contacts/Contacts";
 import Follower from "../components/Supporters/Followers";
+import PasswordReset from "../components/Supporters/PasswordResetInit";
+import EnterNewPassword from "../components/Supporters/EnterNewPassword";
 import ProjectViewer from "../components/ProjectViewer/ProjectViewer";
 import Profile from "../components/Dashboard/Profile";
 import NotFound from "../components/NotFound/NotFound";
@@ -15,6 +17,8 @@ const Routes = () => (
     <Route path="/" component={Home} exact />
     <Route path="/Portfolio" component={Portfolio} />
     <Route path="/articles" component={Articles} />
+    <Route path="/passwordReset" component={PasswordReset} />
+    <Route path="/enterNewPassword/:token" component={EnterNewPassword} />
     <Route path="/article/:article" component={SingleArticle} />
     <Route path="/contacts" component={Contacts} />
     <Route path="/followers" component={Follower} />
