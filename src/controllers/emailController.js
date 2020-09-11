@@ -65,7 +65,7 @@ exports.emailController = (req, res) => {
 
     return transporter.sendMail(mailOptions, (err) => {
       if (err) {
-        return res.status(500).json({ message: 'An Error has occured while sending the email' });
+        return res.status(500).json({ message: 'An Error has occured while sending the email', err, em: process.env.EMAIL, pas: process.env.PASSWORD });
       }
       return res.status(200).json({ message: 'Your Message was successfully sent' });
     });

@@ -60,7 +60,13 @@ const directLoginWithProvider = (req, res, next, user) => {
   });
   return next();
 };
-
+/**
+ * @function sendVerificationTokenToEmail Create a verification token for this user,
+ * save token, Send the email
+ * @param {*} req
+ * @param {*} res
+ * @param {*} user
+ */
 const sendVerificationTokenToEmail = (req, res, user) => {
   // Create a verification token for this user
   const jsonToken = jwt.sign({
@@ -100,6 +106,7 @@ const sendVerificationTokenToEmail = (req, res, user) => {
     });
   });
 };
+
 /**
  * @function loginRequired(), middleware that confirms that req.user exists,
  * otherwise sends a response message with 'Unauthorized user!'.
@@ -185,7 +192,6 @@ exports.resendVerificationToken = async (req, res) => {
           ? res.status(400).render('index', { message: 'This account has already been verified. Please log in.' })
           : res.status(400).send({ message: 'This account has already been verified. Please log in.' });
       }
-
       sendVerificationTokenToEmail(req, res, user);
     });
   } catch (error) {
