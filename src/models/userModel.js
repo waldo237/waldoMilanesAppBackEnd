@@ -4,6 +4,19 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
+const ModifiedPasswordSchema = new Schema({
+  hasBeendModified: {
+    type: Boolean,
+  },
+  IP: {
+    type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 exports.UserSchema = new Schema({
   firstName: {
     type: String,
@@ -42,6 +55,7 @@ exports.UserSchema = new Schema({
     type: String,
     required: true,
   },
+  isPasswordModified: ModifiedPasswordSchema,
   isVerified: { type: Boolean, default: false },
   created_date: {
     type: Date,
