@@ -7,6 +7,7 @@ import ErrorCard from '../ErrorCard/ErrorCard';
 import Loading from '../Loading/Loading';
 import ResponseAlert from '../ResponseAlert/ResponseAlert';
 import { emailValidator } from './utilities/signInValidator';
+import envURL from '../../envURL';
 
 const PasswordResetInit = () =>{
     const [state] = useContext(Context);
@@ -16,6 +17,10 @@ const PasswordResetInit = () =>{
     const [displayableErrors, setErrors] = useState([]);
     const [user] = useState({});
     
+    useEffect(() => {
+      document.title = "Password reset";
+    }, []);
+    
     const inputHandler = (event) => {
       const { name } = event.target;
       user[name] = event.target.value;
@@ -23,12 +28,27 @@ const PasswordResetInit = () =>{
       setErrors(errors);
     };
   
-    useEffect(() => {
-      document.title = "Password reset";
-    }, []);
-  const options =  {setRequest, setErrors, setResponse};
   const sendPasswordReset =()=>{
-
+    const {errors}= emailValidator(user);
+    if(errors.length){
+      setErrors(errors);
+    }else{
+      setRequest(true);
+      fetch(`${envURL}/auth/sendPasswordResetToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(user),
+      })
+        .then(async (res) => {
+          const jsonRes = await res.json();
+          return { successful: res.ok, message: jsonRes.message, link: jsonRes.link };
+        })
+        .then(setResponse)
+        .then(() => setRequest(false))
+        .catch(console.error);
+    }
   }
     return (
       <>
@@ -42,7 +62,7 @@ const PasswordResetInit = () =>{
                 </Trans>
               </h4>
             </header>
-            <form className="sign-form" onSubmit={(e) => { e.preventDefault();  sendPasswordReset(options) }}>
+            <form className="sign-form" onSubmit={(e) => { e.preventDefault();  sendPasswordReset() }}>
               {response
           ? (<ResponseAlert response={response} setResponse={setResponse} />)
           : (<div>{requestStarted ? <Loading message="Sending request" /> : null}{" "} </div>)}

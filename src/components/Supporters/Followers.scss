@@ -258,5 +258,15 @@
       height: auto;
       flex-direction: column;
     }
+   
+    .reset-btn{
+      @extend .round-edges;
+      @extend .btn;
+      grid-row: 1/2;
+      margin: 20px;
+      padding: 12px 36px;
+    }
 }
-
+.fallback{
+  font-size: 1.2em;
+}

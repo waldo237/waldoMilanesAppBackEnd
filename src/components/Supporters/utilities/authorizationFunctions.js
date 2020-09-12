@@ -66,7 +66,7 @@ const logIn = (user, options) => {
                 }))
             .then(setResponse)
             .then(() => setRequest(false))
-            .then(()=> history.push('/portfolio'))
+            .then(()=> {if(Response && Response.successful) history.push('/portfolio')})
             .catch(console.error);
     } else {
         setErrors(signInValidator(user).errors);
