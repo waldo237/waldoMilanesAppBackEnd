@@ -28,6 +28,29 @@ const dirSchema = Schema({
   content: [fileSchema],
 });
 
+const CommentSchema = new Schema({
+  body: {
+    type: String,
+    minlength: 5,
+    maxlength: 500,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  userId: {
+    type: mongoose.Types.ObjectId,
+    trim: true,
+    required: true,
+  },
+});
+const ScoreSchema = new Schema({
+  score: {
+    type: String,
+    validate: /^(like|dislike)$/,
+  },
+});
 exports.ProjectSchema = new Schema({
   title: {
     type: String,
@@ -70,4 +93,6 @@ exports.ProjectSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  rating: [ScoreSchema],
+  comments: [CommentSchema],
 });

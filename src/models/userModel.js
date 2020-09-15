@@ -49,7 +49,6 @@ exports.UserSchema = new Schema({
     required: true,
     trim: true,
     match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i,
-
   },
   hashPassword: {
     type: String,
