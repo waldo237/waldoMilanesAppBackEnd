@@ -29,7 +29,7 @@ const Dashboard = ({ removeDisplayNone }) => {
   return (
     <>
       <div id='dashboard-dialog' className='dash-wrapper'>
-        <div className='dashboard light'>
+        <div className='dashboard light fade'>
           <div className='dash-title-wrapper bold flex-row '>
 
             <div id='title-img' />

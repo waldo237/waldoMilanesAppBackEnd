@@ -202,8 +202,28 @@
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: both;
-  opacity: 0
 }
+
+/* fadeInDownx is a global effect*/
+.reverseFade {
+  position: unset;
+  transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation:1s reverseFade;
+  -webkit-animation: 1s reverseFade  cubic-bezier(0.075, 0.82, 0.165, 1);
+
+ 
+}
+.fade {
+
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+ 
+}
+
 /* Animation */
 @keyframes fadeInUpx {
   from {
@@ -243,6 +263,28 @@
   100% {
      opacity: 1;
      transform: translateY(0);
+  }
+}
+@-webkit-keyframes reverseFade {
+  0% {
+     opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+ 
+  }
+}
+
+@keyframes reverseFade {
+  0% {
+     opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
 

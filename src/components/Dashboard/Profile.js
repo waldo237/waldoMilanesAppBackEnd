@@ -7,7 +7,7 @@ import Avatar from '../Avatar/Avatar';
 import {
   profileValidator, saveChanges,
   cancelAccount, moveCursorRight, uploadPhoto,
-  validateBlob
+  validateBlob, compressImage
 } from './profileFunctions'
 import ErrorCard from '../ErrorCard/ErrorCard';
 import ResponseAlert from '../ResponseAlert/ResponseAlert';
@@ -55,21 +55,28 @@ const Profile = (match) => {
     const fileInput = document.getElementById("file-input");
     fileInput.click();
   }
-  const collectPhoto = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      const errors = validateBlob(selectedFile);
-      setErrors(errors);
-      const blob = new Blob([selectedFile], { type: "image/*" });
-      return new Promise((resolve, reject) => {
-        if (!errors || (errors && errors.length)) reject(new Error('something went wrong with choosing the file'));
-        return resolve();
-      })
-        .then(() => setLoadingPhoto(true))
-        .then(() => uploadPhoto(profileCopy, setProgress, blob, dispatch, setLoadingPhoto, setUnsavedChanges))
-        .catch((err) => console.error(err.message))
+  const collectPhoto =async (e) => {
+    try {
+      const selectedFile = e.target.files[0];
+      if (selectedFile) {
+        const errors = validateBlob(selectedFile);
+        setErrors(errors);
+        // const blob = new Blob([selectedFile], { type: "image/*" });
+        const blob = await compressImage(selectedFile);
+                            
+        return new Promise((resolve, reject) => {
+          if (!errors || (errors && errors.length)) reject(new Error('something went wrong with choosing the file'));
+          return resolve();
+        })
+          .then(() => setLoadingPhoto(true))
+          .then(() => uploadPhoto(profileCopy, setProgress, blob, dispatch, setLoadingPhoto, setUnsavedChanges))
+          .catch((err) => console.error(err.message))
+      }
+      return setErrors([{ type: "image", message: "the file was not selected." }]);
+    } catch (error) {
+    console.log(error)
     }
-    return setErrors([{ type: "image", message: "the file was not selected." }]);
+  
   }
   return (
     <>

@@ -222,6 +222,106 @@ const validateBlob = (blob) => {
 
   return errs;
 }
+/**
+ * @function compressImage this function creates a canvas,
+ * change the size the image takes
+ * 
+ * @param {*} base64 the base64
+ */
+const compressImage =(base64) => { 
+  const canvas = document.createElement('canvas')
+  const img = document.createElement('img')
+
+  return new Promise((resolve, reject) => {
+    img.onload = () =>{
+      let {width} = img
+      let {height} = img
+      const maxHeight = 400
+      const maxWidth = 400
+
+      if (width > height) {
+        if (width > maxWidth) {
+          height = Math.round((height *= maxWidth / width))
+          width = maxWidth
+        }
+      } else if (height > maxHeight) {
+          width = Math.round((width *= maxHeight / height))
+          height = maxHeight
+        }
+      canvas.width = width
+      canvas.height = height
+
+      const ctx = canvas.getContext('2d')
+      ctx.drawImage(img,0, 0, width, height)
+      
+      canvas.toBlob((file)=>resolve(file),'image/jpeg', 0.7);
+      
+    }
+    
+    img.onerror =  (err)=> {
+      reject(err)
+    }
+    
+    
+    const FR= new FileReader();
+    FR.addEventListener("load", (e)=> {
+      img.src = e.target.result
+      }); 
+      
+      FR.readAsDataURL( base64);
+  })
+  .catch(console.log);
+ 
+}
+
+// function crop(url, aspectRatio) {
+	
+// 	return new Promise(resolve => {
+
+// 		// this image will hold our source image data
+// 		const inputImage = new Image();
+
+// 		// we want to wait for our image to load
+// 		inputImage.onload = () => {
+
+// 			// let's store the width and height of our image
+// 			const inputWidth = inputImage.naturalWidth;
+// 			const inputHeight = inputImage.naturalHeight;
+
+// 			// get the aspect ratio of the input image
+// 			const inputImageAspectRatio = inputWidth / inputHeight;
+
+// 			// if it's bigger than our target aspect ratio
+// 			let outputWidth = inputWidth;
+// 			let outputHeight = inputHeight;
+// 			if (inputImageAspectRatio > aspectRatio) {
+// 				outputWidth = inputHeight * aspectRatio;
+// 			} else if (inputImageAspectRatio < aspectRatio) {
+// 				outputHeight = inputWidth / aspectRatio;
+// 			}
+
+// 			// calculate the position to draw the image at
+// 			const outputX = (outputWidth - inputWidth) * .5;
+// 			const outputY = (outputHeight - inputHeight) * .5;
+
+// 			// create a canvas that will present the output image
+// 			const outputImage = document.createElement('canvas');
+
+// 			// set it to the same size as the image
+// 			outputImage.width = outputWidth;
+// 			outputImage.height = outputHeight;
+
+// 			// draw our image at position 0, 0 on the canvas
+// 			const ctx = outputImage.getContext('2d');
+// 			ctx.drawImage(inputImage, outputX, outputY);
+// 			resolve(outputImage);
+// 		};
+
+// 		// start loading our image
+// 		inputImage.src = url;
+// 	});
+	
+// };
 
 
 /**
@@ -234,7 +334,7 @@ const validateBlob = (blob) => {
  */
 const uploadPhoto = (profileCopy, setProgress, selectedFile, dispatch, setLoadingPhoto, setUnsavedChanges) => {
   const { firstName, lastName, _id } = profileCopy;
-  const reference = `${_id}/profilePicture/${firstName}/${lastName}`;
+  const reference = `${_id}/profilePicture/profilePic`;
   const ref = storage().ref(reference);
   return new Promise((resolve, reject) => {
     ref.put(selectedFile).on("state_changed", snapshot => {
@@ -253,4 +353,4 @@ const uploadPhoto = (profileCopy, setProgress, selectedFile, dispatch, setLoadin
 
 
 
-export { profileValidator, saveChanges, fetchProfile, moveCursorRight, cancelAccount, uploadPhoto, validateBlob };
+export { profileValidator, saveChanges, fetchProfile, moveCursorRight, cancelAccount, uploadPhoto, validateBlob, compressImage };

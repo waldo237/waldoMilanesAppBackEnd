@@ -22,7 +22,21 @@ const Navigation = () => {
  const [state] = useContext(Context);
 const [showSideMenu, toggleSideMenu] = useState(false);
 // const [settingsActivated, removeDisplayNone] = useState(true);
+const triggerToggleSideMenu = (value) =>{
+  const container = document.querySelector('.nav-items-container');
+  if(!value && container){
+    const timer = setTimeout(() =>{
+      toggleSideMenu(value)
+    }, 300);
+    container.style.animation=' slideOutRightx 0.3s cubic-bezier(0.47, 0, 0.745, 0.715)';
+   
+  return()=> clearTimeout(timer);
 
+  }
+  
+ return toggleSideMenu(value);
+
+}
 const {Trans} = state;
 const navItems = [
     { id:uuidv4(), title: <Trans i18nKey="nav.home">Home</Trans>, link: "/" },
@@ -53,7 +67,11 @@ const navItems = [
     const hiddenelements = document.querySelectorAll('.display-none');
     hiddenelements.forEach((elem) => {
       if (elem.children[0].id === id) {
-        elem.classList.remove('display-none');
+        // elem.classList.remove('display-none');
+        const timer = setTimeout(() =>{
+          elem.classList.remove('display-none');
+        }, 200);
+      return () => clearTimeout(timer);
       };
     })
   }
@@ -98,7 +116,7 @@ const navItems = [
           }
           targetElement = targetElement.parentNode;
         } while (targetElement);
-        toggleSideMenu(false);
+        triggerToggleSideMenu(false);
       }
     });
   }, [])
@@ -115,8 +133,8 @@ const navItems = [
 
       <div className="mid primary" id="nav">
         <div
-          onClick={() => toggleSideMenu(!showSideMenu)}
-          onKeyDown={() => toggleSideMenu(!showSideMenu)}
+          onClick={() => triggerToggleSideMenu(!showSideMenu)}
+          onKeyDown={() => triggerToggleSideMenu(!showSideMenu)}
           className={showSideMenu ? 'menu-btn open' : 'menu-btn'}
         >
           <div className="menu-btn__burger" />
@@ -125,7 +143,7 @@ const navItems = [
 
       {showSideMenu ? (
         <div className="nav-items-main-wrapper">
-          <div className="nav-items-container primary">
+          <div className="nav-items-container  primary">
             {" "}
             <ul className="nav-items-list" id="nav-items-list">
               {navItems.map((navItem) => (

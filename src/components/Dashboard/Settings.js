@@ -33,7 +33,7 @@ const Settings = () => {
   return (
     <>
       <div id='settings-container' className='dash-wrapper'>
-        <div className='settings light'>
+        <div className='settings light fade'>
           <div className='dash-title-wrapper bold flex-row'>
 
             <div id='title-img' />
