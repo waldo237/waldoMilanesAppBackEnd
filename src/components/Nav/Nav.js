@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "./Nav.scss";
 import {
   faNodeJs,
@@ -11,7 +9,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Context } from '../../store/store'
 import bannerImg from "../../static/banner.png";
-import Avatar from '../Avatar/Avatar';
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import ClickAwayCloser from './ClickAwayCloser'
@@ -166,10 +163,16 @@ const Navigation = () => {
         )
         : null}
 
+      <ClickAwayCloser exceptionById='setting-btn'> 
+        <Settings /> 
+      </ClickAwayCloser>
 
-      <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser>
       {(state.isLoggedIn)
-        ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard removeDisplayNone={removeDisplayNone} /> </ClickAwayCloser>
+        ? (
+          <ClickAwayCloser exceptionById='avatar-wrapper'> 
+            <Dashboard removeDisplayNone={removeDisplayNone} /> 
+          </ClickAwayCloser>
+)
         : null}
     </nav>
   );

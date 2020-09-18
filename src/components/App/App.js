@@ -23,12 +23,12 @@ const App = () => {
   .then(()=>{ const {_id} =  getIdFromLocalToken(); return _id})
   .then((_id)=>fetchProfile(`/user/profile/${_id}`, dispatch))  
   .catch((err)=>console.log(err.message));
-  },[state.isLoggedIn]);
+  },[state.isLoggedIn, dispatch]);
 
   useEffect(()=>{
     const darkTheme = localStorage.getItem('darkTheme')  === 'true';
     dispatch({ type: 'DARK_THEME', payload: darkTheme });
-  },[state.darkTheme])
+  },[state.darkTheme, dispatch])
 
   const {t}=  useTranslation(); //INITIALIZE T FUNCTION
   useEffect(()=>{
@@ -36,7 +36,7 @@ const App = () => {
     dispatch({type: 'CHANGE_LANGUAGE', payload: savedLang});
     dispatch({type: 'SET_T', payload: t});
 
-  },[state.language])
+  },[state.language, dispatch, t])
   
   return (
     <Router>

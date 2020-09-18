@@ -333,7 +333,7 @@ const compressImage =(base64) => {
  * @param {*} setData :function useState(requestStarted:boolean) 
  */
 const uploadPhoto = (profileCopy, setProgress, selectedFile, dispatch, setLoadingPhoto, setUnsavedChanges) => {
-  const { firstName, lastName, _id } = profileCopy;
+  const {  _id } = profileCopy;
   const reference = `${_id}/profilePicture/profilePic`;
   const ref = storage().ref(reference);
   return new Promise((resolve, reject) => {
