@@ -42,7 +42,14 @@
   z-index: 101;
   grid-area: "header";
 }
-
+.stuck {
+  position: relative;
+  // position: -webkit-sticky;
+  top: 0;
+  width: 100%;
+  z-index: 101;
+  grid-area: "header";
+}
 .nav-items-main-wrapper {
   position: relative;
   @include bp(desktop) {
@@ -53,7 +60,7 @@
     position: absolute;
     float: left;
     right: 0;
-    z-index: 102;
+    z-index: 98;
     height: 95vh;
     width:65%;
     animation: slideInRightx 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -107,8 +114,8 @@
       display: flex;
     }
     @include bp(desktop) {
-      position: relative;
-      z-index: 101;
+      // position: relative;
+      z-index: 99;
         &:hover > span > .drop-icon,
         &:active > span > .drop-icon {
           transform: rotate(90deg);

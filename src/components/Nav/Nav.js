@@ -16,6 +16,7 @@ import ListWithNavItems from "./ListWithNavItems";
 import { uuidv4 } from '../gobalUtil'
 import SettingBtn from "./SettingBtn";
 import AvatarContainer from "./AvatarContainer";
+import {gsap} from "gsap/gsap-core";
 
 const Navigation = () => {
   const [state] = useContext(Context);
@@ -68,6 +69,7 @@ const Navigation = () => {
         // elem.classList.remove('display-none');
         const timer = setTimeout(() => {
           elem.classList.remove('display-none');
+          gsap.fromTo( elem, {opacity: 0, y: -20}, {duration: .5,opacity: 1, y: 0 });
         }, 200);
         return () => clearTimeout(timer);
       };
@@ -90,7 +92,7 @@ const Navigation = () => {
     window.onscroll = () => makeNavSticky();
 
     const activateSideNav = () => {
-      if (document.body.clientWidth >= 780) {
+      if (document.body.clientWidth >= 800) {
         toggleSideMenu(true);
       } else {
         toggleSideMenu(false);
@@ -101,7 +103,7 @@ const Navigation = () => {
 
     // make the nav colapse if click away.
     document.addEventListener("click", (evt) => {
-      if (document.body.clientWidth <= 780) {
+      if (document.body.clientWidth <= 800) {
         const navElem = document.getElementById("nav");
         const innerNav = document.querySelector(".nav-item-with-children-span");
         let targetElement = evt.target;
@@ -120,7 +122,7 @@ const Navigation = () => {
   }, [])
 
   return (
-    <nav id="navbar" className="primary shadow">
+    <nav id="navbar" className="primary shadow stuck">
       <Link to="/" className="social-link link">
         <img
           src={bannerImg}
@@ -163,9 +165,6 @@ const Navigation = () => {
         )
         : null}
 
-      <ClickAwayCloser exceptionById='setting-btn'> 
-        <Settings /> 
-      </ClickAwayCloser>
 
       {(state.isLoggedIn)
         ? (
@@ -174,6 +173,9 @@ const Navigation = () => {
           </ClickAwayCloser>
 )
         : null}
+      <ClickAwayCloser exceptionById='setting-btn'> 
+        <Settings /> 
+      </ClickAwayCloser>
     </nav>
   );
 }
