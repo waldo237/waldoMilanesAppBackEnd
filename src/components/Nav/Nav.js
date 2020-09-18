@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import "./Nav.scss";
 import {
   faNodeJs,
@@ -9,53 +9,53 @@ import {
   faVuejs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
-import {Context} from '../../store/store'
+import { Context } from '../../store/store'
 import bannerImg from "../../static/banner.png";
 import Avatar from '../Avatar/Avatar';
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import ClickAwayCloser from './ClickAwayCloser'
 import ListWithNavItems from "./ListWithNavItems";
-import {uuidv4} from '../gobalUtil'
+import { uuidv4 } from '../gobalUtil'
+import SettingBtn from "./SettingBtn";
+import AvatarContainer from "./AvatarContainer";
 
 const Navigation = () => {
- const [state] = useContext(Context);
-const [showSideMenu, toggleSideMenu] = useState(false);
-// const [settingsActivated, removeDisplayNone] = useState(true);
-const triggerToggleSideMenu = (value) =>{
-  const container = document.querySelector('.nav-items-container');
-  if(!value && container){
-    const timer = setTimeout(() =>{
-      toggleSideMenu(value)
-    }, 300);
-    container.style.animation=' slideOutRightx 0.3s cubic-bezier(0.47, 0, 0.745, 0.715)';
-   
-  return()=> clearTimeout(timer);
-
-  }
-  
- return toggleSideMenu(value);
-
-}
-const {Trans} = state;
-const navItems = [
-    { id:uuidv4(), title: <Trans i18nKey="nav.home">Home</Trans>, link: "/" },
+  const [state] = useContext(Context);
+  const [showSideMenu, toggleSideMenu] = useState(false);
+  const { Trans } = state;
+  const navItems = [
+    { id: uuidv4(), title: <Trans i18nKey="nav.home">Home</Trans>, link: "/" },
     {
-      id:uuidv4(),
+      id: uuidv4(),
       title: <Trans i18nKey="nav.myWork">My Work</Trans>,
       link: "/portfolio",
       children: [
-        {id:uuidv4(), title: "Node", link: "/project/node", icon: faNodeJs },
-        {id:uuidv4(), title: "Java", link: "/project/java", icon: faJava },
-        {id:uuidv4(), title: "Vue", link: "/project/vue", icon: faVuejs },
-        {id:uuidv4(), title: "React", link: "/project/react", icon: faReact },
+        { id: uuidv4(), title: "Node", link: "/project/node", icon: faNodeJs },
+        { id: uuidv4(), title: "Java", link: "/project/java", icon: faJava },
+        { id: uuidv4(), title: "Vue", link: "/project/vue", icon: faVuejs },
+        { id: uuidv4(), title: "React", link: "/project/react", icon: faReact },
       ],
     },
-    { id:uuidv4(), title:<Trans i18nKey="nav.articles">Articles</Trans>, link: "/articles" },
-    { id:uuidv4(), title: <Trans i18nKey="nav.Contacts">Contacts</Trans> , link: "/contacts" },
-    { id:uuidv4(), title: <Trans i18nKey="nav.followers">followers</Trans>, link: "/followers" },
-    { id:uuidv4(), title: "settings", icon: faEllipsisV, link: '/' },
+    { id: uuidv4(), title: <Trans i18nKey="nav.articles">Articles</Trans>, link: "/articles" },
+    { id: uuidv4(), title: <Trans i18nKey="nav.Contacts">Contacts</Trans>, link: "/contacts" },
+    { id: uuidv4(), title: <Trans i18nKey="nav.followers">followers</Trans>, link: "/followers" },
+    { id: uuidv4(), title: "settings", link: '/' },
   ];
+
+  const triggerToggleSideMenu = (value) => {
+    const container = document.querySelector('.nav-items-container');
+    if (!value && container) {
+      const timer = setTimeout(() => {
+        toggleSideMenu(value)
+      }, 300);
+      container.style.animation = ' slideOutRightx 0.3s cubic-bezier(0.47, 0, 0.745, 0.715)';
+      return () => clearTimeout(timer);
+    }
+
+    return toggleSideMenu(value);
+  }
+
   // turn icon .rotate and .closable
   const openInnerList = () => {
     const icon = document.querySelector(".drop-icon");
@@ -63,15 +63,16 @@ const navItems = [
     icon.classList.toggle("rotate");
     innerItems.classList.toggle("closable");
   };
+
   const removeDisplayNone = (id) => {
     const hiddenelements = document.querySelectorAll('.display-none');
     hiddenelements.forEach((elem) => {
       if (elem.children[0].id === id) {
         // elem.classList.remove('display-none');
-        const timer = setTimeout(() =>{
+        const timer = setTimeout(() => {
           elem.classList.remove('display-none');
         }, 200);
-      return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
       };
     })
   }
@@ -141,39 +142,35 @@ const navItems = [
         </div>
       </div>
 
-      {showSideMenu ? (
-        <div className="nav-items-main-wrapper">
-          <div className="nav-items-container  primary">
-            {" "}
-            <ul className="nav-items-list" id="nav-items-list">
-              {navItems.map((navItem) => (
-                // eslint-disable-next-line no-nested-ternary
-                (state.isLoggedIn && navItem.link === "/followers")
-                  ? (
-                    <div
-                      key={navItem.id}
-                      className='avatar-wrapper'
-                      id='avatar-wrapper'
-                      onClick={() => removeDisplayNone('dashboard-dialog')}
-                      onKeyDown={() => removeDisplayNone('dashboard-dialog')}
-                    >
-                      <Avatar user={state.profile} size={38} key={navItem.id} />
-                    </div>
-                  )
-                  // eslint-disable-next-line no-nested-ternary
-                  : (navItem.title === 'settings')
-                    ? (state.isLoggedIn)
-                      ? null
-                      : <FontAwesomeIcon key={navItem.id} id='setting-btn' className="fa-lg setting-btn" icon={navItem.icon} onClick={()=> removeDisplayNone('settings-container')} />
-                    : <li key={navItem.id}><ListWithNavItems item={navItem} openInnerList={openInnerList} /></li>
-              ))}
+      {showSideMenu
+        ? (
+          <div className="nav-items-main-wrapper">
+            <div className="nav-items-container  primary">
+    
+              <ul className="nav-items-list" id="nav-items-list">
+                {navItems.map((navItem) => (
+                  
+                  <div key={navItem.id}>
+                    <AvatarContainer navItem={navItem} state={state} removeDisplayNone={removeDisplayNone} />
+                    <ListWithNavItems item={navItem} openInnerList={openInnerList} isLoggedIn={state.isLoggedIn} />
+                    <SettingBtn navItem={navItem} isLoggedIn={state.isLoggedIn} removeDisplayNone={removeDisplayNone} /> 
 
-            </ul>
+                  </div>
+               
+                )
+                )}
+
+              </ul>
+            </div>
           </div>
-        </div>
-      ) : null}
+        )
+        : null}
+
+
       <ClickAwayCloser exceptionById='setting-btn'> <Settings /> </ClickAwayCloser>
-      {(state.isLoggedIn) ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard removeDisplayNone={removeDisplayNone} /> </ClickAwayCloser> : null}
+      {(state.isLoggedIn)
+        ? <ClickAwayCloser exceptionById='avatar-wrapper'> <Dashboard removeDisplayNone={removeDisplayNone} /> </ClickAwayCloser>
+        : null}
     </nav>
   );
 }
