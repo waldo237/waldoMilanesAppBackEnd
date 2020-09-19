@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faShareAlt, faCommentAlt, faThumbsDown, faThumbsUp, faEdit, faEllipsisV, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faShareAlt, faCommentAlt, faThumbsDown, faThumbsUp,  faEllipsisH, } from '@fortawesome/free-solid-svg-icons';
 import './CommentBox.scss'
 import Proptypes from 'prop-types'
 import { Context } from '../../store/store';
+import CommentActions from './CommentActions';
+import {ClickAwayCloser, removeDisplayNone} from '../Nav/ClickAwayCloser'
 
 const CommentBox = ({ comments, rating }) => {
   const [state] = useContext(Context);
@@ -12,18 +14,30 @@ const CommentBox = ({ comments, rating }) => {
   return (
     <>
       <div className='comment-box-action'>
-        <p>  <FontAwesomeIcon
-          className="fa-lg"
-          icon={faThumbsUp}
-        />{" "}<FontAwesomeIcon
-          className="fa-lg fa-flip-horizontal	"
-          icon={faThumbsDown}
-        />{" "} <Trans i18nKey='commentBox.impression'>Impression</Trans>
+        <p>
+          <div>
+            <small>{rating.filter((rate)=> rate=== "like").length}</small>
+            <FontAwesomeIcon
+              className="fa-lg"
+              icon={faThumbsUp}
+            />{" "}
+          </div>  
+          <div>
+            <FontAwesomeIcon
+              className="fa-lg fa-flip-horizontal	"
+              icon={faThumbsDown}
+            />
+            <small>{rating.filter((rate)=> rate=== "dislike").length}</small>
+            {" "}
+          </div>  
+          {" "}
+          {/* <Trans i18nKey='commentBox.impression'>Impression</Trans> */}
         </p>
-        <p>  {comments.length} <FontAwesomeIcon
+        <p> <small>{comments.length}</small>  <FontAwesomeIcon
           className="fa-lg"
           icon={faCommentAlt}
-        />{" "}<Trans i18nKey='commentBox.comments'>Comments</Trans>
+        />{" "}
+        <Trans i18nKey='commentBox.comments'>Comments</Trans>
         </p>
         <p> <FontAwesomeIcon
           className="fa-lg"
@@ -57,6 +71,7 @@ const CommentBox = ({ comments, rating }) => {
               <FontAwesomeIcon
                 className="comment-btn"
                 icon={faEllipsisH}
+                onClick={()=>removeDisplayNone(comment._id)}
               />
               <p>{comment.comment}</p>
               <small>{new Date(comment.date).toLocaleDateString('en-US', {
@@ -66,8 +81,10 @@ const CommentBox = ({ comments, rating }) => {
                 hour: '2-digit'
               })} 
               </small>
-              {/* <hr /> */}
-<div className="comment-options"><div className="card"> </div></div>
+              <ClickAwayCloser>
+                <CommentActions comment={comment} />  
+              </ClickAwayCloser>
+            
             </div>
           )
           )

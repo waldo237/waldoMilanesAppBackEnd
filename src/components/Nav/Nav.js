@@ -11,7 +11,7 @@ import { Context } from '../../store/store'
 import bannerImg from "../../static/banner.png";
 import Settings from '../Dashboard/Settings';
 import Dashboard from '../Dashboard/Dashboard';
-import ClickAwayCloser from './ClickAwayCloser'
+import {ClickAwayCloser, removeDisplayNone} from './ClickAwayCloser'
 import ListWithNavItems from "./ListWithNavItems";
 import { uuidv4 } from '../gobalUtil'
 import SettingBtn from "./SettingBtn";
@@ -61,17 +61,7 @@ const Navigation = () => {
     innerItems.classList.toggle("closable");
   };
 
-  const removeDisplayNone = (id) => {
-    const hiddenelements = document.querySelectorAll('.display-none');
-    hiddenelements.forEach((elem) => {
-      if (elem.children[0].id === id) {
-        const timer = setTimeout(() => {
-          elem.classList.remove('display-none');
-        }, 200);
-        return () => clearTimeout(timer);
-      };
-    })
-  }
+ 
 
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 const ClickAwayCloser = ({ children, exceptionById }) => {
     const classToggler = (ref) => {
+        if(!ref.current) return;
         const timer = setTimeout(() => {
             ref.current.classList.add('display-none');
             ref.current.classList.remove('reverseFade');
@@ -48,5 +49,15 @@ ClickAwayCloser.propTypes = {
 ClickAwayCloser.defaultProps = {
     exceptionById: ''
 }
-
-export default ClickAwayCloser
+const removeDisplayNone = (id) => {
+    const hiddenelements = document.querySelectorAll('.display-none');
+    hiddenelements.forEach((elem) => {
+      if (elem.children[0].id === id) {
+        const timer = setTimeout(() => {
+          elem.classList.remove('display-none');
+        }, 200);
+        return () => clearTimeout(timer);
+      };
+    })
+  }
+export {ClickAwayCloser, removeDisplayNone}

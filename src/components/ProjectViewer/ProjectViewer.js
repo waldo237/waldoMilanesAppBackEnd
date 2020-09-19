@@ -218,7 +218,7 @@ const ProjectViewer = ({ match }) => {
                     ))}
                 </>
               </div>
-              <CommentBox />
+              <CommentBox comments={project.comments} rating={project.rating} />
             </div>
           ))
           : (
