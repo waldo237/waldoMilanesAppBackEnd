@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 const { articleSchema } = require('../models/articleModel');
 const { UserSchema } = require('../models/userModel');
@@ -8,81 +9,82 @@ const User = mongoose.model('User', UserSchema);
 /**
  * @function getAllArticles fetch all the articles in the database
  */
-exports.getAllArticles = (req, res) => {
+exports.getAllArticles = (req, res, next) => {
   try {
     Article.find({}, (err, articles) => {
-      if (err) res.status(500).send('An  error occured while fetching the data');
-      if (articles && articles.length <= 0) return res.status(500).send('An  error occured while fetching the data');
-      return res.json(articles);
+      if (err) throw new Error('An  error occured while fetching the data');
+      if (!articles) return res.status(404).send('The data was not found.');
+      return res.status(200).json(articles);
     });
   } catch (error) {
-    console.log(error);
+    next(error.message);
   }
 };
 
 /**
  * @function getArticle the article specified in the id
  */
-exports.getArticle = (req, res) => {
+exports.getArticle = (req, res, next) => {
   try {
     const id = mongoose.Types.ObjectId(req.params.id);
     Article.findOne({ _id: id }, (err, article) => {
       if (err) throw err;
       if (!article) {
-        return res.status(500).send('The article you are looking for was not found!');
+        return res.status(404).json({ message: 'The article you are looking for was not found!' });
       }
       return res.json(article);
     });
   } catch (error) {
-    res.status(500).send('An  error occured while fetching the data');
+    next(error.message);
   }
 };
 
 /**
  * @function postArticle allow the admin to post new articles
  */
-exports.postArticle = (req, res) => {
+exports.postArticle = (req, res, next) => {
   try {
     const newArticle = Article(req.body);
     newArticle.save((err, article) => {
-      if (err) res.status(400).send({ message: `There was when saving the article: ${err.message}` });
+      if (err) throw err;
       return res.json(article);
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error.message);
   }
 };
 
 /**
  * @function updateArticle allow the admin to update an existing article
  */
-exports.updateArticle = (req, res) => {
+exports.updateArticle = (req, res, next) => {
   try {
     const id = mongoose.Types.ObjectId(req.params.id);
     Article.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, article) => {
-      if (err) res.send(err.message);
+      if (err) throw err;
 
+      if (!article) return res.status(404).send('Article not found.');
       return (article.nModified) ? res.json('The article was modified correctly.') : res.status(404).send('The update did not take effect.');
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error.message);
   }
 };
 
 /**
  * @function deleteArticle allow the admin to delete an existing article
  */
-exports.deleteArticle = async (req, res) => {
+exports.deleteArticle = (req, res, next) => {
   try {
     const id = mongoose.Types.ObjectId(req.params.id);
     Article.deleteOne({ _id: id }, (err, query) => {
       if (err) throw err;
       return (query.n)
         ? res.status(200).send(`${query.n} was deleted.`)
-        : res.status(404).send('An error occured while trying to delete item.');
+        : res.status(401).send('An error occured while trying to delete item.');
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error.message);
   }
 };
 
@@ -91,16 +93,19 @@ exports.deleteArticle = async (req, res) => {
  * fetch the _id from the body.
  * find an article by id. Push a rating(like|dislike). Send a notification.
  */
-exports.postArticleRating = (req, res) => {
+exports.postArticleRating = (req, res, next) => {
   try {
     const { id, rating } = req.body;
     Article.updateOne({ _id: id }, { $push: { rating } },
       { runValidators: true }, (err, article) => {
         if (err) throw err;
-        return res.json(article);
+        if (!article) return res.status(404).send('Article not found.');
+        return (article.nModified)
+          ? res.json({ message: 'Thanks for your feedback.' })
+          : res.status(401).send('Something went wrong, we could not get your feedback.');
       });
   } catch (error) {
-    res.status(500).send(`caught error: ${error.message}`);
+    next(error.message);
   }
 };
 
@@ -112,10 +117,9 @@ exports.postArticleRating = (req, res) => {
 exports.postArticleComment = (req, res, next) => {
   try {
     const { id, comment, userId } = req.body;
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return res
-        .status(401)
-        .send({ message: 'Issue with credential. please log in.' });
+    const { isValid } = mongoose.Types.ObjectId;
+    if (!isValid(userId) || !isValid(id)) {
+      return res.status(401).send({ message: 'Issue with request, please check and try again.' });
     }
     User.findOne({ _id: userId }, (error, user) => {
       if (error) throw error;
@@ -130,12 +134,15 @@ exports.postArticleComment = (req, res, next) => {
         },
       },
       { runValidators: true }, (err, article) => {
-        if (err)next(err.message);
-        return res.json(article);
+        if (err) throw err;
+        if (!article) return res.status(404).send('Article not found.');
+        return (article.nModified)
+          ? res.status(200).json({ message: 'The comment was added successfully.' })
+          : res.status(401).json({ message: 'The comment was not added. Please try again.' });
       });
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error.message);
   }
 };
 
@@ -143,34 +150,63 @@ exports.postArticleComment = (req, res, next) => {
  * @function updateArticleComment find an article by id,
  * query a comment made by user_id, make the update, send notification.
  */
-exports.updateArticleComment = (req, res) => {
+exports.updateArticleComment = (req, res, next) => {
   try {
-    const id = mongoose.Types.ObjectId(req.params.id);
-    Article.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, article) => {
-      if (err) res.send(err.message);
+    const { comment, userId, commentId } = req.body;
+    const { isValid } = mongoose.Types.ObjectId;
+    if (!isValid(userId) || !isValid(commentId)) {
+      return res.status(401).send({ message: 'Issue with request, please check and try again.' });
+    }
 
-      return (article.nModified) ? res.json('The article was modified correctly.') : res.status(404).send('The update did not take effect.');
+    User.findOne({ _id: userId }, (error, user) => {
+      if (error) throw error;
+      if (!user) return res.status(401).json({ message: "you can't send comment with these credentials. please log in." });
+
+      return Article.updateOne({ 'comments._id': commentId, 'comments.userId': userId }, {
+        $set: { 'comments.$.comment': comment },
+      },
+      { runValidators: true }, (err, article) => {
+        if (err) throw err;
+        if (!article) return res.status(404).send('Article not found.');
+        return (article.nModified)
+          ? res.status(200).json({ message: 'The the comment was updated correctly.' })
+          : res.status(401).json({ message: 'The update did not take effect.' });
+      });
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error);
   }
 };
 
 /**
- * @function updateArticleComment delete a comment on an article.
+ * @function deleteArticleComment delete a comment on an article.
  * find an article by id,
  * query a comment made by user_id, delete the comment, send notification.
  */
-exports.deleteArticleComment = async (req, res) => {
+exports.deleteArticleComment = async (req, res, next) => {
   try {
-    const id = mongoose.Types.ObjectId(req.params.id);
-    Article.deleteOne({ _id: id }, (err, query) => {
-      if (err) throw err;
-      return (query.n)
-        ? res.status(200).send(`${query.n} was deleted.`)
-        : res.status(404).send('An error occured while trying to delete item.');
+    const { id, userId, commentId } = req.body;
+    const { isValid } = mongoose.Types.ObjectId;
+    if (!isValid(userId) || !isValid(commentId) || !isValid(id)) {
+      return res.status(401).send({ message: 'Issue with request, please check and try again.' });
+    }
+
+    User.findOne({ _id: userId }, (error, user) => {
+      if (error) throw error;
+      if (!user) return res.status(401).json({ message: "you can't send comment with these credentials. please log in." });
+
+      return Article.updateOne({ _id: id },
+        { $pull: { comments: { _id: commentId, userId } } },
+        { runValidators: true, new: true }, (err, article) => {
+          if (err) throw err;
+
+          if (!article) return res.status(404).send('Article not found.');
+          return (article.nModified)
+            ? res.status(200).json({ message: 'The the comment was deleted correctly.' })
+            : res.status(401).json({ message: 'The removal did not take effect.' });
+        });
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(error);
   }
 };

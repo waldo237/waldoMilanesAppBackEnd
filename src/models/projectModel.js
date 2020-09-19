@@ -29,7 +29,7 @@ const dirSchema = Schema({
 });
 
 const CommentSchema = new Schema({
-  body: {
+  comment: {
     type: String,
     minlength: 5,
     maxlength: 500,
@@ -45,12 +45,7 @@ const CommentSchema = new Schema({
     required: true,
   },
 });
-const ScoreSchema = new Schema({
-  score: {
-    type: String,
-    validate: /^(like|dislike)$/,
-  },
-});
+
 exports.ProjectSchema = new Schema({
   title: {
     type: String,
@@ -93,6 +88,6 @@ exports.ProjectSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  rating: [ScoreSchema],
+  rating: [{ type: String, enum: ['like', 'dislike'] }],
   comments: [CommentSchema],
 });
