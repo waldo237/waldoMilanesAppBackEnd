@@ -206,15 +206,12 @@
 
 /* fadeInDownx is a global effect*/
 .reverseFade {
-  position: unset;
-  transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation:1s reverseFade;
-  -webkit-animation: 1s reverseFade  cubic-bezier(0.075, 0.82, 0.165, 1);
-
- 
+  // position: unset;
+  transition:all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation:.4s reverseFade;
+  -webkit-animation: .4s reverseFade  cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .fade {
-
   animation-name: fadeInDown;
   -webkit-animation-name: fadeInDown;
   animation-duration: .3s;

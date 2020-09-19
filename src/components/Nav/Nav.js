@@ -16,7 +16,6 @@ import ListWithNavItems from "./ListWithNavItems";
 import { uuidv4 } from '../gobalUtil'
 import SettingBtn from "./SettingBtn";
 import AvatarContainer from "./AvatarContainer";
-import {gsap} from "gsap/gsap-core";
 
 const Navigation = () => {
   const [state] = useContext(Context);
@@ -66,10 +65,8 @@ const Navigation = () => {
     const hiddenelements = document.querySelectorAll('.display-none');
     hiddenelements.forEach((elem) => {
       if (elem.children[0].id === id) {
-        // elem.classList.remove('display-none');
         const timer = setTimeout(() => {
           elem.classList.remove('display-none');
-          gsap.fromTo( elem, {opacity: 0, y: -20}, {duration: .5,opacity: 1, y: 0 });
         }, 200);
         return () => clearTimeout(timer);
       };

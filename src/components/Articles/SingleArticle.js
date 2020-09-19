@@ -38,7 +38,7 @@ const SingleArticle =({match})=>{
                     })}
               </small>
               <p className="single-article-text">{articleData.body}</p> 
-              <CommentBox />
+              <CommentBox comments={articleData.comments} />
             </div>
             ):null}
         </main>
