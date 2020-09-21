@@ -9,7 +9,7 @@ const messageValidator = (user) => {
   };
 
   if (!user.name) {
-    responseObject.errors.push({ type: 'name', message: 'Please do not forget include your name.' });
+    responseObject.errors.push({ type: 'name', message: 'Please do not forget to include your name.' });
     responseObject.valid = false;
   } else if (user.name.length < 3) {
     responseObject.errors.push({ type: 'name', message: 'The name should be longer than 3 characters.' });
