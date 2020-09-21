@@ -218,7 +218,7 @@ const ProjectViewer = ({ match }) => {
                     ))}
                 </>
               </div>
-              <CommentBox comments={project.comments} rating={project.rating} />
+              <CommentBox itemId={project._id} pathname="/project" comments={project.comments} rating={project.rating} />
             </div>
           ))
           : (

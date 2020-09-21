@@ -11,7 +11,7 @@ const signUpValidator = (user) => {
   if (!user.firstName) {
     res.errors.push({
       type: "firstName",
-      message: "Please do not forget include your first name.",
+      message: "Please do not forget to include your first name.",
     });
     res.valid = false;
   } else if (user.firstName.length > 20) {
@@ -24,7 +24,7 @@ const signUpValidator = (user) => {
   if (!user.lastName) {
     res.errors.push({
       type: "lastName",
-      message: "Please do not forget include your last name.",
+      message: "Please do not forget to include your last name.",
     });
     res.valid = false;
   } else if (user.lastName > 20) {

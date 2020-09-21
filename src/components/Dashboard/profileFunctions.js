@@ -2,6 +2,7 @@ import escape from "validator/es/lib/escape";
 import { storage } from '../Supporters/utilities/auth0';
 import envURL from "../../envURL";
 import { fetchPayloadFromJWT } from '../Supporters/utilities/authorizationFunctions';
+import { getTokenFromLocalStorage } from "../gobalUtil";
 
 const profileValidator = (user) => {
   console.log(user)
@@ -13,7 +14,7 @@ const profileValidator = (user) => {
   if (!user.firstName) {
     res.errors.push({
       type: "firstName",
-      message: "Please do not forget include your first name.",
+      message: "Please do not forget to include your first name.",
     });
     res.valid = false;
   } else if (user.firstName.length > 20) {
@@ -26,7 +27,7 @@ const profileValidator = (user) => {
   if (!user.lastName) {
     res.errors.push({
       type: "lastName",
-      message: "Please do not forget include your last name.",
+      message: "Please do not forget to include your last name.",
     });
     res.valid = false;
   } else if (user.lastName > 20) {
@@ -49,11 +50,7 @@ const profileValidator = (user) => {
 return res;
 };
 
-const getTokenFromLocalStorage = () => {
-  return (localStorage.getItem('auth_access_token'))
-    ? localStorage.getItem('auth_access_token')
-    : sessionStorage.getItem('auth_access_token');
-}
+
 /**
  * @function saveChanges sends the new changes to the server.
  * @param options:object containing the other parameters

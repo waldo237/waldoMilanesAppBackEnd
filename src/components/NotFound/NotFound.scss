@@ -1,0 +1,39 @@
+.notFound-main{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 2% 96% 2%;
+  background: var(--light);
+  color: var(--primary-color);
+  .notFound-title{
+    font-size: 1.5em;
+    grid-column: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .oops{
+
+    }
+    .small-icon{
+        margin: 0px 10px;
+    }
+    .notFound-404{
+
+    }
+  }
+}
+.notFound-card {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  .mw-robot{
+    width: 200px;
+    margin-top: 20px;
+  }
+  .notFound-message{
+    font-size: 2em;
+    animation: flash 3s infinite linear;
+  }
+}

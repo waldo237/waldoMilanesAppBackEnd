@@ -1,5 +1,5 @@
 /* dashboard */
-
+@import '../Utilities.scss';
 .dash-wrapper{
     position: relative;
     
@@ -68,11 +68,16 @@ margin-right: 8px;
     font-size: 1.3em;
 }
 .dash-user-info-profile{
+    @extend .round-edges;
     cursor: pointer;
     color: #A29C9C;
     font-size: 1.1em;
     padding: 4px 36px;
     border: 0px;
+    &:hover, &:active{
+        background-color: var(--light-card);
+        transition: all .1s linear;
+    }
 }
 .dash-animation:hover,
 .dash-animation:active {
@@ -99,8 +104,7 @@ font-weight: 500;
 .dash-icon{
  margin: 10px 30px 0px 25px;
  position: relative;
-}
-.dash-icon::before {
+&::before {
     content: "";
     position: absolute;
     background: grey;
@@ -110,6 +114,7 @@ font-weight: 500;
     top: -10px;
     border-radius: 50%;
     z-index: -1;
+}
 }
 
 @media screen and (min-width: 720px){

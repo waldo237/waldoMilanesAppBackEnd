@@ -3,11 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import Proptypes from 'prop-types'
 
-function CommentActions({comment}) {
+function CommentActions({comment, handleEditing}) {
+
     return (
       <div id={comment._id} className="comment-options fade">
         <div className="comment-card">
-          <div className="commnet-action">
+          <div
+            className="commnet-action" 
+            onClick={()=> handleEditing(comment._id)}
+            onKeyDown={()=> handleEditing(comment._id)}
+          >
             <FontAwesomeIcon
               className="commnet-action-icon"
               icon={faPencilAlt}
@@ -32,7 +37,8 @@ CommentActions.propTypes = {
       date: Proptypes.string,
       _id: Proptypes.string,
       userId: Proptypes.string,
-    })
+    }),
+    handleEditing: Proptypes.func.isRequired
   }
   
   CommentActions.defaultProps = {

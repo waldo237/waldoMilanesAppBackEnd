@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./NotFound.css";
+import "./NotFound.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import img from "../../static/banner.png";
@@ -9,22 +9,20 @@ const NotFound = () => {
     document.title = "This page was not found";
   }, []);
   return (
-    <main className="page-main-container fadeInUpx light">
-      <div className="contact-title main-title rubberband">
-        <h1 className="primary--text ">oops </h1>
+    <main className="notFound-main fadeInUpx">
+      <div className="notFound-title">
+        <h1 className="oops">oops </h1>
         <FontAwesomeIcon
-          className="fa-4x primary--text  small-icon"
+          className="fa-4x small-icon"
           icon={faExclamation}
         />
-        <h1 className="primary--text">404 </h1>
+        <h1 className="notFound-404">404 </h1>
       </div>
 
-      <section>
-        <div className="card-container card-404 shadow primary">
+      <section className="notFound-card">
           <img src={img} alt="WM robot" className="mw-robot" />
 
-          <h6 className="double-w secondary--text"> Page Not Found</h6>
-        </div>
+          <h2 className="notFound-message"> Page Not Found</h2>
       </section>
     </main>
   );

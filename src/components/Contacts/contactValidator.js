@@ -10,7 +10,7 @@ const contactValidator = (user) => {
   if (!user.name) {
     res.errors.push({
       type: "name",
-      message: "Please do not forget include your name.",
+      message: "Please do not forget to include your name.",
     });
     res.valid = false;
   } else if (user.name.length < 3) {

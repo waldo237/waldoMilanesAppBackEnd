@@ -1,17 +1,17 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from 'prop-types'
 
-const ClickAwayCloser = ({ children, exceptionById }) => {
-    const classToggler = (ref) => {
+const classToggler = (ref) => {
+    const timer = setTimeout(() => {
         if(!ref.current) return;
-        const timer = setTimeout(() => {
-            ref.current.classList.add('display-none');
-            ref.current.classList.remove('reverseFade');
-        }, 300);
-        ref.current.classList.add('reverseFade');
-        return () => clearTimeout(timer);
+        ref.current.classList.remove('reverseFade');
+        ref.current.classList.add('display-none');
+    }, 200);
+    ref.current.classList.add('reverseFade');
+    return () => clearTimeout(timer);
 
-    }
+}
+const ClickAwayCloser = ({ children, exceptionById }) => {
     const ref = useRef(null);
     useEffect(() => {
         const clickAwayHandler = () => {
@@ -55,9 +55,10 @@ const removeDisplayNone = (id) => {
       if (elem.children[0].id === id) {
         const timer = setTimeout(() => {
           elem.classList.remove('display-none');
-        }, 200);
+        }, 100);
         return () => clearTimeout(timer);
       };
     })
   }
+
 export {ClickAwayCloser, removeDisplayNone}
