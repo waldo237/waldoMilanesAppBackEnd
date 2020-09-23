@@ -16,7 +16,7 @@ const routes = (app) => {
     .put(loginRequired, updateArticle)
     .delete(loginRequired, deleteArticle);
 
-  app.route('/article/rating')
+  app.route('/article/rating/:articleId')
     .post(likesAndDislikesLimit, postArticleRating);
 
   app.route('/article/comment')

@@ -63,7 +63,7 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // cors setup
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: true }));
 
 // set pug views
 app.set('view engine', 'pug');
@@ -91,9 +91,10 @@ emailRoutes(app);
 app.get('/', (req, res) => res.render('index', { title: 'waldoMilanesAppBackEnd', type: 'API\'s for waldomilanes.com' }));
 
 // handler errors
-app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send({message:'There was an issue with your request. Please try again.'})
-})
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ message: 'There was an issue with your request. Please try again.' });
+});
 
 app.listen(PORT, () => console.log(`your server is running on port ${PORT} at ${new Date().toLocaleString()}`));

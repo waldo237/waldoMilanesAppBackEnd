@@ -19,7 +19,7 @@ const routes = (app) => {
     .put(loginRequired, updateProject)
     .delete(loginRequired, deleteProject);
 
-  app.route('/project/rating')
+  app.route('/project/rating/:projectId')
     .post(likesAndDislikesLimit, postProjectRating);
 
   app.route('/project/comment')
