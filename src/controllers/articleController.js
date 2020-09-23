@@ -122,7 +122,7 @@ exports.postArticleComment = (req, res, next) => {
       return res.status(401).send({ message: 'Issue with request, please check and try again.' });
     }
     User.findOne({ _id: userId }, (error, user) => {
-      if (error) throw error;
+      if (error) return next(error);
       if (!user) return res.status(401).send({ message: "you can't send comment with these credentials. please log in." });
 
       return Article.updateOne({ _id: id }, {
@@ -134,7 +134,7 @@ exports.postArticleComment = (req, res, next) => {
         },
       },
       { runValidators: true }, (err, article) => {
-        if (err) throw err;
+        if (err) return next(err);
         if (!article) return res.status(404).send('Article not found.');
         return (article.nModified)
           ? res.status(200).json({ message: 'The comment was added successfully.' })
@@ -151,6 +151,7 @@ exports.postArticleComment = (req, res, next) => {
  * query a comment made by user_id, make the update, send notification.
  */
 exports.updateArticleComment = (req, res, next) => {
+  console.log(req.body)
   try {
     const { comment, userId, commentId } = req.body;
     const { isValid } = mongoose.Types.ObjectId;
@@ -162,7 +163,7 @@ exports.updateArticleComment = (req, res, next) => {
       if (error) throw error;
       if (!user) return res.status(401).json({ message: "you can't send comment with these credentials. please log in." });
 
-      return Article.updateOne({ 'comments._id': commentId, 'comments.userId': userId }, {
+      return Article.updateOne({ 'comments._id': commentId}, {
         $set: { 'comments.$.comment': comment },
       },
       { runValidators: true }, (err, article) => {
