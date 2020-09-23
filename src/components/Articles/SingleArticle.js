@@ -18,7 +18,7 @@ const SingleArticle =({match})=>{
   }
     useEffect(() => { 
       setData(state.selectedArticle);
- 
+      document.title = state.selectedArticle.title;
     })
     useEffect(() => {
         document.title = `One of my articles.`;

@@ -9,7 +9,7 @@ import { ClickAwayCloser, removeDisplayNone } from '../Nav/ClickAwayCloser';
 import commentValidator from './commentValidator';
 import ResponseAlert from '../ResponseAlert/ResponseAlert';
 import ErrorCard from '../ErrorCard/ErrorCard';
-import { saveComment, editComment, clearCommentInput } from './commentBoxFunctions';
+import { saveComment, editComment, clearCommentInput, postRating } from './commentBoxFunctions';
 import SignInFallback from './SignInFallback';
 import  SaveChangesBtn from './SaveChangesBtn';
 
@@ -75,14 +75,20 @@ const CommentBox = ({ setUpdated, itemId, pathname, comments, rating }) => {
     <>
       <div className='comment-box-action'>
         <p>
-          <span>
+          <span
+            onClick={()=>postRating({...options, rating:"like"})}
+            onKeyDown={()=>postRating({...options, rating:"like"})}
+          >
             <small>{rating.filter((rate) => rate === "like").length}</small> {" "}
             <FontAwesomeIcon
               className="fa-lg"
               icon={faThumbsUp}
             />{" "}
           </span>
-          <span>
+          <span
+            onClick={()=>postRating({...options, rating:"dislike"})}
+            onKeyDown={()=>postRating({...options, rating:"dislike"})}
+          >
             <FontAwesomeIcon
               className="fa-lg fa-flip-horizontal	"
               icon={faThumbsDown}
@@ -170,18 +176,17 @@ const CommentBox = ({ setUpdated, itemId, pathname, comments, rating }) => {
             <div className='comment-text-container'>
               <p
                 className={(editingMode) ? `being-edited comment-text-${comment._id}` : `comment-text-${comment._id}`}
-              >{comment.comment}
-
+              >
+                {comment.comment}
               </p>
-
-
             </div>
 
             <small className={(editingMode) ? `being-edited`:''}>{new Date(comment.date).toLocaleDateString('en-US', {
               month: 'short',
               day: '2-digit',
               year: '2-digit',
-              hour: '2-digit'
+              hour: '2-digit',
+              minute:'2-digit'
             })}
             </small>
 
