@@ -4,6 +4,7 @@ const {
   postProject, updateProject, deleteProject, postProjectRating,
   postProjectComment, updateProjectComment, deleteProjectComment,
 } = require('../controllers/projectController');
+const { likesAndDislikesLimit } = require('./likesAndDislikesLimit');
 
 const routes = (app) => {
   // registration route
@@ -19,7 +20,7 @@ const routes = (app) => {
     .delete(loginRequired, deleteProject);
 
   app.route('/project/rating')
-    .post(postProjectRating);
+    .post(likesAndDislikesLimit, postProjectRating);
 
   app.route('/project/comment')
     .post(loginRequired, postProjectComment);

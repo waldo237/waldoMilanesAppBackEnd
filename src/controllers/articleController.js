@@ -151,7 +151,6 @@ exports.postArticleComment = (req, res, next) => {
  * query a comment made by user_id, make the update, send notification.
  */
 exports.updateArticleComment = (req, res, next) => {
-  console.log(req.body)
   try {
     const { comment, userId, commentId } = req.body;
     const { isValid } = mongoose.Types.ObjectId;
@@ -163,7 +162,7 @@ exports.updateArticleComment = (req, res, next) => {
       if (error) throw error;
       if (!user) return res.status(401).json({ message: "you can't send comment with these credentials. please log in." });
 
-      return Article.updateOne({ 'comments._id': commentId}, {
+      return Article.updateOne({ 'comments._id': commentId }, {
         $set: { 'comments.$.comment': comment },
       },
       { runValidators: true }, (err, article) => {

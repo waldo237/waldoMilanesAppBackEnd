@@ -173,7 +173,7 @@ exports.updateProjectComment = (req, res, next) => {
       if (error) throw error;
       if (!user) return res.status(401).json({ message: "you can't send comment with these credentials. please log in." });
 
-      return Project.updateOne({ 'comments._id': commentId, 'comments.userId': userId }, {
+      return Project.updateOne({ 'comments._id': commentId }, {
         $set: { 'comments.$.comment': comment },
       },
       { runValidators: true }, (err, project) => {
