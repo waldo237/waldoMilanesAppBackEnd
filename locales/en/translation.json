@@ -2,7 +2,7 @@
   "articles": {
     "titleArticles": "Articles",
     "titleSub": "Compositions related to software",
-    "pubished": "Published on:",
+    "pubished": "Pubished on:",
     "readMore": "Read more"
   },
   "comment": {
@@ -18,7 +18,7 @@
   "fallback": {
     "please": "Please sign in to do this action",
     "sign": "Sign In",
-    "create": "Create an account"
+    "create": "Create a new an account"
   },
   "contact": {
     "titleInterested": "Interested?",
@@ -32,40 +32,28 @@
     "btnSend": "Send"
   },
   "dashboard": {
-    "dash": "Dashboard",
     "sP": "Special projects",
     "sA": "Special Articles",
     "notification": "Notifications",
     "settings": "Settings",
-    "SignOut": "Sign Out",
+    "SignOut": "Sign out",
+    "dash": "Dashboard",
     "profile": "profile"
   },
-  "nav": {
-    "home": "Home",
-    "myWork": "Articles",
-    "articles": "Articles",
-    "Contacts": "Contacts",
-    "followers": "followers"
+  "settings": {
+    "title": "Settings",
+    "theme": "Dark mode",
+    "language": "Languages"
   },
-  "home": {
-    "aPracmatic": "A Pragmatic and Dedicated",
-    "developer": "Web Developer",
-    "introductionParagraph": "Hi, my name is Waldo Milanes. I am an enthusiastic and skilled professional with substantial technical expertise in designing and developing web applications.",
-    "hearMore": "hear more",
-    "technicalTitle": "technical skills",
-    "technicalContent": "I know how to efficiently create elegant and user-friendly interfaces and setup back-end databases that serve different business needs.",
-    "managerialTitle": "managerial skills",
-    "managerialContent": "My experience in educational management has given me the opportunity to help small teams foster cooperation for excellent results.",
-    "attitudelTitle": "professional attitude",
-    "attitudeContent": "I excel particularly at communicating my ideas respectfully and negotiating differences with my colleagues.",
-    "myWorkBtn": "my work"
+  "footer": {
+    "dev": "developed by Waldo Milanes"
   },
   "education": {
     "career1T": "Bachelors of Arts in Modern Languages",
     "career1U": "Santiago University of Technology (UTESA)",
     "career1P": "Dominican Republic",
     "career1D": "The ability to communicate clearly in two foreign languages (English and French), both verbally and in writing; professional communication, spoken and written; sensitivity to different cultural contexts; the ability to work independently; general research skills; self-reflection and critical judgment; self-management, including planning and meeting deadlines; analyzing written and visual sources; adaptability and flexibility.",
-    "career2T": "Software development",
+    "career2T": "Computer Programming",
     "career2U": "Technological Institute of the Americas (ITLA)",
     "career2P": "Dominican Republic",
     "career2D": "The fundamentals of programming; algorithms and data structures; software testing and debugging; a solid foundation of object-oriented software development; design patterns, the essentials of networking; design and management of relational databases; project requirements gathering and prototyping.",
@@ -102,17 +90,34 @@
     "career10D": "Knowledge of the disciplines and subdisciplines of the field in English linguistics; familiarization with ICT for the teaching and learning of the English language. Consciousness-raising for intercultural aspects which have an impact on communication, translation, and mediation. Understanding and integration of mass and complex information coming from different sources. The ability to carry out theoretical and/or empirical research, expressing the outcome in articles, essays.  Ability to present the outcome of one’s research publicly. Attitude for teamwork, with the consequent skills, that it entails: negotiating, make oneself understood, provide and/or accept constructive criticism. Attitude for independent work, development of the initiative to organize one’s time and effort effectively.",
     "diplomaBtn": "View Credential"
   },
-  "footer": {
-    "dev": "Developed by Waldo Milanes"
+  "home": {
+    "aPracmatic": "A Pragmatic and Dedicated",
+    "developer": "Web Developer",
+    "introductionParagraph": "Hi, my name is Waldo Milanes. I am an enthusiastic and skilled professional with substantial technical expertise in designing and developing web applications.",
+    "hearMore": "Hear more",
+    "myWorkBtn": "my work",
+    "technicalTitle": "technical skills",
+    "technicalContent": "I know how to efficiently create elegant and user-friendly interfaces and setup back-end databases that serve different business needs.",
+    "managerialTitle": "managerial skills",
+    "managerialContent": "My experience in educational management has given me the opportunity to help small teams foster cooperation for excellent results.",
+    "attitudelTitle": "professional attitude",
+    "attitudeContent": "I excel particularly at communicating my ideas respectfully and negotiating differences with my colleagues."
+  },
+  "nav": {
+    "home": "Home",
+    "myWork": "My Work",
+    "articles": "Articles",
+    "Contacts": "Contacts",
+    "followers": "followers"
   },
   "portfolio": {
     "java": {
       "title": "Desktop Apps and RESTful APIs I have done with Java ",
-      "desc": "Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it."
+      "desc": "Since it was the first programming language I learned, I have a special place for Java. It has a huge community and it has been tested for decades. I like how it takes care of the developer experience; allowing you to know upfront what is permitted and what is not. I was introduced to the concepts of object-oriented programming using Java. It certainly gave me a solid basis to understand common design patterns and data structures. &nbsp; Another huge advantage that Java has is that you are forced to explicitly use datatypes when you are declaring a variable, so it makes you reflect on the importance of it."
     },
     "node": {
       "title": "Servers and RESTful APIs I have done with NodeJS",
-      "desc": "After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of \"middleware\" is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic."
+      "desc": "After having experience designing RESTful APIs in Java, I started working with NodeJS. Personally, I like this implementation of JavaScript outside the browser because it allows me to develop a whole application using one language from start to finish. Additionally, when I combine it with Express, it offers a very clean and concise touch to how my code looks. The concept of &ldquo;middleware&ldquo; is also a brilliant architecture; just the fact that you can plug a middleware to an existing endpoint and add new functionality, makes it feel like magic."
     },
     "vue": {
       "title": "Web Apps I have built with VueJS",
@@ -126,54 +131,48 @@
       "h1": "My Work",
       "h4": "A collection of projects"
     }
+  },
+  "projectViewer": {
+    "mainTitle": "Applications and APIs",
+    "updated": "Updated on:",
+    "description": "Description:",
+    "files": "Files"
+  },
+  "enterNewPass": {
+    "sendAgain": "{response.link.label}",
+    "title": "Reset your password",
+    "subtitle": "  Please enter and confirm your new password bellow",
+    "btn": "Send new password"
+  },
+  "followers": {
+    "followers": "Followers",
+    "subtitle": " If you like what I do, you can register to access all my content and receive notifications when I publish new material.",
+    "tabSignUp": " Sign Up",
+    "tabSignOn": "Sign On"
+  },
+  "passwordReset": {
+    "title": "Forgot my password",
+    "subtitle": "Enter your email address",
+    "btn": "Reset password"
+  },
+  "signInForm": {
+    "emailA": "Email address",
+    "signGoogle": " sign with google",
+    "signFacebook": " sign with facebook",
+    "or": "Or",
+    "remember": "Remember me",
+    "forgot": "Forgot",
+    "password": "password?",
+    "rePasswordInput": "re-enter password",
+    "passwordInput": "enter password"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "fistName": "First name",
+    "lastName": "Last name",
+    "emailA": "Email address",
+    "btnSignUp": "Sign Up",
+    "already": "Already registered?",
+    "signOn": "sign on"
   }
-  ,
-    "settings": {
-      "title": "Settings",
-      "theme": "Dark mode",
-      "language": "Languages"
-    },
-    "projectViewer": {
-      "mainTitle": "Applications and APIs",
-      "updated": "Updated on:",
-      "description": "Description:",
-      "files": "Files"
-    },
-    "followers": {
-      "followers": "Followers",
-      "subtitle": " If you like what I do, you can register to access all my content and receive notifications when I publish new material.",
-      "tabSignUp": " Sign Up",
-      "tabSignOn": " Sign On"
-    },
-    "signInForm": {
-      "signGoogle": " sign with google",
-      "signFacebook": " sign with facebook",
-      "or": "Or",
-      "emailA": "Email address",
-      "remember": "Remember me",
-      "forgot": "Forgot",
-      "password": "password?",
-      "rePasswordInput": "re-enter password",
-      "passwordInput": "enter password"
-    },
-    "signUp": {
-      "title": "Sign Up",
-      "fistName": "First name",
-      "lastName": "Last name",
-      "emailA": "Email address",
-      "btnSignUp": "Sign Up",
-      "already": "Already registered?",
-      "signOn": "sign on"
-    },
-    "enterNewPass": {
-      "title": "Reset your password",
-      "subtitle": "  Please enter and confirm your new password bellow",
-      "btn": "Send new password"
-    },
-  
-    "passwordReset": {
-      "title": "Forgot my password",
-      "subtitle": "Enter your email address",
-      "btn": "Reset password"
-    }
 }

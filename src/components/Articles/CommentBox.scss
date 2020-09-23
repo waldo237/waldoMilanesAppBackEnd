@@ -29,11 +29,13 @@
     height: 80px;
     margin: 20px 0px 10px;
     display: flex;
-    flex-direction: column;
-    justify-items: space-evenly;
-    input{
-        width:calc(96% - 1.5em - 20px);
-        margin-right: 10px;
+    flex-direction: row;
+    align-items: center;
+
+    .form-group{
+      
+        width:90%;
+        // margin-right: 10px;
     }
     .fa-lg{
         @extend .btn;
@@ -41,6 +43,22 @@
         color: var(--primary-color);
         font-size: 1.5em;
         margin: 0 5px;
+    }
+    .editing-btn{
+        @extend .btn;
+        @extend .round-edges;
+        // width: 18px;
+        // width: 18px;
+        font-size: .7em;
+        text-transform: capitalize;
+        background: var(--secondary-color);
+        color: var(--primary-color);
+        padding: 8px 15px ;
+        margin: 0 10px;
+        &:hover{
+            background:rgb(174, 169, 169);
+            color: var(--primary-color);
+        }
     }
 }
 .comment-display{
@@ -71,58 +89,86 @@
         .comment-text{
 
         }
-        .fa-lg{
-            @extend .btn;
-            width: 18px;
-            width: 18px;
-            font-size: 1.6em;
-            background: transparent;
-            color: var(--primary-color);
-            margin: 0 10px;
-        }
+    
     }
     small{
         font-size: .7em;
         float: right;
     }
 }
-        .comment-options{
-            position: relative;
-            .comment-card{
-                @extend .round-edges;
-                position: absolute;
-                background: var(--light-card);
-                max-width: 300px;
-                min-width: 250px;
-                height: 80px;
-                right: 5px;
-                top: 30px;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                z-index: 99;
-                
-            }
-            .commnet-action{
-                @extend .btn;
-                @extend .round-edges;
-                background: var(--light-card);
-                color: var(--primary-color);
-                text-transform: capitalize;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                font-size: .8em;
-                &:hover{
-                    background: var(--light);
-                    color:var(--primary-color);
-                }
-                p{
-                    font-weight: 500;
-                }
-                &-icon{
-                    margin: 0 1em;
-                    filter: opacity(0.4) ;
-                }
-            }
-            
-            
+.comment-options{
+    position: relative;
+    .comment-card{
+        @extend .round-edges;
+        position: absolute;
+        background: var(--light-card);
+        max-width: 300px;
+        min-width: 250px;
+        height: 80px;
+        right: 5px;
+        top: 30px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        z-index: 99;
+        
+    }
+    .commnet-action{
+        @extend .btn;
+        @extend .round-edges;
+        background: var(--light-card);
+        color: var(--primary-color);
+        text-transform: capitalize;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: .8em;
+        &:hover{
+            background: var(--light);
+            color:var(--primary-color);
         }
+        p{
+            font-weight: 500;
+        }
+        &-icon{
+            margin: 0 1em;
+            filter: opacity(0.4) ;
+        }
+    }
+    
+    
+}
+
+
+.fallback-container{
+    width: 100%;
+    .fallback-title{
+        margin-top: 0;
+        text-align: center;
+    }
+    .fallback-btn-container{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        .fallback-signIn-btn{
+            @extend .btn;
+            @extend .round-edges;
+            padding: 8px 20px;
+            margin-bottom: 10px 0;
+        }
+    
+        .fallback-signUp-btn{
+            @extend .fallback-signIn-btn;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            &:hover, &:active{
+                color: var(--primary-color);
+                filter: brightness(.8);
+            }
+        }
+    }
+}
+
+.being-edited{
+    filter: opacity(0.4);
+}

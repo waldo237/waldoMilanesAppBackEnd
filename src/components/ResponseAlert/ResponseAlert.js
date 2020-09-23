@@ -42,7 +42,7 @@ const ResponseAlert = ({ response, setResponse, email }) => {
   return (
     <>
  
-      <div>
+      <div id='response-alert'>
         {!response.successful ? (
           <div>
             <div

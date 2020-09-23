@@ -5,13 +5,15 @@ import Reducer from './Reducer'
 
 const initialLang = localStorage.getItem('language');
 const initialState = {
-    posts: ['newpost'],
+    articles: [],
+    selectedArticle: {},
     isLoggedIn:false,
     profile: {},
     error: null,
     darkTheme: false,
     language: (initialLang) || 'EN',
-    Trans
+    Trans,
+    
 };
 
 const Store = ({ children }) => {

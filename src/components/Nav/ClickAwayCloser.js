@@ -55,7 +55,7 @@ const removeDisplayNone = (id) => {
       if (elem.children[0].id === id) {
         const timer = setTimeout(() => {
           elem.classList.remove('display-none');
-        }, 100);
+        }, 200);
         return () => clearTimeout(timer);
       };
     })

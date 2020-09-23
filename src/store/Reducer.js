@@ -25,6 +25,16 @@ const Reducer = (state, action) => {
                 ...state,
                 t: action.payload
             };
+        case 'SET_ARTICLE':
+            return {
+                ...state,
+                articles: action.payload 
+            };
+        case 'SET_SELECTED_ARTICLE':
+            return {
+                ...state,
+                selectedArticle:  action.payload
+            };
         default:
             return state;
     }

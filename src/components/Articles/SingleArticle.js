@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Proptypes from 'prop-types';
 import envURL from '../../envURL';
 import './SingleArticle.scss'
 import CommentBox from './CommentBox';
+import { Context } from '../../store/store';
 
 const SingleArticle =({match})=>{
-    const [articleData, setData] = useState(null);
+  const [state, dispatch] = useContext(Context);  
+  const [articleData, setData] = useState(null);
+  const [updated, setUpdated] = useState(false);
+
+  const fetchSelectedArticle =()=> {
+    fetch(`${envURL}${match.url}`)
+    .then((res) => res.json())
+    .then((data)=> dispatch({type: 'SET_SELECTED_ARTICLE', payload: data}))
+    .catch(console.error);
+  }
+    useEffect(() => { 
+      setData(state.selectedArticle);
+ 
+    })
     useEffect(() => {
         document.title = `One of my articles.`;
-        
-        fetch(`${envURL}${match.url}`)
-          .then((res) => res.json())
-          .then(setData)
-          .catch(console.error);
+        fetchSelectedArticle();
     
-      }, [match.url]);
+      }, [updated,match.url, match.params.article]);
 
     return (
       <>
@@ -38,7 +48,7 @@ const SingleArticle =({match})=>{
                     })}
               </small>
               <p className="single-article-text">{articleData.body}</p> 
-              <CommentBox itemId={articleData._id} pathname="/article" comments={articleData.comments} rating={articleData.rating} />
+              <CommentBox setUpdated={setUpdated} itemId={articleData._id} pathname="/article" comments={articleData.comments} rating={articleData.rating} />
             </div>
             ):null}
         </main>

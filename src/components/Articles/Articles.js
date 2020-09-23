@@ -14,9 +14,14 @@ import Loading from "../Loading/Loading";
 import { Context } from "../../store/store";
 
 const Articles = () => {
-  const [state] = useContext(Context);
+  const [state, dispatch] = useContext(Context);
+  const [articles, setArticles] = useState(null);
   const { Trans } = state;
-  const [articles, setData] = useState([]);
+ const setData = (data)=>{
+  dispatch({type: 'SET_ARTICLES', payload: data});
+  setArticles(data);
+ }
+  // const [articles, setData] = useState([]);
   useEffect(()=>{
     const moreAboutMe = document.querySelectorAll(".lazy-effect");
     moreAboutMe.forEach((item)=>{
@@ -33,8 +38,10 @@ const Articles = () => {
     fetch(`${envURL}/articles`)
       .then((res) => res.json())
       .then(setData)
-      .catch(console.error);    
-  }, []);
+      .catch(console.error);
+     
+       
+  }, [state.articles]);
 
   return (
     <>

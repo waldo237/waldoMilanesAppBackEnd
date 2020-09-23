@@ -44,7 +44,7 @@ const ProjectViewer = ({ match }) => {
   const [state] = useContext(Context);
   const { Trans } = state;
   const technology = technologySwicher();
-
+  const [updated, setUpdated] = useState(false);
   useEffect(() => {
     document.title = `Work I have done with ${technology.title}`;
     fetch(`${envURL}/projects/${technology.extension}`)
@@ -52,7 +52,7 @@ const ProjectViewer = ({ match }) => {
       .then(setData)
       .catch(console.error);
 
-  }, [match.url]);
+  }, [match.url, updated]);
 
   const showModal = (value) => {
     const internalFiles = document.querySelectorAll(".modal");
@@ -218,7 +218,7 @@ const ProjectViewer = ({ match }) => {
                     ))}
                 </>
               </div>
-              <CommentBox itemId={project._id} pathname="/project" comments={project.comments} rating={project.rating} />
+              <CommentBox setUpdated={setUpdated} itemId={project._id} pathname="/project" comments={project.comments} rating={project.rating} />
             </div>
           ))
           : (

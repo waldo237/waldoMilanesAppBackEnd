@@ -5,12 +5,22 @@
     "pubished": "Publicado en:",
     "readMore": "Leer más"
   },
+  "comment": {
+    "editComment": "Editar comentario",
+    "deleteComment": "Eliminar comentario"
+  },
   "commentBox": {
-    "impression": "Opinión",
     "comments": "Comentarios",
     "share": "Compartir",
-    "write": "Escribir un comentario"
+    "write": "Escribir un comentario",
+    "save": "Guardar"
   },
+  "fallback": {
+    "please": "Inicie sesión para realizar esta acción",
+    "sign": "Inicia sesión",
+    "create": "Crear una cuenta"
+  },
+
   "contact": {
     "titleInterested": "Interesado?",
     "titleLets": "Pongámonos en contacto",
