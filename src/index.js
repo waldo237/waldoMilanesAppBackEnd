@@ -10,7 +10,7 @@ import Loading from "./components/Loading/Loading";
 ReactDOM.render(
   <React.StrictMode>
     <Store>
-      <Suspense fallback={<Loading message={'Loading app'} />}>
+      <Suspense fallback={<Loading message="Loading app" />}>
         <App /> 
 
       </Suspense>
