@@ -1,2 +1,4 @@
 ::1 - - [23/Sep/2020:19:39:06 +0000] "POST /article/rating/5ef25dcb19ce9b10d0df7fe2 HTTP/1.1" 429 42 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
 ::1 - - [23/Sep/2020:19:39:09 +0000] "POST /article/rating/5ef25dcb19ce9b10d0df7fe2 HTTP/1.1" 429 42 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+::1 - - [24/Sep/2020:23:48:03 +0000] "POST /article/rating/5ef25dcb19ce9b10d0df7fe2 HTTP/1.1" 429 42 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+::1 - - [24/Sep/2020:23:48:04 +0000] "POST /article/rating/5ef25dcb19ce9b10d0df7fe2 HTTP/1.1" 429 42 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"

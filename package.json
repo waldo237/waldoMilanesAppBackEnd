@@ -34,7 +34,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waldo237/waldoMilanesApp.git"
+    "url": "git+https://github.com/waldo237/waldoMilanesAppBackEnd.git"
   },
   "keywords": [
     "portfolio",
@@ -50,7 +50,7 @@
   "author": "Waldo Milanes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waldo237/waldoMilanesApp/issues"
+    "url": "https://github.com/waldo237/waldoMilanesAppBackEnd/issues"
   },
-  "homepage": "https://github.com/waldo237/waldoMilanesApp#readme"
+  "homepage": "https://github.com/waldo237/waldoMilanesAppBackEnd#readme"
 }
