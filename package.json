@@ -47,6 +47,10 @@
       "last 1 safari version"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waldo237/waldoMilanesApp.git"
+  },
   "devDependencies": {
     "eslint": "^7.3.1",
     "eslint-config-airbnb": "^18.2.0",
