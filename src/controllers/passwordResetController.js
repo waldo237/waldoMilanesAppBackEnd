@@ -42,7 +42,8 @@ exports.sendPasswordResetToken = (req, res) => {
         //  compose URL where the email will redirect
         const passwordResetURL = format({
           host: req.headers.origin,
-          pathname: `/enterNewPassword/${token.token}`,
+          pathname: `/enterNewPassword/`,
+          search:`${token.token}`
         });
 
         //   Send the email
@@ -61,7 +62,8 @@ exports.sendPasswordResetToken = (req, res) => {
         };
         return transporter.sendMail(mailOptions, (error) => {
           if (error) {
-            return res.status(500).send({ message: error.message });
+            return res.status(500).send({ message: error
+              .message });
           }
           return res.status(200).send({ message: `An email has been sent to ${email}.\n Please check your inbox.` });
         });
@@ -139,7 +141,7 @@ exports.enterNewPassword = (req, res) => {
             Token.deleteOne({ token }, (err, deletedItem) => {
               if (err) throw err;
               return (deletedItem.n)
-                ? res.status(200).json({ message: 'The password was modified correctly.' })
+                ? res.status(200).json({ message: 'The password was modified correctly. Please sign in.',  link: { label: 'Sign in', href: '/followers' }, })
                 : res.status(404).json({ message: 'The update did not take effect.' });
             });
           }

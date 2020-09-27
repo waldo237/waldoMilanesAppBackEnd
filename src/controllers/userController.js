@@ -206,7 +206,7 @@ const verifyUser = (req, res) => {
       if (!user) return res.status(400).render('index', { successful: false, type: 'user-not-found', message: 'We were unable to find a user for this token.' });
       if (user.isVerified) {
         return res.status(200).render('index', {
-          successful: true, type: 'already-verified', message: 'This account has already been verified.', link: 'https://waldomilanes.com/supporters',
+          successful: true, type: 'already-verified', message: 'This account has already been verified.', link: 'https://waldomilanes.com/followers',
         });
       }
 
@@ -215,7 +215,7 @@ const verifyUser = (req, res) => {
       user.isVerified = true;
       user.save((error) => {
         if (error) return res.status(500).render('index', { successful: false, message: err.message });
-        return res.status(200).render('index', { successful: true, message: 'The account has been verified', link: 'https://waldomilanes.com/supporters' });
+        return res.status(200).render('index', { successful: true, message: 'The account has been verified', link: 'https://waldomilanes.com/followers' });
       });
     });
   } catch (error) {
