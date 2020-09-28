@@ -58,14 +58,14 @@ exports.emailController = (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL || 'abc@gmail.com',
-        pass: process.env.PASSWORD || '1234',
+        user: process.env.EMAIL ,
+        pass: process.env.PASSWORD,
       },
     });
 
     return transporter.sendMail(mailOptions, (err) => {
       if (err) {
-        return res.status(500).json({ message: 'An Error has occured while sending the email', err, em: process.env.EMAIL, pas: process.env.PASSWORD });
+        return res.status(500).json({ message: 'An Error has occured while sending the email', err });
       }
       return res.status(200).json({ message: 'Your Message was successfully sent' });
     });

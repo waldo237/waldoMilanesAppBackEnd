@@ -15,7 +15,7 @@ const accountscreatedLimiter = rateLimit({
 const routes = (app) => {
   // registration route
   app.route('/auth/register').post(accountscreatedLimiter, register);
-  app.route('/auth/withProvider').post(accountscreatedLimiter, checkAccountStatus, registerWithProvider);
+  app.route('/auth/withProvider').post(accountscreatedLimiter, registerWithProvider);
   // login route
   app.route('/auth/login').post(checkAccountStatus, login);
   // Token Confirmation

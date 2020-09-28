@@ -139,6 +139,7 @@ const register = async (req, res, next) => {
     if (alreadyExists) {
       return res.status(401).json({ message: 'Email already taken.' });
     }
+    console.log(req.body)
     const newUser = new User(req.body);
     newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
     // verify user if has a valid id from a provider
