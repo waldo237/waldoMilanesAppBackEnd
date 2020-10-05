@@ -31,7 +31,7 @@ exports.UserSchema = new Schema({
     trim: true,
     minlength: 3,
     maxlength: 60,
-  },
+  },      
   photoURL: {
     type: String,
     required: false,
