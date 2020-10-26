@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 const { articleSchema } = require('../models/articleModel');
-const { UserSchema } = require('../models/userModel'); 
+const { UserSchema } = require('../models/userModel');
 
 const Article = mongoose.model('Article', articleSchema);
-const User = mongoose.model('User', UserSchema); 
+const User = mongoose.model('User', UserSchema);
 
 /**
  * @function getAllArticles fetch all the articles in the database
