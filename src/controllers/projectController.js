@@ -71,31 +71,31 @@ exports.postProject = (req, res) => {
 /**
  * @function updateProject allow the admin to update an existing project
  */
-exports.updateProject = (req, res) => {
+exports.updateProject = (req, res, next) => {
   try {
     const id = mongoose.Types.ObjectId(req.params.id);
     Project.updateOne({ _id: id }, req.body, { runValidators: true, new: true }, (err, project) => {
-      if (err) res.send(err.message);
-      // console.log(project);
-      return (project.nModified) ? res.json('The project was modified correctly.') : res.status(404).send('The update did not take effect.');
+      if (err) return next(err);
+
+      return (project && project.nModified) ? res.json('The project was modified correctly.') : res.status(404).send('The update did not take effect.');
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(`caught error: ${error}`);
   }
 };
 
 /**
  * @function deleteProject allow the admin to delete an existing project
  */
-exports.deleteProject = async (req, res) => {
+exports.deleteProject = async (req, res, next) => {
   try {
     const id = mongoose.Types.ObjectId(req.params.id);
     Project.deleteOne({ _id: id }, (err, query) => {
-      if (err) throw err;
-      return (query.n) ? res.send(`${query.n} was deleted.`) : res.status(404).send('An error occured while trying to delete item.');
+      if (err) return next(err);
+      return (query && query.n) ? res.send(`${query.n} was deleted.`) : res.status(404).send('An error occured while trying to delete item.');
     });
   } catch (error) {
-    res.status(500).send(`caught error: ${error}`);
+    next(`caught error: ${error}`);
   }
 };
 
