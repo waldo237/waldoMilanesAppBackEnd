@@ -15,10 +15,28 @@ const fileSchema = new Schema({
   content: Object,
 });
 fileSchema.pre('save', function (next) {
-  if (this.type === 'file') {
-    this.content._id = mongoose.Types.ObjectId();
-    next();
+  const recur = (it) => {
+    if (it.type === 'dir') {
+      it.content.forEach((item) => {
+        item._id = mongoose.Types.ObjectId();
+        console.log(item);
+        if (item.type === 'dir') recur(item);
+      });
+    } else {
+      it._id = mongoose.Types.ObjectId();
+    }
+  };
+
+  if (this.type === 'dir') {
+    this.content.forEach((item) => {
+      item._id = mongoose.Types.ObjectId();
+      recur(item);
+    });
+  } else {
+    this._id = mongoose.Types.ObjectId();
   }
+
+  next();
 });
 
 const dirSchema = Schema({
