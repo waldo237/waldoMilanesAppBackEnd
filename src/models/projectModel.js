@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const fileSchema = Schema({
+const fileSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -12,7 +12,13 @@ const fileSchema = Schema({
     required: true,
     validate: /^(dir|file)$/,
   },
-  content: String,
+  content: Object,
+});
+fileSchema.pre('save', function (next) {
+  if (this.type === 'file') {
+    this.content._id = mongoose.Types.ObjectId();
+    next();
+  }
 });
 
 const dirSchema = Schema({
