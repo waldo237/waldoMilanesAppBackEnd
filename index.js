@@ -60,8 +60,16 @@ app.use(morgan('combined', {
 // helmet setup
 app.use(helmet());
 // bodyparser setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  limit: '20mb',
+  parameterLimit: 100000,
+  extended: true,
+}));
+app.use(bodyParser.json({
+  limit: '20mb',
+}));
 // cors setup
 app.use(cors({ origin: true }));
 

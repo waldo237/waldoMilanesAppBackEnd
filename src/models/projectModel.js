@@ -14,30 +14,23 @@ const fileSchema = new Schema({
   },
   content: Object,
 });
-fileSchema.pre('save', function (next) {
-  const recur = (it) => {
+function addId(next) {
+  const recursion = (passedIn) => {
+    const it = (passedIn) || this;
     if (it.type === 'dir') {
       it.content.forEach((item) => {
         item._id = mongoose.Types.ObjectId();
-        console.log(item);
-        if (item.type === 'dir') recur(item);
+        recursion(item);
       });
     } else {
       it._id = mongoose.Types.ObjectId();
     }
   };
-
-  if (this.type === 'dir') {
-    this.content.forEach((item) => {
-      item._id = mongoose.Types.ObjectId();
-      recur(item);
-    });
-  } else {
-    this._id = mongoose.Types.ObjectId();
-  }
-
+  recursion();
   next();
-});
+}
+fileSchema.pre('save', addId);
+fileSchema.pre('update', addId);
 
 const dirSchema = Schema({
   name: {
