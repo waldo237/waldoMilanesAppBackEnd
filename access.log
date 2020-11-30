@@ -144,3 +144,6 @@
 ::1 - - [28/Nov/2020:13:01:16 +0000] "PUT /project/5fc14c7767648c2e5835ff7e HTTP/1.1" 404 31 "-" "PostmanRuntime/7.26.8"
 ::1 - - [28/Nov/2020:13:16:19 +0000] "POST /projects/ HTTP/1.1" 500 69 "-" "PostmanRuntime/7.26.8"
 ::1 - - [28/Nov/2020:20:31:08 +0000] "POST /projects/ HTTP/1.1" 400 69 "-" "PostmanRuntime/7.26.8"
+::1 - - [28/Nov/2020:21:14:08 +0000] "POST /projects/ HTTP/1.1" 400 82 "-" "PostmanRuntime/7.26.8"
+::1 - - [28/Nov/2020:21:52:49 +0000] "POST /projects/ HTTP/1.1" 400 82 "-" "PostmanRuntime/7.26.8"
+::1 - - [28/Nov/2020:21:53:38 +0000] "POST /projects/ HTTP/1.1" 400 82 "-" "PostmanRuntime/7.26.8"
