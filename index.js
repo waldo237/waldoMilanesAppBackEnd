@@ -13,11 +13,14 @@ const morgan = require('morgan');
 const jsonwebtoken = require('jsonwebtoken');
 const { createWriteStream } = require('fs');
 const { join } = require('path');
+const { graphqlHTTP } = require('express-graphql');
 const registrationRoutes = require('./src/routes/registrationRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
 const articleRoutes = require('./src/routes/articleRoutes');
 const emailRoutes = require('./src/routes/emailRoutes');
 const profileRoutes = require('./src/routes/profileRoutes');
+const graphqlResolvers = require('./src/controllers/projectGraphQLResolver');
+const graphqlSchema = require('./src/models/projectGraphQLSchema');
 
 const PORT = process.env.PORT || 3001;
 
@@ -89,7 +92,15 @@ app.use((req, res, next) => {
     next();
   }
 });
-
+// GraphQL
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: graphqlSchema,
+    rootValue: graphqlResolvers,
+    graphiql: true,
+  }),
+);
 // handle http routes
 registrationRoutes(app);
 profileRoutes(app);
