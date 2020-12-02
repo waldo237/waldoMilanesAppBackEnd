@@ -10,24 +10,26 @@ type FILE {
    type: String
    content: String
 }
+scalar JSON
+
 type folder {
    _id: ID
    name:String
    type: String
-   content: [FILE]
+   content: [JSON]
 }
 
 
 type Rating {
-    _id: ID!
-    type: String!
-    enum: String!
+    _id: ID
+    type: String
+    enum: String
 }
 type Comment {
-    _id: ID!
-    comment: String!
-    date: String!
-    userId: ID!
+    _id: ID
+    comment: String
+    date: String
+    userId: ID
 }
 
 type Project {
