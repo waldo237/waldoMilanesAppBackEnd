@@ -8,7 +8,7 @@ module.exports = {
   projects: async () => {
     try {
       const projectsFetched = await Project.find({}, (err, projects) => {
-        if (err) res.status(500).send('An  error occured while fetching the data');
+        if (err) { res.status(500).send('An  error occured while fetching the data'); }
 
         return projects;
       });

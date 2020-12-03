@@ -11,7 +11,7 @@ type FILE {
    content: String
 }
 scalar JSON
-
+scalar Date
 type folder {
    _id: ID
    name:String
@@ -20,15 +20,11 @@ type folder {
 }
 
 
-type Rating {
-    _id: ID
-    type: String
-    enum: String
-}
+
 type Comment {
     _id: ID
     comment: String
-    date: String
+    date: Date
     userId: ID
 }
 
@@ -40,9 +36,9 @@ description: String!
 url: String!
 screenshot: String!
 code: dir
-date: String!
+date:Date
 comments: [Comment]
-rating: [Rating]
+rating: [String]
 
 }
 type Query {
