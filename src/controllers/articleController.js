@@ -89,6 +89,25 @@ exports.deleteArticle = (req, res, next) => {
 };
 
 /**
+ * @function getArticleRating finds an article by id and returns its comments
+ * in an array.
+ */
+exports.getArticleRating = (req, res, next) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    Article.findOne({ _id: id }, (err, article) => {
+      if (err) throw err;
+      if (!article) {
+        return res.status(404).json({ message: 'The article you are looking for was not found!' });
+      }
+      return res.json(article.rating);
+    });
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+/**
  * @function postArticleRating post a like or diske on an arcle.
  * fetch the _id from the body.
  * find an article by id. Push a rating(like|dislike). Send a notification.
@@ -104,6 +123,24 @@ exports.postArticleRating = (req, res, next) => {
           ? res.json({ message: 'Thanks for your feedback.' })
           : res.status(401).send('Something went wrong, we could not get your feedback.');
       });
+  } catch (error) {
+    next(error.message);
+  }
+};
+/**
+ * @function getArticleComments finds an article by id and returns its comments
+ * in an array.
+ */
+exports.getArticleComments = (req, res, next) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    Article.findOne({ _id: id }, (err, article) => {
+      if (err) throw err;
+      if (!article) {
+        return res.status(404).json({ message: 'The article you are looking for was not found!' });
+      }
+      return res.json(article.comments);
+    });
   } catch (error) {
     next(error.message);
   }

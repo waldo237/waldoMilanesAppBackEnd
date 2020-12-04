@@ -98,7 +98,24 @@ exports.deleteProject = async (req, res, next) => {
     next(`caught error: ${error}`);
   }
 };
-
+/**
+ * @function getProjectRating finds an article by id and returns its rating
+ * in an array.
+ */
+exports.getProjectRating = (req, res, next) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    Project.findOne({ _id: id }, (err, project) => {
+      if (err) throw err;
+      if (!project) {
+        return res.status(500).send('The project you are looking for was not found!');
+      }
+      return res.json(project.rating);
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 /**
  * @function postProjectRating post a like or diske on an arcle.
  * fetch the _id from the body.
@@ -117,6 +134,25 @@ exports.postProjectRating = (req, res, next) => {
       });
   } catch (error) {
     next(error.message);
+  }
+};
+
+/**
+ * @function getProjectComments finds an article by id and returns its comments
+ * in an array.
+ */
+exports.getProjectComments = (req, res, next) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    Project.findOne({ _id: id }, (err, project) => {
+      if (err) throw err;
+      if (!project) {
+        return res.status(500).send('The project you are looking for was not found!');
+      }
+      return res.json(project.comments);
+    });
+  } catch (error) {
+    next(error);
   }
 };
 
