@@ -238,3 +238,4 @@
 ::1 - - [04/Dec/2020:20:56:14 +0000] "GET /project/rating/5fc2b3bcef92512bbc0a7480 HTTP/1.1" 500 46 "-" "PostmanRuntime/7.26.8"
 ::1 - - [04/Dec/2020:20:58:19 +0000] "GET /project/rating/5fc2b3bcef92512bbc0a7480 HTTP/1.1" 500 46 "-" "PostmanRuntime/7.26.8"
 ::ffff:127.0.0.1 - - [04/Dec/2020:20:59:17 +0000] "GET /project/rating/5fc2b3bcef92512bbc0a7480 HTTP/1.1" 500 46 "-" "PostmanRuntime/7.26.8"
+::1 - - [04/Dec/2020:21:06:43 +0000] "GET /project/comments/5fc2b3bcef92512bbc0a7480 HTTP/1.1" 404 180 "-" "PostmanRuntime/7.26.8"
