@@ -103,6 +103,7 @@ exports.getArticleRating = (req, res, next) => {
       return res.json(article.rating);
     });
   } catch (error) {
+    console.log(error);
     next(error.message);
   }
 };
@@ -142,6 +143,7 @@ exports.getArticleComments = (req, res, next) => {
       return res.json(article.comments);
     });
   } catch (error) {
+    console.log(error);
     next(error.message);
   }
 };
