@@ -6,7 +6,7 @@ const messageValidator = (user) => {
   const responseObject = {
     valid: true,
     errors: [],
-  }; 
+  };
 
   if (!user.name) {
     responseObject.errors.push({ type: 'name', message: 'Please do not forget to include your name.' });
@@ -58,7 +58,7 @@ exports.emailController = (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL ,
+        user: process.env.EMAIL,
         pass: process.env.PASSWORD,
       },
     });
