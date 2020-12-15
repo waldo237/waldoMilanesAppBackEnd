@@ -9,7 +9,7 @@ const isEmail = require('validator/lib/isEmail');
 const { TokenSchema, UserSchema } = require('../models/userModel');
 const { passwordResetEmailInHTML } = require('./passwordResetEmailInHTML');
 const { fetchPayloadFromJWT } = require('./userController');
-
+ 
 const User = mongoose.model('User', UserSchema);
 const Token = mongoose.model('Token', TokenSchema);
 
