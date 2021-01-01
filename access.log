@@ -313,3 +313,6 @@
 ::1 - - [07/Dec/2020:18:03:49 +0000] "POST /project/rating/5fc2b3bcef92512bbc0a7480 HTTP/1.1" 429 42 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 ::1 - - [07/Dec/2020:18:04:33 +0000] "POST /article/rating/5eea19f5b1dc7b59d0932046 HTTP/1.1" 429 42 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 ::1 - - [12/Dec/2020:21:23:27 +0000] "POST /article/5ee971863c6090274c83e428 HTTP/1.1" 404 172 "-" "PostmanRuntime/7.26.8"
+::1 - - [30/Dec/2020:13:57:14 +0000] "POST /projects/ HTTP/1.1" 401 32 "-" "PostmanRuntime/7.26.8"
+::1 - - [30/Dec/2020:13:58:25 +0000] "PUT /project/5fc139d2ade7b92f243e0a66 HTTP/1.1" 404 31 "-" "PostmanRuntime/7.26.8"
+::1 - - [30/Dec/2020:14:02:26 +0000] "POST /projects/ HTTP/1.1" 400 82 "-" "PostmanRuntime/7.26.8"

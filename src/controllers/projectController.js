@@ -60,7 +60,7 @@ exports.postProject = (req, res) => {
   try {
     const newProject = Project(req.body);
     newProject.save((err, project) => {
-      if (err) res.status(400).send({ message: `There was when saving the project: ${err.message}` });
+      if (err) res.status(400).send({ message: `There was error when saving the project: ${err.message}` });
       return res.json(project);
     });
   } catch (error) {
