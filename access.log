@@ -316,3 +316,5 @@
 ::1 - - [30/Dec/2020:13:57:14 +0000] "POST /projects/ HTTP/1.1" 401 32 "-" "PostmanRuntime/7.26.8"
 ::1 - - [30/Dec/2020:13:58:25 +0000] "PUT /project/5fc139d2ade7b92f243e0a66 HTTP/1.1" 404 31 "-" "PostmanRuntime/7.26.8"
 ::1 - - [30/Dec/2020:14:02:26 +0000] "POST /projects/ HTTP/1.1" 400 82 "-" "PostmanRuntime/7.26.8"
+::1 - - [02/Jan/2021:14:33:14 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3001/project/rating/5fecad1cab81052e005a92da" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
+ 

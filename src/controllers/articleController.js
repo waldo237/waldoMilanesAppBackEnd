@@ -12,7 +12,7 @@ const User = mongoose.model('User', UserSchema);
 exports.getAllArticles = (req, res, next) => {
   try {
     Article.find({}, (err, articles) => {
-      if (err) throw new Error('An  error occured while fetching the data');
+      if (err) throw err;
       if (!articles) return res.status(404).send('The data was not found.');
       return res.status(200).json(articles);
     });
