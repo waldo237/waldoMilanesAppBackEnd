@@ -10,12 +10,12 @@ const { likesAndDislikesLimit } = require('./likesAndDislikesLimit');
 const routes = (app) => {
   // registration route
   app.route('/articles')
-    .get(getAllArticles)
-    .post(loginRequired, postArticle);
+    .get(getAllArticles);
+  // .post(loginRequired, postArticle);
 
   app.route('/article/:id')
     .get(getArticle)
-    .put(loginRequired, updateArticle)
+    // .put(loginRequired, updateArticle)
     .delete(loginRequired, deleteArticle);
 
   app.route('/article/rating/:id')
