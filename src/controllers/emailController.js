@@ -6,7 +6,7 @@ const messageValidator = (user) => {
   const responseObject = {
     valid: true,
     errors: [],
-  };
+  }; 
 
   if (!user.name) {
     responseObject.errors.push({ type: 'name', message: 'Please do not forget to include your name.' });
