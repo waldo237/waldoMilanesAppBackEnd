@@ -105,7 +105,7 @@ projectRoutes(app);
 articleRoutes(app);
 emailRoutes(app);
 
-app.get('/', (req, res) => res.render('index', { title: 'waldoMilanesAppBackEnd', type: 'API\'s for waldomilanes.com' }));
+app.get('/', (req, res) => res.render(join(__dirname, 'src/views/index'), { title: 'waldoMilanesAppBackEnd', type: 'API\'s for waldomilanes.com' }));
 
 // handler errors
 app.use((err, req, res, next) => {

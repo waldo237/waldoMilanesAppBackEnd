@@ -131,6 +131,7 @@ exports.postProjectRating = (req, res, next) => {
       { runValidators: true }, (err, project) => {
         if (err) throw err;
         if (!project) return res.status(404).send('Project not found.');
+
         return (project.nModified)
           ? res.json({ message: 'Thanks for your feedback.' })
           : res.status(401).send('Something went wrong, we could not get your feedback.');

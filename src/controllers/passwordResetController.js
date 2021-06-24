@@ -66,8 +66,9 @@ exports.sendPasswordResetToken = (req, res) => {
         return transporter.sendMail(mailOptions, (error) => {
           if (error) {
             return res.status(500).send({
-              message: error
-                .message,
+              // message: error
+              //   .message,
+              message: 'There was an issue when trying to send the email.',
             });
           }
           return res.status(200).send({ message: `An email has been sent to ${email}.\n Please check your inbox.` });

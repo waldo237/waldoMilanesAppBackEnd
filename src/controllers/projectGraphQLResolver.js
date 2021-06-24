@@ -18,8 +18,9 @@ module.exports = {
   },
 
   project: async (id) => {
+    const mId = mongoose.Types.ObjectId(id);
     try {
-      const response = await Project.findOne({ _id: id }, (err, project) => {
+      const response = await Project.findOne({ _id: mId }, (err, project) => {
         if (err) console.log(err);
         if (!project) {
           return 'The project you are looking for was not found!';

@@ -53,7 +53,7 @@ exports.passwordResetEmailInHTML = (passwordResetURL, user) => `
 																																	<td style="font-size:6px; line-height:10px; padding:0px 0px 0px 0px;" valign="top" align="center">
 																																		<img class="max-width" border="0" style="display:block; color:rgb(11,34,57); 
 																																		text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;" width="59" 
-																																		alt="w-programming" data-proportionally-constrained="true" data-responsive="false" src="https://waldomilanes.com/static/media/banner.4d5315b8.png" height="57">
+																																		alt="w-programming" data-proportionally-constrained="true" data-responsive="false" src="https://waldomilanes.com/static/banner-4d5315b8096076bc4a718bbdf689c72b.png" height="57">
 																																		</td>
 																																	</tr>
 																																	<tr>

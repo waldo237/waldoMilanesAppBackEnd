@@ -43,7 +43,6 @@ const login = (req, res) => {
           ),
         });
       }
-
       res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
     });
   } catch (error) {
