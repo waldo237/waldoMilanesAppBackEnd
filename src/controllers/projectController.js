@@ -20,6 +20,7 @@ exports.getAllProjects = (req, res) => {
     console.log(error);
   }
 };
+
 /**
  * @function getProjectsByTechnology fetch all the projects in the database
  */
@@ -98,6 +99,7 @@ exports.deleteProject = async (req, res, next) => {
     next(`caught error: ${error}`);
   }
 };
+
 /**
  * @function getProjectRating finds an article by id and returns its rating
  * in an array.
@@ -116,6 +118,7 @@ exports.getProjectRating = (req, res, next) => {
     next(error);
   }
 };
+
 /**
  * @function postProjectRating post a like or diske on an arcle.
  * fetch the _id from the body.
@@ -157,7 +160,7 @@ exports.getProjectComments = (req, res, next) => {
 };
 
 /**
- * @function postProjectComment post a comment on an arcle.
+ * @function postProjectComment posts a comment on an arcle.
  * fetch the _id from the body.
  * find an project by id. Push a comment. Send confirmation to the user.
  */

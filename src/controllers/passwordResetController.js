@@ -7,7 +7,7 @@ const { format } = require('url');
 const { hashSync } = require('bcrypt');
 const isEmail = require('validator/lib/isEmail');
 const { TokenSchema, UserSchema } = require('../models/userModel');
-const { passwordResetEmailInHTML } = require('./passwordResetEmailInHTML');
+const { passwordResetEmailInHTML } = require('./utilitites/passwordResetEmailInHTML');
 const { fetchPayloadFromJWT } = require('./userController');
 
 const User = mongoose.model('User', UserSchema);
@@ -27,9 +27,11 @@ exports.sendPasswordResetToken = (req, res) => {
   try {
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) throw err;
+
       if (!user) {
         return res.status(401).json({ message: '"You have entered an invalid address"' });
       }
+
       const { email, _id } = user;
       // Create a verification token for this user
       const jsonToken = jwt.sign({ email }, process.env.APP_KEY);
@@ -54,6 +56,7 @@ exports.sendPasswordResetToken = (req, res) => {
             pass: process.env.PASSWORD,
           },
         });
+
         const mailOptions = {
           from: process.env.EMAILFROM,
           to: email,
@@ -90,6 +93,7 @@ exports.confirmPasswordResetToken = (req, res, next) => {
     if (token) {
       return Token.findOne({ token }, (err, item) => {
         if (err) throw err;
+
         if (!item) {
           return res.status(498).json({
             message: `Your request/token for this operation has expired
@@ -97,7 +101,9 @@ exports.confirmPasswordResetToken = (req, res, next) => {
             link: { label: 'Request another token', href: '/PasswordReset' },
           });
         }
+
         if (req.originalUrl === '/auth/enterNewPassword') return next();
+
         return res.status(200).json({ message: 'ready to go!' });
       });
     }

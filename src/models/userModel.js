@@ -31,7 +31,7 @@ exports.UserSchema = new Schema({
     trim: true,
     minlength: 3,
     maxlength: 60,
-  },      
+  },
   photoURL: {
     type: String,
     required: false,
@@ -64,6 +64,7 @@ exports.UserSchema = new Schema({
 
 // eslint-disable-next-line max-len
 exports.UserSchema.methods.comparePassword = (password, hashPassword) => bcrypt.compareSync(password, hashPassword);
+
 exports.TokenSchema = new Schema({
   token: {
     type: String,

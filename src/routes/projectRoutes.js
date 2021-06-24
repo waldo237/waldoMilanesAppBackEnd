@@ -8,10 +8,11 @@ const {
 const { likesAndDislikesLimit } = require('./likesAndDislikesLimit');
 
 const routes = (app) => {
-  // registration route
+  // project routes
   app.route('/projects')
     .get(getAllProjects)
     .post(loginRequired, postProject);
+
   app.route('/projects/:technology')
     .get(getProjectsByTechnology)
     .post(loginRequired, postProject);

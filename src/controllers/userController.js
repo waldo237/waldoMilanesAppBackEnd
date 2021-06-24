@@ -3,12 +3,13 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
 const { UserSchema, TokenSchema } = require('../models/userModel');
-const { verificationEmailInHTML } = require('./verificationEmailInHTML');
+const { fetchPayloadFromJWT } = require('./utilitites/fetchPayloadFromJWT');
+const { sendVerificationTokenToEmail } = require('./utilitites/sendVerificationTokenToEmail');
 
 const User = mongoose.model('User', UserSchema);
 const Token = mongoose.model('Token', TokenSchema);
+exports.Token = Token;
 
 /**
  * @function login confirm that the user data is valid and send a token if it does.
@@ -19,7 +20,9 @@ const login = (req, res) => {
       if (err) throw err;
       if (!user) {
         return res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
-      } if (user && req.body.password) {
+      }
+
+      if (user && req.body.password) {
         if (!user.comparePassword(req.body.password, user.hashPassword)) {
           return res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
         }
@@ -40,6 +43,7 @@ const login = (req, res) => {
           ),
         });
       }
+
       res.status(401).json({ message: 'Authentication failed. "You have entered an invalid username or password"' });
     });
   } catch (error) {
@@ -48,7 +52,8 @@ const login = (req, res) => {
 };
 
 /**
- * @function directLoginWithProvider() return a JWT
+ * @function directLoginWithProvider() return a JWT when the user logs in
+ * using OAuth providers.
  */
 const directLoginWithProvider = (req, res, next, user) => {
   res.status(200).json({
@@ -59,52 +64,6 @@ const directLoginWithProvider = (req, res, next, user) => {
     ),
   });
   return next();
-};
-/**
- * @function sendVerificationTokenToEmail Create a verification token for this user,
- * save token, Send the email
- * @param {*} req
- * @param {*} res
- * @param {*} user
- */
-const sendVerificationTokenToEmail = (req, res, user) => {
-  // Create a verification token for this user
-  const jsonToken = jwt.sign({
-    hashed_access: bcrypt.hashSync(user.email, 5),
-    email: user.email,
-  }, process.env.APP_KEY);
-  // eslint-disable-next-line no-underscore-dangle
-  const token = new Token({ _userId: user._id, token: jsonToken });
-
-  // save token
-  token.save((err) => {
-    if (err) return res.status(500).send({ message: err.message });
-    // Send the email
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-      },
-    });
-    const mailOptions = {
-      from: process.env.EMAILFROM,
-      to: user.email,
-      subject: 'Account Verification Token',
-      html: verificationEmailInHTML(req.headers.host, user, token.token),
-    };
-    return transporter.sendMail(mailOptions, (error) => {
-      const serverSideRendered = req.params.ssr === 'true';
-      if (error) {
-        return (serverSideRendered)
-          ? res.status(500).render('index', { successful: false, message: error.message })
-          : res.status(500).send({ message: error.message });
-      }
-      return (serverSideRendered)
-        ? res.status(200).render('index', { successful: true, message: `A verification email has been sent to ${user.email}.` })
-        : res.status(200).send({ message: `A verification email has been sent to ${user.email}.` });
-    });
-  });
 };
 
 /**
@@ -139,9 +98,9 @@ const register = async (req, res, next) => {
     if (alreadyExists) {
       return res.status(401).json({ message: 'Email already taken.' });
     }
-    console.log(req.body)
     const newUser = new User(req.body);
     newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
+
     // verify user if has a valid id from a provider
     const hasIdByProvider = req.body.cu_id && req.originalUrl === '/auth/withProvider';
     if (hasIdByProvider) newUser.isVerified = true;
@@ -223,6 +182,7 @@ const verifyUser = (req, res) => {
     console.log(error);
   }
 };
+
 const assertion = (params) => {
   const errors = [];
   // eslint-disable-next-line global-require
@@ -272,12 +232,6 @@ exports.emailConfirmation = (req, res) => {
     }
   });
 };
-
-/**
- * @function fetchPayloadFromJWT it receives JWT token, fetches payload and returns it
- * @param token a valid  JWT token
- */
-const fetchPayloadFromJWT = (token) => JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
 
 /**
  * @function userIsLoggedIn

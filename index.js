@@ -1,19 +1,16 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
-const express = require('express');
-
-const app = express();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
-const cors = require('cors');
-const RateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const jsonwebtoken = require('jsonwebtoken');
 const { createWriteStream } = require('fs');
 const { join } = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const RateLimit = require('express-rate-limit');
+const jsonwebtoken = require('jsonwebtoken');
 const { graphqlHTTP } = require('express-graphql');
+
 const registrationRoutes = require('./src/routes/registrationRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
 const articleRoutes = require('./src/routes/articleRoutes');
@@ -22,23 +19,24 @@ const profileRoutes = require('./src/routes/profileRoutes');
 const graphqlResolvers = require('./src/controllers/projectGraphQLResolver');
 const graphqlSchema = require('./src/models/projectGraphQLSchema');
 
-const PORT = process.env.PORT || 3001;
+const { urlencoded, json } = express;
+const app = express();
 
 // environment variables configuration
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
+const PORT = process.env.PORT || 3001;
+
 app.disable('x-powered-by');
 // mongoose connection
-try {
-  mongoose.Promise = global.Promise;
-  mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-    .then(() => console.log(`connected to DataBase successfully! -- ${new Date().toLocaleString()}`))
-    .catch((err) => console.log(`Could not connect to DataBase: ${err}`));
-} catch (error) {
-  console.log(error);
-}
+
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+})
+  .then(() => console.log(`connected to DataBase successfully! -- ${new Date().toLocaleString()}`))
+  .catch((err) => console.log(`Could not connect to DataBase: ${err}`));
 
 /**
  * Middlewares
@@ -48,7 +46,6 @@ try {
 const limiter = new RateLimit({
   windowMs: 24 * 60 * 60 * 1000,
   max: 300,
-  // delayMs: 0
   message:
     { message: 'You have exceeded the maximum number of interactions from this IP address, please try again after 24 hours.' },
 });
@@ -62,17 +59,15 @@ app.use(morgan('combined', {
 
 // helmet setup
 app.use(helmet());
+
 // bodyparser setup
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(urlencoded({
   limit: '20mb',
   parameterLimit: 100000,
   extended: true,
 }));
-app.use(bodyParser.json({
-  limit: '20mb',
-}));
+app.use(json({ limit: '20mb' }));
+
 // cors setup
 app.use(cors({ origin: true }));
 
@@ -92,6 +87,7 @@ app.use((req, res, next) => {
     next();
   }
 });
+
 // GraphQL
 app.use(
   '/graphql',
@@ -101,18 +97,19 @@ app.use(
     graphiql: true,
   }),
 );
+
 // handle http routes
 registrationRoutes(app);
 profileRoutes(app);
 projectRoutes(app);
 articleRoutes(app);
 emailRoutes(app);
+
 app.get('/', (req, res) => res.render('index', { title: 'waldoMilanesAppBackEnd', type: 'API\'s for waldomilanes.com' }));
 
 // handler errors
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  // console.error(err.stack);
   res.status(500).send({ message: 'There was an issue with your request. Please try again.' });
 });
 

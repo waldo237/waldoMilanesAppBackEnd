@@ -14,11 +14,13 @@ const fileSchema = new Schema({
   },
   content: Object,
 });
+
 function addId(next) {
   const recursion = (passedIn) => {
     const it = (passedIn) || this;
     if (it.type === 'dir') {
       it.content.forEach((item) => {
+        // eslint-disable-next-line no-param-reassign
         item._id = mongoose.Types.ObjectId();
         recursion(item);
       });

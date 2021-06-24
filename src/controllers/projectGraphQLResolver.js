@@ -9,12 +9,11 @@ module.exports = {
     try {
       const projectsFetched = await Project.find({}, (err, projects) => {
         if (err) console.log('An  error occured while fetching the data', err);
-
         return projects;
       });
       return projectsFetched.map((project) => project);
     } catch (error) {
-      throw error;
+      console.log(error);
     }
   },
 
@@ -29,7 +28,7 @@ module.exports = {
       });
       return response;
     } catch (error) {
-      throw error;
+      console.log(error);
     }
   },
 };

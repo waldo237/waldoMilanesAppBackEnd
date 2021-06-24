@@ -26,7 +26,7 @@ exports.authenticateToMakeChanges = (req, res, next) => {
       if (!user || !comparisonPassed || pL.email !== email) {
         return res.status(401).json({
           message: `Authentication failed.
-          You are not authorized to access or edit this profile. Check if you are properly logged in.`,
+          You are not authorized to access or edit this profile. Please check if you are properly logged in.`,
         });
       }
       next();
@@ -35,6 +35,7 @@ exports.authenticateToMakeChanges = (req, res, next) => {
     res.status(500).send(`caught error: ${error}`);
   }
 };
+
 /**
  * @function retrieveProfile get information about a user using the uid.
  */
@@ -50,6 +51,7 @@ exports.retrieveProfile = (req, res) => {
     res.status(200).json(user);
   });
 };
+
 /**
  * @function updateProfile allow users to update their profile {firstName, lastName, photoURL}.
  */
